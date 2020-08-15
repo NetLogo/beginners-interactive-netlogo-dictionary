@@ -1,0 +1,92 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block head %}
+{{super()}}
+{{ fontawesome_html() }}
+{% endblock %}
+
+{% block title %}
+{% if title %}{{ title }} | NetLogo Dictionary {% else %}Welcome to NetLogo Dictionary{% endif %}
+{% endblock %}
+
+
+{% block navbar %}
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav  mt-2 mt-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Contents
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Getting Started</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Turtles</a>
+                        <a class="dropdown-item" href="#">Patches</a>
+                        <a class="dropdown-item" href="#">Links</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Dictionary</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Shapes and Colors</a>
+                        <a class="dropdown-item" href="#">NetLogo Interface </a>
+                    </div>
+                </li>
+                
+                <li>
+                    <form class="form-inline ml-4">
+                        <input class="form-control" type="search" placeholder="Search">
+                    </form>
+                 </li>
+                
+            </ul>
+            <ul class="navbar-nav mx-auto mr-sm-2">
+                <li class="nav-item">
+                    <a class="nav-link " href="#" tabindex="-1" aria-disabled="true"><i class="fas fa-cloud-download-alt"></i> Download NetLogo</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</nav>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {# application content needs to be provided in the app_content block #}
+    {% block app_content %}{% endblock %}
+
+    {%- block footer %}
+    <div class="clearfix">&nbsp;</div>
+    <div class="clearfix">&nbsp;</div>
+    <footer>
+        <div class="row">
+
+            <div class="col-md-6">
+                © 2020 Center for Connected Learning &amp; Computer-Based Modeling
+            </div>
+            <div class="col-md-6 text-right">
+                <a href="#"><u>Teacher Resources</u></a>
+                &nbsp; &nbsp;
+                <a href="#"><u>Full Dictionary</u></a>
+            </div>
+
+        </div>
+
+
+    </footer>
+    <div class="clearfix">&nbsp;</div>
+    {%- endblock footer %}
+</div>
+
+
+
+{% endblock %}
