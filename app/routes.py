@@ -19,10 +19,12 @@ def primitive(primitive_name):
     
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     md = os.path.join(BASE_DIR, 'static/md/' + pn +'.md')
+    nlcode = os.path.join(BASE_DIR, 'static/nlogo/' + pn +'.nlcode')
     
     if os.path.exists(md):
         with open(md, 'r') as d: 
-            return render_template('primitive.html', description = d.read(), primitive = pn)
+            with open(nlcode, 'r') as nc:
+                return render_template('primitive.html', primitive = pn, description = d.read(), code = nc.read())
     else:
         ## MAKE THIS RENDER A 404 File!!!
         return 'I don\'t know what ' + pn + ' is :('

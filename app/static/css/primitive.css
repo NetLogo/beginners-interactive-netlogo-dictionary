@@ -1,5 +1,9 @@
 .cm-matchhighlight {background-color: aqua}
 
+.CodeMirror {
+    height: auto;
+}
+
 .CodeMirror-hints {
   position: absolute;
   z-index: 10;

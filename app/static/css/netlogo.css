@@ -8,7 +8,7 @@
 }
 
 .cm-s-netlogo-default div.CodeMirror-selected {
-  background: #d6d5d4;
+ background: #d6d5d4;
 }
 
 .cm-s-netlogo-default .CodeMirror-line::selection,
@@ -109,6 +109,12 @@
 .cm-s-netlogo-default .CodeMirror-activeline-background {
   background: #f6faff;
 }
+
+.cm-s-netlogo-default .CodeMirror-highlighted-background {
+  background: #E8FFB2;
+}
+
+
 .cm-s-netlogo-default .CodeMirror-matchingbracket {
   color: #a16a94 !important;
   text-decoration: underline;
