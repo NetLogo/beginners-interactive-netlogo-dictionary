@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            {{ model | safe }}
+            {{ basemodel | safe }}
         </div>
     </div>
 </div>
@@ -136,6 +136,13 @@
             }
         });
         
+    // brind in the actual NetLogo example code
+    {% autoescape false %}
+    window.loadModel(`{{model}}`, "{{primitive}}")
+     {% endautoescape %}
+        
+    // defined a function to highlight primitive lines
+    // because it needs to run multiple times
     function highlight_primitive_lines(){
         // highlight the lines that include the presented primitive
         //    this is the default setting

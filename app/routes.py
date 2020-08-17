@@ -20,13 +20,15 @@ def primitive(primitive_name):
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     md = os.path.join(BASE_DIR, 'static/md/' + pn +'.md')
     nlcode = os.path.join(BASE_DIR, 'static/nlcode/' + pn +'.nlcode')
-    mdl = os.path.join(BASE_DIR, 'static/nlweb/' + pn +'.html')
+    basemdl = os.path.join(BASE_DIR, 'static/nlweb/basenlweb.html')
+    mdl = os.path.join(BASE_DIR, 'static/nlogo/' + pn +'.nlogo')
     
     if os.path.exists(md):
         with open(md, 'r') as d: 
             with open(nlcode, 'r') as nc:
-                with open(mdl, 'r') as m:
-                    return render_template('primitive.html', primitive = pn, description = d.read(), code = nc.read(), model = m.read())
+                with open(basemdl, 'r') as bm:
+                    with open(mdl, 'r') as m:
+                        return render_template('primitive.html', primitive = pn, description = d.read(), code = nc.read(), basemodel = bm.read(), model = m.read().replace('`', '\`'))
     else:
         ## MAKE THIS RENDER A 404 File!!!
         return 'I don\'t know what ' + pn + ' is :('
