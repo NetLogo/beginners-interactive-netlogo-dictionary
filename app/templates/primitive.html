@@ -2,12 +2,13 @@
 
 {% block head %}
 {{super()}}
-<script src="/static/js/jquery.min.js"></script>
 
 <link rel="stylesheet" href="/static/css/codemirror.css">
-<script src="/static/js/codemirror.js"></script>
-
 <link rel="stylesheet" href="/static/css/netlogo.css">
+
+<script src="/static/js/jquery.min.js"></script>
+
+<script src="/static/js/codemirror.js"></script>
 <script src="/static/js/codemirror/simple.js"></script>
 <script src="/static/js/netlogo.js"></script>
 <script src="/static/js/netlogo-hint.js"></script>
@@ -52,7 +53,16 @@ end</textarea>
         var editor = CodeMirror.fromTextArea($('.try-editor')[0], {
             lineNumbers: true,
             mode:  'netlogo',
-            theme: 'netlogo-default'
+            theme: 'netlogo-default',
+            lineNumbers: true,
+            lineWrapping: true,
+            styleActiveLine: true,
+            styleActiveSelected: true,
+            matchBrackets: true,
+            showTrailingSpace: true,
+            viewportMargin: Infinity,
+            extraKeys: { 'Ctrl-Space': 'autocomplete' }
+            
         });
     });
 </script>
