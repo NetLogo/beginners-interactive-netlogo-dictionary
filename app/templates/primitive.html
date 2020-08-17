@@ -44,29 +44,35 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
+            <input type="hidden" id="originalCode" value="{{code}}" />
             <textarea class="try-editor d-none">{{code}}</textarea>
-            <div class="form-check form-check-inline">
+            <div class="clearfix">&nbsp;</div>
+            <div class="form-check ">
                 <input class="form-check-input" type="checkbox" checked id="limitEditing" />
                 <label class="form-check-label" for="limitEditing">
                     Limited Editing
                 </label>
-                </div>
+                <button type="button" id="resetCode" class="btn btn-secondary float-right"><i class="fas fa-undo"></i> Reset Code</button>
+            </div>
         </div>
-        <div class="col-md-6">Model here</div>
+        <div class="col-md-6">
+            {{ model | safe }}
+        </div>
     </div>
 </div>
 
 <script type="text/javascript">
+    
     // This procedure runs once every HTML element in the page is loaded
     // It takes the basic textarea above and converts into a code editor
     //    with proper NetLogo code highlighting, autocomplete
     //    //TODO!// highlighting the lines that have the presented primitive 
     //    and even limiting the editing only to those lines with the presented primitive
     $(document).ready(function() {
-        
+
         // convert the textarea element to a codemirror widget
         var editor = CodeMirror.fromTextArea($('.try-editor')[0], {
-            mode:  'netlogo',
+            mode: 'netlogo',
             theme: 'netlogo-default',
             viewportMargin: Infinity,
             lineNumbers: true,
@@ -77,28 +83,38 @@
             autoCloseBrackets: true,
             showHint: true
         });
-        
+
         // highlight the lines that include the presented primitive
         //    this is the default setting
-        for(i = 0; i < editor.lineCount(); i++){
-            ln = editor.getLineHandle(i);
-            // this checks if the primitive is present in this line
-            if (ln.text.indexOf('{{primitive}}') >= 0) {
-                // and if not, makes those lines a bit gray background
-                ln.bgClass = "CodeMirror-highlighted-background";
+        highlight_primitive_lines();
+
+        // clear the code & redisplay the original code when the reset code button is clicked
+        $('#resetCode').click(function() {
+            // gotta temporarily uncheck limitedEditing because
+            //    otherwise the edits will be cancelled by the beforeChange
+            //      event below
+            var wasLimited = $('#limitEditing').is(':checked');
+            if (wasLimited) {
+                $('#limitEditing').prop('checked', false);
             }
-        }
-        editor.refresh();
-        
-        
+            // bring the original code from the hidden field
+            editor.setValue($('#originalCode').val());
+            highlight_primitive_lines();
+
+            if (wasLimited) {
+                $('#limitEditing').prop('checked', true);
+            }
+        });
+
+
         // the following handler does two things
         // (1) prevents editing the lines that don't have the presented primitive 
         // (2) autocompletes the code
-        editor.on('beforeChange', function(editor, data, value){
-            
+        editor.on('beforeChange', function(editor, data, value) {
+
             // Dictionary code to make only lines that include this primitive editable
             //   unless the learner unticked the option manually
-            if ($('#limitEditing').is(':checked')){
+            if ($('#limitEditing').is(':checked')) {
                 line = data.from.line;
                 line_text = editor.getLine(line);
                 if (line_text.indexOf('{{primitive}}') < 0) {
@@ -106,20 +122,35 @@
                     return;
                 }
             }
-            
+
             const reg = /[a-z0-9_]/i;
-            const { origin, text } = data;
+            const {
+                origin,
+                text
+            } = data;
             /// TODO: this needs to be fixed to order shortest primitives first
             if (origin === '+input' && (reg.test(text) || text[0] === ':')) {
-              editor.showHint({
-                completeSingle: false,
-              });
+                editor.showHint({
+                    completeSingle: false,
+                });
             }
         });
         
+    function highlight_primitive_lines(){
+        // highlight the lines that include the presented primitive
+        //    this is the default setting
+        for (i = 0; i < editor.lineCount(); i++) {
+            ln = editor.getLineHandle(i);
+            // this checks if the primitive is present in this line
+            if (ln.text.indexOf('{{primitive}}') >= 0) {
+                // and if not, makes those lines a bit gray background
+                ln.bgClass = "CodeMirror-highlighted-background";
+            }
+        }
+        editor.refresh(); // needed to update the highlighting
+    }
+
     });
-        
-        
 </script>
 
 
