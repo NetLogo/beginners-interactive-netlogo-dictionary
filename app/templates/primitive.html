@@ -38,9 +38,10 @@
             <textarea class="try-editor w-100">
 to setup
    clear-all
-   ask patches with [pcolor = 0] [ set pcolor green ]
-end
-        </textarea>
+   ask patches with [pcolor = 0] [ 
+        set pcolor green 
+    ]
+end</textarea>
         </div>
         <div class="col-md-6">Model here</div>
     </div>
@@ -50,7 +51,8 @@ end
     $(document).ready(function() {
         var editor = CodeMirror.fromTextArea($('.try-editor')[0], {
             lineNumbers: true,
-            mode:  'netlogo'
+            mode:  'netlogo',
+            theme: 'netlogo-default'
         });
     });
 </script>
