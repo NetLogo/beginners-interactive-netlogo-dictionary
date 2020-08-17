@@ -5,11 +5,18 @@
 
 <link rel="stylesheet" href="/static/css/codemirror.css">
 <link rel="stylesheet" href="/static/css/netlogo.css">
+<link rel="stylesheet" href="/static/css/primitive.css">
 
 <script src="/static/js/jquery.min.js"></script>
 
 <script src="/static/js/codemirror.js"></script>
 <script src="/static/js/codemirror/simple.js"></script>
+<script src="/static/js/codemirror/active-line.js"></script>
+<script src="/static/js/codemirror/match-highlighter.js"></script>
+<script src="/static/js/codemirror/matchbrackets.js"></script>
+<script src="/static/js/codemirror/closebrackets.js"></script>
+<script src="/static/js/codemirror/show-hint.js"></script>
+
 <script src="/static/js/netlogo.js"></script>
 <script src="/static/js/netlogo-hint.js"></script>
 
@@ -36,7 +43,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <textarea class="try-editor w-100">
+            <textarea class="try-editor">
 to setup
    clear-all
    ask patches with [pcolor = 0] [ 
@@ -51,20 +58,41 @@ end</textarea>
 <script type="text/javascript">
     $(document).ready(function() {
         var editor = CodeMirror.fromTextArea($('.try-editor')[0], {
-            lineNumbers: true,
             mode:  'netlogo',
             theme: 'netlogo-default',
             lineNumbers: true,
             lineWrapping: true,
             styleActiveLine: true,
-            styleActiveSelected: true,
+            highlightSelectionMatches: true,
             matchBrackets: true,
-            showTrailingSpace: true,
-            viewportMargin: Infinity,
-            extraKeys: { 'Ctrl-Space': 'autocomplete' }
-            
+            autoCloseBrackets: true,
+            showHint: true,
+            extraKeys: {"Ctrl-Space": "autocomplete"}
         });
+        
+        editor.on('beforeChange', function(editor, data, value){
+        const reg = /[a-z0-9_]/i;
+            const { origin, text } = data;
+            /// TODO: this needs to be fixed to order shortest primitives first
+            if (origin === '+input' && (reg.test(text) || text[0] === ':')) {
+              editor.showHint({
+                completeSingle: false,
+              });
+            }
+        });
+        
     });
+        
+
+        
+//                    const reg = /[a-z0-9_]/i;
+//            const { origin, text } = data;
+//            if (origin === '+input' && (reg.test(text) || text[0] === ':')) {
+//              editor.showHint({
+//                completeSingle: false,
+//              });
+//            }
+        
 </script>
 
 
