@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{super()}}
+<script src="/static/js/jquery.min.js"></script>
+
+<link rel="stylesheet" href="/static/css/codemirror.css">
+<script src="/static/js/codemirror.js"></script>
+
+<link rel="stylesheet" href="/static/css/netlogo.css">
+<script src="/static/js/codemirror/simple.js"></script>
+<script src="/static/js/netlogo.js"></script>
+<script src="/static/js/netlogo-hint.js"></script>
+
+
+
+{% endblock %}
+
+{% block app_content %}
+
+<h2 class="display-4 mt-4 col-md-12"> {{ primitive }} </h2>
+
+<div class="clearfix">&nbsp;</div>
+
+<div class="col-md-11">
+    {{ description|markdown }}
+
+</div>
+
+
+<div class="clearfix">&nbsp;</div>
+
+
+<h3 class="mt-4 col-md-12 mb-4"> Try it Yourself </h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <textarea class="try-editor w-100">
+to setup
+   clear-all
+   ask patches with [pcolor = 0] [ set pcolor green ]
+end
+        </textarea>
+        </div>
+        <div class="col-md-6">Model here</div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var editor = CodeMirror.fromTextArea($('.try-editor')[0], {
+            lineNumbers: true,
+            mode:  'netlogo'
+        });
+    });
+</script>
+
+
+{% endblock %}
