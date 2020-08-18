@@ -1,0 +1,61 @@
+{
+    "primitives": {
+        "create-links-with": {
+            "short_description": "creates links with every member of an agentset",
+            "search_terms": [
+                "links",
+                "create"
+            ],
+            "agents": [
+                "turtle"
+            ],
+            "see_also": [
+                "create-link-with",
+                "create-links-to",
+                "create-links-from"
+            ],
+            "library_models": [
+                "Team Assembly",
+                "Random Network Example"
+            ]
+        },
+        "in-radius": {
+            "short_description": "narrows down an agentset by distance to an agent",
+            "search_terms": [
+                "radius",
+                "around"
+            ],
+            "agents": [
+                "turtle",
+                "patch"
+            ],
+            "see_also": [
+                "other"
+            ],
+            "library_models": []
+        },
+        "max": {
+            "short_description": "reports the maximum number value in a list",
+            "search_terms": [
+                "largest"
+            ],
+            "agents": [],
+            "see_also": [
+                "min"
+            ],
+            "library_models": []
+        },
+        "to": {
+            "short_description": "begins the definition of a procedure",
+            "search_terms": [
+                "procedure",
+                "function"
+            ],
+            "agents": [],
+            "see_also": [
+                "to-report"
+            ],
+            "library_models": []
+        }
+    }
+}
