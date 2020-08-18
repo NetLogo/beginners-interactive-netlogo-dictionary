@@ -107,6 +107,7 @@
         
         // Recompile the code if the button is clicked
         $('#recompileCode').click(function() {
+            world.clearAll(); // clears the model to prevent confusion
             window.postMessage({ type: "nlw-update-model-state", codeTabContents: editor.getValue()}, "*")
         });
 
@@ -123,7 +124,8 @@
             editor.setValue($('#originalCode').val());
             highlight_primitive_lines();
             // also recompile the old code to reset the model
-            window.postMessage({ type: "nlw-update-model-state", codeTabContents: editor.getValue()}, "*")
+            world.clearAll(); // clears the model to prevent confusion
+            window.postMessage({ type: "nlw-update-model-state", codeTabContents: editor.getValue()}, "*");
 
             if (wasLimited) {
                 $('#limitEditing').prop('checked', true);
