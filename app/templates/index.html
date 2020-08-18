@@ -13,7 +13,7 @@
 
         <h1 class="display-4">The Beginner's Guide to NetLogo Programming</h1>
         <p class="lead">
-            Learn how to create computational models with the NetLogo agent-based modeling environment through novice-friendly explanations and interactive code examples.
+            Learn how to create computational models with the NetLogo agent-based modeling environment with novice-friendly explanations and interactive code examples.
         </p>
 
         <p>
@@ -21,9 +21,13 @@
             &nbsp; &nbsp;
             <a href="#"><u>Create your first model</u></a>
             &nbsp; &nbsp;
-            <a href="#"><u>The first 10 primitives to learn</u></a>
+            <!--        The following version only shows in non-small, in the same line-->
+            <a href="#" class="d-none d-sm-inline-block"><u>The first 10 primitives to learn</u></a>
             &nbsp; &nbsp;
-
+        </p>
+        <!--        The following version only shows in small, in a new line-->
+        <p class="d-block d-sm-none mb-4">
+            <a href="#"><u>The first 10 primitives to learn</u></a>
         </p>
     </div>
 
@@ -130,8 +134,20 @@
 
 
         <ul class="list-unstyled">
+            
             <li class="media">
-                <i class="fas fa-2x fa-shoe-prints mr-3 p-2"></i>
+                <i class="fas fa-2x fa-question mr-4 p-2"></i>
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1">What is a primitive?</h5>
+                    <p>This guide is all about NetLogo's primitives. But what do we mean by primitive? This article summarizes it for you.</p>
+                    <p>
+                        <a href="#" target="_blank">Read this tutorial</a>
+                    </p>
+                </div>
+            </li>
+            
+            <li class="media">
+                <i class="fas fa-2x fa-shoe-prints mr-2 p-2"></i>
                 <div class="media-body">
                     <h5 class="mt-0 mb-1">Introduction to the NetTango Builder</h5>
                     <p>NetTango is a domain-blocks-based interface for the NetLogo agent-based modeling environment. It is a great tool for teachers to create easy-to-learn programming activities for their students. In this step-by-step tutorial, we explain how to create a blocks-based blocks-based programming interface for the NetLogo Ants model. Along the way, we are going to explain each component of the NetTango Builder in detail. We are also going to cover the relevant concepts, interface tools, and alternative design choices.</p>
@@ -140,8 +156,8 @@
                     </p>
                 </div>
             </li>
-            <li class="media my-4">
-                <i class="fas fa-2x fa-shoe-prints mr-3 p-2"></i>
+            <li class="media">
+                <i class="fas fa-2x fa-shoe-prints mr-2 p-2"></i>
                 <div class="media-body">
                     <h5 class="mt-0 mb-1">Introduction to Behaviorspace</h5>
                     <p>Behaviorspace is a tool bundled with NetLogo that allows us to run automated experiments with our NetLogo models. In this tutorial, we will briefly show you how to create a BehaviorSpace experiment and run it.</p>
