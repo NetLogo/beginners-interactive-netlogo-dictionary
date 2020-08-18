@@ -1,6 +1,7 @@
 import os.path
 import markdown
 import markdown.extensions.fenced_code
+from string import ascii_lowercase, ascii_uppercase
 
 from flask import render_template, flash, redirect, request, url_for
 from markupsafe import escape
@@ -13,6 +14,10 @@ from app import app
 def index():
     return render_template('index.html')
     # return render_template('index.html', title='Landing page', user=user)
+    
+@app.route('/dictionary')
+def dictionary():
+    return render_template('dictionary.html', letters = ascii_uppercase)
     
 @app.route('/primitive/<primitive_name>', methods = ['GET'])
 def primitive(primitive_name):
