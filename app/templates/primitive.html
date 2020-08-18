@@ -31,7 +31,7 @@
 
 <div class="clearfix">&nbsp;</div>
 
-<div class="col-md-11">
+<div id="description" class="cm-s-netlogo-default col-md-11">
     {{ description|markdown }}
 
 </div>
@@ -41,7 +41,7 @@
 
 
 <h3 class="mt-4 col-md-12 mb-4"> Try it Yourself </h3>
-<div class="container">
+<div id="model" class="container">
     <div class="row">
         <div class="col-md-6">
             <input type="hidden" id="originalCode" value="{{code}}" />
@@ -184,5 +184,14 @@
     });
 </script>
 
+<script src="/static/js/codemirror/runmode.js"></script>
+
+<script type="text/javascript">
+    $("#description code").each(function(i, e){
+        console.log(e);
+        CodeMirror.runMode(e.textContent, "netlogo", e);
+    })
+
+</script>
 
 {% endblock %}
