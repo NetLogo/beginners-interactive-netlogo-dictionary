@@ -15,44 +15,62 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
     <div class="container">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainBar" aria-controls="mainBar" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav  mt-2 mt-lg-0">
+        <!-- this navbar brand only shows in mobile mode -->
+        <a class="navbar-brand mx-sm-auto d-xs-block d-sm-block d-md-none d-lg-none d-xl-none" href="/"><i class="fas fa-location-arrow"></i> NetLogo Dictionary</a>
+
+        <div class="collapse navbar-collapse" id="mainBar">
+            <ul class="navbar-nav mt-2 mt-lg-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Contents
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Getting Started</a>
+                    <div class="dropdown-menu mt-2 mb-2 ml-1" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Getting Started with NetLogo</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Turtles</a>
                         <a class="dropdown-item" href="#">Patches</a>
                         <a class="dropdown-item" href="#">Links</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Dictionary</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-bookmark"></i> &nbsp; Explore the Dictionary</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Articles and Guides</a>
+                        <a class="dropdown-item" href="#">Videos</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Shapes and Colors</a>
                         <a class="dropdown-item" href="#">NetLogo Interface </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Models Library</a>
+                        <a class="dropdown-item" href="#">Modeling Commons</a>
+                        <a class="dropdown-item" href="#">External Resources</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">About this webpage</a>
                     </div>
                 </li>
-                
-                <li>
-                    <form class="form-inline ml-4">
-                        <input class="form-control" type="search" placeholder="Search">
-                    </form>
-                 </li>
-                
+                <li class="nav-item ml-md-4 ml-xs-0 ml-sm-0">
+
+                    <div class="input-group">
+                        <input class="form-control py-2 border-right-0 " type="search" value="Search" id="example-search-input">
+                        <span class="input-group-append">
+                            <div class="input-group-text bg-white"><i class="fa fa-search"></i></div>
+                        </span>
+                    </div>
+
+                </li>
+            </ul>
+            <!-- this navbar brand only shows in desktop mode -->
+            <ul class="navbar-nav mx-sm-auto d-none d-sm-block">
+                <a class="navbar-brand" href="/"><i class="fas fa-location-arrow"></i> NetLogo Dictionary</a>
             </ul>
             <ul class="navbar-nav mx-auto mr-sm-2">
                 <li class="nav-item">
-                    <a class="nav-link " href="http://ccl.northwestern.edu/netlogo/" target="_blank" tabindex="-1" aria-disabled="true"><i class="fas fa-cloud-download-alt"></i> Download NetLogo</a>
+                    <a class="nav-link" href="http://ccl.northwestern.edu/netlogo/" target="_blank" tabindex="-1" aria-disabled="true"><i class="fas fa-cloud-download-alt"></i> <span class="">Download NetLogo</span></a>
                 </li>
             </ul>
         </div>
-
     </div>
 
 </nav>

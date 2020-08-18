@@ -8,12 +8,11 @@
 }
 
 #description pre {
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 1em;
+  min-width: 50%;
   border-radius: 5px;
   background-color: whitesmoke;
+  display: inline-block;
 }
 
 .cm-matchhighlight {background-color: aqua}
