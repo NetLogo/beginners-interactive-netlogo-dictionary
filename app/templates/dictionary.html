@@ -18,7 +18,7 @@
     <div class="clearfix">&nbsp;</div>
 
     <div class="row">
-        <div class="col-md-12 border rounded p-4">
+        <div class="col-md-12 border rounded p-4 m-3">
             <h5>Filters</h5>
 
             <form class="form-inline">
@@ -40,7 +40,7 @@
                 </div>
 
                 
-                <button type="submit" class="btn btn-primary ml-md-auto mt-sm-4"> <i class="fas fa-random"></i> Random Primitive</button>                
+                <button type="submit" class="btn btn-primary ml-md-auto"> <i class="fas fa-random"></i> Random Primitive</button>                
             </form>
 
             <div class="clearfix">&nbsp;</div>
@@ -67,10 +67,31 @@
                 <p>&nbsp;</p>
                 <h2>{{letter}} <span class="badge badge-light text-small float-right"><a href="#"> <small class="muted"> back to top <i class="fas fa-level-up-alt"></i> </small></a></span></h2>
                 <hr />
-                <p>Somethings will come here eventually</p>
-                <p>Somethings will come here eventually</p>
-                <p>Somethings will come here eventually</p>
-                <p>Somethings will come here eventually</p>
+                    {%for i in range(1, 5)%}
+                    
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="/primitive/max" class="card-link"><h5 class="card-title">{{letter}}-primhere-{{i}}</h5></a>
+                                <p>  
+                                    <small>
+                                        <span class="badge badge-danger">
+                                            <i class="fas fa-location-arrow"></i> turtles
+                                        </span>
+                                        <span class="badge badge-success">
+                                            <i class="fas fa-square-full"> </i> patches
+                                        </span>
+                                        <span class="badge badge-warning">
+                                            <i class="fas fa-project-diagram"></i> links
+                                        </span>
+                                    </small>
+                                </p>
+                                <p class="card-text">Short explanation coming here. Short explanation coming here. Short explanation coming here. Short explanation coming here. Short explanation coming here. Short explanation coming here. Short explanation coming here.  </p>
+                                <a href="/primitive/max" class="card-link">Read more</a>
+                            </div>
+                        </div>
+                        <div class="clearfix">&nbsp;</div>
+                
+                    {%endfor%}
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
                 {%endfor%}
