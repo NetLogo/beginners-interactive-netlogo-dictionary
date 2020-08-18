@@ -190,7 +190,6 @@
 
 <script type="text/javascript">
     $("#description code").each(function(i, e){
-        console.log(e);
         CodeMirror.runMode(e.textContent, "netlogo", e);
     })
 
