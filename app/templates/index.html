@@ -102,7 +102,7 @@
             console.log(primitive_name);
             let card = $("<div class=\"card\"></div>").appendTo(primitives_card_deck);
             let body = $("<div class=\"card-body\"></div>").appendTo(card);
-            $('<a class="card-link" href="/primitive/"' + primitive_name + '"><h5 class=card-title text-primary">' + primitive_name + '</h5></a>').appendTo(body);
+            $('<a class="card-link" href="/primitive/' + primitive_name + '"><h5 class=card-title text-primary"><code>' + primitive_name + '</code></h5></a>').appendTo(body);
             $('<p class="card-text">' + primitive_object["short_description"] + '</p>').appendTo(body);
             $('<a href="/primitive/"' + primitive_name + '" class="card-link">Read more</a>').appendTo(body);
         }

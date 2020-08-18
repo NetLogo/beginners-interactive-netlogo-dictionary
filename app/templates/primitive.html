@@ -27,7 +27,7 @@
 
 {% block app_content %}
 
-<h2 class="display-4 mt-4 col-md-12"> {{ primitive }} </h2>
+<h2 id="primtitle" class="display-4 mt-4 col-md-12">{{ primitive }}</h2>
 
 <div class="clearfix">&nbsp;</div>
 
@@ -192,7 +192,11 @@
 <script type="text/javascript">
     $("#description code").each(function(i, e){
         CodeMirror.runMode(e.textContent, "netlogo", e);
-    })
+    });
+    
+    $("#primtitle code").each(function(i, e){
+        CodeMirror.runMode(e.textContent, "netlogo", e);
+    });
 
 </script>
 
