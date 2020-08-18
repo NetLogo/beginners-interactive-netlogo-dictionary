@@ -28,17 +28,19 @@ def primitive(primitive_name):
     if os.path.exists(md):
         with open(md, 'r') as d: 
             description_rendered = markdown.markdown(d.read(), extensions=["fenced_code"])
-
-            if os.path.exists(nlcode):
-                with open(nlcode, 'r') as nc:
+            if os.path.exists(mdl):
+                with open(mdl, 'r') as m:
+                    full_model = m.read().replace('`', '\`')
+                    code = full_model.split("@#$#@#$#@")[0] 
+                    ## that string of characters separates the sections of a .nlogo file, 
+                    ## the first of which is the code itself.
                     with open(basemdl, 'r') as bm:
-                        with open(mdl, 'r') as m:
-                            return render_template('primitive.html', 
-                                                    primitive = pn, 
-                                                    description = description_rendered, 
-                                                    code = nc.read(), 
-                                                    basemodel = bm.read(), 
-                                                    model = m.read().replace('`', '\`'))
+                        return render_template('primitive.html', 
+                                                primitive = pn, 
+                                                description = description_rendered, 
+                                                code = code, 
+                                                basemodel = bm.read(), 
+                                                model = full_model)
             else:
                 return "TODO: create a template for a description without a model (example: inspect)"
     else:
