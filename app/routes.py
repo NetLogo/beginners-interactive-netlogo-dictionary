@@ -1,4 +1,6 @@
 import os.path
+import markdown
+import markdown.extensions.fenced_code
 
 from flask import render_template, flash, redirect, request, url_for
 from markupsafe import escape
@@ -28,7 +30,8 @@ def primitive(primitive_name):
             with open(nlcode, 'r') as nc:
                 with open(basemdl, 'r') as bm:
                     with open(mdl, 'r') as m:
-                        return render_template('primitive.html', primitive = pn, description = d.read(), code = nc.read(), basemodel = bm.read(), model = m.read().replace('`', '\`'))
+                        md_rendered = markdown.markdown(d.read(), extensions=["fenced_code"])
+                        return render_template('primitive.html', primitive = pn, description = md_rendered, code = nc.read(), basemodel = bm.read(), model = m.read().replace('`', '\`'))
     else:
         ## MAKE THIS RENDER A 404 File!!!
         return 'I don\'t know what ' + pn + ' is :('
