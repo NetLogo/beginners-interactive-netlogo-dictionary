@@ -86,6 +86,8 @@
     //    //TODO!// highlighting the lines that have the presented primitive 
     //    and even limiting the editing only to those lines with the presented primitive
     $(document).ready(function() {
+        
+        var primitiveLines = [];
 
         // convert the textarea element to a codemirror widget
         var editor = CodeMirror.fromTextArea($('.try-editor')[0], {
@@ -137,13 +139,12 @@
         // (1) prevents editing the lines that don't have the presented primitive 
         // (2) autocompletes the code
         editor.on('beforeChange', function(editor, data, value) {
-
+            
             // Dictionary code to make only lines that include this primitive editable
             //   unless the learner unticked the option manually
             if ($('#limitEditing').is(':checked')) {
                 line = data.from.line;
-                line_text = editor.getLine(line);
-                if (line_text.indexOf('{{primitive}}') < 0) {
+                if (!primitiveLines.includes(line)) {
                     data.cancel();
                     return;
                 }
@@ -178,6 +179,7 @@
             if (ln.text.indexOf('{{primitive}}') >= 0) {
                 // and if not, makes those lines a bit gray background
                 ln.bgClass = "CodeMirror-highlighted-background";
+                primitiveLines.push(i); // to reuse in limited editing functionality
             }
         }
         editor.refresh(); // needed to update the highlighting

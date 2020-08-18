@@ -12,10 +12,8 @@
 "use strict";
 
 CodeMirror.runMode = function(string, modespec, callback, options) {
-  console.log("running run mode");
   var mode = CodeMirror.getMode(CodeMirror.defaults, modespec);
   var tabSize = (options && options.tabSize) || CodeMirror.defaults.tabSize;
-  console.log(mode);
   // Create a tokenizing callback function if passed-in callback is a DOM element.
   if (callback.appendChild) {
     var ie = /MSIE \d/.test(navigator.userAgent);
