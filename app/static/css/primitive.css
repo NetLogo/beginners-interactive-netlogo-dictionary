@@ -9,10 +9,10 @@
 
 #description pre {
   padding: 1em;
-  min-width: 50%;
+/*  min-width: 50%;*/
   border-radius: 5px;
   background-color: whitesmoke;
-  display: inline-block;
+/*  display: inline-block;*/
 }
 
 .cm-matchhighlight {background-color: aqua}
