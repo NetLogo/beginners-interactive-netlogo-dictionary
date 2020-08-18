@@ -48,14 +48,20 @@
             <textarea class="try-editor d-none">{{code}}</textarea>
             <div class="clearfix">&nbsp;</div>
             <div class="form-check ">
+                <p>
                 <input class="form-check-input" type="checkbox" checked id="limitEditing" />
                 <label class="form-check-label" for="limitEditing">
                     Limited Editing
                 </label>
-                <button type="button" id="resetCode" class="btn btn-secondary float-right"><i class="fas fa-undo"></i> Reset Code</button>
+                <button type="button" id="recompileCode" class="btn btn-lg btn-success float-right"><i class="fas fa-play"></i> Recompile</button>
+                </p>
+                <div class="clearfix">&nbsp;</div>
+                <p>
+                    <button type="button" id="resetCode" class="btn btn-sm btn-secondary float-right"><i class="fas fa-undo"></i> Reset Code</button>
+                </p>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 p-0">
             {{ basemodel | safe }}
         </div>
     </div>
@@ -87,6 +93,11 @@
         // highlight the lines that include the presented primitive
         //    this is the default setting
         highlight_primitive_lines();
+        
+        // Recompile the code if the button is clicked
+        $('#recompileCode').click(function() {
+            window.postMessage({ type: "nlw-update-model-state", codeTabContents: editor.getValue()}, "*")
+        });
 
         // clear the code & redisplay the original code when the reset code button is clicked
         $('#resetCode').click(function() {

@@ -35,9 +35,9 @@ to trace-back
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-227
+96
 10
-647
+516
 431
 -1
 -1
@@ -62,10 +62,10 @@ ticks
 30.0
 
 BUTTON
-55
-51
-121
-84
+4
+10
+70
+43
 NIL
 setup
 NIL
@@ -79,10 +79,10 @@ NIL
 1
 
 BUTTON
-54
-160
-117
-193
+6
+88
+69
+121
 NIL
 go
 T
@@ -96,10 +96,10 @@ NIL
 1
 
 BUTTON
-50
-105
-131
-138
+4
+49
+85
+82
 go once
 go
 NIL
@@ -113,10 +113,10 @@ NIL
 1
 
 BUTTON
-0
-220
-217
-253
+296
+438
+513
+471
 contact trace back one degree
 trace-back
 NIL
