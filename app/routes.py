@@ -27,11 +27,20 @@ def primitive(primitive_name):
     
     if os.path.exists(md):
         with open(md, 'r') as d: 
-            with open(nlcode, 'r') as nc:
-                with open(basemdl, 'r') as bm:
-                    with open(mdl, 'r') as m:
-                        md_rendered = markdown.markdown(d.read(), extensions=["fenced_code"])
-                        return render_template('primitive.html', primitive = pn, description = md_rendered, code = nc.read(), basemodel = bm.read(), model = m.read().replace('`', '\`'))
+            description_rendered = markdown.markdown(d.read(), extensions=["fenced_code"])
+
+            if os.path.exists(nlcode):
+                with open(nlcode, 'r') as nc:
+                    with open(basemdl, 'r') as bm:
+                        with open(mdl, 'r') as m:
+                            return render_template('primitive.html', 
+                                                    primitive = pn, 
+                                                    description = description_rendered, 
+                                                    code = nc.read(), 
+                                                    basemodel = bm.read(), 
+                                                    model = m.read().replace('`', '\`'))
+            else:
+                return "TODO: create a template for a description without a model (example: inspect)"
     else:
         ## MAKE THIS RENDER A 404 File!!!
         return 'I don\'t know what ' + pn + ' is :('
