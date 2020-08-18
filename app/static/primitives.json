@@ -56,6 +56,18 @@
                 "to-report"
             ],
             "library_models": []
+        },
+        "n-of" : {
+            "short_description": "randomly selects a certain number of elements from an agentset or list",
+            "search_terms": [
+                "n"
+            ],
+            "agents": [],
+            "see_also": [
+                "one-of",
+                "up-to-one-of"
+            ],
+            "library_models": [] 
         }
     }
 }

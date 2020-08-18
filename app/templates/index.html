@@ -44,15 +44,15 @@
         <h3>Learn a new primitive</h3>
         <div class="clearfix">&nbsp;</div>
 
-        <div class="card-deck">
-            <div class="card">
+        <div id="primitives-card-deck" class="card-deck">
+            <!-- <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-primary">face</h5>
                     <p class="card-text">sets a turtle’s heading to point towards another agent. </p>
                     <a href="/primitive/face" class="card-link">Read more</a>
                 </div>
-            </div>
-            <div class="card">
+            </div> -->
+            <!-- <div class="card">
                 <div class="card-body">
                     <a href="/primitive/create-links-with" class="card-link"><h5 class="card-title text-primary">create-links-with</h5></a>
                     <p class="card-text">is a primitive that allows importing an image. </p>
@@ -79,12 +79,36 @@
                     <p class="card-text">Short explanation coming here </p>
                     <a href="/primitive/in-radius" class="card-link">Read more</a>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
     </div>
 </div>
+
+<script type="text/javascript">
+    "use strict";
+    $.getJSON("/static/primitives.json", function(json){
+        let entries = Object.entries(json["primitives"]);
+        let shuffledEntries = entries
+            .map((a) => ({sort: Math.random(), value: a}))
+            .sort((a,b) => a.sort - b.sort)
+            .map((a) => a.value)
+        let primitives_card_deck = $("#primitives-card-deck");
+
+        for (let i = 0; i < Math.min(5, shuffledEntries.length); i++){
+            let primitive_name = shuffledEntries[i][0];
+            let primitive_object = shuffledEntries[i][1];
+            console.log(primitive_name);
+            let card = $("<div class=\"card\"></div>").appendTo(primitives_card_deck);
+            let body = $("<div class=\"card-body\"></div>").appendTo(card);
+            $('<a class="card-link" href="/primitive/"' + primitive_name + '"><h5 class=card-title text-primary">' + primitive_name + '</h5></a>').appendTo(body);
+            $('<p class="card-text">' + primitive_object["short_description"] + '</p>').appendTo(body);
+            $('<a href="/primitive/"' + primitive_name + '" class="card-link">Read more</a>').appendTo(body);
+        }
+
+    })
+</script>
 
 <div class="row">
     <div class="col-md-12 mt-5">
