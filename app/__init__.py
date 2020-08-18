@@ -8,6 +8,6 @@ from flaskext.markdown import Markdown
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 fa = FontAwesome(app)
-Markdown(app)
+# Markdown(app)
 
 from app import routes
