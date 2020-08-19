@@ -1,15 +1,20 @@
 {% extends 'bootstrap/base.html' %}
 
 {% block head %}
-{{super()}}
-{{ fontawesome_html() }}
-<script src="/static/js/jquery.min.js"></script>
+    {{super()}}
+
+    {% block scripts %}
+    {{super()}}
+    <script src="/static/js/typeahead.js"></script>
+    {% endblock %}
+
+    {{ fontawesome_html() }}
+
 {% endblock %}
 
 {% block title %}
 {% if title %}{{ title }} | NetLogo Dictionary {% else %}Welcome to NetLogo Dictionary{% endif %}
 {% endblock %}
-
 
 {% block navbar %}
 
@@ -54,7 +59,7 @@
                 <li class="nav-item ml-md-4 ml-xs-0 ml-sm-0">
 
                     <div class="input-group">
-                        <input class="form-control py-2 border-right-0 " type="search" placeholder="Search" id="example-search-input">
+                        <input class="form-control py-2 border-right-0" type="search" placeholder="Search" id="primitive-search">
                         <span class="input-group-append">
                             <div class="input-group-text bg-white"><i class="fa fa-search"></i></div>
                         </span>
@@ -73,6 +78,84 @@
             </ul>
         </div>
     </div>
+
+    <style>
+.typeahead {
+  background-color: #fff;
+}
+
+.typeahead:focus {
+  border: 2px solid #0097cf;
+}
+
+.tt-query {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+  color: #999
+}
+
+.tt-menu {
+  width: 100%;
+  padding: 8px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+  padding: 3px 20px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.tt-suggestion:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #0097cf;
+}
+
+.tt-suggestion.tt-cursor {
+  color: #fff;
+  background-color: #0097cf;
+
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+    </style>
+    <script type="text/javascript">
+        "use strict";
+        $.getJSON("/static/primitives.json", function(obj){
+            let primitiveNames = Object.entries(obj["primitives"]).map(function(e){return e[0];});
+
+            var primitivesBloodhound = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.nonword,
+                queryTokenizer: Bloodhound.tokenizers.nonword,
+                local: primitiveNames
+            });
+
+            $('#primitive-search').typeahead({
+                hint: false,
+                highlight: true,
+                minLength: 1
+            },
+            {
+                name: 'primitives',
+                source: primitivesBloodhound
+            });
+        })
+    </script>
 
 </nav>
 
@@ -105,7 +188,5 @@
     <div class="clearfix">&nbsp;</div>
     {%- endblock footer %}
 </div>
-
-
 
 {% endblock %}

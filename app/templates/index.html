@@ -73,7 +73,6 @@
         for (let i = 0; i < Math.min(5, shuffledEntries.length); i++){
             let primitive_name = shuffledEntries[i][0];
             let primitive_object = shuffledEntries[i][1];
-            console.log(primitive_name);
             let card    = $('<div class="card"></div>').appendTo(primitives_card_deck);
             let body    = $('<div class="card-body"></div>').appendTo(card);
             $('<h5 class=card-title text-primary"><a href="/primitive/' + primitive_name + '"><code>' + primitive_name + '</code></a></h5>').appendTo(body);
