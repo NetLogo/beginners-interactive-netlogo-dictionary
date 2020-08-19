@@ -21,6 +21,27 @@
                 "Random Network Example"
             ]
         },
+        "ask": {
+            "short_description": "is a command that is used to make the agents in the agentset do something.",
+            "search_terms": [
+                "do",
+                "run",
+                "command"
+            ],
+            "agents": [
+                "observer",
+                "turtles",
+                "patches",
+                "links"
+            ],
+            "see_also": [
+                
+            ],
+            "library_models": [
+                "Team Assembly",
+                "Random Network Example"
+            ]
+        },
         "create-links-with": {
             "short_description": "creates a link between the current turtle (self) to every member of a provided agentset. ",
             "search_terms": [
