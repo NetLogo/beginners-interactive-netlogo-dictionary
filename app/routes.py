@@ -1,6 +1,7 @@
 import os.path
 import markdown
 import markdown.extensions.fenced_code
+import json
 from string import ascii_lowercase, ascii_uppercase
 
 from flask import render_template, flash, redirect, request, url_for
@@ -17,7 +18,11 @@ def index():
     
 @app.route('/dictionary')
 def dictionary():
-    return render_template('dictionary.html', letters = ascii_uppercase)
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    dfile = os.path.join(BASE_DIR, 'static/primitives.json')
+    with open(dfile, 'r') as df:
+        d = json.load(df)
+        return render_template('dictionary.html', letters = ascii_uppercase, dictionary = d)
     
 @app.route('/primitive/<primitive_name>', methods = ['GET'])
 def primitive(primitive_name):
@@ -36,9 +41,10 @@ def primitive(primitive_name):
             if os.path.exists(mdl):
                 with open(mdl, 'r') as m:
                     full_model = m.read().replace('`', '\`')
-                    code = full_model.split("@#$#@#$#@")[0] 
+                    code = full_model.split("\n@#$#@#$#@")[0] 
                     ## that string of characters separates the sections of a .nlogo file, 
                     ## the first of which is the code itself.
+                    
                     with open(basemdl, 'r') as bm:
                         return render_template('primitive.html', 
                                                 primitive = pn, 

@@ -3,7 +3,6 @@
 {% block app_content %}
 
 <h2 class="display-4 mt-4 col-md-12"> The Dictionary of NetLogo Primitives </h2>
-
 <div class="clearfix">&nbsp;</div>
 <div class="container">
 
@@ -67,26 +66,45 @@
                 <p>&nbsp;</p>
                 <h2>{{letter}} <span class="badge badge-light text-small float-right"><a href="#"> <small class="muted"> back to top <i class="fas fa-level-up-alt"></i> </small></a></span></h2>
                 <hr />
-                    {%for i in range(1, 5)%}
-                    
+                
+                {%set outer_loop = loop%}
+                {%set ltr = letters[outer_loop.index - 1].lower()%}
+                
+                {%for p in dictionary.primitives.keys() if p.startswith(ltr)%}
+
                         <div class="card">
                             <div class="card-body">
-                                <a href="/primitive/max" class="card-link"><h5 class="card-title"><code>{{letter}}-primhere-{{i}}</code></h5></a>
+                                <a href="/primitive/{{p}}" class="card-link"><h5 class="card-title">{{p}}</h5></a>
                                 <p>  
                                     <small>
+                                        {%if 'observer' in dictionary.primitives[p].agents%}
+                                        <span class="badge badge-light">
+                                            <i class="fas fa-eye"></i> observer
+                                        </span>
+                                        {%endif%}
+                                        
+                                        {%if 'turtles' in dictionary.primitives[p].agents%}
                                         <span class="badge badge-danger">
                                             <i class="fas fa-location-arrow"></i> turtles
                                         </span>
+                                        {%endif%}
+                                        
+                                        {%if 'patches' in dictionary.primitives[p].agents%}
                                         <span class="badge badge-success">
                                             <i class="fas fa-square-full"> </i> patches
                                         </span>
+                                        {%endif%}
+                                        
+                                        {%if 'links' in dictionary.primitives[p].agents%}
                                         <span class="badge badge-warning">
                                             <i class="fas fa-project-diagram"></i> links
                                         </span>
+                                        {%endif%}
+                                    
                                     </small>
                                 </p>
-                                <p class="card-text">Short explanation coming here. Short explanation coming here. Short explanation coming here. Short explanation coming here. Short explanation coming here. Short explanation coming here. Short explanation coming here.  </p>
-                                <a href="/primitive/max" class="card-link">Read more</a>
+                                <p class="card-text">{{dictionary.primitives[p].short_description}}</p>
+                                <a href="/primitive/{{p}}" class="card-link">Read more</a>
                             </div>
                         </div>
                         <div class="clearfix">&nbsp;</div>
@@ -100,4 +118,5 @@
 
     </div>
 </div>
+
 {% endblock %}

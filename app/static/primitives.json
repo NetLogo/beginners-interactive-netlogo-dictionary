@@ -1,13 +1,13 @@
 {
     "primitives": {
         "create-links-with": {
-            "short_description": "creates links with every member of an agentset",
+            "short_description": "`create-links-with` is a turtle procedure that creates a link between the current turtle (self) to every member of a provided agentset. (compare with `create-link-with`, which creates a link from the current turtle to a *single* other turtle).",
             "search_terms": [
                 "links",
                 "create"
             ],
             "agents": [
-                "turtle"
+                "turtles"
             ],
             "see_also": [
                 "create-link-with",
@@ -20,14 +20,14 @@
             ]
         },
         "in-radius": {
-            "short_description": "narrows down an agentset by distance to an agent",
+            "short_description": "`in-radius` is used when you want to select all agents within a certain radius of the current agent.",
             "search_terms": [
                 "radius",
                 "around"
             ],
             "agents": [
-                "turtle",
-                "patch"
+                "turtles",
+                "patches"
             ],
             "see_also": [
                 "other"
@@ -35,34 +35,45 @@
             "library_models": []
         },
         "max": {
-            "short_description": "reports the maximum number value in a list",
+            "short_description": "`Max` reports the maximum value in a given list. It takes the form of `max some-list`. For example, `show max [1 2 3]` will return 3. ",
             "search_terms": [
                 "largest"
             ],
-            "agents": [],
+            "agents": [
+                "observer",
+                "turtles",
+                "patches",
+                "links"
+            ],
             "see_also": [
                 "min"
             ],
             "library_models": []
         },
         "to": {
-            "short_description": "begins the definition of a procedure",
+            "short_description": "`To` is used to begin a command procedure. You can think of *to* as a way to define a set of actions/verbs for NetLogo such as `to go`, `to add-money`, etc.",
             "search_terms": [
                 "procedure",
                 "function"
             ],
-            "agents": [],
+            "agents": [
+                "observer"
+            ],
             "see_also": [
                 "to-report"
             ],
             "library_models": []
         },
         "n-of" : {
-            "short_description": "randomly selects a certain number of elements from an agentset or list",
+            "short_description": "`n-of` is used when you want to randomly select exactly n elements out of an agent set. ",
             "search_terms": [
                 "n"
             ],
-            "agents": [],
+            "agents": [
+                "observer",
+                "turtles",
+                "patches",
+                "links"],
             "see_also": [
                 "one-of",
                 "up-to-one-of"
