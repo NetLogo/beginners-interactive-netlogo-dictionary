@@ -8,10 +8,7 @@
                 "false"
             ],
             "agents": [
-                "observer",
-                "turtles",
-                "patches",
-                "links"
+                "utilities"
             ],
             "see_also": [
                 "if",
@@ -84,10 +81,7 @@
                 "largest"
             ],
             "agents": [
-                "observer",
-                "turtles",
-                "patches",
-                "links"
+                "utilities"
             ],
             "see_also": [
                 "min"
@@ -114,10 +108,8 @@
                 "n"
             ],
             "agents": [
-                "observer",
-                "turtles",
-                "patches",
-                "links"],
+                "utilities"
+            ],
             "see_also": [
                 "one-of",
                 "up-to-one-of"
