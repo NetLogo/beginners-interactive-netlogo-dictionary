@@ -1,7 +1,7 @@
 {
     "primitives": {
         "create-links-with": {
-            "short_description": "`create-links-with` is a turtle procedure that creates a link between the current turtle (self) to every member of a provided agentset. (compare with `create-link-with`, which creates a link from the current turtle to a *single* other turtle).",
+            "short_description": "creates a link between the current turtle (self) to every member of a provided agentset. ",
             "search_terms": [
                 "links",
                 "create"
@@ -20,7 +20,7 @@
             ]
         },
         "in-radius": {
-            "short_description": "`in-radius` is used when you want to select all agents within a certain radius of the current agent.",
+            "short_description": "is used when you want to select all agents within a certain radius of the current agent.",
             "search_terms": [
                 "radius",
                 "around"
@@ -35,7 +35,7 @@
             "library_models": []
         },
         "max": {
-            "short_description": "`Max` reports the maximum value in a given list. It takes the form of `max some-list`. For example, `show max [1 2 3]` will return 3. ",
+            "short_description": "reports the maximum value in a given list.",
             "search_terms": [
                 "largest"
             ],
@@ -51,7 +51,7 @@
             "library_models": []
         },
         "to": {
-            "short_description": "`To` is used to begin a command procedure. You can think of *to* as a way to define a set of actions/verbs for NetLogo such as `to go`, `to add-money`, etc.",
+            "short_description": "used to begin a command procedure.",
             "search_terms": [
                 "procedure",
                 "function"
@@ -65,7 +65,7 @@
             "library_models": []
         },
         "n-of" : {
-            "short_description": "`n-of` is used when you want to randomly select exactly n elements out of an agent set. ",
+            "short_description": "is used when you want to randomly select exactly n elements out of an agent set. ",
             "search_terms": [
                 "n"
             ],
