@@ -21,20 +21,20 @@
             <h5>Filters</h5>
 
             <form class="form-inline">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="showObserverPrimitives" value="showObserverPrimitives">
+                <div class="form-check form-check-inline" onclick="refreshDictionaryItems();">
+                    <input class="form-check-input" type="checkbox" id="showObserverPrimitives" value="showObserverPrimitives" checked>
                     <label class="form-check-label" for="showObserverPrimitives">Observer</label>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="showTurtlePrimitives" value="showTurtlePrimitives">
+                <div class="form-check form-check-inline" onclick="refreshDictionaryItems();">
+                    <input class="form-check-input" type="checkbox" id="showTurtlePrimitives" value="showTurtlePrimitives" checked>
                     <label class="form-check-label" for="showTurtlePrimitives">Turtles</label>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="showPatchPrimitives" value="showPatchPrimitives">
+                <div class="form-check form-check-inline" onclick="refreshDictionaryItems();">
+                    <input class="form-check-input" type="checkbox" id="showPatchPrimitives" value="showPatchPrimitives" checked>
                     <label class="form-check-label" for="showPatchPrimitives">Patches</label>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="showLinkPrimitives" value="showLinkPrimitives">
+                <div class="form-check form-check-inline" onclick="refreshDictionaryItems();">
+                    <input class="form-check-input" type="checkbox" id="showLinkPrimitives" value="showLinkPrimitives" checked>
                     <label class="form-check-label" for="showLinkPrimitives">Links</label>
                 </div>
 
@@ -63,7 +63,6 @@
 
             {%for letter in letters %}
             <div id="starts-with-{{letter}}" class="pt-4">
-                <p>&nbsp;</p>
                 <h2>{{letter}} <span class="badge badge-light text-small float-right"><a href="#"> <small class="muted"> back to top <i class="fas fa-level-up-alt"></i> </small></a></span></h2>
                 <hr />
                 
@@ -72,7 +71,12 @@
                 
                 {%for p in dictionary.primitives.keys() if p.startswith(ltr)%}
 
-                        <div class="card">
+                        <div class="card dictionary-entry 
+                                    {%if 'observer' in dictionary.primitives[p].agents%} observer {%endif%}
+                                    {%if 'turtles'  in dictionary.primitives[p].agents%} turtles  {%endif%}
+                                    {%if 'patches'  in dictionary.primitives[p].agents%} patches  {%endif%}
+                                    {%if 'links'    in dictionary.primitives[p].agents%} links    {%endif%}
+                                    ">
                             <div class="card-body">
                                 <code><a href="/primitive/{{p}}" class="card-link"><h5 class="card-title">{{p}}</h5></a></code>
                                 <p>  
@@ -110,13 +114,39 @@
                         <div class="clearfix">&nbsp;</div>
                 
                     {%endfor%}
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
             </div>
             {%endfor%}
         </div>
 
     </div>
 </div>
+
+<script type="text/javascript">
+    "use strict";
+    
+    var refreshDictionaryItems = function(){
+        let showObserverPrimitives = document.getElementById("showObserverPrimitives").checked;
+        let showTurtlePrimitives   = document.getElementById("showTurtlePrimitives").checked;
+        let showPatchPrimitives    = document.getElementById("showPatchPrimitives").checked;
+        let showLinkPrimitives     = document.getElementById("showLinkPrimitives").checked;
+        
+        $(".dictionary-entry").each(function(i,e){
+            e.style = "display: none;"
+            if(showObserverPrimitives && $(e).hasClass('observer')){
+                e.style = "display: default;" 
+            }
+            if(showTurtlePrimitives && $(e).hasClass('turtles')){
+                e.style = "display: default;" 
+            }
+            if(showPatchPrimitives && $(e).hasClass('patches')){
+                e.style = "display: default;" 
+            }
+            if(showLinkPrimitives && $(e).hasClass('links')){
+                e.style = "display: default;" 
+            }
+        })
+    };
+    refreshDictionaryItems();
+</script>
 
 {% endblock %}
