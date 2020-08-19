@@ -78,7 +78,7 @@
             let body    = $('<div class="card-body"></div>').appendTo(card);
             $('<h5 class=card-title text-primary"><a href="/primitive/' + primitive_name + '"><code>' + primitive_name + '</code></a></h5>').appendTo(body);
             $('<p class="card-text">' + primitive_object["short_description"] + '</p>').appendTo(body);
-            $('<a href="/primitive/"' + primitive_name + '" class="btn btn-primary align-baseline m-2">Read more</a>').appendTo(card);
+            $('<a href="/primitive/' + primitive_name + '" class="btn btn-primary align-baseline m-2">Read more</a>').appendTo(card);
         }
 
     })

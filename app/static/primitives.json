@@ -1,5 +1,29 @@
 {
     "primitives": {
+        "and": {
+            "short_description": "is a primitive that can be used to combine two true-or-false statements, known as booleans in the computer world, into a single true-or-false statement",
+            "search_terms": [
+                "boolean",
+                "true",
+                "false"
+            ],
+            "agents": [
+                "observer",
+                "turtles",
+                "patches",
+                "links"
+            ],
+            "see_also": [
+                "if",
+                "if-else",
+                "or",
+                "not"
+            ],
+            "library_models": [
+                "Team Assembly",
+                "Random Network Example"
+            ]
+        },
         "create-links-with": {
             "short_description": "creates a link between the current turtle (self) to every member of a provided agentset. ",
             "search_terms": [
@@ -13,6 +37,26 @@
                 "create-link-with",
                 "create-links-to",
                 "create-links-from"
+            ],
+            "library_models": [
+                "Team Assembly",
+                "Random Network Example"
+            ]
+        },
+        "hatch": {
+            "short_description": "is used to create new turtles by an existing turtle.",
+            "search_terms": [
+                "create",
+                "turtles",
+                "baby"
+            ],
+            "agents": [
+                "turtles"
+            ],
+            "see_also": [
+                "sprout",
+                "crt",
+                "create-turtles"
             ],
             "library_models": [
                 "Team Assembly",
