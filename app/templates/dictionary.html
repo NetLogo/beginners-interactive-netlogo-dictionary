@@ -74,7 +74,7 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <a href="/primitive/{{p}}" class="card-link"><h5 class="card-title">{{p}}</h5></a>
+                                <code><a href="/primitive/{{p}}" class="card-link"><h5 class="card-title">{{p}}</h5></a></code>
                                 <p>  
                                     <small>
                                         {%if 'observer' in dictionary.primitives[p].agents%}
@@ -104,7 +104,7 @@
                                     </small>
                                 </p>
                                 <p class="card-text">{{dictionary.primitives[p].short_description}}</p>
-                                <a href="/primitive/{{p}}" class="card-link">Read more</a>
+                                <span style="float: right;"><a href="/primitive/{{p}}" class="btn btn-primary ml-md-auto">Read more</a></span>
                             </div>
                         </div>
                         <div class="clearfix">&nbsp;</div>
@@ -112,7 +112,6 @@
                     {%endfor%}
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
-                
             </div>
             {%endfor%}
         </div>
