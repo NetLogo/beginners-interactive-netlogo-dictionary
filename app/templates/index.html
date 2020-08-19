@@ -108,7 +108,7 @@
             let content = $('<td valign="top" style="padding-bottom: .75em"></td>').appendTo(top);
             $('<a class="card-link" href="/primitive/' + primitive_name + '"><h5 class=card-title text-primary"><code>' + primitive_name + '</code></h5></a>').appendTo(content);
             $('<p class="card-text">' + primitive_object["short_description"] + '</p>').appendTo(content);
-            $('<td valign="bottom"><span style="float: right;"><a href="/primitive/"' + primitive_name + '" class="btn btn-primary">Read more</a></span></td>').appendTo(bottom);
+            $('<td valign="bottom"><span style="float: right;"><a href="/primitive/' + primitive_name + '" class="btn btn-primary">Read more</a></span></td>').appendTo(bottom);
         }
 
     })
