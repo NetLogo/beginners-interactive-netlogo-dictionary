@@ -76,11 +76,11 @@
                 {%for p in dictionary.primitives.keys() if p.startswith(ltr)%}
 
                         <div class="card dictionary-entry 
-                                    {%if 'observer' in dictionary.primitives[p].agents%} observer {%endif%}
-                                    {%if 'turtles'  in dictionary.primitives[p].agents%} turtles  {%endif%}
-                                    {%if 'patches'  in dictionary.primitives[p].agents%} patches  {%endif%}
-                                    {%if 'links'    in dictionary.primitives[p].agents%} links    {%endif%}
-                                    {%if 'utilities'    in dictionary.primitives[p].agents%} utilities    {%endif%}
+                                    {%if 'observer'  in dictionary.primitives[p].agents%} observer  {%endif%}
+                                    {%if 'turtles'   in dictionary.primitives[p].agents%} turtles   {%endif%}
+                                    {%if 'patches'   in dictionary.primitives[p].agents%} patches   {%endif%}
+                                    {%if 'links'     in dictionary.primitives[p].agents%} links     {%endif%}
+                                    {%if 'utilities' in dictionary.primitives[p].agents%} utilities {%endif%}
                                     ">
                             <div class="card-body">
                                 <code><a href="/primitive/{{p}}" class="card-link"><h5 class="card-title">{{p}}</h5></a></code>
@@ -140,7 +140,7 @@
         let showTurtlePrimitives   = document.getElementById("showTurtlePrimitives").checked;
         let showPatchPrimitives    = document.getElementById("showPatchPrimitives").checked;
         let showLinkPrimitives     = document.getElementById("showLinkPrimitives").checked;
-        let showUtilityPrimitives     = document.getElementById("showUtilityPrimitives").checked;
+        let showUtilityPrimitives  = document.getElementById("showUtilityPrimitives").checked;
         
         
         $(".dictionary-entry").each(function(i,e){
