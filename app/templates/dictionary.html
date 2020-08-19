@@ -22,24 +22,24 @@
 
             <form class="form-inline">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label" for="inlineCheckbox1">Observer</label>
+                    <input class="form-check-input" type="checkbox" id="showObserverPrimitives" value="showObserverPrimitives">
+                    <label class="form-check-label" for="showObserverPrimitives">Observer</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">Turtles</label>
+                    <input class="form-check-input" type="checkbox" id="showTurtlePrimitives" value="showTurtlePrimitives">
+                    <label class="form-check-label" for="showTurtlePrimitives">Turtles</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">Patches</label>
+                    <input class="form-check-input" type="checkbox" id="showPatchPrimitives" value="showPatchPrimitives">
+                    <label class="form-check-label" for="showPatchPrimitives">Patches</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">Links</label>
+                    <input class="form-check-input" type="checkbox" id="showLinkPrimitives" value="showLinkPrimitives">
+                    <label class="form-check-label" for="showLinkPrimitives">Links</label>
                 </div>
 
                 
-                <button type="submit" class="btn btn-primary ml-md-auto"> <i class="fas fa-random"></i> Random Primitive</button>                
+                <button type="button" class="btn btn-primary ml-md-auto"> <i class="fas fa-random"></i> Random Primitive</button>                
             </form>
 
             <div class="clearfix">&nbsp;</div>
@@ -112,8 +112,9 @@
                     {%endfor%}
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
-                {%endfor%}
+                
             </div>
+            {%endfor%}
         </div>
 
     </div>
