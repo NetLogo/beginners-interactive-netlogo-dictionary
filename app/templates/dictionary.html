@@ -23,23 +23,23 @@
             <form class="form-inline">
                 <div class="form-check form-check-inline" onclick="refreshDictionaryItems();">
                     <input class="form-check-input" type="checkbox" id="showObserverPrimitives" value="showObserverPrimitives" checked>
-                    <label class="form-check-label" for="showObserverPrimitives"><i class="fas fa-eye mr-1 p-1 border rounded bg-light"></i> Observer</label>
+                    <label class="form-check-label" for="showObserverPrimitives"><i class="fas fa-eye mr-1 p-1 "></i> Observer</label>
                 </div>
                 <div class="form-check form-check-inline" onclick="refreshDictionaryItems();">
                     <input class="form-check-input" type="checkbox" id="showTurtlePrimitives" value="showTurtlePrimitives" checked>
-                    <label class="form-check-label" for="showTurtlePrimitives"><i class="fas fa-location-arrow mr-1 border rounded text-danger p-1"></i> Turtles</label>
+                    <label class="form-check-label" for="showTurtlePrimitives"><i class="fas fa-location-arrow mr-1 text-danger p-1"></i> Turtles</label>
                 </div>
                 <div class="form-check form-check-inline" onclick="refreshDictionaryItems();">
                     <input class="form-check-input" type="checkbox" id="showPatchPrimitives" value="showPatchPrimitives" checked>
-                    <label class="form-check-label" for="showPatchPrimitives"> <i class="fas fa-square mr-1 p-1 border rounded text-success"></i> Patches</label>
+                    <label class="form-check-label" for="showPatchPrimitives"> <i class="fas fa-square mr-1 p-1 text-success"></i> Patches</label>
                 </div>
                 <div class="form-check form-check-inline" onclick="refreshDictionaryItems();">
                     <input class="form-check-input" type="checkbox" id="showLinkPrimitives" value="showLinkPrimitives" checked>
-                    <label class="form-check-label" for="showLinkPrimitives"><i class="fas fa-project-diagram mr-1 p-1 border rounded text-warning"></i>Links</label>
+                    <label class="form-check-label" for="showLinkPrimitives"><i class="fas fa-project-diagram mr-1 p-1 text-warning"></i>Links</label>
                 </div>
                 <div class="form-check form-check-inline" onclick="refreshDictionaryItems();">
                     <input class="form-check-input" type="checkbox" id="showUtilityPrimitives" value="showUtilityPrimitives" checked>
-                    <label class="form-check-label" for="showUtilityPrimitives"><i class="fas fa-filter mr-1 p-1 border rounded text-secondary"></i> Utilities</label>
+                    <label class="form-check-label" for="showUtilityPrimitives"><i class="fas fa-bolt mr-1 p-1 text-secondary"></i> Utilities</label>
                 </div>
 
                 
@@ -112,7 +112,7 @@
                                         
                                         {%if 'utilities' in dictionary.primitives[p].agents%}
                                         <span class="badge badge-secondary">
-                                            <i class="fas fa-filter"></i> utilities
+                                            <i class="fas fa-bolt"></i> utilities
                                         </span>
                                         {%endif%}
                                     
