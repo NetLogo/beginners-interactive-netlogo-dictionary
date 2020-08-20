@@ -136,35 +136,37 @@
     <script type="text/javascript">
         "use strict";
 
-        // forward declaration of default behavior, to be overriden by the async procedure below
-        // once the json primitives file loads. 
-        var processSearch = function(){
-            //TODO: actual search
-            window.location.assign("/dictionary");
-        };
+        var primitivesLoaded = new Event('primitivesLoaded');
+        var j;
+        var primitiveNames;
+        var primitivesBloodhound;
 
         $.getJSON("/static/primitives.json", function(obj){
-            let primitiveNames = Object.entries(obj["primitives"]).map(function(e){return e[0];});
-
-            processSearch = function(){
-                let text = $("#primitive-search").typeahead('val');
-                if (primitiveNames.includes(text)){
-                    window.location.assign("/primitive/" + text);
-                } else {
-                    //TODO: route in actual search page TBD
-                    window.location.assign("/dictionary");
-                }
-            }
-
+            j = obj;
+            primitiveNames = Object.entries(obj["primitives"]).map(function(e){return e[0];});
             // Bloodhound is the "Search engine" built into typeahead
-            var primitivesBloodhound = new Bloodhound({
+            primitivesBloodhound = new Bloodhound({
                 // split tokens by non-word characters so that you can, say, search 
                 // for `create-links-with` by typing `links`
                 datumTokenizer: Bloodhound.tokenizers.nonword, 
                 queryTokenizer: Bloodhound.tokenizers.nonword,
                 local: primitiveNames
             });
+            window.dispatchEvent(primitivesLoaded);
+        });
 
+        var processSearch = function(){
+            let text = $("#primitive-search").val();
+            if (primitiveNames.includes(text)){
+                window.location.assign("/primitive/" + text);
+            } else if (text != ""){
+                window.location.assign("/search?term=" + encodeURI(text));
+            } else {
+                window.location.assign("/search?"); 
+            }
+        }
+
+        window.addEventListener('primitivesLoaded', function(){
             $('#primitive-search').typeahead({
                 hint: false,
                 highlight: true,
@@ -179,7 +181,8 @@
             $('#primitive-search').bind('typeahead:select', function(ev, text){
                 processSearch();
             })
-        })
+        });
+
     </script>
 
 </nav>

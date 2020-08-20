@@ -58,3 +58,10 @@ def primitive(primitive_name):
         ## MAKE THIS RENDER A 404 File!!!
         return 'I don\'t know what ' + pn + ' is :('
             
+@app.route('/search', methods = ['GET'])
+def search():
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    dfile = os.path.join(BASE_DIR, 'static/primitives.json')
+    with open(dfile, 'r') as df:
+        d = json.load(df)
+        return render_template('search.html', dictionary = d)
