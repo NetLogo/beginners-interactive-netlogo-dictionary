@@ -137,18 +137,25 @@
         "use strict";
 
         var primitivesLoaded = new Event('primitivesLoaded');
-        var j;
+        var primitives;
         var primitiveNames;
         var primitivesBloodhound;
 
+        var myTokenizer = function(datum){
+            if(primitives.hasOwnProperty(datum) && primitives[datum].hasOwnProperty("search_terms")){
+                return Bloodhound.tokenizers.nonword(datum).concat(primitives[datum]["search_terms"]);
+            }
+            return Bloodhound.tokenizers.nonword(datum);
+        }
+
         $.getJSON("/static/primitives.json", function(obj){
-            j = obj;
+            primitives = obj["primitives"];
             primitiveNames = Object.entries(obj["primitives"]).map(function(e){return e[0];});
             // Bloodhound is the "Search engine" built into typeahead
             primitivesBloodhound = new Bloodhound({
                 // split tokens by non-word characters so that you can, say, search 
                 // for `create-links-with` by typing `links`
-                datumTokenizer: Bloodhound.tokenizers.nonword, 
+                datumTokenizer: myTokenizer, 
                 queryTokenizer: Bloodhound.tokenizers.nonword,
                 local: primitiveNames
             });
