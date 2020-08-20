@@ -40,6 +40,13 @@
 <h3 class="mt-4 col-md-12 mb-4"> Try it Yourself </h3>
 <div id="model" class="container">
     <div class="row">
+        <div class="col-md-12">
+            <p>Explanation of how to use this widget...</p>
+            <p>buttons on the top and bottom</p>
+            <p>comments dont get highlighed</p>
+            <p>&nbsp;</p>
+        </div>
+        
         <div class="col-md-6">
             <input type="hidden" id="originalCode" value="{{code}}" />
             <textarea class="try-editor d-none">{{code}}</textarea>
@@ -48,7 +55,7 @@
                 <p>
                 <input class="form-check-input" type="checkbox" checked id="limitEditing" />
                 <label class="form-check-label" for="limitEditing">
-                    Limited Editing
+                    Limited Editing <a href="#limitedEditingExplanation" >*</a>
                 </label>
                 <button type="button" id="recompileCode" class="btn btn-lg btn-success float-right"><i class="fas fa-play"></i> Recompile</button>
                 </p>
@@ -73,6 +80,14 @@
 <h3 class="mt-4 col-md-12 mb-4"> What's next? </h3>
 <div class="container">
     <p><em>Here, we will place similar primitives, other example models that include this primitive, and the library models that include this primitive.</em></p>
+</div>
+
+<div class="clearfix">&nbsp;</div>
+<hr />
+<div class="clearfix">&nbsp;</div>
+<h5 class="mt-4 col-md-12 mb-4" name="limitedEditingExplanation"> What does limited editing? </h5>
+<div class="container">
+    <p><em>Write.</em></p>
 </div>
 
 <script type="text/javascript">

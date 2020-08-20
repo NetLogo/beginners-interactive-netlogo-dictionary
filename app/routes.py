@@ -22,7 +22,7 @@ def dictionary():
     dfile = os.path.join(BASE_DIR, 'static/primitives.json')
     with open(dfile, 'r') as df:
         d = json.load(df)
-        return render_template('dictionary.html', letters = ascii_uppercase, dictionary = d)
+        return render_template('dictionary.html', letters = ascii_uppercase, dictionary = d, title="Explore the NetLogo Dictionary")
     
 @app.route('/primitive/<primitive_name>', methods = ['GET'])
 def primitive(primitive_name):
@@ -51,7 +51,8 @@ def primitive(primitive_name):
                                                 description = description_rendered, 
                                                 code = code, 
                                                 basemodel = bm.read(), 
-                                                model = full_model)
+                                                model = full_model,
+                                                title = pn + " primitive")
             else:
                 return "TODO: create a template for a description without a model (example: inspect)"
     else:
@@ -64,4 +65,17 @@ def search():
     dfile = os.path.join(BASE_DIR, 'static/primitives.json')
     with open(dfile, 'r') as df:
         d = json.load(df)
-        return render_template('search.html', dictionary = d)
+        return render_template('search.html', dictionary = d, title = "Search results")
+    
+@app.route('/article/<article_name>', methods = ['GET'])
+def article(article_name):
+    an = escape(article_name)
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    afile = os.path.join(BASE_DIR, 'static/articles/' + an +'.md')
+    if os.path.exists(afile):
+        with open(afile, 'r') as af:
+            maf = markdown.markdown(af.read(), extensions=["fenced_code"])
+            maf = maf.replace('<h1>', '<h1 class="display-4">') # just to make it look nicer
+            return render_template('article.html', body = maf, title=an.replace('-', ' ').title())
+    else:
+        return render_template('article.html', body = '<h3> 404 </h3> <p class="lead"> I could not find this article. It is probably being prepared. Please check again later. </p>')
