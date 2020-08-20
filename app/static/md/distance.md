@@ -1,0 +1,2 @@
+### **distance** *agent*
+`Distance` reports the distance from the caller to a given agent. The `distance` is measured from the center of the patch, and uses the shortest distance possible. For example, if **turtle 0** and **turtle 1** were two units away from each other `ask turtle 0 [ show distance turtle 1 ]` would return `2`.

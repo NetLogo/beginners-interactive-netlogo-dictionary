@@ -1,0 +1,1 @@
+`End` is a special primitive used only to finish a procedure. Just as a procedure starts with `to procedure-name` or `to-report procedure-name`, it concludes with `end`. A procedure that doesn’t finish with `end` will cause an error. 

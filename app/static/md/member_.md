@@ -1,0 +1,3 @@
+### **member?** *value* *list*
+### **member?** *agent* *agentset*
+ `Member?` reports **True** if the given *value* or *agent* appears in the given *list* or *agentset*. `Member?` can be used with lists or agentsets, but is more commonly used with lists. For example, `show member? 5 [ 3 4 5 6 ]` would report **True**, and `show member? 5 [1 3 2 ]` would report **False**; `show member? turtle 0 turtles` would report **True**, while    `show member? patch 0 turtles` would report **False**. 

@@ -1,0 +1,2 @@
+### **max-n-of** agentset [ reporter ]
+`Max-n-of` reports an agentset that contains a **specified number of agents** with the **highest value of a given reporter**. For example, `max-n-of 3 patches [ count turtles-here ]` would return an agentset of the three patches that have the most turtles on them. If there are less than the specified number of turtles in a given agentset, `max-n-of` will return the entire agentset. For example, if we have only 5 turtles in a model and run `max-n-of 10 turtles [ size ]`, all 5 turtles would be returned. Ties are broken randomly. 
