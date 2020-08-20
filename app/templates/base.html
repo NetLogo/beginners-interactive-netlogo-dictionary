@@ -54,15 +54,27 @@
                     </div>
                 </li>
                 <li class="nav-item ml-md-4 ml-xs-0 ml-sm-0">
+<!--
                     <form onsubmit="processSearch(); return false;">
-                    <div class="input-group">
-                        <input class="form-control py-2 border-right-0" type="search" placeholder="Search" id="primitive-search">
-                        <span class="input-group-append">
-                            <div class="input-group-text bg-white"><i class="fa fa-search"></i></div>
-                        </span>
-                        </input>
+                        <div class="input-group">
+                            <input type="search" class="form-control py-2 border-right-0"  placeholder="Search" id="primitive-search" >
+                            
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white"><i class="fa fa-search"></i></span>
+                            </div>
+                            
+                        </div>
                         <input type="submit" style="display: none;">
-                    </div>
+                    </form>
+-->
+                    <form onsubmit="processSearch(); return false;">
+                        <div class="input-group flex-nowrap">
+                            <input id="primitive-search" type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-button">
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary" type="button" id="search-button"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                        <input type="submit" class="d-none">
                     </form>
                 </li>
             </ul>
