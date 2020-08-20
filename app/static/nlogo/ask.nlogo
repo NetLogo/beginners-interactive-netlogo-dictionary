@@ -2,6 +2,8 @@ breed [plants plant]
 breed [fish a-fish]
 breed [stars star]
 
+
+
 to setup
   clear-all
  create-plants 5 [
@@ -26,22 +28,22 @@ to setup
   ]
 
   ask patches [ set pcolor blue ]
-
   reset-ticks
 end
 
 
 
 to go
-  ask turtles [
-    fd 0.2  ;; this asks plants, fish, and stars to move forward and wait
-    if wait-in-between? [wait 0.5
+  ask turtles [ fd 0.2  ;; this asks plants, fish, and stars to move forward and wait
+  if wait-in-between? [wait 0.5
      display
     ]
   ]
-  ask plants [ wiggle ]
+  ask plants [
+    wiggle]
+  ask fish [
+    swim]
 
-  ask fish [ swim ]
 
   tick
 end
@@ -57,13 +59,13 @@ to swim
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-190
+210
 10
-612
-433
+647
+448
 -1
 -1
-12.55
+13.0
 1
 10
 1
@@ -84,10 +86,10 @@ ticks
 30.0
 
 BUTTON
-9
-52
-75
-85
+15
+59
+81
+92
 NIL
 setup
 NIL
@@ -101,10 +103,10 @@ NIL
 1
 
 BUTTON
-90
-53
-153
-86
+97
+59
+160
+92
 NIL
 go
 T
@@ -118,13 +120,13 @@ NIL
 1
 
 SWITCH
-9
+21
 10
-172
+184
 43
 wait-in-between?
 wait-in-between?
-0
+1
 1
 -1000
 
