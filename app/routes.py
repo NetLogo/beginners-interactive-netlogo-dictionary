@@ -54,7 +54,10 @@ def primitive(primitive_name):
                                                 model = full_model,
                                                 title = pn + " primitive")
             else:
-                return "TODO: create a template for a description without a model (example: inspect)"
+                return render_template('primitive_no_model.html',
+                                        primitive = pn, 
+                                        body=description_rendered, 
+                                        title= pn + " primitive")
     else:
         ## MAKE THIS RENDER A 404 File!!!
         return 'I don\'t know what ' + pn + ' is :('
