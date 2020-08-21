@@ -87,7 +87,7 @@
 <div class="clearfix">&nbsp;</div>
 <h5 class="mt-4 col-md-12 mb-4" name="limitedEditingExplanation"> What does limited editing? </h5>
 <div class="container">
-    <p><em>Write.</em></p>
+    <p><em>_Write this._</em></p>
 </div>
 
 <script type="text/javascript">
@@ -204,10 +204,6 @@
 
 <script type="text/javascript">
     $("#description code").each(function(i, e){
-        CodeMirror.runMode(e.textContent, "netlogo", e);
-    });
-    
-    $("#primtitle code").each(function(i, e){
         CodeMirror.runMode(e.textContent, "netlogo", e);
     });
 

@@ -1,11 +1,36 @@
 {% extends "base.html" %}
 
+{% block head %}
+{{super()}}
+
+<link rel="stylesheet" href="/static/css/codemirror.css">
+<link rel="stylesheet" href="/static/css/netlogo.css">
+
+<link rel="stylesheet" href="/static/css/primitive.css">
+
+<script src="/static/js/codemirror.js"></script>
+<script src="/static/js/codemirror/simple.js"></script>
+
+<script src="/static/js/netlogo.js"></script>
+
+
+
+{% endblock %}
+
 {% block app_content %}
 
 <div class="clearfix">&nbsp;</div>
 
-<div id="artbody" class="col-md-12">
+<div id="artbody" class="cm-s-netlogo-default col-md-12">
     {{ body|safe }}
 </div>
+
+<script src="/static/js/codemirror/runmode.js"></script>
+
+<script type="text/javascript">
+    $("#artbody code").each(function(i, e){
+        CodeMirror.runMode(e.textContent, "netlogo", e);
+    });
+</script>
 
 {% endblock %}
