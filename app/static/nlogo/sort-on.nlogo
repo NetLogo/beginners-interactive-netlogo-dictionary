@@ -1,67 +1,98 @@
-breed [trees tree]
-breed [lumberjacks lumberjack]
-lumberjacks-own [target]
-
 to setup
   clear-all
-  reset-ticks
+  create-planets
+end
 
-  ask patches [
-    set pcolor brown - 3
-  ]
+to sort-planets
+  let sorted sort-on [size] turtles  ;; create a variable `sorted` and put the
+                                     ;; list of turtles sorted by size into it.
+  put-planets-in-order sorted        ;; pass it into the procedure that actually
+                                     ;; lines up the turtles in the world
+end
 
-  create-trees 60 [
-    set shape "tree"
-    move-to one-of patches
-    set color green
-  ]
-
-  create-lumberjacks 1 [
-    set shape "person lumberjack"
-    move-to one-of patches
-    set size 1.5
-    set target nobody
+to put-planets-in-order [turtle-list]
+  ask turtles [
+    set xcor position self turtle-list
+    set ycor 0
   ]
 end
 
-to go
-  ;; Ask the lumberjack to cut down the trees on the patch it is standing on.
-  ask lumberjacks [
-   if any? trees-here [
-     ask trees-here [
-        die
-     ]
-   ]
+to create-planets
+ crt 1 [
+    set shape "circle"
+    set size .38 / 3.0
+    set label "Mercury"
+    set color brown
+    set ycor random-ycor / 2.0
+    set xcor 1
   ]
-
-  ;; if there are no more trees, we can stop.
-  if not any? trees [stop]
-  ;; Note that if we removed this line, we would get an
-  ;; error once we cut down the final tree because we would
-  ;; be asking for the distance from the lumberjack to
-  ;; `nobody`, which is an error.
-
-
-  ;; find the new target if needed and move towards the target.
-  ask lumberjacks [
-   if target = nobody [ ;; once an agent dies, all references to it turn to `nobody`.
-      set target min-one-of trees [distance myself]
-   ]
-   face target
-   fd 1
+  crt 1 [
+    set shape "circle"
+    set size .95 / 3.0
+    set label "Venus"
+    set color red - 1
+    set ycor random-ycor / 2.0
+    set xcor 2
   ]
-
-  tick
+  crt 1 [
+    set shape "circle"
+    set size 1 / 3.0
+    set label "Earth"
+    set color green
+    set ycor random-ycor / 2.0
+    set xcor 3
+  ]
+  crt 1 [
+    set shape "circle"
+    set size .53 / 3.0
+    set label "Mars"
+    set color brown - 2
+    set ycor random-ycor / 2.0
+    set xcor 4
+  ]
+  crt 1 [
+    set shape "circle"
+    set size 7 / 3.0
+    set label "Jupiter"
+    set color blue + 3
+    set ycor random-ycor / 2.0
+    set xcor 5
+  ]
+  crt 1 [
+    set shape "circle"
+    set size 6 / 3.0
+    set label "Saturn"
+    set color brown + 1
+    set ycor random-ycor / 2.0
+    set xcor 6
+  ]
+  crt 1 [
+    set shape "circle"
+    set size 4 / 3.0
+    set label "Uranus"
+    set color blue + 2
+    set ycor random-ycor / 2.0
+    set xcor 7
+  ]
+  crt 1 [
+    set shape "circle"
+    set size 3.8 / 3.0
+    set label "Neptune"
+    set color brown
+    set ycor random-ycor / 2.0
+    set xcor 8
+  ]
+  ;; RIP Pluto. You'll always be with us in our hearts.
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
-10
-554
-355
+8
+26
+592
+227
 -1
 -1
-16.0
+64.0
 1
 10
 1
@@ -71,21 +102,21 @@ GRAPHICS-WINDOW
 0
 0
 1
--10
-10
--10
-10
+0
+8
+-1
 1
-1
-1
+0
+0
+0
 ticks
 30.0
 
 BUTTON
-40
-55
-106
-88
+74
+262
+140
+295
 NIL
 setup
 NIL
@@ -99,13 +130,13 @@ NIL
 1
 
 BUTTON
-43
-109
-106
-142
+258
+263
+367
+296
 NIL
-go
-T
+sort-planets
+NIL
 1
 T
 OBSERVER
@@ -115,12 +146,22 @@ NIL
 NIL
 1
 
+TEXTBOX
+439
+249
+589
+267
+Not to scale
+14
+0.0
+1
+
 @#$#@#$#@
-`distance` is a turtle and patch primitive that reports the distance between the current agent and some other agent. For example, if you wanted to print out the distance from turtle 0 to turtle 1, you could write `ask turtle 0 [show distance turtle 1]`, or, from the other direction, `ask turtle 1 [show distance turtle 0]` 
+`sort-on` allows you to sort the agents in an agentset based on some user-chosen agent variable or even an arbirtary reporter. For example, if you wanted to get a list of turtles sorted by their `xcor`, you could use `sort-on [xcor] turtles`, or if you wanted to get a list of patches sorted by the value of their patch variable `"pollution"`, you could use `sort-on [pollution] patches`.
 
-Note that `distance` respects any wrapping that the world is set up to do. So if the world wraps horizontally or vertically, `distance` will report the shortest distance between two turtles, which might be along a path that wraps around the world. 
+The exact syntax is `sort-on <reporter> <agentset>`. Note that while in the prior examples, the reporter was just a simple varaible in square braces, they can be arbirarily involved code. For example, say we wanted to sort turtles based on how close their x-coordinate was to 0, we could use `sort on [abs xcor] turtles` which would get the absolute value of the xcor before passing into the sorting algorithm. 
 
-In this example, `distance` is uesed to implement rudimentary path finding for a lumberjack. The lumberjack has a "target" tree that it will try to move towards and cut down. Once it cuts down that tree, it will set its target to be the closest tree. (In the case of ties, one of the closest will be randomly chosen.) We use `distance` to get the distance between the lumberjack and all of the trees so that we can figure out which tree is closest. 
+Note that the output of `sort-on` is always a newly created list -- it does not modify the original list at all. It also, like `sort` sorts in ascending order, so if you want the results in descending order, you can pass the output into `reverse`. 
 @#$#@#$#@
 default
 true
@@ -301,33 +342,6 @@ Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300
 Rectangle -7500403 true true 127 79 172 94
 Polygon -7500403 true true 195 90 240 150 225 180 165 105
 Polygon -7500403 true true 105 90 60 150 75 180 135 105
-
-person lumberjack
-false
-0
-Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
-Polygon -2674135 true false 60 196 90 211 114 155 120 196 180 196 187 158 210 211 240 196 195 91 165 91 150 106 150 135 135 91 105 91
-Circle -7500403 true true 110 5 80
-Rectangle -7500403 true true 127 79 172 94
-Polygon -6459832 true false 174 90 181 90 180 195 165 195
-Polygon -13345367 true false 180 195 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285
-Polygon -6459832 true false 126 90 119 90 120 195 135 195
-Rectangle -6459832 true false 45 180 255 195
-Polygon -16777216 true false 255 165 255 195 240 225 255 240 285 240 300 225 285 195 285 165
-Line -16777216 false 135 165 165 165
-Line -16777216 false 135 135 165 135
-Line -16777216 false 90 135 120 135
-Line -16777216 false 105 120 120 120
-Line -16777216 false 180 120 195 120
-Line -16777216 false 180 135 210 135
-Line -16777216 false 90 150 105 165
-Line -16777216 false 225 165 210 180
-Line -16777216 false 75 165 90 180
-Line -16777216 false 210 150 195 165
-Line -16777216 false 180 105 210 180
-Line -16777216 false 120 105 90 180
-Line -16777216 false 150 135 150 165
-Polygon -2674135 true false 100 30 104 44 189 24 185 10 173 10 166 1 138 -1 111 3 109 28
 
 plant
 false

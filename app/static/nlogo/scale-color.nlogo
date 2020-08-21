@@ -1,67 +1,42 @@
-breed [trees tree]
-breed [lumberjacks lumberjack]
-lumberjacks-own [target]
+patches-own [signal-strength]
 
 to setup
   clear-all
   reset-ticks
 
-  ask patches [
-    set pcolor brown - 3
-  ]
-
-  create-trees 60 [
-    set shape "tree"
+  create-turtles 4 [
     move-to one-of patches
-    set color green
+    set shape "X"
+    set color grey
+    set size 1
   ]
 
-  create-lumberjacks 1 [
-    set shape "person lumberjack"
-    move-to one-of patches
-    set size 1.5
-    set target nobody
+  ;; ask the factories
+  ask turtles [
+    ;; to ask the patches around them
+    ask patches in-radius signal-radius [
+     ;; to increase their signal-strength by the signal-strength radius minus
+     ;; the distance to the tower. This way, the patches closer to
+     ;; the towers have their signal-strength increased more than those
+     ;; farther away.
+     set signal-strength signal-strength + (signal-radius - distance myself)
+     ;; scale-color each patch a shade of green according to their
+     ;; signal-strength. Since signal-radius (the second parameter)
+     ;; is greater than 0 (the first parameter), higher values
+     ;; of smell will result in brighter shades of green.
+     set pcolor scale-color green signal-strength 0 signal-radius
+    ]
   ]
-end
-
-to go
-  ;; Ask the lumberjack to cut down the trees on the patch it is standing on.
-  ask lumberjacks [
-   if any? trees-here [
-     ask trees-here [
-        die
-     ]
-   ]
-  ]
-
-  ;; if there are no more trees, we can stop.
-  if not any? trees [stop]
-  ;; Note that if we removed this line, we would get an
-  ;; error once we cut down the final tree because we would
-  ;; be asking for the distance from the lumberjack to
-  ;; `nobody`, which is an error.
-
-
-  ;; find the new target if needed and move towards the target.
-  ask lumberjacks [
-   if target = nobody [ ;; once an agent dies, all references to it turn to `nobody`.
-      set target min-one-of trees [distance myself]
-   ]
-   face target
-   fd 1
-  ]
-
-  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-554
-355
+625
+426
 -1
 -1
-16.0
+19.4
 1
 10
 1
@@ -82,10 +57,10 @@ ticks
 30.0
 
 BUTTON
-40
-55
-106
-88
+69
+72
+135
+105
 NIL
 setup
 NIL
@@ -98,29 +73,27 @@ NIL
 NIL
 1
 
-BUTTON
-43
-109
-106
-142
-NIL
-go
-T
+SLIDER
+21
+133
+193
+166
+signal-radius
+signal-radius
 1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
+10
+7.0
 1
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
-`distance` is a turtle and patch primitive that reports the distance between the current agent and some other agent. For example, if you wanted to print out the distance from turtle 0 to turtle 1, you could write `ask turtle 0 [show distance turtle 1]`, or, from the other direction, `ask turtle 1 [show distance turtle 0]` 
+`scale-color` is a primitive that reports a shade of a color proportional to the value of a given number. For example, in a traffic model, one might use `scale-color` to color cars with a full tank of gas brighter than those with an emptier tank of gas, or, in a model of a flock of sheep, color more lush patches of grass bighter than those that have already been eaten plenty. 
 
-Note that `distance` respects any wrapping that the world is set up to do. So if the world wraps horizontally or vertically, `distance` will report the shortest distance between two turtles, which might be along a path that wraps around the world. 
+In practice, you use `scale-color` like so: `scale-color color number range1 range2`, where `color` is the desired base hue (red, blue, green, etc.), `number` is the value you wish to scale by (often a turtle or patch variable), and `range1` and `range2` are parameters for describing the minimum and maximum expected values of `number`. If `range1` is less than `range2`, then larger numbers result in brighter colors, but if `range2` is less than `range`, then larger numbers result in darker colors. If the `number` is outside of the range, then either the lightest or darkest shade is chosen. 
 
-In this example, `distance` is uesed to implement rudimentary path finding for a lumberjack. The lumberjack has a "target" tree that it will try to move towards and cut down. Once it cuts down that tree, it will set its target to be the closest tree. (In the case of ties, one of the closest will be randomly chosen.) We use `distance` to get the distance between the lumberjack and all of the trees so that we can figure out which tree is closest. 
+In this model, `scale-color` is used to model cell-tower signal strength. Patches closer to the cell towers have better signal strength and are therefore colored brighter than those too far away from a tower to get any signal. 
 @#$#@#$#@
 default
 true
@@ -230,6 +203,26 @@ Circle -16777216 true false 60 75 60
 Circle -16777216 true false 180 75 60
 Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
 
+factory
+false
+0
+Rectangle -7500403 true true 76 194 285 270
+Rectangle -7500403 true true 36 95 59 231
+Rectangle -16777216 true false 90 210 270 240
+Line -7500403 true 90 195 90 255
+Line -7500403 true 120 195 120 255
+Line -7500403 true 150 195 150 240
+Line -7500403 true 180 195 180 255
+Line -7500403 true 210 210 210 240
+Line -7500403 true 240 210 240 240
+Line -7500403 true 90 225 270 225
+Circle -1 true false 37 73 32
+Circle -1 true false 55 38 54
+Circle -1 true false 96 21 42
+Circle -1 true false 105 40 32
+Circle -1 true false 129 19 42
+Rectangle -7500403 true true 14 228 78 270
+
 fish
 false
 0
@@ -301,33 +294,6 @@ Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300
 Rectangle -7500403 true true 127 79 172 94
 Polygon -7500403 true true 195 90 240 150 225 180 165 105
 Polygon -7500403 true true 105 90 60 150 75 180 135 105
-
-person lumberjack
-false
-0
-Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
-Polygon -2674135 true false 60 196 90 211 114 155 120 196 180 196 187 158 210 211 240 196 195 91 165 91 150 106 150 135 135 91 105 91
-Circle -7500403 true true 110 5 80
-Rectangle -7500403 true true 127 79 172 94
-Polygon -6459832 true false 174 90 181 90 180 195 165 195
-Polygon -13345367 true false 180 195 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285
-Polygon -6459832 true false 126 90 119 90 120 195 135 195
-Rectangle -6459832 true false 45 180 255 195
-Polygon -16777216 true false 255 165 255 195 240 225 255 240 285 240 300 225 285 195 285 165
-Line -16777216 false 135 165 165 165
-Line -16777216 false 135 135 165 135
-Line -16777216 false 90 135 120 135
-Line -16777216 false 105 120 120 120
-Line -16777216 false 180 120 195 120
-Line -16777216 false 180 135 210 135
-Line -16777216 false 90 150 105 165
-Line -16777216 false 225 165 210 180
-Line -16777216 false 75 165 90 180
-Line -16777216 false 210 150 195 165
-Line -16777216 false 180 105 210 180
-Line -16777216 false 120 105 90 180
-Line -16777216 false 150 135 150 165
-Polygon -2674135 true false 100 30 104 44 189 24 185 10 173 10 166 1 138 -1 111 3 109 28
 
 plant
 false

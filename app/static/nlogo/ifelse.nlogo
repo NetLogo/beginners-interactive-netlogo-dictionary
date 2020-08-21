@@ -1,80 +1,76 @@
-breed [trees tree]
-breed [lumberjacks lumberjack]
-lumberjacks-own [target]
+breed [cars car]
+cars-own [gas]
 
 to setup
   clear-all
   reset-ticks
 
-  ask patches [
-    set pcolor brown - 3
+  create-cars 5 [
+    setxy (random-xcor) one-of [-1 0 1]
+    set heading 90
+    set shape "car"
+    set color yellow
+    set gas random-float 1
   ]
 
-  create-trees 60 [
-    set shape "tree"
-    move-to one-of patches
-    set color green
+  create-turtles 1 [
+    setxy 0 2
+    set shape "building store"
+    set color brown
+    set size 2
   ]
 
-  create-lumberjacks 1 [
-    set shape "person lumberjack"
-    move-to one-of patches
-    set size 1.5
-    set target nobody
-  ]
+  draw-road
 end
 
 to go
-  ;; Ask the lumberjack to cut down the trees on the patch it is standing on.
-  ask lumberjacks [
-   if any? trees-here [
-     ask trees-here [
-        die
-     ]
-   ]
-  ]
+  ask cars [
+    set color scale-color yellow gas 0 1
 
-  ;; if there are no more trees, we can stop.
-  if not any? trees [stop]
-  ;; Note that if we removed this line, we would get an
-  ;; error once we cut down the final tree because we would
-  ;; be asking for the distance from the lumberjack to
-  ;; `nobody`, which is an error.
-
-
-  ;; find the new target if needed and move towards the target.
-  ask lumberjacks [
-   if target = nobody [ ;; once an agent dies, all references to it turn to `nobody`.
-      set target min-one-of trees [distance myself]
-   ]
-   face target
-   fd 1
+    ifelse pxcor = 0 and gas < 1 [
+      set gas gas + .05
+    ] [
+      forward .5
+      set gas gas - .025
+    ]
   ]
 
   tick
 end
+
+to draw-road
+  ask patches [
+    ifelse (abs pycor <= 1)[
+      set pcolor grey
+    ][
+      set pcolor green
+    ]
+  ]
+end
+
+;;TODO: add label with toggle (` set label (word "gas: " gas)`)
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-554
-355
+626
+427
 -1
 -1
-16.0
+24.0
 1
 10
 1
 1
 1
 0
-0
-0
 1
--10
-10
--10
-10
+1
+1
+-8
+8
+-8
+8
 1
 1
 1
@@ -82,10 +78,10 @@ ticks
 30.0
 
 BUTTON
-40
-55
-106
-88
+37
+68
+103
+101
 NIL
 setup
 NIL
@@ -99,10 +95,10 @@ NIL
 1
 
 BUTTON
-43
-109
-106
-142
+127
+69
+190
+102
 NIL
 go
 T
@@ -116,11 +112,18 @@ NIL
 1
 
 @#$#@#$#@
-`distance` is a turtle and patch primitive that reports the distance between the current agent and some other agent. For example, if you wanted to print out the distance from turtle 0 to turtle 1, you could write `ask turtle 0 [show distance turtle 1]`, or, from the other direction, `ask turtle 1 [show distance turtle 0]` 
+`ifelse`, much like `if`, is used to run certain commands conditionally, that is, based on some true-or-false condition passed in. `ifelse` is used when you want to run one set of commands *if* a condition is true and another set otherwise. 
 
-Note that `distance` respects any wrapping that the world is set up to do. So if the world wraps horizontally or vertically, `distance` will report the shortest distance between two turtles, which might be along a path that wraps around the world. 
+For instance, at the beginning of many sports matches, a coin is flipped to determine who gets the ball first. *if* team A wins, then they get the ball, *else* (otherwise), team B gets the ball. to put this into NetLogo code, we would say:
+```
+ifelse team-A-wins-flip [
+    give-team-A-ball
+] [
+    give-team-B-ball
+]
+```
 
-In this example, `distance` is uesed to implement rudimentary path finding for a lumberjack. The lumberjack has a "target" tree that it will try to move towards and cut down. Once it cuts down that tree, it will set its target to be the closest tree. (In the case of ties, one of the closest will be randomly chosen.) We use `distance` to get the distance between the lumberjack and all of the trees so that we can figure out which tree is closest. 
+This example simulates cars driving down a road, stopping at a gas station to top up their tanks before moving on. Each tick, each car checks if they are at the gas station (if the patch they are on has an x coordinate of 0) and if they are at less than a full tank of gas. If so, they start filling up their tank, otherwise, they start driving. Each time a car drives, it loses a little bit of gas, so when it loops back around to the gas station again, it will fill itself up again. 
 @#$#@#$#@
 default
 true
@@ -155,6 +158,21 @@ Circle -7500403 true true 110 127 80
 Circle -7500403 true true 110 75 80
 Line -7500403 true 150 100 80 30
 Line -7500403 true 150 100 220 30
+
+building store
+false
+0
+Rectangle -7500403 true true 30 45 45 240
+Rectangle -16777216 false false 30 45 45 165
+Rectangle -7500403 true true 15 165 285 255
+Rectangle -16777216 true false 120 195 180 255
+Line -7500403 true 150 195 150 255
+Rectangle -16777216 true false 30 180 105 240
+Rectangle -16777216 true false 195 180 270 240
+Line -16777216 false 0 165 300 165
+Polygon -7500403 true true 0 165 45 135 60 90 240 90 255 135 300 165
+Rectangle -7500403 true true 0 0 75 45
+Rectangle -16777216 false false 0 0 75 45
 
 butterfly
 true
@@ -301,33 +319,6 @@ Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300
 Rectangle -7500403 true true 127 79 172 94
 Polygon -7500403 true true 195 90 240 150 225 180 165 105
 Polygon -7500403 true true 105 90 60 150 75 180 135 105
-
-person lumberjack
-false
-0
-Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
-Polygon -2674135 true false 60 196 90 211 114 155 120 196 180 196 187 158 210 211 240 196 195 91 165 91 150 106 150 135 135 91 105 91
-Circle -7500403 true true 110 5 80
-Rectangle -7500403 true true 127 79 172 94
-Polygon -6459832 true false 174 90 181 90 180 195 165 195
-Polygon -13345367 true false 180 195 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285
-Polygon -6459832 true false 126 90 119 90 120 195 135 195
-Rectangle -6459832 true false 45 180 255 195
-Polygon -16777216 true false 255 165 255 195 240 225 255 240 285 240 300 225 285 195 285 165
-Line -16777216 false 135 165 165 165
-Line -16777216 false 135 135 165 135
-Line -16777216 false 90 135 120 135
-Line -16777216 false 105 120 120 120
-Line -16777216 false 180 120 195 120
-Line -16777216 false 180 135 210 135
-Line -16777216 false 90 150 105 165
-Line -16777216 false 225 165 210 180
-Line -16777216 false 75 165 90 180
-Line -16777216 false 210 150 195 165
-Line -16777216 false 180 105 210 180
-Line -16777216 false 120 105 90 180
-Line -16777216 false 150 135 150 165
-Polygon -2674135 true false 100 30 104 44 189 24 185 10 173 10 166 1 138 -1 111 3 109 28
 
 plant
 false

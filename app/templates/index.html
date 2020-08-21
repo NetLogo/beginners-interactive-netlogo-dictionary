@@ -44,7 +44,7 @@
         <h3>Learn a new primitive</h3>
         <div class="clearfix">&nbsp;</div>
 
-        <div id="primitives-card-deck" class="card-deck">
+        <div id="primitives-card-deck" class="card-deck row no-gutters">
             <!-- 
             <div class="card">
                 <div class="card-body">
@@ -70,7 +70,7 @@
             .map((a) => a.value)
         let primitives_card_deck = $("#primitives-card-deck");
 
-        for (let i = 0; i < Math.min(5, shuffledEntries.length); i++){
+        for (let i = 0; i < Math.min(4, shuffledEntries.length); i++){
             let primitive_name = shuffledEntries[i][0];
             let primitive_object = shuffledEntries[i][1];
             let card    = $('<div class="card"></div>').appendTo(primitives_card_deck);

@@ -1,80 +1,72 @@
-breed [trees tree]
-breed [lumberjacks lumberjack]
-lumberjacks-own [target]
+globals [total-food-eaten]
 
 to setup
   clear-all
   reset-ticks
+  set total-food-eaten 0
 
   ask patches [
-    set pcolor brown - 3
+    set pcolor green
   ]
 
-  create-trees 60 [
-    set shape "tree"
+  create-turtles 20 [
+    set shape "sheep"
+    set color white
     move-to one-of patches
-    set color green
-  ]
-
-  create-lumberjacks 1 [
-    set shape "person lumberjack"
-    move-to one-of patches
-    set size 1.5
-    set target nobody
   ]
 end
 
 to go
-  ;; Ask the lumberjack to cut down the trees on the patch it is standing on.
-  ask lumberjacks [
-   if any? trees-here [
-     ask trees-here [
-        die
-     ]
-   ]
+  ask turtles [
+    move
+    if pcolor = green [
+      eat
+      set total-food-eaten total-food-eaten + 1
+    ]
   ]
 
-  ;; if there are no more trees, we can stop.
-  if not any? trees [stop]
-  ;; Note that if we removed this line, we would get an
-  ;; error once we cut down the final tree because we would
-  ;; be asking for the distance from the lumberjack to
-  ;; `nobody`, which is an error.
-
-
-  ;; find the new target if needed and move towards the target.
-  ask lumberjacks [
-   if target = nobody [ ;; once an agent dies, all references to it turn to `nobody`.
-      set target min-one-of trees [distance myself]
-   ]
-   face target
-   fd 1
+  ask patches [
+    if random 100 < 1 [
+      set pcolor green
+    ]
   ]
 
   tick
+end
+
+to eat
+  ask patch-here [
+    set pcolor brown
+  ]
+end
+
+to move
+  right random 90
+  left random 90
+  fd random-float 1
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-554
-355
+643
+444
 -1
 -1
-16.0
+25.0
 1
 10
 1
 1
 1
 0
-0
-0
 1
--10
-10
--10
-10
+1
+1
+-8
+8
+-8
+8
 1
 1
 1
@@ -82,10 +74,10 @@ ticks
 30.0
 
 BUTTON
-40
-55
-106
-88
+23
+52
+89
+85
 NIL
 setup
 NIL
@@ -99,10 +91,10 @@ NIL
 1
 
 BUTTON
-43
-109
-106
-142
+117
+53
+180
+86
 NIL
 go
 T
@@ -115,12 +107,21 @@ NIL
 NIL
 1
 
+MONITOR
+27
+99
+144
+144
+NIL
+total-food-eaten
+17
+1
+11
+
 @#$#@#$#@
-`distance` is a turtle and patch primitive that reports the distance between the current agent and some other agent. For example, if you wanted to print out the distance from turtle 0 to turtle 1, you could write `ask turtle 0 [show distance turtle 1]`, or, from the other direction, `ask turtle 1 [show distance turtle 0]` 
+`globals` keeps track of information that should be common to the entire model. In the same way that the value of a slider can be accessed anywhere in NetLogo code, any bit of your code can both set (using the `set` command) and read (by typing the name of the global) the value of a global. This fact makes globals useful for defining model-wide constants that you don't want the user to be able to change from a slider. It also makes them useful for keeping track of variable model-wide information that any agent can modify, for instance, the total accumulated volume of transactions in an economy model or the number of times that a predator caught their prey in a ecological model. 
 
-Note that `distance` respects any wrapping that the world is set up to do. So if the world wraps horizontally or vertically, `distance` will report the shortest distance between two turtles, which might be along a path that wraps around the world. 
-
-In this example, `distance` is uesed to implement rudimentary path finding for a lumberjack. The lumberjack has a "target" tree that it will try to move towards and cut down. Once it cuts down that tree, it will set its target to be the closest tree. (In the case of ties, one of the closest will be randomly chosen.) We use `distance` to get the distance between the lumberjack and all of the trees so that we can figure out which tree is closest. 
+In this example, a global is used to keep track of a model-wide variable, the total patches of grass eaten by all the 20 sheep in the model. In the `setup` procedure, we set it to 0, and then in the `go` procedure, each time a sheep eats a patch of grass, we increment it by one by setting its value to what its value used to be plus one, i.e. `set total-food-eaten total-food-eaten + 1`. 
 @#$#@#$#@
 default
 true
@@ -301,33 +302,6 @@ Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300
 Rectangle -7500403 true true 127 79 172 94
 Polygon -7500403 true true 195 90 240 150 225 180 165 105
 Polygon -7500403 true true 105 90 60 150 75 180 135 105
-
-person lumberjack
-false
-0
-Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
-Polygon -2674135 true false 60 196 90 211 114 155 120 196 180 196 187 158 210 211 240 196 195 91 165 91 150 106 150 135 135 91 105 91
-Circle -7500403 true true 110 5 80
-Rectangle -7500403 true true 127 79 172 94
-Polygon -6459832 true false 174 90 181 90 180 195 165 195
-Polygon -13345367 true false 180 195 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285
-Polygon -6459832 true false 126 90 119 90 120 195 135 195
-Rectangle -6459832 true false 45 180 255 195
-Polygon -16777216 true false 255 165 255 195 240 225 255 240 285 240 300 225 285 195 285 165
-Line -16777216 false 135 165 165 165
-Line -16777216 false 135 135 165 135
-Line -16777216 false 90 135 120 135
-Line -16777216 false 105 120 120 120
-Line -16777216 false 180 120 195 120
-Line -16777216 false 180 135 210 135
-Line -16777216 false 90 150 105 165
-Line -16777216 false 225 165 210 180
-Line -16777216 false 75 165 90 180
-Line -16777216 false 210 150 195 165
-Line -16777216 false 180 105 210 180
-Line -16777216 false 120 105 90 180
-Line -16777216 false 150 135 150 165
-Polygon -2674135 true false 100 30 104 44 189 24 185 10 173 10 166 1 138 -1 111 3 109 28
 
 plant
 false

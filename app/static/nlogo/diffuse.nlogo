@@ -1,54 +1,30 @@
-breed [trees tree]
-breed [lumberjacks lumberjack]
-lumberjacks-own [target]
+patches-own [pollution]
 
 to setup
   clear-all
   reset-ticks
-
-  ask patches [
-    set pcolor brown - 3
-  ]
-
-  create-trees 60 [
-    set shape "tree"
+  create-turtles 2 [
     move-to one-of patches
-    set color green
-  ]
-
-  create-lumberjacks 1 [
-    set shape "person lumberjack"
-    move-to one-of patches
-    set size 1.5
-    set target nobody
+    set shape "factory"
+    set color red
+    set size 1
   ]
 end
 
 to go
-  ;; Ask the lumberjack to cut down the trees on the patch it is standing on.
-  ask lumberjacks [
-   if any? trees-here [
-     ask trees-here [
-        die
-     ]
-   ]
+  diffuse pollution (8.0 / 9.0) ;; each iteration, diffuse sends some fraction
+                                ;; of the value to the 8 neighboring patches.
+                                ;; By setting this value to 8/9, both the given patch
+                                ;; and the 8 surrounding patches all end up with the
+                                ;; same amount of pollution.
+  ask turtles [
+    if random 100 < 20 [ ;; add new pollution 20% of the time.
+     set pollution pollution + 3
+    ]
   ]
 
-  ;; if there are no more trees, we can stop.
-  if not any? trees [stop]
-  ;; Note that if we removed this line, we would get an
-  ;; error once we cut down the final tree because we would
-  ;; be asking for the distance from the lumberjack to
-  ;; `nobody`, which is an error.
-
-
-  ;; find the new target if needed and move towards the target.
-  ask lumberjacks [
-   if target = nobody [ ;; once an agent dies, all references to it turn to `nobody`.
-      set target min-one-of trees [distance myself]
-   ]
-   face target
-   fd 1
+  ask patches [
+    set pcolor scale-color brown pollution 0 3
   ]
 
   tick
@@ -57,11 +33,11 @@ end
 GRAPHICS-WINDOW
 210
 10
-554
-355
+620
+421
 -1
 -1
-16.0
+30.9231
 1
 10
 1
@@ -71,10 +47,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--10
-10
--10
-10
+-6
+6
+-6
+6
 1
 1
 1
@@ -82,10 +58,10 @@ ticks
 30.0
 
 BUTTON
-40
-55
-106
-88
+69
+72
+135
+105
 NIL
 setup
 NIL
@@ -99,10 +75,27 @@ NIL
 1
 
 BUTTON
-43
-109
-106
-142
+63
+129
+144
+162
+go once
+go
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+69
+179
+132
+212
 NIL
 go
 T
@@ -116,11 +109,13 @@ NIL
 1
 
 @#$#@#$#@
-`distance` is a turtle and patch primitive that reports the distance between the current agent and some other agent. For example, if you wanted to print out the distance from turtle 0 to turtle 1, you could write `ask turtle 0 [show distance turtle 1]`, or, from the other direction, `ask turtle 1 [show distance turtle 0]` 
+`diffuse` is an observer command that acts on every patch in the model. It causes each of them to diffuse (or spread around) the value of a given patch variable to their 8 [neighboring](neighbors) patches. For example, if every patch had a "heat" variable that kept track of how hot that patch was, you could call (as the observer, i.e., not inside of an `ask patches` block) `diffuse heat .5` and every patch would equally distribute half of its heat to its 8 surrounding neighbors (each neighbor would get 1/8th of the 1/2 of the original heat, resulting in each neighbor's heat increasing by 1/16th of the original heat.) The original patch would keep the other 50% of the original heat. 
 
-Note that `distance` respects any wrapping that the world is set up to do. So if the world wraps horizontally or vertically, `distance` will report the shortest distance between two turtles, which might be along a path that wraps around the world. 
+This primitive is used when you want to simulate processes where diffusion happens such as heat transfer or diffusion in liquids and in the air. 
 
-In this example, `distance` is uesed to implement rudimentary path finding for a lumberjack. The lumberjack has a "target" tree that it will try to move towards and cut down. Once it cuts down that tree, it will set its target to be the closest tree. (In the case of ties, one of the closest will be randomly chosen.) We use `distance` to get the distance between the lumberjack and all of the trees so that we can figure out which tree is closest. 
+See the related command `diffuse4` which does the same exact thing with the 4 cardinal direction neighbors.
+
+In the example below, `diffuse` is used to model air pollution from factories. Each tick, each factory has a 20% chance of releasing some pollutant into the air. `diffuse` is then used to model how that pollutant would spread through the air, creating zones and hotspots of pollution. 
 @#$#@#$#@
 default
 true
@@ -230,6 +225,26 @@ Circle -16777216 true false 60 75 60
 Circle -16777216 true false 180 75 60
 Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
 
+factory
+false
+0
+Rectangle -7500403 true true 76 194 285 270
+Rectangle -7500403 true true 36 95 59 231
+Rectangle -16777216 true false 90 210 270 240
+Line -7500403 true 90 195 90 255
+Line -7500403 true 120 195 120 255
+Line -7500403 true 150 195 150 240
+Line -7500403 true 180 195 180 255
+Line -7500403 true 210 210 210 240
+Line -7500403 true 240 210 240 240
+Line -7500403 true 90 225 270 225
+Circle -1 true false 37 73 32
+Circle -1 true false 55 38 54
+Circle -1 true false 96 21 42
+Circle -1 true false 105 40 32
+Circle -1 true false 129 19 42
+Rectangle -7500403 true true 14 228 78 270
+
 fish
 false
 0
@@ -301,33 +316,6 @@ Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300
 Rectangle -7500403 true true 127 79 172 94
 Polygon -7500403 true true 195 90 240 150 225 180 165 105
 Polygon -7500403 true true 105 90 60 150 75 180 135 105
-
-person lumberjack
-false
-0
-Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
-Polygon -2674135 true false 60 196 90 211 114 155 120 196 180 196 187 158 210 211 240 196 195 91 165 91 150 106 150 135 135 91 105 91
-Circle -7500403 true true 110 5 80
-Rectangle -7500403 true true 127 79 172 94
-Polygon -6459832 true false 174 90 181 90 180 195 165 195
-Polygon -13345367 true false 180 195 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285
-Polygon -6459832 true false 126 90 119 90 120 195 135 195
-Rectangle -6459832 true false 45 180 255 195
-Polygon -16777216 true false 255 165 255 195 240 225 255 240 285 240 300 225 285 195 285 165
-Line -16777216 false 135 165 165 165
-Line -16777216 false 135 135 165 135
-Line -16777216 false 90 135 120 135
-Line -16777216 false 105 120 120 120
-Line -16777216 false 180 120 195 120
-Line -16777216 false 180 135 210 135
-Line -16777216 false 90 150 105 165
-Line -16777216 false 225 165 210 180
-Line -16777216 false 75 165 90 180
-Line -16777216 false 210 150 195 165
-Line -16777216 false 180 105 210 180
-Line -16777216 false 120 105 90 180
-Line -16777216 false 150 135 150 165
-Polygon -2674135 true false 100 30 104 44 189 24 185 10 173 10 166 1 138 -1 111 3 109 28
 
 plant
 false

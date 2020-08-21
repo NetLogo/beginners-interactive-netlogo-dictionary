@@ -1,6 +1,5 @@
 breed [trees tree]
 breed [lumberjacks lumberjack]
-lumberjacks-own [target]
 
 to setup
   clear-all
@@ -10,48 +9,33 @@ to setup
     set pcolor brown - 3
   ]
 
-  create-trees 60 [
+  create-trees 150 [
     set shape "tree"
     move-to one-of patches
     set color green
   ]
 
-  create-lumberjacks 1 [
+  create-lumberjacks 5 [
     set shape "person lumberjack"
     move-to one-of patches
     set size 1.5
-    set target nobody
   ]
 end
 
 to go
-  ;; Ask the lumberjack to cut down the trees on the patch it is standing on.
   ask lumberjacks [
-   if any? trees-here [
-     ask trees-here [
-        die
-     ]
-   ]
+    move
+    if any? trees-here [
+      ask trees-here [ die ] ; In NetLogo, one agent cannot remove another per se, one just asks another, rather morbidly, to die.
+    ]
   ]
-
-  ;; if there are no more trees, we can stop.
-  if not any? trees [stop]
-  ;; Note that if we removed this line, we would get an
-  ;; error once we cut down the final tree because we would
-  ;; be asking for the distance from the lumberjack to
-  ;; `nobody`, which is an error.
-
-
-  ;; find the new target if needed and move towards the target.
-  ask lumberjacks [
-   if target = nobody [ ;; once an agent dies, all references to it turn to `nobody`.
-      set target min-one-of trees [distance myself]
-   ]
-   face target
-   fd 1
-  ]
-
   tick
+end
+
+to move
+  left random 90
+  right random 90
+  fd random-float 1
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -68,8 +52,8 @@ GRAPHICS-WINDOW
 1
 1
 0
-0
-0
+1
+1
 1
 -10
 10
@@ -116,11 +100,11 @@ NIL
 1
 
 @#$#@#$#@
-`distance` is a turtle and patch primitive that reports the distance between the current agent and some other agent. For example, if you wanted to print out the distance from turtle 0 to turtle 1, you could write `ask turtle 0 [show distance turtle 1]`, or, from the other direction, `ask turtle 1 [show distance turtle 0]` 
+`breed` is a special primitive that can only be placed in the top of a netlogo file that defines a particular *kind* or *breed* of turtle. `breed` is useful when you have different classes of turtle that each need to have their own behavior, and you want to have an easy way to reference each group within your code. To create a breed, you call breed with two names, first the plural name (dog*s*, cat*s*, mice) and then the singular (dog, cat, mouse). So if we were to create a breed for wolves, we would say `breed [wolves wolf]`. 
 
-Note that `distance` respects any wrapping that the world is set up to do. So if the world wraps horizontally or vertically, `distance` will report the shortest distance between two turtles, which might be along a path that wraps around the world. 
+`breed` is also special in that it creates other commands that can be used later on in your code. For example, whereas to create a generic turtle, you use `create-turtles`, once you define a breed, say, for instance, dogs, using `breed [dogs dog]` you create those dogs using `create-dogs`, check if there are any dogs here using `dogs-here` instead of `turtles-here`, and if you want to talk to the 0th dog, you use `dog 0` instead of `turtle 0`. Any time you see `<breed>` or `<breeds>` in the dictionary, you can substitute in the singular or plural name for your newly created breed, respectivly. 
 
-In this example, `distance` is uesed to implement rudimentary path finding for a lumberjack. The lumberjack has a "target" tree that it will try to move towards and cut down. Once it cuts down that tree, it will set its target to be the closest tree. (In the case of ties, one of the closest will be randomly chosen.) We use `distance` to get the distance between the lumberjack and all of the trees so that we can figure out which tree is closest. 
+In this example, I use `breed` to create two classes of turtles with very different behavior, trees and lumberjacks. Trees just sit there, and lumberjacks wander around and, if they happen upon a patch with a tree, cut it down. While it wouldn't be too difficult to create a verison of this model without `breed` using the `with` command, `breed` allows us to write much more readable code. 
 @#$#@#$#@
 default
 true

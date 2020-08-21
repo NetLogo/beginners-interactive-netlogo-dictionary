@@ -1,67 +1,61 @@
-breed [trees tree]
-breed [lumberjacks lumberjack]
-lumberjacks-own [target]
+globals [width height]
+breed [balls ball]
 
 to setup
   clear-all
   reset-ticks
+  set width 10
+  set height 4
+  set-default-shape balls "circle"
 
   ask patches [
-    set pcolor brown - 3
+    set pcolor green
   ]
 
-  create-trees 60 [
-    set shape "tree"
-    move-to one-of patches
-    set color green
+  ask patches with [pycor = height and abs pxcor <= width / 2] [
+    set pcolor white - 2
+  ]
+  ask patches with [abs pxcor = width / 2 and pycor <= height] [
+    set pcolor white - 2
   ]
 
-  create-lumberjacks 1 [
-    set shape "person lumberjack"
-    move-to one-of patches
-    set size 1.5
-    set target nobody
-  ]
 end
 
-to go
-  ;; Ask the lumberjack to cut down the trees on the patch it is standing on.
-  ask lumberjacks [
-   if any? trees-here [
-     ask trees-here [
-        die
+to check-if-miss
+  ifelse (xcor > width / 2 or       ;; if the ball is too far to the right
+          xcor < (- width / 2) or   ;; or too far to the left
+          ycor > height) [          ;; or too high
+       set color red                ;; then we color it red
+     ][                             ;; otherwise
+       set color white              ;; we color it white.
      ]
-   ]
+end
+
+to track-mouse
+  if mouse-down? [
+    create-balls 1 [
+     setxy mouse-xcor mouse-ycor
+     check-if-miss
+    ]
   ]
-
-  ;; if there are no more trees, we can stop.
-  if not any? trees [stop]
-  ;; Note that if we removed this line, we would get an
-  ;; error once we cut down the final tree because we would
-  ;; be asking for the distance from the lumberjack to
-  ;; `nobody`, which is an error.
-
-
-  ;; find the new target if needed and move towards the target.
-  ask lumberjacks [
-   if target = nobody [ ;; once an agent dies, all references to it turn to `nobody`.
-      set target min-one-of trees [distance myself]
-   ]
-   face target
-   fd 1
-  ]
-
   tick
+end
+
+to throw-random-ball
+  create-balls 1 [
+    setxy random-xcor random-ycor
+    check-if-miss
+  ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
-10
-554
-355
+30
+22
+637
+277
 -1
 -1
-16.0
+35.24
 1
 10
 1
@@ -71,10 +65,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--10
-10
--10
-10
+-8
+8
+0
+6
 1
 1
 1
@@ -82,10 +76,10 @@ ticks
 30.0
 
 BUTTON
-40
-55
-106
-88
+59
+299
+125
+332
 NIL
 setup
 NIL
@@ -99,13 +93,30 @@ NIL
 1
 
 BUTTON
-43
-109
-106
-142
-NIL
-go
+480
+293
+635
+326
+Click to kick mode
+track-mouse
 T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+0
+
+BUTTON
+153
+297
+311
+330
+Throw a random ball
+throw-random-ball
+NIL
 1
 T
 OBSERVER
@@ -115,12 +126,22 @@ NIL
 NIL
 1
 
+TEXTBOX
+328
+289
+478
+345
+When in \"Click-to-kick mode\", click somewhere in the world to send a ball towards the net.
+11
+0.0
+1
+
 @#$#@#$#@
-`distance` is a turtle and patch primitive that reports the distance between the current agent and some other agent. For example, if you wanted to print out the distance from turtle 0 to turtle 1, you could write `ask turtle 0 [show distance turtle 1]`, or, from the other direction, `ask turtle 1 [show distance turtle 0]` 
+`or` is a primitive that is used to check if *either* of two conditions is true. Given two checks to make (true-or-false statements), `or` will report true if 1) the first is true, 2) the second is true, 3) both are true and will only report false if *both* of the conditions are false. As a concrete example, say you had a pig and you wanted it to eat the food on its patch whether it was animal food or human food, you could model that in code using `if animal-food-here or people-food-here [eat]`. Additionally, if you wanted to check more than just two conditions, you can just string together a series of `of` statements like so: `if A or B or C or D [ do-something]`. 
 
-Note that `distance` respects any wrapping that the world is set up to do. So if the world wraps horizontally or vertically, `distance` will report the shortest distance between two turtles, which might be along a path that wraps around the world. 
+In this model, `or` is used to check if a soccer ball is within or outside of the net. Using the `check-if-miss` procedure, if the ball is outside of the boundaries of the net, we color it red, and if it is inside, we color it green. In the code, we check if the ball is too far to the right *or* too far to the left *or* too high. (In this model, the center of the world is set to be the center of the bottom edge to make the math easier.) 
 
-In this example, `distance` is uesed to implement rudimentary path finding for a lumberjack. The lumberjack has a "target" tree that it will try to move towards and cut down. Once it cuts down that tree, it will set its target to be the closest tree. (In the case of ties, one of the closest will be randomly chosen.) We use `distance` to get the distance between the lumberjack and all of the trees so that we can figure out which tree is closest. 
+PS. Note that under the hood, in practice NetLogo often only has to check the first of the two conditions to see if the `or` will report true or not. Imagine we are checking two conditions, `condition1` and `condition2`. If we write `if condition1 or condition2` and `condition1` is true, regardless of whether `condition2` is true or false, the `or` will always report true, so why bother checking `condition2`. This is called "short-circuit or" and you will see it in most modern programming languages because it allows for faster code execution as well as some other benefits to advanced programmers. The takeaway for beginner programmers, however, is simpler: if you need to use `or` to combine two checks, place the less computationally expensive check first, because if it reports true, then you never have to waste the computer's time checking the expensive one. 
 @#$#@#$#@
 default
 true
@@ -136,6 +157,27 @@ arrow
 true
 0
 Polygon -7500403 true true 150 0 0 150 105 150 105 293 195 293 195 150 300 150
+
+ball baseball
+false
+0
+Circle -7500403 true true 30 30 240
+Polygon -2674135 true false 247 79 243 86 237 106 232 138 232 167 235 199 239 215 244 225 236 234 229 221 224 196 220 163 221 138 227 102 234 83 240 71
+Polygon -2674135 true false 53 79 57 86 63 106 68 138 68 167 65 199 61 215 56 225 64 234 71 221 76 196 80 163 79 138 73 102 66 83 60 71
+Line -2674135 false 241 149 210 149
+Line -2674135 false 59 149 90 149
+Line -2674135 false 241 171 212 176
+Line -2674135 false 246 191 218 203
+Line -2674135 false 251 207 227 226
+Line -2674135 false 251 93 227 74
+Line -2674135 false 246 109 218 97
+Line -2674135 false 241 129 212 124
+Line -2674135 false 59 171 88 176
+Line -2674135 false 59 129 88 124
+Line -2674135 false 54 109 82 97
+Line -2674135 false 49 93 73 74
+Line -2674135 false 54 191 82 203
+Line -2674135 false 49 207 73 226
 
 box
 false
@@ -301,33 +343,6 @@ Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300
 Rectangle -7500403 true true 127 79 172 94
 Polygon -7500403 true true 195 90 240 150 225 180 165 105
 Polygon -7500403 true true 105 90 60 150 75 180 135 105
-
-person lumberjack
-false
-0
-Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
-Polygon -2674135 true false 60 196 90 211 114 155 120 196 180 196 187 158 210 211 240 196 195 91 165 91 150 106 150 135 135 91 105 91
-Circle -7500403 true true 110 5 80
-Rectangle -7500403 true true 127 79 172 94
-Polygon -6459832 true false 174 90 181 90 180 195 165 195
-Polygon -13345367 true false 180 195 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285
-Polygon -6459832 true false 126 90 119 90 120 195 135 195
-Rectangle -6459832 true false 45 180 255 195
-Polygon -16777216 true false 255 165 255 195 240 225 255 240 285 240 300 225 285 195 285 165
-Line -16777216 false 135 165 165 165
-Line -16777216 false 135 135 165 135
-Line -16777216 false 90 135 120 135
-Line -16777216 false 105 120 120 120
-Line -16777216 false 180 120 195 120
-Line -16777216 false 180 135 210 135
-Line -16777216 false 90 150 105 165
-Line -16777216 false 225 165 210 180
-Line -16777216 false 75 165 90 180
-Line -16777216 false 210 150 195 165
-Line -16777216 false 180 105 210 180
-Line -16777216 false 120 105 90 180
-Line -16777216 false 150 135 150 165
-Polygon -2674135 true false 100 30 104 44 189 24 185 10 173 10 166 1 138 -1 111 3 109 28
 
 plant
 false
