@@ -1,0 +1,42 @@
+primitive,short_description,search_terms,observer,turtles,patches,links,utilities,see_also,library_models
+all?,Check if a reporter is true for all agents in an agentset.,"all, check, complete",FALSE,FALSE,FALSE,FALSE,FALSE,"any?, nobody","Segregation, Party, Voting"
+ceiling,Round a number up to the nearest integer.,"round, up, integer",TRUE,FALSE,FALSE,FALSE,TRUE,"floor, integer, round","Single Collision, Gravity Box, Dice"
+count,Count the number of agents in an agentset.,"number, agents, many",TRUE,TRUE,TRUE,TRUE,FALSE,"all?, member?","Wolf Sheep Predation, Dice, Party"
+die,Remove a turtle or link from the world.,"remove, end, kill",FALSE,TRUE,FALSE,TRUE,FALSE,"hatch, sprout","Wolf Sheep Predation, Virus, Tumor"
+distance,Find the distance from the caller to an agent.,"length, far, measure",FALSE,TRUE,TRUE,FALSE,FALSE,distancexy,"Wave Machine, Mousetraps, Erosion"
+end,Conclude a procedure.,"finish, complete",TRUE,FALSE,FALSE,FALSE,TRUE,"to, to-report",
+face,Turn to face a specific agent.,"turn, spin, look",FALSE,TRUE,FALSE,FALSE,FALSE,"towards, facexy","Simple Collision, Boiling, Fireworks"
+floor,Round a number down to the nearest integer.,"round, down, integer",TRUE,FALSE,FALSE,FALSE,TRUE,"ceiling, integer, round","Party, Rebellion, Atmosphere"
+hatch,Creates turtles from an existing turtle.,"birth, new, create ",FALSE,TRUE,FALSE,FALSE,FALSE,"sprout, create-turtles, die","Virus, Wolf Sheep Predation, Sunflower"
+if,Conditionally run a command. ,"conditional, true, false",TRUE,FALSE,FALSE,FALSE,FALSE,"ifelse, ifelse-value","Virus, Shepherds, Party"
+left,Turn a certain amount of degrees to the left.,"spin, turn, move",FALSE,TRUE,FALSE,FALSE,FALSE,"right, random","Wolf Sheep Predation, Segregation, Traffic Grid"
+let,Create a local variable.,"variable, local, declare",TRUE,FALSE,FALSE,FALSE,FALSE,"turtles-own, patches-own, globals","Party, Sunflower, Flocking"
+max-pxcor,Find patches' largest x-coordinate.,"patch, xcor, coordinate, max",TRUE,FALSE,TRUE,FALSE,FALSE,"max-pycor, min-pxcor, min-pycor, pxcor, pycor",
+max-pycor,Find patches' largest y-coordinate.,"patch, ycor, coordinate, max",TRUE,FALSE,TRUE,FALSE,FALSE,"max-pxcor, min-pxcor, min-pycor, pxcor, pycor",
+max-n-of,Gives a list of top values of a list.,,TRUE,FALSE,FALSE,FALSE,TRUE,"one-of, max",
+max,Report the highest value in a list.,"biggest, highest, maximum",TRUE,FALSE,FALSE,FALSE,FALSE,"max-n-of, min",
+mean,Find the mean of a list of values.,"average, list",TRUE,FALSE,FALSE,FALSE,TRUE,"mode, median, max",
+member?,"Check if a value is within a list, or if an agent is in an agentset.","in, list, part, element",TRUE,TRUE,TRUE,FALSE,TRUE,position,
+min-pxcor,Find patches' smallest x-coordinate.,"patch, xcor, coordinate, min",TRUE,FALSE,TRUE,FALSE,FALSE,"max-pxcor, max-pycor, min-pycor, pxcor, pycor",
+min-pycor,Find patches' smallest y-coordinate.,"patch ycor, coordinate, min",TRUE,FALSE,TRUE,FALSE,FALSE,"max-pxcor, max-pycor, min-pxcor, pxcor, pycor",
+mod,"Perform the modulo operation, returning the remainder of two numbers.","modulo, remainder, divide",TRUE,FALSE,FALSE,FALSE,TRUE,"remainder, mean, %",
+myself,Helps with interactions between an agent and the caller.,"interaction, me, caller",FALSE,TRUE,TRUE,TRUE,FALSE,"self, nobody",
+nobody,Indicates that an agent does not exist.,"none, empty, dead",FALSE,TRUE,TRUE,TRUE,FALSE,"all?, any?, self",
+one-of,Randomly select one agent out of an agentset.,"one, pick, select, single",FALSE,TRUE,TRUE,TRUE,FALSE,"max-n-of, n-of, random",
+patch,Address a specific patch.,"patches, background",TRUE,FALSE,TRUE,FALSE,FALSE,"patches, clear-patches, patches-own",
+patches-own,Declare a variable that belongs to patches.,"patches, variable, declare",TRUE,FALSE,FALSE,FALSE,FALSE,"patch, patches, turtles-own",
+patches,Address all patches of a model.,"patch, background",TRUE,FALSE,FALSE,FALSE,FALSE,"patch, clear-patches, patches-own",
+pen-down,Starts tracing the movement of the turtle.,"trace, pen, draw, mark",FALSE,TRUE,FALSE,FALSE,FALSE,"pen-up, pen-erase, forward, pen-mode",
+pen-up,Stops tracing a turtle's movement.,"trace, pen, draw, mark",FALSE,TRUE,FALSE,FALSE,FALSE,"pen-down, pen-erase, forward, pen-mode",
+pen-erase,Erases the paths left by turtles.,"erase, trace, pen, draw, mark",FALSE,TRUE,FALSE,FALSE,FALSE,"pen-down, pen-up, forward, pen-mode",
+random-normal,Randomly produces a number according to a normal distribution.,"random, normal, distribution, bell",TRUE,FALSE,FALSE,FALSE,TRUE,"random, mean",
+reset-ticks,Sets the tick counter to 0.,"ticks, counter",TRUE,FALSE,FALSE,FALSE,FALSE,tick,
+right,Turn a certain amount of degrees to the right.,"turn, spin",FALSE,TRUE,FALSE,FALSE,FALSE,"left, random, face",
+set,Set the value of a variable.,"variable, value",TRUE,FALSE,FALSE,FALSE,FALSE,"let, globals, turtles-own, patches-own",
+sprout,Create new turtles from a patch.,"create, birth, new, turtles",FALSE,FALSE,TRUE,FALSE,FALSE,"hatch, create-turtles, die",
+tick,Advance the tick counter by 1.,"time, counter",TRUE,FALSE,FALSE,FALSE,FALSE,reset-ticks,
+to-report,Begin a procedure to create a custom reporter.,"reporter, procedure",TRUE,FALSE,FALSE,FALSE,FALSE,"to, end",
+towards,Reports the angle of the caller towards an agent.,"turn, angle, face",FALSE,TRUE,FALSE,FALSE,FALSE,"face, right, left",
+turtles-here,Reports the agentset of all the turtles on a caller's patch.,"turtles, here, location, with",FALSE,TRUE,TRUE,FALSE,FALSE,count,
+turtles-own,Declare a variable that belongs to turtles.,"turtle, variable, declare, own",TRUE,FALSE,FALSE,FALSE,FALSE,"patches-own, globals, let, set",
+while,Begins a loop that runs as long as the reporter returns true. ,loop,TRUE,FALSE,FALSE,FALSE,FALSE,"if, ifelse",
