@@ -21,14 +21,14 @@
 
 <div class="clearfix">&nbsp;</div>
 
-<div id="artbody" class="cm-s-netlogo-default col-md-12">
+<div id="description" class="cm-s-netlogo-default col-md-12">
     {{ body|safe }}
 </div>
 
 <script src="/static/js/codemirror/runmode.js"></script>
 
 <script type="text/javascript">
-    $("#artbody code").each(function(i, e){
+    $("#description code").each(function(i, e){
         CodeMirror.runMode(e.textContent, "netlogo", e);
     });
 </script>
