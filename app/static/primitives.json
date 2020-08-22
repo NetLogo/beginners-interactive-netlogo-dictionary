@@ -188,7 +188,10 @@
         },
         "links": {
             "short_description": "reports the agentset of all links in the model",
-            "search_terms": [],
+            "search_terms": [
+                "links",
+                "link-neighbor"
+            ],
             "agents": [
                 "utilities"
             ],
@@ -243,7 +246,10 @@
         },
         "random": {
             "short_description": "generate a random whole number within a specified range",
-            "search_terms": [],
+            "search_terms": [
+                "random-float",
+                "random-normal"
+            ],
             "agents": [
                 "utilities"
             ],
@@ -302,7 +308,10 @@
         },
         "sort-by": {
             "short_description": "sort a list based on a user-defined comparison reporter",
-            "search_terms": [],
+            "search_terms": [
+                "sort-on",
+                "sort"
+            ],
             "agents": [
                 "utilities"
             ],
@@ -314,7 +323,10 @@
         },
         "sort-on": {
             "short_description": "sort an agentset into a list ordered by the value of a given reporter",
-            "search_terms": [],
+            "search_terms": [
+                "sort-by",
+                "sort"
+            ],
             "agents": [
                 "utilities"
             ],
@@ -326,7 +338,9 @@
         },
         "tie": {
             "short_description": "make a link into a solid connection that can move turtles in the world",
-            "search_terms": [],
+            "search_terms": [
+                ""
+            ],
             "agents": [
                 "links"
             ],
@@ -339,7 +353,9 @@
                 "any?",
                 "nobody"
             ],
-            "agents": [],
+            "agents": [
+                "utilities"
+            ],
             "see_also": [
                 "any?",
                 "nobody"
@@ -358,7 +374,6 @@
                 "round"
             ],
             "agents": [
-                "observer",
                 "utilities"
             ],
             "see_also": [
@@ -379,10 +394,7 @@
                 "member?"
             ],
             "agents": [
-                "observer",
-                "turtles",
-                "patches",
-                "links"
+                "utilities"
             ],
             "see_also": [
                 "all?",
@@ -421,14 +433,17 @@
                 "to-report"
             ],
             "agents": [
-                "observer",
-                "utilities"
+                "observer"
             ],
             "see_also": [
                 "to",
                 "to-report"
             ],
-            "library_models": []
+            "library_models": [
+                "Wolf Sheep Predation",
+                "Forest Fire",
+                "Segregation"
+            ]
         },
         "face": {
             "short_description": "Turn to face a specific agent.",
@@ -457,7 +472,6 @@
                 "round"
             ],
             "agents": [
-                "observer",
                 "utilities"
             ],
             "see_also": [
@@ -499,7 +513,7 @@
                 "ifelse-value"
             ],
             "agents": [
-                "observer"
+                "utilities"
             ],
             "see_also": [
                 "ifelse",
@@ -538,7 +552,7 @@
                 "globals"
             ],
             "agents": [
-                "observer"
+                "utilities"
             ],
             "see_also": [
                 "turtles-own",
@@ -561,8 +575,7 @@
                 "pycor"
             ],
             "agents": [
-                "observer",
-                "patches"
+                "utilities"
             ],
             "see_also": [
                 "max-pycor",
@@ -586,8 +599,7 @@
                 "pycor"
             ],
             "agents": [
-                "observer",
-                "patches"
+                "utilities"
             ],
             "see_also": [
                 "max-pxcor",
@@ -605,7 +617,6 @@
             "short_description": "Gives a list of top values of a list.",
             "search_terms": [],
             "agents": [
-                "observer",
                 "utilities"
             ],
             "see_also": [
@@ -624,7 +635,7 @@
                 "min"
             ],
             "agents": [
-                "observer"
+                "utilities"
             ],
             "see_also": [
                 "max-n-of",
@@ -644,7 +655,6 @@
                 "max"
             ],
             "agents": [
-                "observer",
                 "utilities"
             ],
             "see_also": [
@@ -664,9 +674,6 @@
                 "position"
             ],
             "agents": [
-                "observer",
-                "turtles",
-                "patches",
                 "utilities"
             ],
             "see_also": [
@@ -688,8 +695,7 @@
                 "pycor"
             ],
             "agents": [
-                "observer",
-                "patches"
+                "utilities"
             ],
             "see_also": [
                 "max-pxcor",
@@ -713,8 +719,7 @@
                 "pycor"
             ],
             "agents": [
-                "observer",
-                "patches"
+                "utilities"
             ],
             "see_also": [
                 "max-pxcor",
@@ -736,7 +741,6 @@
                 "%"
             ],
             "agents": [
-                "observer",
                 "utilities"
             ],
             "see_also": [
@@ -779,9 +783,7 @@
                 "self"
             ],
             "agents": [
-                "turtles",
-                "patches",
-                "links"
+                "utilities"
             ],
             "see_also": [
                 "all?",
@@ -802,9 +804,7 @@
                 "random"
             ],
             "agents": [
-                "turtles",
-                "patches",
-                "links"
+                "utilities"
             ],
             "see_also": [
                 "max-n-of",
@@ -825,8 +825,7 @@
                 "patches-own"
             ],
             "agents": [
-                "observer",
-                "patches"
+                "observer"
             ],
             "see_also": [
                 "patches",
@@ -875,7 +874,11 @@
                 "clear-patches",
                 "patches-own"
             ],
-            "library_models": []
+            "library_models": [
+                "Wolf Sheep Predation",
+                "Forest Fire",
+                "Segregation"
+            ]
         },
         "pen-down": {
             "short_description": "Starts tracing the movement of the turtle.",
@@ -949,7 +952,6 @@
                 "mean"
             ],
             "agents": [
-                "observer",
                 "utilities"
             ],
             "see_also": [
@@ -973,7 +975,11 @@
             "see_also": [
                 "tick"
             ],
-            "library_models": []
+            "library_models": [
+                "Wolf Sheep Predation",
+                "Forest Fire",
+                "Segregation"
+            ]
         },
         "right": {
             "short_description": "Turn a certain amount of degrees to the right.",
@@ -1005,7 +1011,7 @@
                 "patches-own"
             ],
             "agents": [
-                "observer"
+                "utilities"
             ],
             "see_also": [
                 "let",
@@ -1051,7 +1057,11 @@
             "see_also": [
                 "reset-ticks"
             ],
-            "library_models": []
+            "library_models": [
+                "Wolf Sheep Predation",
+                "Forest Fire",
+                "Segregation"
+            ]
         },
         "to-report": {
             "short_description": "Begin a procedure to create a custom reporter.",
@@ -1060,7 +1070,7 @@
                 "end"
             ],
             "agents": [
-                "observer"
+                "utilities"
             ],
             "see_also": [
                 "to",
@@ -1185,8 +1195,7 @@
                 "clear-all"
             ],
             "agents": [
-                "observer",
-                "patches"
+                "observer"
             ],
             "see_also": [
                 "clear-all"
@@ -1200,8 +1209,7 @@
                 "clear-all"
             ],
             "agents": [
-                "observer",
-                "turtles"
+                "observer"
             ],
             "see_also": [
                 "die",
@@ -1215,8 +1223,8 @@
                 "pcolor"
             ],
             "agents": [
-                "observer",
-                "turtles"
+                "turtles",
+                "links"
             ],
             "see_also": [
                 "pcolor"
@@ -1230,8 +1238,7 @@
                 "sprout"
             ],
             "agents": [
-                "observer",
-                "turtles"
+                "observer"
             ],
             "see_also": [
                 "hatch",
@@ -1246,7 +1253,6 @@
                 "setxy"
             ],
             "agents": [
-                "observer",
                 "turtles"
             ],
             "see_also": [
@@ -1262,9 +1268,7 @@
                 "xcor"
             ],
             "agents": [
-                "observer",
-                "turtles",
-                "links"
+                "turtles"
             ],
             "see_also": [
                 "right",
@@ -1277,7 +1281,9 @@
             "search_terms": [
                 "import-drawing"
             ],
-            "agents": [],
+            "agents": [
+                "observer"
+            ],
             "see_also": [
                 "import-drawing"
             ],
@@ -1290,9 +1296,7 @@
                 "face"
             ],
             "agents": [
-                "observer",
-                "turtles",
-                "patches"
+                "turtles"
             ],
             "see_also": [
                 "setxy",
@@ -1307,10 +1311,8 @@
                 "patch-ahead"
             ],
             "agents": [
-                "observer",
                 "turtles",
-                "patches",
-                "links"
+                "patches"
             ],
             "see_also": [
                 "neighbors4",
@@ -1325,10 +1327,8 @@
                 "patch-ahead"
             ],
             "agents": [
-                "observer",
                 "turtles",
-                "patches",
-                "links"
+                "patches"
             ],
             "see_also": [
                 "neighbors",
@@ -1345,7 +1345,7 @@
                 ""
             ],
             "agents": [
-                "utilities"
+                "turtles"
             ],
             "see_also": [
                 "all?",
@@ -1362,8 +1362,7 @@
                 "neighbors4"
             ],
             "agents": [
-                "observer",
-                "patches"
+                "turtles"
             ],
             "see_also": [
                 "neighbors",
@@ -1391,10 +1390,7 @@
                 "pen-up"
             ],
             "agents": [
-                "observer",
-                "turtles",
-                "patches",
-                "links"
+                "utilities"
             ],
             "see_also": [
                 "pen-down",
@@ -1408,7 +1404,6 @@
                 ""
             ],
             "agents": [
-                "observer",
                 "utilities"
             ],
             "see_also": [],
@@ -1419,7 +1414,9 @@
             "search_terms": [
                 ""
             ],
-            "agents": [],
+            "agents": [
+                "utilities"
+            ],
             "see_also": [],
             "library_models": []
         },
@@ -1430,7 +1427,6 @@
                 "shapes"
             ],
             "agents": [
-                "observer",
                 "turtles",
                 "links"
             ],
@@ -1446,6 +1442,7 @@
                 "to-report"
             ],
             "agents": [
+                "observer",
                 "utilities"
             ],
             "see_also": [
@@ -1462,9 +1459,7 @@
                 "create-turtles"
             ],
             "agents": [
-                "observer",
-                "turtles",
-                "links"
+                "observer"
             ],
             "see_also": [
                 "shape",
