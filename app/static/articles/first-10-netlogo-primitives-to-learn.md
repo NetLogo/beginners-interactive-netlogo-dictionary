@@ -1,7 +1,8 @@
 # The First 10 NetLogo Primitives to Learn
-_Note to the tester: This page is still being prepared. Please check back again later._
 
 &nbsp;
+
+<p class="badge badge-warning">Note to the devs: this page needs to be finished.</p>
 
 Here is a nice, welcoming introductory sentence which tells you what to expect in this article but also tells you to check the [`What is a Primitive?`](/article/what-is-a-primitive) article if you are new to NetLogo.
 

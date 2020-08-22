@@ -1,5 +1,7 @@
 # What is NetLogo?
 
+<p class="badge badge-warning">Note to the devs: this page needs to be finished.</p>
+
 `Note to the tester: I copied the following text from the NetLogo's docs page. It is currently serving as a placeholder. We may need to modify it to be more novice friendly with images/gifs and additional explanations.` 
 
 &nbsp;

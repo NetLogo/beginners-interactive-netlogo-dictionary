@@ -2,6 +2,8 @@
 
 &nbsp;
 
+<p class="badge badge-warning">Note to the devs: this page needs to be finished.</p>
+
 `We will have a an extended article here soon. Maybe even a video. The following text is just a placeholder copied from the old docs. Stay tuned.`
 
 BehaviorSpace is a software tool integrated with NetLogo that allows you to perform experiments with models.

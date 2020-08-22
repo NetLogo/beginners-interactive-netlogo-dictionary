@@ -4,7 +4,7 @@ import markdown.extensions.fenced_code
 import json
 from string import ascii_lowercase, ascii_uppercase
 
-from flask import render_template, flash, redirect, request, url_for
+from flask import abort, redirect, render_template, request, url_for
 from markupsafe import escape
 from app import app
 
@@ -60,7 +60,7 @@ def primitive(primitive_name):
                                         title= pn + " primitive")
     else:
         ## MAKE THIS RENDER A 404 File!!!
-        return 'I don\'t know what ' + pn + ' is :('
+        abort(404) ## update the error message maybe?
             
 @app.route('/search', methods = ['GET'])
 def search():
@@ -81,4 +81,10 @@ def article(article_name):
             maf = maf.replace('<h1>', '<h1 class="display-4">') # just to make it look nicer
             return render_template('article.html', body = maf, title=an.replace('-', ' ').title())
     else:
-        return render_template('article.html', body = '<h3> 404 </h3> <p class="lead"> I could not find this article. It is probably being prepared. Please check again later. </p>')
+        abort(404)  ## update the error message maybe?
+    
+    
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
