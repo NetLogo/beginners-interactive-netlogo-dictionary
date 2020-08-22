@@ -66,7 +66,7 @@
         <div class="col-md-12" style="position: relative;">
 
             {%for letter in letters %}
-            <div id="starts-with-{{letter}}" class="pt-4">
+            <div id="starts-with-{{letter}}" class="pt-4  cm-s-netlogo-default">
                 <h2>{{letter}} <span class="badge badge-light text-small float-right"><a href="#"> <small class="muted"> back to top <i class="fas fa-level-up-alt"></i> </small></a></span></h2>
                 <hr />
                 
@@ -83,7 +83,7 @@
                                     {%if 'utilities' in dictionary.primitives[p].agents%} utilities {%endif%}
                                     ">
                             <div class="card-body">
-                                <code><a href="/primitive/{{p}}" class="card-link"><h5 class="card-title">{{p}}</h5></a></code>
+                                <h5 class="card-title"><a href="/primitive/{{p}}" class="card-link"><code>{{p}}</code></a></h5>
                                 <p>  
                                     <small>
                                         {%if 'observer' in dictionary.primitives[p].agents%}
@@ -132,6 +132,8 @@
     </div>
 </div>
 
+<script src="/static/js/codemirror/runmode.js"></script>
+
 <script type="text/javascript">
     "use strict";
     
@@ -160,7 +162,11 @@
             if(showUtilityPrimitives && $(e).hasClass('utilities')){
                 e.style = "display: default;" 
             }
-        })
+        });
+        // recolor the prims after displaying them properly
+        $(".card-title code").each(function(i, e){
+            CodeMirror.runMode(e.textContent, "netlogo", e);
+        });    
     };
     refreshDictionaryItems();
 </script>

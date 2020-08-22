@@ -2,36 +2,34 @@
 
 {% block app_content %}
 
-
-
 <div class="clearfix">&nbsp;</div>
 <div class="clearfix">&nbsp;</div>
 <div class="clearfix">&nbsp;</div>
 
 <div class="row align-items-center">
-    <div class="col-md-7">
+    <div class="col-lg-6 col-xl-7">
 
-        <h1 class="display-4 text-center text-md-left">The Beginner's Guide to NetLogo Programming</h1>
-        <p class="lead text-center text-md-left">
+        <h1 class="display-4 text-center text-lg-left">The Beginner's Guide to NetLogo Programming</h1>
+        <p class="lead text-center text-lg-left">
             Learn how to create computational models with the NetLogo agent-based modeling environment with novice-friendly explanations and interactive code examples.
         </p>
 
-        <p class="text-center text-md-left">
+        <p class="text-center text-lg-left">
             <a href="/article/what-is-netlogo"><u>What is NetLogo?</u></a>
             &nbsp; &nbsp;
             <a href="/article/create-your-first-netlogo-model"><u>Create your first model</u></a>
             &nbsp; &nbsp;
             <!--        The following version only shows in non-small, in the same line-->
-            <a href="/article/first-10-netlogo-primitives-to-learn" class="d-none d-sm-inline-block"><u>The first 10 primitives to learn</u></a>
+            <a href="/article/first-10-netlogo-primitives-to-learn" class="d-none d-md-inline-block"><u>The first 10 primitives to learn</u></a>
             &nbsp; &nbsp;
         </p>
         <!--        The following version only shows in small, in a new line-->
-        <p class="d-block d-sm-none mb-4  text-center text-md-left">
+        <p class="d-block d-md-none mb-4  text-center text-md-left">
             <a href="/article/first-10-netlogo-primitives-to-learn"><u>The first 10 primitives to learn</u></a>
         </p>
     </div>
 
-    <div class="col-md-5 mt-4">
+    <div class="col-lg-6 col-xl-5 mt-4">
         <img class="col-lg-12" src="/static/branding/banner-with-code.png" />
     </div>
 </div>
@@ -44,7 +42,7 @@
         <h3>Learn a new primitive</h3>
         <div class="clearfix">&nbsp;</div>
 
-        <div id="primitives-card-deck" class="card-deck row no-gutters">
+        <div id="primitives-card-deck" class="card-deck row no-gutters d-block d-lg-flex cm-s-netlogo-default">
             <!-- 
             <div class="card">
                 <div class="card-body">
@@ -60,6 +58,8 @@
     </div>
 </div>
 
+<script src="/static/js/codemirror/runmode.js"></script>
+
 <script type="text/javascript">
     "use strict";
     $.getJSON("/static/primitives.json", function(json){
@@ -73,23 +73,30 @@
         for (let i = 0; i < Math.min(4, shuffledEntries.length); i++){
             let primitive_name = shuffledEntries[i][0];
             let primitive_object = shuffledEntries[i][1];
-            let card    = $('<div class="card"></div>').appendTo(primitives_card_deck);
+            let card    = $('<div class="card mb-2 "></div>').appendTo(primitives_card_deck);
             let body    = $('<div class="card-body"></div>').appendTo(card);
-            $('<h5 class=card-title text-primary"><a href="/primitive/' + primitive_name + '"><code>' + primitive_name + '</code></a></h5>').appendTo(body);
+             $('<h5 class="card-title"><a id="card-title-a"  href="/primitive/' + primitive_name + '"><code>' + primitive_name + '</code></a></h5>').appendTo(body);
             $('<p class="card-text">' + primitive_object["short_description"] + '</p>').appendTo(body);
-            $('<a href="/primitive/' + primitive_name + '" class="btn btn-primary align-baseline m-2">Read more</a>').appendTo(card);
+            $('<a href="/primitive/' + primitive_name + '" class="btn btn-primary align-baseline m-2 stretched-link">Read more</a>').appendTo(card);
         }
+        
+    $(".card-title code").each(function(i, e){
+        CodeMirror.runMode(e.textContent, "netlogo", e);
+    });
 
     })
 </script>
+
+
+<div class="clearfix">&nbsp;</div>
 
 <div class="row">
     <div class="col-md-12 mt-5">
         <h3>Video Tutorials</h3>
         <div class="clearfix">&nbsp;</div>
 
-        <div class="card-deck">
-            <div class="card">
+        <div class="card-deck d-block d-lg-flex">
+            <div class="card my-2">
                 <i class="fas fa-4x text-center fa-play p-4 mt-4 card-img-top"></i>
                 <div class="card-body">
                     <h5 class="card-title">Turtle Geometry</h5>
@@ -97,7 +104,7 @@
                 </div>
                 <a href="/primitive/" class="btn btn-primary align-baseline m-2 stretched-link">Watch</a>
             </div>
-            <div class="card">
+            <div class="card mb-2">
                 <i class="fas fa-4x text-center fa-play p-4 mt-4 card-img-top"></i>
                 <div class="card-body">
                     <h5 class="card-title">What is an agentset?</h5>
@@ -105,7 +112,7 @@
                 </div>
                 <a href="/primitive/" class="btn btn-primary align-baseline m-2 stretched-link">Watch</a>
             </div>
-            <div class="card">
+            <div class="card mb-2">
                 <i class="fas fa-4x text-center fa-play p-4 mt-4 card-img-top"></i>
                 <div class="card-body">
                     <h5 class="card-title">Using links to create networks</h5>
@@ -113,7 +120,7 @@
                 </div>
                 <a href="/primitive/" class="btn btn-primary align-baseline m-2 stretched-link">Watch</a>
             </div>
-            <div class="card">
+            <div class="card mb-2">
                 <i class="fas fa-4x text-center fa-play p-4 mt-4 card-img-top"></i>
                 <div class="card-body">
                     <h5 class="card-title">What is emergence?</h5>
@@ -202,5 +209,6 @@
 
     </div>
 </div>
+
 
 {% endblock %}
