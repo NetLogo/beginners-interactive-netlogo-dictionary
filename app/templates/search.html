@@ -4,7 +4,7 @@
 
 <h2 id="title" class="display-4 mt-4 col-md-12">Results:</h2>
 
-<div class="container">
+<div class="container cm-s-netlogo-default">
 
     {%for p in dictionary.primitives.keys()%}
     <div id="{{p}}" style="display: none;" class="dictionary-entry">
@@ -16,7 +16,7 @@
                     {%if 'utilities' in dictionary.primitives[p].agents%} utilities {%endif%}
                     ">
             <div class="card-body">
-                <code><a href="/primitive/{{p}}" class="card-link"><h5 class="card-title">{{dictionary.primitives[p]['display_name']}}</h5></a></code>
+                <h5 class="card-title"><a href="/primitive/{{p}}" class="card-link"><code>{{dictionary.primitives[p]['display_name']}}</code></a></h5>
                 <p>  
                     <small>
                         {%if 'observer' in dictionary.primitives[p].agents%}
@@ -60,7 +60,8 @@
     {%endfor%}
 </div>
 
-<script>
+<script type="text/javascript">
+
     window.addEventListener('primitivesLoaded', function(){
         const url = window.location.search;
         const urlParams = new URLSearchParams(url);
@@ -83,7 +84,11 @@
                 e.setAttribute("style", "display: default;");
             })
         }
-    })    
+    })   
+    $local(".card-title code").each(function(i, e){
+            console.log(e)
+            CodeMirror.runMode(e.textContent, "netlogo", e);
+        });    
 </script>
 
 {% endblock %}
