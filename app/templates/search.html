@@ -4,7 +4,7 @@
 
 <h2 id="title" class="display-4 mt-4 col-md-12">Results:</h2>
 
-<div class="container cm-s-netlogo-default">
+<div id="results" class="container cm-s-netlogo-default">
 
     {%for p in dictionary.primitives.keys()%}
     <div id="{{p}}" style="display: none;" class="dictionary-entry">
@@ -61,17 +61,20 @@
 </div>
 
 <script type="text/javascript">
+    "use strict";
 
     window.addEventListener('primitivesLoaded', function(){
         const url = window.location.search;
         const urlParams = new URLSearchParams(url);
         const titleTag = $local("#title");
+        const resultsTag = $local("#results");
         
         if (urlParams.has("term")){
             const term = urlParams.get("term");
-            titleTag.text("Results for: " + term);
 
+            let numMatches = 0;
             let matches = primitivesBloodhound.search(term, function(datums){
+                numMatches = datums.length;
                 datums.forEach(function(e){
                     if(e.endsWith("?")){
                         e = e.substring(0, e.length - 1);
@@ -79,6 +82,14 @@
                     $local('#' + e).attr("style", "display: default;");
                 });
             });
+
+            if(numMatches == 0){
+                titleTag.text("No matches found. ")
+                resultsTag.text("Maybe you can find what you were looking for in the full dictionary ")
+                $local('<span><a href="/dictionary">here.</a></span>').appendTo(resultsTag);
+            } else {
+                titleTag.text("Results for: " + term);
+            }
         } else {
             $local(".dictionary-entry").each(function(i, e){
                 e.setAttribute("style", "display: default;");
@@ -86,7 +97,6 @@
         }
     })   
     $local(".card-title code").each(function(i, e){
-            console.log(e)
             CodeMirror.runMode(e.textContent, "netlogo", e);
         });    
 </script>
