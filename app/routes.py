@@ -39,7 +39,7 @@ def primitive(primitive_name):
     if os.path.exists(md):
         with open(dfile, 'r') as df:
             primitives = json.load(df)["primitives"]
-            display_name = primitives[primitive_name]["display_name"]
+            display_name = primitives[primitive_name]["display_name"] if primitive_name in primitives else primitive_name
             
             with open(md, 'r') as d: 
                 description_rendered = markdown.markdown(d.read(), extensions=["fenced_code"])
