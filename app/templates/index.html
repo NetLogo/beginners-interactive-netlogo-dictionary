@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import 'common_macros.html' as common %}
 
 {% block app_content %}
 
@@ -41,52 +42,11 @@
     <div class="col-md-12 mt-5">
         <h3>Learn a new primitive</h3>
         <div class="clearfix">&nbsp;</div>
-
-        <div id="primitives-card-deck" class="card-deck row no-gutters d-block d-lg-flex cm-s-netlogo-default">
-            <!-- 
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title text-primary">face</h5>
-                    <p class="card-text">sets a turtle’s heading to point towards another agent. </p>
-                </div>
-                <a href="/primitive/" class="btn btn-primary align-baseline m-2 stretched-link">Read more</a>
-            </div> 
-            -->
-
+        {{ common.random_primitives(num = 4)}}
         </div>
 
     </div>
 </div>
-
-<script src="/static/js/codemirror/runmode.js"></script>
-
-<script type="text/javascript">
-    "use strict";
-    $local.getJSON("/static/primitives.json", function(json){
-        let entries = Object.entries(json["primitives"]);
-        let shuffledEntries = entries
-            .map((a) => ({sort: Math.random(), value: a}))
-            .sort((a,b) => a.sort - b.sort)
-            .map((a) => a.value)
-        let primitives_card_deck = $local("#primitives-card-deck");
-
-        for (let i = 0; i < Math.min(4, shuffledEntries.length); i++){
-            let primitive_name = shuffledEntries[i][0];
-            let primitive_object = shuffledEntries[i][1];
-            let card    = $local('<div class="card mb-2 "></div>').appendTo(primitives_card_deck);
-            let body    = $local('<div class="card-body"></div>').appendTo(card);
-             $local('<h5 class="card-title"><a id="card-title-a"  href="/primitive/' + primitive_name + '"><code>' + primitive_name + '</code></a></h5>').appendTo(body);
-            $local('<p class="card-text">' + primitive_object["short_description"] + '</p>').appendTo(body);
-            $local('<a href="/primitive/' + primitive_name + '" class="btn btn-primary align-baseline m-2 stretched-link">Read more</a>').appendTo(card);
-        }
-        
-    $local(".card-title code").each(function(i, e){
-        CodeMirror.runMode(e.textContent, "netlogo", e);
-    });
-
-    })
-</script>
-
 
 <div class="clearfix">&nbsp;</div>
 

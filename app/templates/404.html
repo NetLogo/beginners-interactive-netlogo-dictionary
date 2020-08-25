@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import 'common_macros.html' as common %}
 
 {% block app_content %}
 
@@ -7,6 +8,8 @@
     <p class="badge badge-warning">Note to the devs: this page needs to be finished.</p>
     <p class="lead">You've come here because, you know, what you are looking is not there. Try these maybe?</p>
     <p>__a list of random primitives here__</p>
+    {{ common.random_primitives(num = 4)}}
+
 </div>
 
 {% endblock %}
