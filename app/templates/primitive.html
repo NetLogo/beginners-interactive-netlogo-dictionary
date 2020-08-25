@@ -201,7 +201,7 @@
 <script src="/static/js/codemirror/runmode.js"></script>
 
 <script type="text/javascript">
-    $("#description code").each(function(i, e){
+    $local("#description code").each(function(i, e){
         CodeMirror.runMode(e.textContent, "netlogo", e);
     });
 

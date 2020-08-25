@@ -7,6 +7,9 @@
 
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/typeahead.js"></script>
+    <script type="text/javascript">
+        $local = jQuery.noConflict();
+    </script>
 
     <link rel="stylesheet" href="/static/css/dictionary.css">
 
@@ -119,7 +122,7 @@
             return Bloodhound.tokenizers.nonword(datum);
         }
 
-        $.getJSON("/static/primitives.json", function(obj){
+        $local.getJSON("/static/primitives.json", function(obj){
             primitives = obj["primitives"];
             primitiveNames = Object.entries(obj["primitives"]).map(function(e){return e[0];});
             // Bloodhound is the "Search engine" built into typeahead
@@ -134,7 +137,7 @@
         });
 
         var processSearch = function(){
-            let text = $("#primitive-search").val();
+            let text = $local("#primitive-search").val();
             if (primitiveNames.includes(text)){
                 window.location.assign("/primitive/" + text);
             } else if (text != ""){
@@ -145,7 +148,7 @@
         }
 
         window.addEventListener('primitivesLoaded', function(){
-            $('#primitive-search').typeahead({
+            $local('#primitive-search').typeahead({
                 hint: false,
                 highlight: true,
                 minLength: 1
@@ -156,7 +159,7 @@
             });
             
             // bind the "select an item" event to run the search
-            $('#primitive-search').bind('typeahead:select', function(ev, text){
+            $local('#primitive-search').bind('typeahead:select', function(ev, text){
                 processSearch();
             })
         });
