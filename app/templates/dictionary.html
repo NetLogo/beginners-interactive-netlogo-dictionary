@@ -132,8 +132,6 @@
     </div>
 </div>
 
-<script src="/static/js/codemirror/runmode.js"></script>
-
 <script type="text/javascript">
     "use strict";
     
@@ -145,26 +143,26 @@
         let showUtilityPrimitives  = document.getElementById("showUtilityPrimitives").checked;
         
         
-        $(".dictionary-entry").each(function(i,e){
+        $local(".dictionary-entry").each(function(i,e){
             e.style = "display: none;"
-            if(showObserverPrimitives && $(e).hasClass('observer')){
+            if(showObserverPrimitives && $local(e).hasClass('observer')){
                 e.style = "display: default;" 
             }
-            if(showTurtlePrimitives && $(e).hasClass('turtles')){
+            if(showTurtlePrimitives && $local(e).hasClass('turtles')){
                 e.style = "display: default;" 
             }
-            if(showPatchPrimitives && $(e).hasClass('patches')){
+            if(showPatchPrimitives && $local(e).hasClass('patches')){
                 e.style = "display: default;" 
             }
-            if(showLinkPrimitives && $(e).hasClass('links')){
+            if(showLinkPrimitives && $local(e).hasClass('links')){
                 e.style = "display: default;" 
             }
-            if(showUtilityPrimitives && $(e).hasClass('utilities')){
+            if(showUtilityPrimitives && $local(e).hasClass('utilities')){
                 e.style = "display: default;" 
             }
         });
         // recolor the prims after displaying them properly
-        $(".card-title code").each(function(i, e){
+        $local(".card-title code").each(function(i, e){
             CodeMirror.runMode(e.textContent, "netlogo", e);
         });    
     };
