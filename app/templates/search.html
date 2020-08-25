@@ -71,8 +71,10 @@
             titleTag.text("Results for: " + term);
 
             let matches = primitivesBloodhound.search(term, function(datums){
-                console.log(datums);
                 datums.forEach(function(e){
+                    if(e.endsWith("?")){
+                        e = e.substring(0, e.length - 1);
+                    }
                     $local('#' + e).attr("style", "display: default;");
                 });
             });
