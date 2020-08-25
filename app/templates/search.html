@@ -64,7 +64,7 @@
     window.addEventListener('primitivesLoaded', function(){
         const url = window.location.search;
         const urlParams = new URLSearchParams(url);
-        const titleTag = $("#title");
+        const titleTag = $local("#title");
         
         if (urlParams.has("term")){
             const term = urlParams.get("term");
@@ -73,11 +73,11 @@
             let matches = primitivesBloodhound.search(term, function(datums){
                 console.log(datums);
                 datums.forEach(function(e){
-                    $('#' + e).attr("style", "display: default;");
+                    $local('#' + e).attr("style", "display: default;");
                 });
             });
         } else {
-            $(".dictionary-entry").each(function(i, e){
+            $local(".dictionary-entry").each(function(i, e){
                 e.setAttribute("style", "display: default;");
             })
         }
