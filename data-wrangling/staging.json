@@ -347,7 +347,7 @@
             "see_also": [],
             "library_models": []
         },
-        "all?": {
+        "all": {
             "short_description": "Check if a reporter is true for all agents in an agentset.",
             "search_terms": [
                 "any?",
@@ -668,7 +668,7 @@
                 "Traffic Grid"
             ]
         },
-        "member?": {
+        "member": {
             "short_description": "Check if a value is within a list, or if an agent is in an agentset.",
             "search_terms": [
                 "position"
