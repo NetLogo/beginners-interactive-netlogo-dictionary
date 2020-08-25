@@ -1,6 +1,7 @@
 {
     "primitives": {
         "and": {
+            "display_name": "and",
             "short_description": "checks if both of two conditions are true",
             "search_terms": [
                 "if",
@@ -20,6 +21,7 @@
             "library_models": []
         },
         "any": {
+            "display_name": "any?",
             "short_description": "checks if there are any agents in an agentset",
             "search_terms": [
                 "all",
@@ -35,6 +37,7 @@
             "library_models": []
         },
         "breed": {
+            "display_name": "breed",
             "short_description": "defines a breed or variant of turtle",
             "search_terms": [
                 "create-<breed>"
@@ -48,6 +51,7 @@
             "library_models": []
         },
         "create-links-with": {
+            "display_name": "create-links-with",
             "short_description": "creates links with every agent in an agentset",
             "search_terms": [],
             "agents": [
@@ -60,6 +64,7 @@
             "library_models": []
         },
         "diffuse": {
+            "display_name": "diffuse",
             "short_description": "speads a patch variable around to its neighbors",
             "search_terms": [],
             "agents": [
@@ -69,6 +74,7 @@
             "library_models": []
         },
         "distance": {
+            "display_name": "distance",
             "short_description": "Find the distance from the caller to an agent.",
             "search_terms": [
                 "distancexy"
@@ -87,6 +93,7 @@
             ]
         },
         "globals": {
+            "display_name": "globals",
             "short_description": "defines variables that can be used throughout the whole model",
             "search_terms": [
                 ""
@@ -98,6 +105,7 @@
             "library_models": []
         },
         "if-else": {
+            "display_name": "if-else",
             "short_description": "execute specific code if a condition is true, otherwise, execute other code",
             "search_terms": [
                 "if",
@@ -113,6 +121,7 @@
             "library_models": []
         },
         "ifelse-value": {
+            "display_name": "ifelse-value",
             "short_description": "execute different code for a number of different conditions",
             "search_terms": [
                 "if",
@@ -128,6 +137,7 @@
             "library_models": []
         },
         "in-cone": {
+            "display_name": "in-cone",
             "short_description": "reports members of an agentset within a \"cone-of-vision\" for a turtle",
             "search_terms": [
                 "in-radius",
@@ -143,6 +153,7 @@
             "library_models": []
         },
         "in-radius": {
+            "display_name": "in-radius",
             "short_description": "reports members of an agentset within a certain distance of an agent",
             "search_terms": [
                 "in-cone",
@@ -159,6 +170,7 @@
             "library_models": []
         },
         "layout-circle": {
+            "display_name": "layout-circle",
             "short_description": "equally space turtles in a circle around the center of the world",
             "search_terms": [
                 "layout-radial",
@@ -176,6 +188,7 @@
             "library_models": []
         },
         "link-neighbors": {
+            "display_name": "link-neighbors",
             "short_description": "report all agents connected by links",
             "search_terms": [
                 ""
@@ -187,6 +200,7 @@
             "library_models": []
         },
         "links": {
+            "display_name": "links",
             "short_description": "reports the agentset of all links in the model",
             "search_terms": [
                 "links",
@@ -202,6 +216,7 @@
             "library_models": []
         },
         "n-of": {
+            "display_name": "n-of",
             "short_description": "randomly report \"n\" agents from an agentset",
             "search_terms": [
                 "up-to-n-of"
@@ -215,6 +230,7 @@
             "library_models": []
         },
         "of": {
+            "display_name": "of",
             "short_description": "report the value of an agent-owned variable from another context",
             "search_terms": [
                 ""
@@ -226,6 +242,7 @@
             "library_models": []
         },
         "or": {
+            "display_name": "or",
             "short_description": "checks if either of two conditions is true",
             "search_terms": [
                 "if",
@@ -245,6 +262,7 @@
             "library_models": []
         },
         "random": {
+            "display_name": "random",
             "short_description": "generate a random whole number within a specified range",
             "search_terms": [
                 "random-float",
@@ -260,6 +278,7 @@
             "library_models": []
         },
         "random-float": {
+            "display_name": "random-float",
             "short_description": "generate a random real (non-whole) number within a specified range",
             "search_terms": [
                 "random",
@@ -275,6 +294,7 @@
             "library_models": []
         },
         "scale-color": {
+            "display_name": "scale-color",
             "short_description": "generate a shade of a base hue (color) based on a given value",
             "search_terms": [
                 "approximate-rgb",
@@ -290,6 +310,7 @@
             "library_models": []
         },
         "setxy": {
+            "display_name": "setxy",
             "short_description": "set the position of a turtle (in terms of X and Y coordinates)",
             "search_terms": [
                 "move-to",
@@ -307,6 +328,7 @@
             "library_models": []
         },
         "sort-by": {
+            "display_name": "sort-by",
             "short_description": "sort a list based on a user-defined comparison reporter",
             "search_terms": [
                 "sort-on",
@@ -322,6 +344,7 @@
             "library_models": []
         },
         "sort-on": {
+            "display_name": "sort-on",
             "short_description": "sort an agentset into a list ordered by the value of a given reporter",
             "search_terms": [
                 "sort-by",
@@ -337,6 +360,7 @@
             "library_models": []
         },
         "tie": {
+            "display_name": "tie",
             "short_description": "make a link into a solid connection that can move turtles in the world",
             "search_terms": [
                 ""
@@ -348,6 +372,7 @@
             "library_models": []
         },
         "all": {
+            "display_name": "all?",
             "short_description": "Check if a reporter is true for all agents in an agentset.",
             "search_terms": [
                 "any?",
@@ -367,6 +392,7 @@
             ]
         },
         "ceiling": {
+            "display_name": "ceiling",
             "short_description": "Round a number up to the nearest integer.",
             "search_terms": [
                 "floor",
@@ -388,6 +414,7 @@
             ]
         },
         "count": {
+            "display_name": "count",
             "short_description": "Count the number of agents in an agentset.",
             "search_terms": [
                 "all?",
@@ -407,6 +434,7 @@
             ]
         },
         "die": {
+            "display_name": "die",
             "short_description": "Remove a turtle or link from the world.",
             "search_terms": [
                 "hatch",
@@ -427,6 +455,7 @@
             ]
         },
         "end": {
+            "display_name": "end",
             "short_description": "Conclude a procedure.",
             "search_terms": [
                 "to",
@@ -446,6 +475,7 @@
             ]
         },
         "face": {
+            "display_name": "face",
             "short_description": "Turn to face a specific agent.",
             "search_terms": [
                 "towards",
@@ -465,6 +495,7 @@
             ]
         },
         "floor": {
+            "display_name": "floor",
             "short_description": "Round a number down to the nearest integer.",
             "search_terms": [
                 "ceiling",
@@ -486,6 +517,7 @@
             ]
         },
         "hatch": {
+            "display_name": "hatch",
             "short_description": "Creates turtles from an existing turtle.",
             "search_terms": [
                 "sprout",
@@ -507,6 +539,7 @@
             ]
         },
         "if": {
+            "display_name": "if",
             "short_description": "Conditionally run a command. ",
             "search_terms": [
                 "ifelse",
@@ -526,6 +559,7 @@
             ]
         },
         "left": {
+            "display_name": "left",
             "short_description": "Turn a certain amount of degrees to the left.",
             "search_terms": [
                 "right",
@@ -545,6 +579,7 @@
             ]
         },
         "let": {
+            "display_name": "let",
             "short_description": "Create a local variable.",
             "search_terms": [
                 "turtles-own",
@@ -566,6 +601,7 @@
             ]
         },
         "max-pxcor": {
+            "display_name": "max-pxcor",
             "short_description": "Find patches' largest x-coordinate.",
             "search_terms": [
                 "max-pycor",
@@ -590,6 +626,7 @@
             ]
         },
         "max-pycor": {
+            "display_name": "max-pycor",
             "short_description": "Find patches' largest y-coordinate.",
             "search_terms": [
                 "max-pxcor",
@@ -614,6 +651,7 @@
             ]
         },
         "max-n-of": {
+            "display_name": "max-n-of",
             "short_description": "Gives a list of top values of a list.",
             "search_terms": [],
             "agents": [
@@ -629,6 +667,7 @@
             ]
         },
         "max": {
+            "display_name": "max",
             "short_description": "Report the highest value in a list.",
             "search_terms": [
                 "max-n-of",
@@ -648,6 +687,7 @@
             ]
         },
         "mean": {
+            "display_name": "mean",
             "short_description": "Find the mean of a list of values.",
             "search_terms": [
                 "mode",
@@ -669,6 +709,7 @@
             ]
         },
         "member": {
+            "display_name": "member?",
             "short_description": "Check if a value is within a list, or if an agent is in an agentset.",
             "search_terms": [
                 "position"
@@ -686,6 +727,7 @@
             ]
         },
         "min-pxcor": {
+            "display_name": "min-pxcor",
             "short_description": "Find patches' smallest x-coordinate.",
             "search_terms": [
                 "max-pxcor",
@@ -710,6 +752,7 @@
             ]
         },
         "min-pycor": {
+            "display_name": "min-pycor",
             "short_description": "Find patches' smallest y-coordinate.",
             "search_terms": [
                 "max-pxcor",
@@ -734,6 +777,7 @@
             ]
         },
         "mod": {
+            "display_name": "mod",
             "short_description": "Perform the modulo operation, returning the remainder of two numbers.",
             "search_terms": [
                 "remainder",
@@ -755,6 +799,7 @@
             ]
         },
         "myself": {
+            "display_name": "myself",
             "short_description": "Helps with interactions between an agent and the caller.",
             "search_terms": [
                 "self",
@@ -776,6 +821,7 @@
             ]
         },
         "nobody": {
+            "display_name": "nobody",
             "short_description": "Indicates that an agent does not exist.",
             "search_terms": [
                 "all?",
@@ -797,6 +843,7 @@
             ]
         },
         "one-of": {
+            "display_name": "one-of",
             "short_description": "Randomly select one agent out of an agentset.",
             "search_terms": [
                 "max-n-of",
@@ -818,6 +865,7 @@
             ]
         },
         "patch": {
+            "display_name": "patch",
             "short_description": "Address a specific patch.",
             "search_terms": [
                 "patches",
@@ -839,6 +887,7 @@
             ]
         },
         "patches-own": {
+            "display_name": "patches-own",
             "short_description": "Declare a variable that belongs to patches.",
             "search_terms": [
                 "patch",
@@ -860,6 +909,7 @@
             ]
         },
         "patches": {
+            "display_name": "patches",
             "short_description": "Address all patches of a model.",
             "search_terms": [
                 "patch",
@@ -881,6 +931,7 @@
             ]
         },
         "pen-down": {
+            "display_name": "pen-down",
             "short_description": "Starts tracing the movement of the turtle.",
             "search_terms": [
                 "pen-up",
@@ -904,6 +955,7 @@
             ]
         },
         "pen-up": {
+            "display_name": "pen-up",
             "short_description": "Stops tracing a turtle's movement.",
             "search_terms": [
                 "pen-down",
@@ -927,6 +979,7 @@
             ]
         },
         "pen-erase": {
+            "display_name": "pen-erase",
             "short_description": "Erases the paths left by turtles.",
             "search_terms": [
                 "pen-down",
@@ -946,6 +999,7 @@
             "library_models": []
         },
         "random-normal": {
+            "display_name": "random-normal",
             "short_description": "Randomly produces a number according to a normal distribution.",
             "search_terms": [
                 "random",
@@ -965,6 +1019,7 @@
             ]
         },
         "reset-ticks": {
+            "display_name": "reset-ticks",
             "short_description": "Sets the tick counter to 0.",
             "search_terms": [
                 "tick"
@@ -982,6 +1037,7 @@
             ]
         },
         "right": {
+            "display_name": "right",
             "short_description": "Turn a certain amount of degrees to the right.",
             "search_terms": [
                 "left",
@@ -1003,6 +1059,7 @@
             ]
         },
         "set": {
+            "display_name": "set",
             "short_description": "Set the value of a variable.",
             "search_terms": [
                 "let",
@@ -1026,6 +1083,7 @@
             ]
         },
         "sprout": {
+            "display_name": "sprout",
             "short_description": "Create new turtles from a patch.",
             "search_terms": [
                 "hatch",
@@ -1047,6 +1105,7 @@
             ]
         },
         "tick": {
+            "display_name": "tick",
             "short_description": "Advance the tick counter by 1.",
             "search_terms": [
                 "reset-ticks"
@@ -1064,6 +1123,7 @@
             ]
         },
         "to-report": {
+            "display_name": "to-report",
             "short_description": "Begin a procedure to create a custom reporter.",
             "search_terms": [
                 "to",
@@ -1083,6 +1143,7 @@
             ]
         },
         "towards": {
+            "display_name": "towards",
             "short_description": "Reports the angle of the caller towards an agent.",
             "search_terms": [
                 "face",
@@ -1104,6 +1165,7 @@
             ]
         },
         "turtles-here": {
+            "display_name": "turtles-here",
             "short_description": "Reports the agentset of all the turtles on a caller's patch.",
             "search_terms": [
                 "count"
@@ -1122,6 +1184,7 @@
             ]
         },
         "turtles-own": {
+            "display_name": "turtles-own",
             "short_description": "Declare a variable that belongs to turtles.",
             "search_terms": [
                 "patches-own",
@@ -1145,6 +1208,7 @@
             ]
         },
         "while": {
+            "display_name": "while",
             "short_description": "Begins a loop that runs as long as the reporter returns true. ",
             "search_terms": [
                 "if",
@@ -1164,6 +1228,7 @@
             ]
         },
         "ask": {
+            "display_name": "ask",
             "short_description": "a reporter that is used to make the agents in the agentset do something.",
             "search_terms": [
                 ""
@@ -1175,6 +1240,7 @@
             "library_models": []
         },
         "clear-all": {
+            "display_name": "clear-all",
             "short_description": "clears all the drawings, turtles, plots, etc., leaving a blank slate.",
             "search_terms": [
                 "clear-patches",
@@ -1190,6 +1256,7 @@
             "library_models": []
         },
         "clear-patches": {
+            "display_name": "clear-patches",
             "short_description": "clears the patches by resetting all patch variables to their default initial values",
             "search_terms": [
                 "clear-all"
@@ -1203,6 +1270,7 @@
             "library_models": []
         },
         "clear-turtles": {
+            "display_name": "clear-turtles",
             "short_description": "removes all the turtles as well as resets the numbering of turtles",
             "search_terms": [
                 "die",
@@ -1218,6 +1286,7 @@
             "library_models": []
         },
         "color": {
+            "display_name": "color",
             "short_description": "built-in turtle characteristic that changes the color of the turtle",
             "search_terms": [
                 "pcolor"
@@ -1232,6 +1301,7 @@
             "library_models": []
         },
         "create-turtles": {
+            "display_name": "create-turtles",
             "short_description": "creates turtles with random colors and headings in the default shape of a turtle",
             "search_terms": [
                 "hatch",
@@ -1247,6 +1317,7 @@
             "library_models": []
         },
         "facexy": {
+            "display_name": "facexy",
             "short_description": "sets the turtle\u2019s heading towards the patch (x,y)",
             "search_terms": [
                 "face",
@@ -1262,6 +1333,7 @@
             "library_models": []
         },
         "fd": {
+            "display_name": "fd",
             "short_description": "allows turtles to move in any number of units that the programmer desires",
             "search_terms": [
                 "right",
@@ -1277,6 +1349,7 @@
             "library_models": []
         },
         "import-pcolors": {
+            "display_name": "import-pcolors",
             "short_description": "allows the user to import an image in NetLogo as the colors of the patches",
             "search_terms": [
                 "import-drawing"
@@ -1290,6 +1363,7 @@
             "library_models": []
         },
         "move-to": {
+            "display_name": "move-to",
             "short_description": "allows a turtle to set its x and y coordinates to be the same as another turtle or patch",
             "search_terms": [
                 "setxy",
@@ -1305,6 +1379,7 @@
             "library_models": []
         },
         "neighbors": {
+            "display_name": "neighbors",
             "short_description": "reports an agentset containing eight neighboring patches",
             "search_terms": [
                 "neighbors4",
@@ -1321,6 +1396,7 @@
             "library_models": []
         },
         "neighbors4": {
+            "display_name": "neighbors4",
             "short_description": "reports an agentset containing four neighboring patches",
             "search_terms": [
                 "neighbors",
@@ -1337,6 +1413,7 @@
             "library_models": []
         },
         "other": {
+            "display_name": "other",
             "short_description": "reports an agentset which is the same as the input agentset but omits the agent who is asking for the report",
             "search_terms": [
                 "all?",
@@ -1356,6 +1433,7 @@
             "library_models": []
         },
         "patch-ahead": {
+            "display_name": "patch-ahead",
             "short_description": "reports the single patch that is the given distance \u201cahead\u201d of this turtle",
             "search_terms": [
                 "neighbors",
@@ -1371,6 +1449,7 @@
             "library_models": []
         },
         "pcolor": {
+            "display_name": "pcolor",
             "short_description": "built-in patch variable that holds the color of the patch",
             "search_terms": [
                 "color"
@@ -1384,6 +1463,7 @@
             "library_models": []
         },
         "repeat": {
+            "display_name": "repeat",
             "short_description": "allows you to execute any set of commands n amount of times",
             "search_terms": [
                 "pen-down",
@@ -1399,6 +1479,7 @@
             "library_models": []
         },
         "round": {
+            "display_name": "round",
             "short_description": "reports the integer to the nearest whole number.",
             "search_terms": [
                 ""
@@ -1410,6 +1491,7 @@
             "library_models": []
         },
         "semicolon": {
+            "display_name": "semicolon",
             "short_description": "used for making helpful comments or notes on a line of code",
             "search_terms": [
                 ""
@@ -1421,6 +1503,7 @@
             "library_models": []
         },
         "shape": {
+            "display_name": "shape",
             "short_description": "represents the shape of each agent",
             "search_terms": [
                 "set default shape",
@@ -1437,6 +1520,7 @@
             "library_models": []
         },
         "to": {
+            "display_name": "to",
             "short_description": "used to begin a command procedure",
             "search_terms": [
                 "to-report"
@@ -1451,6 +1535,7 @@
             "library_models": []
         },
         "turtle": {
+            "display_name": "turtle",
             "short_description": "an agent that is used to complete actions in NetLogo",
             "search_terms": [
                 "shape",

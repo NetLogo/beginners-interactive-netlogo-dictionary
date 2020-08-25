@@ -27,37 +27,43 @@ def dictionary():
 @app.route('/primitive/<primitive_name>', methods = ['GET'])
 def primitive(primitive_name):
     
-    pn = escape(primitive_name)
+    primitive_name = escape(primitive_name)
     
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    md = os.path.join(BASE_DIR, 'static/md/' + pn +'.md')
-    nlcode = os.path.join(BASE_DIR, 'static/nlcode/' + pn +'.nlcode')
+    dfile = os.path.join(BASE_DIR, 'static/primitives.json')
+    md = os.path.join(BASE_DIR, 'static/md/' + primitive_name +'.md')
+    nlcode = os.path.join(BASE_DIR, 'static/nlcode/' + primitive_name +'.nlcode')
     basemdl = os.path.join(BASE_DIR, 'static/nlweb/basenlweb.html')
-    mdl = os.path.join(BASE_DIR, 'static/nlogo/' + pn +'.nlogo')
+    mdl = os.path.join(BASE_DIR, 'static/nlogo/' + primitive_name +'.nlogo')
     
     if os.path.exists(md):
-        with open(md, 'r') as d: 
-            description_rendered = markdown.markdown(d.read(), extensions=["fenced_code"])
-            if os.path.exists(mdl):
-                with open(mdl, 'r') as m:
-                    full_model = m.read().replace('`', '\`')
-                    code = full_model.split("\n@#$#@#$#@")[0] 
-                    ## that string of characters separates the sections of a .nlogo file, 
-                    ## the first of which is the code itself.
-                    
-                    with open(basemdl, 'r') as bm:
-                        return render_template('primitive.html', 
-                                                primitive = pn, 
-                                                description = description_rendered, 
-                                                code = code, 
-                                                basemodel = bm.read(), 
-                                                model = full_model,
-                                                title = pn + " primitive")
-            else:
-                return render_template('primitive_no_model.html',
-                                        primitive = pn, 
-                                        body=description_rendered, 
-                                        title= pn + " primitive")
+        with open(dfile, 'r') as df:
+            primitives = json.load(df)["primitives"]
+            display_name = primitives[primitive_name]["display_name"]
+            
+            with open(md, 'r') as d: 
+                description_rendered = markdown.markdown(d.read(), extensions=["fenced_code"])
+                if os.path.exists(mdl):
+                    with open(mdl, 'r') as m:
+                        full_model = m.read().replace('`', '\`')
+                        code = full_model.split("\n@#$#@#$#@")[0] 
+                        ## that string of characters separates the sections of a .nlogo file, 
+                        ## the first of which is the code itself.
+                        
+                        with open(basemdl, 'r') as bm:
+                            return render_template('primitive.html', 
+                                                    primitive = primitive_name, 
+                                                    display_name = display_name,
+                                                    description = description_rendered, 
+                                                    code = code, 
+                                                    basemodel = bm.read(), 
+                                                    model = full_model,
+                                                    title = display_name + " primitive")
+                else:
+                    return render_template('primitive_no_model.html',
+                                            primitive = display_name, 
+                                            body=description_rendered, 
+                                            title= display_name + " primitive")
     else:
         ## MAKE THIS RENDER A 404 File!!!
         abort(404) ## update the error message maybe?

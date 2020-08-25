@@ -83,7 +83,7 @@
                                     {%if 'utilities' in dictionary.primitives[p].agents%} utilities {%endif%}
                                     ">
                             <div class="card-body">
-                                <h5 class="card-title"><a href="/primitive/{{p}}" class="card-link"><code>{{p}}</code></a></h5>
+                                <h5 class="card-title"><a href="/primitive/{{p}}" class="card-link"><code>{{dictionary.primitives[p]['display_name']}}</code></a></h5>
                                 <p>  
                                     <small>
                                         {%if 'observer' in dictionary.primitives[p].agents%}

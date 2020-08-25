@@ -29,7 +29,10 @@ for page in pagesToPull:
 
     reader = csv.reader(csvfile, delimiter = ",", quotechar='"')
     for row in reader:
-        name = row[0]
+        display_name = row[0]
+        name = display_name
+        if name.endswith("?"):
+            name = name[:-1]
         
         short_description = row[1]
         
@@ -59,6 +62,7 @@ for page in pagesToPull:
 
 
         primitives[name] = {
+            "display_name" : display_name,
             "short_description" : short_description,
             "search_terms" : search_terms,
             "agents" : agents, 
