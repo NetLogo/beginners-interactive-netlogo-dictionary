@@ -3,33 +3,33 @@ turtles-own [ knowledge ]
 to setup
   clear-all
   ask patches [ set pcolor green ]
-  create-turtles 5 [
+  create-turtles 8 [
     set shape "person"
     set color red
-    set knowledge random 10
-    move-to one-of patches ]
+    set knowledge random 10 ]
+  layout-circle turtles 4
   reset-ticks
 end
 
-to go
+to speaker-give-knowledge
+  ask turtles [ set color red ]
+  let speaker one-of turtles
+  ask speaker [
+    set color blue ]
   ask turtles [
-    right random 90 left random 90 forward 1
-    if any? other turtles-here [
-      let my-friend one-of turtles-here
-      ; to simplify calculations, we are setting a variable called 'new-knowledge' to be the sum
-      ; of both people's knowledge
-      let new-knowledge knowledge + [knowledge] of my-friend
+      let new-knowledge knowledge + [knowledge] of speaker
       set knowledge new-knowledge
-      ask my-friend [ set knowledge new-knowledge ] ]
-  set label knowledge]
+    set label knowledge ]
   tick
 end
+
+; take out movement, maybe use links, rumor spread
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
-10
-577
-378
+275
+20
+642
+388
 -1
 -1
 32.64
@@ -53,10 +53,10 @@ ticks
 30.0
 
 BUTTON
-68
-52
-134
-85
+95
+57
+161
+90
 NIL
 setup
 NIL
@@ -70,13 +70,13 @@ NIL
 1
 
 BUTTON
-73
-117
-136
-150
+42
+114
+227
+147
 NIL
-go
-T
+speaker-give-knowledge
+NIL
 1
 T
 OBSERVER

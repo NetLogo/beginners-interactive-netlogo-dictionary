@@ -7,5 +7,5 @@ show count other turtles-here
 ```
 See how one number is excluded from the agentset which then results in the final count to be “9”. 
 
-`other` is often useful when we want our agents (e.g., turtles) interact with other agents. For example, if we write `ask turtles [if any? turtles-here [set color red]]` would make all the turtles red because turtles-here reports the original turtle as well. There are always at least 1 turtle when we use turtles-here. However, if we write “ask turtles [if any? other turtles-here [set color red]]”, only the turtles who have another turtle on the same patch would turn red.
+`other` is often useful when we want our agents (e.g., turtles) interact with other agents. For example, if we write `ask turtles [if any? turtles-here [set color red]]` would make all the turtles red because turtles-here reports the original turtle as well. There are always at least 1 turtle when we use turtles-here. However, if we write `ask turtles [if any? other turtles-here [set color red]]`, only the turtles who have another turtle on the same patch would turn red.
 

@@ -93,7 +93,7 @@ SLIDER
 37
 99
 210
-132
+133
 stop-distance
 stop-distance
 0
@@ -103,6 +103,16 @@ stop-distance
 1
 NIL
 HORIZONTAL
+
+TEXTBOX
+38
+158
+315
+201
+implement slider\nangled road or angled patch-ahead\n
+11
+0.0
+1
 
 @#$#@#$#@
 ## WHAT IS IT?

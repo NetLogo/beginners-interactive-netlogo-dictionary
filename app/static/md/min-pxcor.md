@@ -1,0 +1,5 @@
+`Max-pxcor` and `max-pycor` return patches' maximum x-coordinate and maximum y-coordinate, respectively. The maximum x and y coordinates of patches also determine the size of the model, and must always be greater than or equal to zero. `Max-pxcor` and `max-pycor` cannot be changed within the code; the size of the world can only be changed by editing the view. 
+
+Similarly, `min-pxcor` and `min-pycor` return patches' minimum x-coordinate and minimum y-coordinate respectively. The minimum x and y coordinates must be less than or equal to zero. For example, `ask patches with [pxcor = min-pxcor or pycor = min-pycor] [ set pcolor blue ]` would set the patches along the bottom and left side of the model to blue. 
+
+Note: like how turtles use `color` and patches use `pcolor`, it is important to distinguish between `xcor` and `ycor`, which are only used by turtles, and `pxcor` and `pycor`, which are only used by patches. 

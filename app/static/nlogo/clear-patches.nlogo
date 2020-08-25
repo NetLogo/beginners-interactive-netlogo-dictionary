@@ -88,6 +88,16 @@ NIL
 NIL
 1
 
+TEXTBOX
+21
+197
+200
+434
+Click \"setup\" a few times to begin. Notice how if you keep clicking \"setup\", more cows will begin to pop up. \n\nNow click \"clear-turtles\" and all of the cows will be gone!\n\nNow click clear patches and notice how all of the patches will be gone!
+14
+0.0
+1
+
 @#$#@#$#@
 ## WHAT IS IT?
 
