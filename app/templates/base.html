@@ -126,7 +126,7 @@
 
         $local.getJSON("/static/primitives.json", function(obj){
             primitives = obj["primitives"];
-            primitiveNames = Object.entries(obj["primitives"]).map(function(e){return e[0];});
+            primitiveNames = Object.entries(obj["primitives"]).map(function(e){return e[1]["display_name"];});
             // Bloodhound is the "Search engine" built into typeahead
             primitivesBloodhound = new Bloodhound({
                 // split tokens by non-word characters so that you can, say, search 
