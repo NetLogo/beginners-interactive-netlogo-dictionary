@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% import 'common_macros.html' as common %}
 {% block head %}
 {{super()}}
 
@@ -7,11 +7,6 @@
 <link rel="stylesheet" href="/static/css/netlogo.css">
 
 <link rel="stylesheet" href="/static/css/primitive.css">
-
-<script src="/static/js/codemirror.js"></script>
-<script src="/static/js/codemirror/simple.js"></script>
-
-<script src="/static/js/netlogo.js"></script>
 
 
 
@@ -26,10 +21,13 @@
     {{ body|safe }}
 </div>
 
-<script src="/static/js/codemirror/runmode.js"></script>
+<div class="container" id="whatsnext">
+    <h3>What's next?</h3>
+    {{common.related_primitives(see_also)}}
+</div>
 
 <script type="text/javascript">
-    $("#description code").each(function(i, e){
+    $local("#description code").each(function(i, e){
         CodeMirror.runMode(e.textContent, "netlogo", e);
     });
 </script>

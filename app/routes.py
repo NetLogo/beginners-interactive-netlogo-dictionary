@@ -39,7 +39,11 @@ def primitive(primitive_name):
     if os.path.exists(md):
         with open(dfile, 'r') as df:
             primitives = json.load(df)["primitives"]
+            
             display_name = primitives[primitive_name]["display_name"] if primitive_name in primitives else primitive_name
+            
+            see_also_names = primitives[primitive_name]["see_also"]
+            see_also = [primitives[name] for name in see_also_names if name in primitives]
             
             with open(md, 'r') as d: 
                 description_rendered = markdown.markdown(d.read(), extensions=["fenced_code"])
@@ -58,12 +62,14 @@ def primitive(primitive_name):
                                                     code = code, 
                                                     basemodel = bm.read(), 
                                                     model = full_model,
-                                                    title = display_name + " primitive")
+                                                    title = display_name + " primitive",
+                                                    see_also = see_also)
                 else:
                     return render_template('primitive_no_model.html',
                                             primitive = display_name, 
                                             body=description_rendered, 
-                                            title= display_name + " primitive")
+                                            title= display_name + " primitive",
+                                            see_also = see_also)
     else:
         ## MAKE THIS RENDER A 404 File!!!
         abort(404) ## update the error message maybe?

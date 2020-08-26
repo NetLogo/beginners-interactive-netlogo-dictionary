@@ -62,6 +62,7 @@ for page in pagesToPull:
 
 
         primitives[name] = {
+            "identity" : name,
             "display_name" : display_name,
             "short_description" : short_description,
             "search_terms" : search_terms,
