@@ -46,6 +46,15 @@
     </div>
 {% endmacro %}
 
+{% macro related_library_models(list_of_strings = []) %}
+    {%if list_of_strings != [] %} 
+        <h5>Related Models from the Models Library:</h5>
+        {% for model_name in list_of_strings %}
+            <p>{{model_name}}</p>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
 {% macro related_primitives(see_also) %}
     {%if see_also != [] %}
         <h5>Related Primitives:</h5>

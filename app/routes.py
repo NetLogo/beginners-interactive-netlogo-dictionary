@@ -31,6 +31,7 @@ def primitive(primitive_name):
     
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     dfile = os.path.join(BASE_DIR, 'static/primitives.json')
+    modelslistfile = os.path.join(BASE_DIR, 'static/modelslist.txt')
     md = os.path.join(BASE_DIR, 'static/md/' + primitive_name +'.md')
     nlcode = os.path.join(BASE_DIR, 'static/nlcode/' + primitive_name +'.nlcode')
     basemdl = os.path.join(BASE_DIR, 'static/nlweb/basenlweb.html')
@@ -39,11 +40,19 @@ def primitive(primitive_name):
     if os.path.exists(md):
         with open(dfile, 'r') as df:
             primitives = json.load(df)["primitives"]
+            if primitive_name not in primitives:
+                abort(404)
+
+
+            this_primitive = primitives[primitive_name]
             
-            display_name = primitives[primitive_name]["display_name"] if primitive_name in primitives else primitive_name
+            display_name = this_primitive["display_name"] if "display_name" in this_primitive else primitive_name
             
-            see_also_names = primitives[primitive_name]["see_also"]
-            see_also = [primitives[name] for name in see_also_names if name in primitives]
+            see_also_names = this_primitive["see_also"] if "see_also" in this_primitive else []
+            ## get full object entries for all primitives in the "see_also" list that we have entries for. 
+            see_also = [primitives[name] for name in see_also_names if name in primitives] 
+            
+            library_models = this_primitive["library_models"] if "library_models" in this_primitive else []
             
             with open(md, 'r') as d: 
                 description_rendered = markdown.markdown(d.read(), extensions=["fenced_code"])
@@ -63,13 +72,15 @@ def primitive(primitive_name):
                                                     basemodel = bm.read(), 
                                                     model = full_model,
                                                     title = display_name + " primitive",
-                                                    see_also = see_also)
+                                                    see_also = see_also,
+                                                    library_models = library_models)
                 else:
                     return render_template('primitive_no_model.html',
                                             primitive = display_name, 
                                             body=description_rendered, 
                                             title= display_name + " primitive",
-                                            see_also = see_also)
+                                            see_also = see_also,
+                                            library_models = library_models)
     else:
         ## MAKE THIS RENDER A 404 File!!!
         abort(404) ## update the error message maybe?
