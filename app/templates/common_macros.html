@@ -52,23 +52,14 @@
 {% macro related_library_models(list_of_strings = [], display_name = "") %}
     {%if list_of_strings != [] %} 
         <div class="clearfix">&nbsp;</div>
-        <div id="mlmodels">
-        <h4>Published NetLogo models that use the <code>{{display_name}}</code> primitive</h4>
-
+        <div id="description">
+            <h5 id="mlmodels" class="mb-2 cm-s-netlogo-default">Published NetLogo models that use the <code>{{display_name}}</code> primitive</h5>
+        </div>
+    
         {% for model_name in list_of_strings %}
             <a href="https://ccl.northwestern.edu/netlogo/models/{{model_name.replace(' ', '')}}" target="_blank" class="lead">{{model_name}}</a><br>
         {% endfor %}
-            </div>
-
-        <script type="text/javascript">
-            $(document).load(function(){
-                console.log('boo');
-                $local("#mlmodels code").each(function(i, e){
-                    CodeMirror.runMode(e.textContent, "netlogo", e);
-                });    
-            });
             
-        </script>
 
         <div class="clearfix">&nbsp;</div>
     {% endif %}
@@ -78,8 +69,8 @@
     {%if see_also != [] %}
         <div class="clearfix">&nbsp;</div>
 
-        <h4>Related primitives:</h4>
-        <p>The following primitives are related to </p>
+        <h5>Related primitives:</h5>
+        <p>Start with geting familiar with the following related primitives:</p>
         
         {{ list_of_primitives(see_also) }}
 
@@ -91,7 +82,7 @@
 
     <div class="clearfix">&nbsp;</div>
 
-    <h4>Learn another primitive</h4>
+    <h5>Learn another primitive</h5>
     {{random_primitives(num=4)}}
     
     
