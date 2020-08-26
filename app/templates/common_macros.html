@@ -52,3 +52,12 @@
         {{ list_of_primitives(see_also) }}
     {% endif %}
 {% endmacro %}
+
+{% macro syntax_highlight(jquery_string) %}
+    <script src="/static/js/codemirror/runmode.js"></script>
+    <script type="text/javascript">
+        $local("{{jquery_string}}").each(function(i, e){
+            CodeMirror.runMode(e.textContent, "netlogo", e);
+        });
+    </script>
+{% endmacro %}

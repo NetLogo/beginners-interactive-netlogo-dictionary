@@ -199,13 +199,6 @@
     });
 </script>
 
-<script src="/static/js/codemirror/runmode.js"></script>
-
-<script type="text/javascript">
-    $local("#description code").each(function(i, e){
-        CodeMirror.runMode(e.textContent, "netlogo", e);
-    });
-
-</script>
+{{common.syntax_highlight(jquery_string="#description code")}}
 
 {% endblock %}
