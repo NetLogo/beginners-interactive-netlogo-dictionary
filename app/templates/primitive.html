@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import 'common_macros.html' as common %}
 
 {% block head %}
 {{super()}}
@@ -75,9 +76,9 @@
 <div class="clearfix">&nbsp;</div>
 <div class="clearfix">&nbsp;</div>
 
-<h3 class="mt-4 col-md-12 mb-4"> What's next? </h3>
-<div class="container">
-    <p><em>Here, we will place similar primitives, other example models that include this primitive, and the library models that include this primitive.</em></p>
+<div class="container" id="whatsnext">
+<h3>What's next?</h3>
+{{common.related_primitives(see_also)}}
 </div>
 
 <div class="clearfix">&nbsp;</div>
