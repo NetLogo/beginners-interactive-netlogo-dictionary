@@ -109,64 +109,7 @@
         </div>
     </div>
     
-    <script type="text/javascript">
-        "use strict";
-
-        var primitivesLoaded = new Event('primitivesLoaded');
-        var primitives;
-        var primitiveNames;
-        var primitivesBloodhound;
-
-        var myTokenizer = function(datum){
-            if(primitives.hasOwnProperty(datum) && primitives[datum].hasOwnProperty("search_terms")){
-                return Bloodhound.tokenizers.nonword(datum).concat(primitives[datum]["search_terms"]);
-            }
-            return Bloodhound.tokenizers.nonword(datum);
-        }
-
-        $local.getJSON("/static/primitives.json", function(obj){
-            primitives = obj["primitives"];
-            primitiveNames = Object.entries(obj["primitives"]).map(function(e){return e[1]["display_name"];});
-            // Bloodhound is the "Search engine" built into typeahead
-            primitivesBloodhound = new Bloodhound({
-                // split tokens by non-word characters so that you can, say, search 
-                // for `create-links-with` by typing `links`
-                datumTokenizer: myTokenizer, 
-                queryTokenizer: Bloodhound.tokenizers.nonword,
-                local: primitiveNames
-            });
-            window.dispatchEvent(primitivesLoaded);
-        });
-
-        var processSearch = function(){
-            let text = $local("#primitive-search").val();
-            if (primitiveNames.includes(text)){
-                window.location.assign("/primitive/" + text);
-            } else if (text != ""){
-                window.location.assign("/search?term=" + encodeURI(text));
-            } else {
-                window.location.assign("/search?"); 
-            }
-        }
-
-        window.addEventListener('primitivesLoaded', function(){
-            $local('#primitive-search').typeahead({
-                hint: false,
-                highlight: true,
-                minLength: 1
-            },
-            {
-                name: 'primitives',
-                source: primitivesBloodhound
-            });
-            
-            // bind the "select an item" event to run the search
-            $local('#primitive-search').bind('typeahead:select', function(ev, text){
-                processSearch();
-            })
-        });
-
-    </script>
+    
 
 </nav>
 
@@ -206,6 +149,64 @@
 
 {% block scripts %}
     <!-- {{super()}} -->
+    <script type="text/javascript">
+        "use strict";
+
+        var primitivesLoaded = new Event('primitivesLoaded');
+        var primitives;
+        var primitiveNames;
+        var primitivesBloodhound;
+
+        var myTokenizer = function(datum){
+            if(primitives.hasOwnProperty(datum) && primitives[datum].hasOwnProperty("search_terms")){
+                return Bloodhound.tokenizers.nonword(datum).concat(primitives[datum]["search_terms"]);
+            }
+            return Bloodhound.tokenizers.nonword(datum);
+        }
+
+        $local.getJSON("/static/primitives.json", function(obj){
+            primitives = obj["primitives"];
+            primitiveNames = Object.entries(obj["primitives"]).map(function(e){return e[1]["display_name"];});
+            // Bloodhound is the "Search engine" built into typeahead
+            primitivesBloodhound = new Bloodhound({
+                // split tokens by non-word characters so that you can, say, search 
+                // for `create-links-with` by typing `links`
+                datumTokenizer: myTokenizer, 
+                queryTokenizer: Bloodhound.tokenizers.nonword,
+                local: primitiveNames
+            });
+            console.log("dispatched_event");
+            window.dispatchEvent(primitivesLoaded);
+        });
+
+        var processSearch = function(){
+            let text = $local("#primitive-search").val();
+            if (primitiveNames.includes(text)){
+                window.location.assign("/primitive/" + text);
+            } else if (text != ""){
+                window.location.assign("/search?term=" + encodeURI(text));
+            } else {
+                window.location.assign("/search?"); 
+            }
+        }
+
+        window.addEventListener('primitivesLoaded', function(){
+            $local('#primitive-search').typeahead({
+                hint: false,
+                highlight: true,
+                minLength: 1
+            },
+            {
+                name: 'primitives',
+                source: primitivesBloodhound
+            });
+            
+            // bind the "select an item" event to run the search
+            $local('#primitive-search').bind('typeahead:select', function(ev, text){
+                processSearch();
+            })
+        });
+    </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 {% endblock %}

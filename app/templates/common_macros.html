@@ -1,16 +1,17 @@
+<!-- Reusable components  -->
+
 {% macro random_primitives(num=5) %}
-    <div id="primitives-card-deck" class="card-deck row no-gutters d-block d-lg-flex cm-s-netlogo-default"></div>
+    <div id="random-primitive-deck" class="card-deck row no-gutters d-block d-lg-flex cm-s-netlogo-default"></div>
     
     <script type="text/javascript">
         "use strict";
-
         window.addEventListener('primitivesLoaded', function(){
             let entries = Object.entries(primitives);
             let shuffledEntries = entries
                 .map((a) => ({sort: Math.random(), value: a}))
                 .sort((a,b) => a.sort - b.sort)
                 .map((a) => a.value)
-            let primitives_card_deck = $local("#primitives-card-deck");
+            let primitives_card_deck = $local("#random-primitive-deck");
     
             for (let i = 0; i < Math.min({{num}}, shuffledEntries.length); i++){
                 let primitive_name = shuffledEntries[i][0];
@@ -28,7 +29,7 @@
             $local(".card-title code").each(function(i, e){
                 CodeMirror.runMode(e.textContent, "netlogo", e);
             });
-        })
+        });
     </script>
 {% endmacro %}
 
@@ -46,21 +47,33 @@
     </div>
 {% endmacro %}
 
+<!-- What's next sections -->
+
 {% macro related_library_models(list_of_strings = []) %}
     {%if list_of_strings != [] %} 
-        <h5>Related Models from the Models Library:</h5>
+        <h5>Related Models from the <a href="/article/what-is-the-models-library">Models Library:</a></h5>
         {% for model_name in list_of_strings %}
-            <p>{{model_name}}</p>
+            <code>{{model_name}}.nlogo</code><br>
         {% endfor %}
+        <div class="clearfix">&nbsp;</div>
     {% endif %}
 {% endmacro %}
 
-{% macro related_primitives(see_also) %}
+{% macro related_primitives(see_also = []) %}
     {%if see_also != [] %}
         <h5>Related Primitives:</h5>
         {{ list_of_primitives(see_also) }}
+        <div class="clearfix">&nbsp;</div>
     {% endif %}
 {% endmacro %}
+
+{% macro explore_another_primitive() %}
+    <h5>Explore Another Primitive:</h5>
+    {{random_primitives(num=4)}}
+    <div class="clearfix">&nbsp;</div>
+{% endmacro %}
+
+<!-- Utilities -->
 
 {% macro syntax_highlight(jquery_string) %}
     <script src="/static/js/codemirror/runmode.js"></script>
