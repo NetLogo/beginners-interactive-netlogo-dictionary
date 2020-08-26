@@ -16,7 +16,7 @@
                     {%if 'utilities' in dictionary.primitives[p].agents%} utilities {%endif%}
                     ">
             <div class="card-body">
-                <h5 class="card-title"><a href="/primitive/{{p}}" class="card-link"><code>{{dictionary.primitives[p]['display_name']}}</code></a></h5>
+                <h5 class="card-title"><a href="/primitive/{{p}}" class="card-link"><code class="font-weight-bold">{{dictionary.primitives[p]['display_name']}}</code></a></h5>
                 <p>  
                     <small>
                         {%if 'observer' in dictionary.primitives[p].agents%}
@@ -51,7 +51,7 @@
                     
                     </small>
                 </p>
-                <p class="card-text">{{dictionary.primitives[p].short_description}}</p>
+                <p class="card-text lead">{{dictionary.primitives[p].short_description}}</p>
                 <span style="float: right;"><a href="/primitive/{{p}}" class="btn btn-primary ml-md-auto">Read more</a></span>
             </div>
         </div>

@@ -20,7 +20,7 @@
                 }
                 let card    = $local('<div class="card mb-2 "></div>').appendTo(primitives_card_deck);
                 let body    = $local('<div class="card-body"></div>').appendTo(card);
-                    $local('<h5 class="card-title"><a id="card-title-a"  href="/primitive/' + primitive_name + '"><code>' + primitive_name + '</code></a></h5>').appendTo(body);
+                    $local('<h5 class="card-title"><a id="card-title-a"  href="/primitive/' + primitive_name + '"><code class="font-weight-bold">' + primitive_name + '</code></a></h5>').appendTo(body);
                 $local('<p class="card-text">' + primitive_object["short_description"] + '</p>').appendTo(body);
                 $local('<a href="/primitive/' + primitive_name + '" class="btn btn-primary align-baseline m-2 stretched-link">Read more</a>').appendTo(card);
             }
