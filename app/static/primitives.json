@@ -474,7 +474,9 @@
             ],
             "see_also": [
                 "hatch",
-                "sprout"
+                "sprout",
+                "create-turtles",
+                "nobody"
             ],
             "library_models": [
                 "Wolf Sheep Predation",

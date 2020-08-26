@@ -36,7 +36,7 @@
 {% macro list_of_primitives(list_of_primitives_objects = []) %}
     <div class="card-deck row no-gutters d-block d-lg-flex cm-s-netlogo-default">
         {% for primitive in list_of_primitives_objects %}
-            <div class="card mb-2 ">
+            <div class="card mb-2">
                 <div class="card-body">
                     <h5 class="card-title"><a id="card-title-a"
                             href="/primitive/{{primitive['identity']}}"><code><span class="cm-reporter">{{primitive['display_name']}}</span></code></a></h5>
