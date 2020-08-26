@@ -52,9 +52,7 @@
 {% macro related_library_models(list_of_strings = [], display_name = "") %}
     {%if list_of_strings != [] %} 
         <div class="clearfix">&nbsp;</div>
-        <div id="description">
-            <h5 id="mlmodels" class="mb-2 cm-s-netlogo-default">Published NetLogo models that use the <code>{{display_name}}</code> primitive</h5>
-        </div>
+        <h5 id="mlmodels" class="mb-2 cm-s-netlogo-default">Published NetLogo models that use the <code>{{display_name}}</code> primitive</h5>
     
         {% for model_name in list_of_strings %}
             <a href="https://ccl.northwestern.edu/netlogo/models/{{model_name.replace(' ', '')}}" target="_blank" class="lead">{{model_name}}</a><br>
