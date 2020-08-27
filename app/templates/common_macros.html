@@ -87,8 +87,10 @@
 {% macro syntax_highlight(jquery_string) %}
     <script src="/static/js/codemirror/runmode.js"></script>
     <script type="text/javascript">
+        var finishedSyntax = new Event('finishedSyntax');
         $local("{{jquery_string}}").each(function(i, e){
             CodeMirror.runMode(e.textContent, "netlogo", e);
         });
+        window.dispatchEvent(finishedSyntax);
     </script>
 {% endmacro %}
