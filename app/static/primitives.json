@@ -113,7 +113,7 @@
                 "distancexy",
                 "pxcor",
                 "pycor",
-                "face"
+                "move-to"
             ],
             "library_models": [
                 "Wave Machine",
