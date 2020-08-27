@@ -3,6 +3,7 @@ chardet==3.0.4
 click==7.1.2
 dominate==2.5.1
 Flask==1.1.2
+Flask-Bootstrap4==4.0.2
 flask-codemirror==1.1
 Flask-FontAwesome==0.1.5
 Flask-Markdown==0.3
