@@ -41,18 +41,23 @@
 <h3 class="mt-4 col-md-12 mb-4"> Try it Yourself </h3>
 <div id="model" class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div id="editorParent" class="col-md-6">
 
             <div class="row justify-content-between">
                 <div class="col-auto mr-auto">
                     <span data-toggle="tooltip" 
-                            title="With limited editing on, you can only edit the highlighted lines" 
+                            title="With limited editing on, you cannot edit the darkened lines" 
                             data-placement="top" >
-                        <div class="btn-group-toggle" data-toggle="buttons">
-                            <label id="limitEditing" class="btn btn-sm btn-outline-warning active">
-                                <input type="checkbox" checked autocomplete="off"> Limited Editing: On
+                        <!-- <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input">
+                            <label id="limitEditing" class="active">
+                                Limited Editing
                             </label>
-                        </div>
+                        </div> -->
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" checked class="custom-control-input" id="limitEditing">
+                            <label class="custom-control-label" for="limitEditing">Limited Editing</label>
+                          </div>
                     </span>
                 </div>
                 <div class="col-auto">
@@ -131,6 +136,7 @@
         
         var primitiveLines = [];
         var limitEditingButtonElem = $('#limitEditing');
+        var editorParent = $('#editorParent');
 
         // convert the textarea element to a codemirror widget
         var editor = CodeMirror.fromTextArea($('.try-editor')[0], {
@@ -146,10 +152,12 @@
             showHint: true
         });
 
+        var editorDiv = $('#editorParent > .CodeMirror');
+
         // highlight the lines that include the presented primitive
         //    this is the default setting
         highlight_primitive_lines(true);
-        
+        // $('#limitEditing').is(':checked');
         // Recompile the code if the button is clicked
         $('#recompileCode').click(function() {
             world.clearAll(); // clears the model to prevent confusion
@@ -161,9 +169,9 @@
             // gotta temporarily uncheck limitedEditing because
             //    otherwise the edits will be cancelled by the beforeChange
             //      event below
-            var wasLimited = limitEditingButtonElem.hasClass('active');
+            var wasLimited = limitEditingButtonElem.is(':checked');
             if (wasLimited) {
-                limitEditingButtonElem.button('toggle');
+                limitEditingButtonElem.prop('checked', false);
             }
             // bring the original code from the hidden field
             editor.setValue($('#originalCode').val());
@@ -173,7 +181,7 @@
             window.postMessage({ type: "nlw-update-model-state", codeTabContents: editor.getValue()}, "*");
 
             if (wasLimited) {
-                limitEditingButtonElem.button('toggle');
+                limitEditingButtonElem.prop('checked', true);
             }
         });
 
@@ -181,7 +189,7 @@
             // this is confusing, but we have to check if the button was not active 
             // before we clicked it, and if so, turn on limited editing. If it 
             // already was active, we turn it off. 
-            if(!$(this).hasClass('active')){
+            if($(this).is(':checked')){
                 highlight_primitive_lines(true);
                 $(this).text("Limited Editing: On");
             } else {
@@ -194,14 +202,16 @@
         // the following handler does two things
         // (1) prevents editing the lines that don't have the presented primitive 
         // (2) autocompletes the code
-        editor.on('beforeChange', function(editor, data, value) {
+        editor.on('beforeChange', function(editor, data) {
             
             // Dictionary code to make only lines that include this primitive editable
             //   unless the learner unticked the option manually
-            if (limitEditingButtonElem.hasClass('active')) {
-                let line = data.from.line;
-                if (!primitiveLines.includes(line)) {
+            if (limitEditingButtonElem.is(':checked')) {
+                let lineNumber = data.from.line;
+                let handle = editor.getLineHandle(lineNumber);
+                if (!primitiveLines.includes(lineNumber)) {
                     data.cancel();
+                    alert('To type in this region, turn off limited editing mode.');
                     return;
                 }
             }
@@ -237,11 +247,11 @@
                     // highlight if the primitive is in the line AND it is not after a semicolon. 
                     let shouldHighlightThisLine = indexOfFirstPrimitive >= 0 && (indexOfFirstSemicolon == -1 || indexOfFirstPrimitive <= indexOfFirstSemicolon);
 
-                    // These classes are defined in primitive.css
                     if(shouldHighlightThisLine){                  
-                        handle.bgClass = "NetlogoEditor-highlighted-background";    
                         primitiveLines.push(editor.getLineNumber(handle));          // save these line numbers for the limited editing feature later
+                        handle.bgClass = "CodeMirror-line"; // the default class
                     } else {                                                        
+                        // These class is defined in primitive.css
                         handle.bgClass = "NetlogoEditor-disabled-background";       
                     }
                 })
