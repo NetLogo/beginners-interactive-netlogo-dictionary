@@ -48,15 +48,9 @@
                     <span data-toggle="tooltip" 
                             title="With limited editing on, you cannot edit the darkened lines" 
                             data-placement="top" >
-                        <!-- <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input">
-                            <label id="limitEditing" class="active">
-                                Limited Editing
-                            </label>
-                        </div> -->
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" checked class="custom-control-input" id="limitEditing">
-                            <label class="custom-control-label" for="limitEditing">Limited Editing</label>
+                            <input type="checkbox" checked class="limitedEditingToggle custom-control-input" id="limitEditing0">
+                            <label class="custom-control-label" for="limitEditing0">Limited Editing</label>
                           </div>
                     </span>
                 </div>
@@ -66,8 +60,8 @@
                         title="Reset the code to its original state"               
                         data-placement="top" 
                         type="button" 
-                        id="resetCode" 
-                        class="btn btn-sm btn-secondary">
+                        id="resetCode0" 
+                        class="resetCode btn btn-sm btn-secondary">
                             <i class="fas fa-undo"></i> Reset Code
                     </button>
                     <button 
@@ -75,8 +69,8 @@
                         title="Re-Initialize the model with the newly edited code" 
                         data-placement="top" 
                         type="button" 
-                        id="recompileCode" 
-                        class="btn btn-sm btn-success">  
+                        id="recompileCode0" 
+                        class="recompileCode btn btn-sm btn-success">  
                             <i class="fas fa-play"></i> Recompile
                     </button>
                 </div>
@@ -86,6 +80,41 @@
 
             <input type="hidden" id="originalCode" value="{{code}}" />
             <textarea class="try-editor d-none">{{code}}</textarea>
+
+            <div class="clearfix" style="height: 0.5em;">&nbsp;</div>
+            
+            <div class="row justify-content-between">
+                <div class="col-auto mr-auto">
+                    <span data-toggle="tooltip" 
+                            title="With limited editing on, you cannot edit the darkened lines" 
+                            data-placement="top" >
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" checked class="limitedEditingToggle custom-control-input" id="limitEditing0">
+                            <label class="custom-control-label" for="limitEditing0">Limited Editing</label>
+                          </div>
+                    </span>
+                </div>
+                <div class="col-auto">
+                    <button 
+                        data-toggle="tooltip" 
+                        title="Reset the code to its original state"               
+                        data-placement="top" 
+                        type="button" 
+                        id="resetCode0" 
+                        class="resetCode btn btn-sm btn-secondary">
+                            <i class="fas fa-undo"></i> Reset Code
+                    </button>
+                    <button 
+                        data-toggle="tooltip" 
+                        title="Re-Initialize the model with the newly edited code" 
+                        data-placement="top" 
+                        type="button" 
+                        id="recompileCode0" 
+                        class="recompileCode btn btn-sm btn-success">  
+                            <i class="fas fa-play"></i> Recompile
+                    </button>
+                </div>
+            </div>
         </div>
         
 
@@ -135,7 +164,18 @@
     $(document).ready(function() {
         
         var primitiveLines = [];
-        var limitEditingButtonElem = $('#limitEditing');
+        var limitedEditingToggles = $('.limitedEditingToggle');
+        limitedEditingToggles.change(function(){
+            limitedEditingMode = !limitedEditingMode;
+            limitedEditingToggles.each(function(i, e){
+                e.checked = limitedEditingMode;
+            })
+            highlight_primitive_lines(limitedEditingMode);
+        
+        })
+
+
+        var limitedEditingMode = true;
         var editorParent = $('#editorParent');
 
         // convert the textarea element to a codemirror widget
@@ -157,21 +197,20 @@
         // highlight the lines that include the presented primitive
         //    this is the default setting
         highlight_primitive_lines(true);
-        // $('#limitEditing').is(':checked');
         // Recompile the code if the button is clicked
-        $('#recompileCode').click(function() {
+        $('recompileCode').click(function() {
             world.clearAll(); // clears the model to prevent confusion
             window.postMessage({ type: "nlw-update-model-state", codeTabContents: editor.getValue()}, "*")
         });
 
         // clear the code & redisplay the original code when the reset code button is clicked
-        $('#resetCode').click(function() {
+        $('.resetCode').click(function() {
             // gotta temporarily uncheck limitedEditing because
             //    otherwise the edits will be cancelled by the beforeChange
             //      event below
-            var wasLimited = limitEditingButtonElem.is(':checked');
+            var wasLimited = limitedEditingMode;
             if (wasLimited) {
-                limitEditingButtonElem.prop('checked', false);
+                limitedEditingMode = false;
             }
             // bring the original code from the hidden field
             editor.setValue($('#originalCode').val());
@@ -181,23 +220,9 @@
             window.postMessage({ type: "nlw-update-model-state", codeTabContents: editor.getValue()}, "*");
 
             if (wasLimited) {
-                limitEditingButtonElem.prop('checked', true);
+                limitedEditingMode = true;
             }
         });
-
-        limitEditingButtonElem.click(function(){
-            // this is confusing, but we have to check if the button was not active 
-            // before we clicked it, and if so, turn on limited editing. If it 
-            // already was active, we turn it off. 
-            if($(this).is(':checked')){
-                highlight_primitive_lines(true);
-                $(this).text("Limited Editing: On");
-            } else {
-                highlight_primitive_lines(false);
-                $(this).text("Limited Editing: Off"); 
-            }
-        })
-
 
         // the following handler does two things
         // (1) prevents editing the lines that don't have the presented primitive 
@@ -206,7 +231,7 @@
             
             // Dictionary code to make only lines that include this primitive editable
             //   unless the learner unticked the option manually
-            if (limitEditingButtonElem.is(':checked')) {
+            if (limitedEditingMode) {
                 let lineNumber = data.from.line;
                 let handle = editor.getLineHandle(lineNumber);
                 if (!primitiveLines.includes(lineNumber)) {
