@@ -57,3 +57,10 @@ li.CodeMirror-hint-active {
   background: #08f;
   color: white;
 }
+
+.NetlogoEditor-highlighted-background {
+  background-color: #E8FFB2;
+}
+
+.NetlogoEditor-disabled-background {
+  background-color: whitesmoke;

@@ -45,16 +45,15 @@
 
             <div class="row justify-content-between">
                 <div class="col-auto mr-auto" style="background-color:white;">
-                    <!-- <div class="btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-outline-warning btn-sm btn-secondary active">
-                            <input type="checkbox" checked autocomplete="off"> Checked
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label id="limitEditing" class="btn btn-sm btn-outline-warning active">
+                            <input type="checkbox" checked autocomplete="off"> Limited Editing: On
                         </label>
-                    </div> -->
-                    
-                    <label for="limitEditing">
+                    </div>
+                    <!-- <label for="limitEditing">
                         Limited Editing <a href="#limitedEditingExplanation" >*</a>
                     </label>
-                    <input type="checkbox" checked id="limitEditing" />      
+                    <input type="checkbox" checked id="limitEditing" />       -->
                 </div>
                 <!-- <div class="col-md-auto " style="background-color: grey;"></div> -->
                 <div class="col-auto " style="background-color: white;">
@@ -63,10 +62,12 @@
                 </div>
             </div>
 
+            <div class="clearfix" style="height: 0.5em;">&nbsp;</div>
 
             <input type="hidden" id="originalCode" value="{{code}}" />
             <textarea class="try-editor d-none">{{code}}</textarea>
         </div>
+        
 
 
         <div class="col-md-6 p-0">
@@ -131,7 +132,7 @@
 
         // highlight the lines that include the presented primitive
         //    this is the default setting
-        highlight_primitive_lines();
+        highlight_primitive_lines(true);
         
         // Recompile the code if the button is clicked
         $('#recompileCode').click(function() {
@@ -144,21 +145,34 @@
             // gotta temporarily uncheck limitedEditing because
             //    otherwise the edits will be cancelled by the beforeChange
             //      event below
-            var wasLimited = $('#limitEditing').is(':checked');
+            var wasLimited = $('#limitEditing').hasClass('active');
             if (wasLimited) {
-                $('#limitEditing').prop('checked', false);
+                $('#limitEditing').button('toggle');
             }
             // bring the original code from the hidden field
             editor.setValue($('#originalCode').val());
-            highlight_primitive_lines();
+            highlight_primitive_lines(wasLimited);
             // also recompile the old code to reset the model
             world.clearAll(); // clears the model to prevent confusion
             window.postMessage({ type: "nlw-update-model-state", codeTabContents: editor.getValue()}, "*");
 
             if (wasLimited) {
-                $('#limitEditing').prop('checked', true);
+                $('#limitEditing').button('toggle');
             }
         });
+
+        $('#limitEditing').click(function(){
+            // this is confusing, but we have to check if the button was not active 
+            // before we clicked it, and if so, turn on limited editing. If it 
+            // already was active, we turn it off. 
+            if(!$(this).hasClass('active')){
+                highlight_primitive_lines(true);
+                $(this).text("Limited Editing: On");
+            } else {
+                highlight_primitive_lines(false);
+                $(this).text("Limited Editing: Off"); 
+            }
+        })
 
 
         // the following handler does two things
@@ -168,7 +182,7 @@
             
             // Dictionary code to make only lines that include this primitive editable
             //   unless the learner unticked the option manually
-            if ($('#limitEditing').is(':checked')) {
+            if ($('#limitEditing').hasClass('active')) {
                 line = data.from.line;
                 if (!primitiveLines.includes(line)) {
                     data.cancel();
@@ -189,27 +203,32 @@
             }
         });
         
-    // brind in the actual NetLogo example code
-    {% autoescape false %}
-    window.loadModel(`{{model}}`, "{{primitive}}");
-    {% endautoescape %}
-        
-    // defined a function to highlight primitive lines
-    // because it needs to run multiple times
-    function highlight_primitive_lines(){
-        // highlight the lines that include the presented primitive
-        //    this is the default setting
-        for (i = 0; i < editor.lineCount(); i++) {
-            ln = editor.getLineHandle(i);
-            // this checks if the primitive is present in this line
-            if (ln.text.indexOf('{{primitive}}') >= 0) {
-                // and if not, makes those lines a bit gray background
-                ln.bgClass = "CodeMirror-highlighted-background";
-                primitiveLines.push(i); // to reuse in limited editing functionality
+        // brind in the actual NetLogo example code
+        {% autoescape false %}
+        window.loadModel(`{{model}}`, "{{primitive}}");
+        {% endautoescape %}
+            
+        // defined a function to highlight primitive lines
+        // because it needs to run multiple times
+        function highlight_primitive_lines(shouldHighlight){
+            if(shouldHighlight){
+                // highlight the lines that include the presented primitive
+                //    this is the default setting
+                editor.eachLine(function(handle){
+                    if(handle.text.indexOf('{{primitive}}') >= 0){                  // if primitive in line
+                        handle.bgClass = "NetlogoEditor-highlighted-background";    // highlight line 
+                        primitiveLines.push(editor.getLineNumber(handle));          // and save the line number for the limited editing feature
+                    } else {                                                        // otherwise
+                        handle.bgClass = "NetlogoEditor-disabled-background";       // darken the background
+                    }
+                })
+            } else {
+                editor.eachLine(function(handle){
+                    handle.bgClass = "CodeMirror-line";
+                })
             }
+            editor.refresh(); // needed to update the highlighting
         }
-        editor.refresh(); // needed to update the highlighting
-    }
 
     });
 </script>
