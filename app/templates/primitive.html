@@ -44,21 +44,36 @@
         <div class="col-md-6">
 
             <div class="row justify-content-between">
-                <div class="col-auto mr-auto" style="background-color:white;">
-                    <div class="btn-group-toggle" data-toggle="buttons">
-                        <label id="limitEditing" class="btn btn-sm btn-outline-warning active">
-                            <input type="checkbox" checked autocomplete="off"> Limited Editing: On
-                        </label>
-                    </div>
-                    <!-- <label for="limitEditing">
-                        Limited Editing <a href="#limitedEditingExplanation" >*</a>
-                    </label>
-                    <input type="checkbox" checked id="limitEditing" />       -->
+                <div class="col-auto mr-auto">
+                    <span data-toggle="tooltip" 
+                            title="With limited editing on, you can only edit the highlighted lines" 
+                            data-placement="top" >
+                        <div class="btn-group-toggle" data-toggle="buttons">
+                            <label id="limitEditing" class="btn btn-sm btn-outline-warning active">
+                                <input type="checkbox" checked autocomplete="off"> Limited Editing: On
+                            </label>
+                        </div>
+                    </span>
                 </div>
-                <!-- <div class="col-md-auto " style="background-color: grey;"></div> -->
-                <div class="col-auto " style="background-color: white;">
-                    <button type="button" id="resetCode" class="btn btn-sm btn-secondary"><i class="fas fa-undo"></i> Reset Code</button>
-                    <button type="button" id="recompileCode" class="btn btn-sm btn-success"><i class="fas fa-play"></i> Recompile</button>
+                <div class="col-auto">
+                    <button 
+                        data-toggle="tooltip" 
+                        title="Reset the code to its original state"               
+                        data-placement="top" 
+                        type="button" 
+                        id="resetCode" 
+                        class="btn btn-sm btn-secondary">
+                            <i class="fas fa-undo"></i> Reset Code
+                    </button>
+                    <button 
+                        data-toggle="tooltip" 
+                        title="Re-Initialize the model with the newly edited code" 
+                        data-placement="top" 
+                        type="button" 
+                        id="recompileCode" 
+                        class="btn btn-sm btn-success">  
+                            <i class="fas fa-play"></i> Recompile
+                    </button>
                 </div>
             </div>
 
@@ -106,7 +121,7 @@
 </div>
 
 <script type="text/javascript">
-    
+    "use strict";
     // This procedure runs once every HTML element in the page is loaded
     // It takes the basic textarea above and converts into a code editor
     //    with proper NetLogo code highlighting, autocomplete
@@ -115,6 +130,7 @@
     $(document).ready(function() {
         
         var primitiveLines = [];
+        var limitEditingButtonElem = $('#limitEditing');
 
         // convert the textarea element to a codemirror widget
         var editor = CodeMirror.fromTextArea($('.try-editor')[0], {
@@ -145,9 +161,9 @@
             // gotta temporarily uncheck limitedEditing because
             //    otherwise the edits will be cancelled by the beforeChange
             //      event below
-            var wasLimited = $('#limitEditing').hasClass('active');
+            var wasLimited = limitEditingButtonElem.hasClass('active');
             if (wasLimited) {
-                $('#limitEditing').button('toggle');
+                limitEditingButtonElem.button('toggle');
             }
             // bring the original code from the hidden field
             editor.setValue($('#originalCode').val());
@@ -157,11 +173,11 @@
             window.postMessage({ type: "nlw-update-model-state", codeTabContents: editor.getValue()}, "*");
 
             if (wasLimited) {
-                $('#limitEditing').button('toggle');
+                limitEditingButtonElem.button('toggle');
             }
         });
 
-        $('#limitEditing').click(function(){
+        limitEditingButtonElem.click(function(){
             // this is confusing, but we have to check if the button was not active 
             // before we clicked it, and if so, turn on limited editing. If it 
             // already was active, we turn it off. 
@@ -182,8 +198,8 @@
             
             // Dictionary code to make only lines that include this primitive editable
             //   unless the learner unticked the option manually
-            if ($('#limitEditing').hasClass('active')) {
-                line = data.from.line;
+            if (limitEditingButtonElem.hasClass('active')) {
+                let line = data.from.line;
                 if (!primitiveLines.includes(line)) {
                     data.cancel();
                     return;
@@ -211,24 +227,34 @@
         // defined a function to highlight primitive lines
         // because it needs to run multiple times
         function highlight_primitive_lines(shouldHighlight){
+            
             if(shouldHighlight){
                 // highlight the lines that include the presented primitive
                 //    this is the default setting
                 editor.eachLine(function(handle){
-                    if(handle.text.indexOf('{{primitive}}') >= 0){                  // if primitive in line
-                        handle.bgClass = "NetlogoEditor-highlighted-background";    // highlight line 
-                        primitiveLines.push(editor.getLineNumber(handle));          // and save the line number for the limited editing feature
-                    } else {                                                        // otherwise
-                        handle.bgClass = "NetlogoEditor-disabled-background";       // darken the background
+                    let indexOfFirstPrimitive = handle.text.indexOf('{{primitive}}');
+                    let indexOfFirstSemicolon = handle.text.indexOf(';');
+                    // highlight if the primitive is in the line AND it is not after a semicolon. 
+                    let shouldHighlightThisLine = indexOfFirstPrimitive >= 0 && (indexOfFirstSemicolon == -1 || indexOfFirstPrimitive <= indexOfFirstSemicolon);
+
+                    // These classes are defined in primitive.css
+                    if(shouldHighlightThisLine){                  
+                        handle.bgClass = "NetlogoEditor-highlighted-background";    
+                        primitiveLines.push(editor.getLineNumber(handle));          // save these line numbers for the limited editing feature later
+                    } else {                                                        
+                        handle.bgClass = "NetlogoEditor-disabled-background";       
                     }
                 })
             } else {
                 editor.eachLine(function(handle){
-                    handle.bgClass = "CodeMirror-line";
+                    handle.bgClass = "CodeMirror-line"; // the default class
                 })
             }
-            editor.refresh(); // needed to update the highlighting
+            editor.refresh(); 
         }
+
+        // enable all the tooltips. See https://getbootstrap.com/docs/4.0/components/tooltips/
+        $('[data-toggle="tooltip"]').tooltip();
 
     });
 </script>

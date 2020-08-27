@@ -25,10 +25,6 @@
                 $local('<p class="card-text">' + primitive_object["short_description"] + '</p>').appendTo(body);
                 $local('<a href="/primitive/' + primitive_name + '" class="btn btn-primary align-baseline m-2 stretched-link">Read more</a>').appendTo(card);
             }
-
-            $local(".card-title code").each(function(i, e){
-                CodeMirror.runMode(e.textContent, "netlogo", e);
-            });
         });
     </script>
 {% endmacro %}
