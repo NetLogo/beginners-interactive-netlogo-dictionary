@@ -100,20 +100,20 @@
             "display_name": "distance",
             "short_description": "Find the distance from the caller to an agent.",
             "search_terms": [
-                "distancexy",
-                "pxcor",
-                "pycor",
-                "face"
+                "face",
+                "move-to",
+                "max-pxcor",
+                "neighbors"
             ],
             "agents": [
                 "turtles",
                 "patches"
             ],
             "see_also": [
-                "distancexy",
-                "pxcor",
-                "pycor",
-                "face"
+                "face",
+                "move-to",
+                "max-pxcor",
+                "neighbors"
             ],
             "library_models": [
                 "Wave Machine",
