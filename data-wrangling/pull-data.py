@@ -206,37 +206,33 @@ def processVideos():
             print("finished with videos")
 
 def processPictures():
-    sys.exit('not yet finished')
     if verbose:
         print("### Starting to pull pictures ###")
-    models_library_html = ""
-    with urllib.request.urlopen(MODELS_LIBRARY_URL) as HTTPResponse:
-        models_library_html = HTTPResponse.read().decode("utf-8")
 
+    with open(PRODUCTION_JSON_PATH + PRIMITIVES_FILE_NAME, 'r') as primitivesFile:
+        j = json.load(primitivesFile)
+        primitives = j["primitives"]
 
-    bulletPointsRegex = re.compile('<BR><IMG .+><A HREF="models/.+">.+</A>')
-    linkToPageRegex = re.compile('models/.+(?=")') ## (?=") is a lookahead
+    ## every model referenced in the production primitives.json file
+    modelsUsedInPrimitives = [item for primitive in primitives for item in primitives[primitive]['library_models']]
+    modelNamesNoSpaces = map(lambda s: s.replace(' ', ''), set(modelsUsedInPrimitives))
+    modelLinks = map(lambda s: "http://ccl.northwestern.edu/netlogo/models/" + s, modelNamesNoSpaces)
+
+    if verbose:
+        print("Got the list of all the urls to the models")
+
     imgTagRegex = re.compile('<img width=200 height=200 .+>')
     srcRegex = re.compile('(?<=src=").+(?=">)')
     fileNameRegex = re.compile('(?<=\/)[^/]+png$')
     urlDecodeRegex = re.compile('%20')
 
-    bulletPoints = re.findall(bulletPointsRegex, models_library_html)
-    # print(bulletPoints)
-    def getModelLinkFromBulletPoint(s):
-        match = re.search(linkToPageRegex, s)
-        if match:
-            return "https://ccl.northwestern.edu/netlogo/" + match.group(0)
-        else:
-            ""
-
-    modelLinks = filter(lambda s: s != "", map(getModelLinkFromBulletPoint, bulletPoints))
-
-    if verbose:
-        print("Got the list of all the urls to the models")
+    num_total_imgs = 0
+    num_new_downloaded = 0
 
     for modelLink in modelLinks:
         with urllib.request.urlopen(modelLink) as modelPageResponse:
+            num_total_imgs += 1
+            
             modelPageSource = modelPageResponse.read().decode('utf-8')
             # print(modelPageSource)
             imgTag = re.search(imgTagRegex, modelPageSource)
@@ -263,9 +259,10 @@ def processPictures():
                     print("downloading", imgDestination)
 
                 file_name, headers = urllib.request.urlretrieve(imgSRC, imgDestination);
+                num_new_downloaded += 1
 
     if(verbose):
-        print("Finished with primitives")
+        print("Downloaded", num_new_downloaded, "new files out of", num_total_imgs, "total images.")
 
 
 ## Main
@@ -274,12 +271,15 @@ usageString = """Usage:  python3 pull-data.py --production --primitives
    etc.
 Arguments:
     --production    output the data to the production versions of the json
-                    files instead of the staging versions
+                    files instead of the staging versions. Does not apply
+                    to images, which are always considered "production"
     --primitives    update the primitive metadata from the google sheet
-    --articles      update the articles metadata from the google sheet. Note 
-                    that these *always* go to the production directory. 
-    --videos        update the videos metadata from the google sheet    
-    --pictures      download all the pictures from the models library site
+    --articles      update the articles metadata from the google sheet. 
+    --videos        update the videos metadata from the google sheet 
+    --pictures      download all the pictures from the models library site. 
+                    Note that these *always* go to the production directory
+                    and that for any image that we already have a copy of, 
+                    we only download it if the remote one is newer. 
     -v, --verbose   verbose mode
     -vv, --verboser extremely verbose mode (python-print each entry as it is 
                     processed)
