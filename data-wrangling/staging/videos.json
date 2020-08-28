@@ -1,0 +1,28 @@
+{
+    "videos": [
+        {
+            "title": "Creating a disease model from scratch",
+            "href": "disease.mp4",
+            "short_description": "Let's create a simple infectious disease model from scratch.",
+            "should_show_on_main_page": true
+        },
+        {
+            "title": "Turtle geometry",
+            "href": "turtle-geometry.mp4",
+            "short_description": "Learn how to use turtles to draw shapes, simple and complex.",
+            "should_show_on_main_page": true
+        },
+        {
+            "title": "Information spread over a network",
+            "href": "information-network.mp4",
+            "short_description": "Create a network of turtles in NetLogo and move information over it.",
+            "should_show_on_main_page": true
+        },
+        {
+            "title": "What is emergence?",
+            "href": "emergence.mp4",
+            "short_description": "NetLogo is a powerful tool to model emergence? But what is emergence?",
+            "should_show_on_main_page": true
+        }
+    ]
+}

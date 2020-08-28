@@ -29,6 +29,7 @@ output_path          = STAGING_JSON_PATH
 outputtingPrimitives = False
 outputtingArticles   = False
 outputtingVideos     = False
+outputtingPictures   = False
 
 ## staging file -- for checking 
 # outputFile = "./staging.json"
@@ -109,6 +110,101 @@ def populatePrimitives():
     if(verbose):
         print("Finished with primitives")
 
+def processArticles():
+    if(verbose):
+        print("### Starting to pull data for articles ###")
+
+    out = {"articles" : []}
+    articles = out["articles"]
+
+    for page in ARTICLES_PAGES:
+        urlToOpen = "https://docs.google.com/spreadsheets/d/" + sheetUID + "/export?format=csv&gid=" + str(page)
+        if(verbose):
+            print("Starting on: " + urlToOpen)
+        ## make a http request and convert it into a string file object representation
+        HTTPResponse = urllib.request.urlopen(urlToOpen)
+        csvBytes = io.BytesIO(HTTPResponse.read())
+        csvfile = io.TextIOWrapper(csvBytes, encoding="utf-8")
+
+        ## read the header line before parsing
+        csvfile.readline() 
+
+        reader = csv.reader(csvfile, delimiter = ",", quotechar='"')
+        for row in reader:
+            title                       = row[0]
+            href                        = row[1]
+            short_description           = row[2]
+            article_type                = row[3]
+            should_show_on_main_page    = True if row[4] == "TRUE" else False
+
+            new_article = {
+                    "title"                     : title,
+                    "href"                      : href,
+                    "short_description"         : short_description,
+                    "type"                      : article_type,
+                    "should_show_on_main_page"  : should_show_on_main_page
+                }
+
+            if verboser:
+                print(new_article)
+            articles.append(new_article)
+
+    if verbose:
+        print("dumping to " + output_path + ARTICLES_FILE_NAME)
+    with open(output_path + ARTICLES_FILE_NAME, 'w') as outfile:
+        json.dump(out, outfile, indent=4)
+    if verbose:
+        print("finished with articles")
+
+
+def processVideos():
+    if(verbose):
+        print("### Starting to pull data for videos ###")
+    
+    out = {"videos" : []}
+    videos = out["videos"]
+
+    for page in VIDEOS_PAGES:
+        urlToOpen = "https://docs.google.com/spreadsheets/d/" + sheetUID + "/export?format=csv&gid=" + str(page)
+        if(verbose):
+            print("Starting on: " + urlToOpen)
+
+        HTTPResponse = urllib.request.urlopen(urlToOpen)
+        csvBytes = io.BytesIO(HTTPResponse.read())
+        csvfile = io.TextIOWrapper(csvBytes, encoding="utf-8")
+
+        ## read the header line before parsing
+        csvfile.readline() 
+
+        reader = csv.reader(csvfile, delimiter = ",", quotechar='"')
+        for row in reader:
+            title                       = row[0]
+            href                        = row[1]
+            short_description           = row[2]
+            should_show_on_main_page    = True if row[3] == "TRUE" else False
+
+            new_video = {
+                "title"                     : title,
+                "href"                      : href,
+                "short_description"         : short_description,
+                "should_show_on_main_page"  : should_show_on_main_page
+            }
+
+            if verboser:
+                print(new_video)
+            videos.append(new_video)
+        
+        if verbose:
+            print("dumping to " + output_path + VIDEOS_FILE_NAME)
+        with open(output_path + VIDEOS_FILE_NAME, 'w') as outfile:
+            json.dump(out, outfile, indent=4)
+        if verbose:
+            print("finished with videos")
+
+def processPictures():
+    sys.exit('not yet implemented')
+
+## Main
 usageString = """Usage:  python3 pull-data.py --production --primitives
    or:  python3 pull-data.py --articles --pictures
    etc.
@@ -119,6 +215,7 @@ Arguments:
     --articles      update the articles metadata from the google sheet. Note 
                     that these *always* go to the production directory. 
     --videos        update the videos metadata from the google sheet    
+    --pictures      download all the pictures from the models library site
     -v, --verbose   verbose mode
     -vv, --verboser extremely verbose mode (python-print each entry as it is 
                     processed)
@@ -139,6 +236,7 @@ if __name__ == "__main__":
         elif arg == "-v" or arg == "--verbose":
             verbose = True
         elif arg == "-vv" or arg == "--verboser":
+            verbose = True
             verboser = True
         elif arg == "--production":
             production = True
@@ -149,6 +247,8 @@ if __name__ == "__main__":
             outputtingArticles = True
         elif arg == "--videos":
             outputtingVideos = True
+        elif arg == "--pictures":
+            outputtingPictures = True
         else:
             sys.exit("invalid argument: " + arg)
 
@@ -160,7 +260,9 @@ if __name__ == "__main__":
     if outputtingPrimitives:
         populatePrimitives()
     if outputtingArticles:
-        pass
+        processArticles()
     if outputtingVideos:
-        pass
-    sys.exit(0);
+        processVideos()
+    if outputtingPictures:
+        processPictures()
+    sys.exit(0); ## 0 is unix for "all good"

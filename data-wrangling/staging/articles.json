@@ -1,0 +1,88 @@
+{
+    "articles": [
+        {
+            "title": "What is a primitive?",
+            "href": "/article/what-is-a-primitive",
+            "short_description": "This webpage is all about NetLogo's primitives. But what do we mean by primitive? This article summarizes it for you.",
+            "type": "answer",
+            "should_show_on_main_page": true
+        },
+        {
+            "title": "Introduction to the NetTango Builder",
+            "href": "https://anttango.netlify.app/",
+            "short_description": "NetTango is a domain-blocks-based interface for the NetLogo agent-based modeling environment. It is a great tool for teachers to create easy-to-learn programming activities for their students. Follow this step-by-step tutorial on how to create a blocks-based blocks-based programming interface for the NetLogo Ants model.",
+            "type": "walkthrough",
+            "should_show_on_main_page": true
+        },
+        {
+            "title": "Introduction to Behaviorspace",
+            "href": "/article/introduction-to-behaviorspace",
+            "short_description": "Behaviorspace is a tool bundled with NetLogo that allows us to run automated experiments with our NetLogo models. In this tutorial, we will briefly show you how to create a BehaviorSpace experiment and run it.Though this can be a video.",
+            "type": "walkthrough",
+            "should_show_on_main_page": true
+        },
+        {
+            "title": "Resources to Learn about Complex Systems",
+            "href": "/article/complex-systems-resources",
+            "short_description": "If you are interested in learning more about complex systems, we compiled a book & online resource list.",
+            "type": "list",
+            "should_show_on_main_page": true
+        },
+        {
+            "title": "Common NetLogo error messages and how to fix them",
+            "href": "/article/complex-systems-resources",
+            "short_description": "It is frustrating to figure out what an error message means and how to get rid of it. Read this article to learn about most common NetLogo error messages.",
+            "type": "list",
+            "should_show_on_main_page": true
+        },
+        {
+            "title": "What does each color indicate in NetLogo programming",
+            "href": "/article/complex-systems-resources",
+            "short_description": "Some words in a NetLogo code window are blue, some are green, some are brown. Why is this the case? What do those colors indicate?",
+            "type": "answer",
+            "should_show_on_main_page": true
+        },
+        {
+            "title": "Turtes in NetLogo",
+            "href": "/article/turtles-in-netlogo",
+            "short_description": "We use \"turtles\" in NetLogo to model mobile agents. Learn more about turtles and how to create custom breeds.",
+            "type": "essay",
+            "should_show_on_main_page": false
+        },
+        {
+            "title": "Patches in NetLogo",
+            "href": "/article/patches-in-netlogo",
+            "short_description": "We use \"patches\" in NetLogo to model the world itself. Learn more about patches and how to use them to model non-mobile agents",
+            "type": "essay",
+            "should_show_on_main_page": false
+        },
+        {
+            "title": "Links in NetLogo",
+            "href": "/article/patches-in-netlogo",
+            "short_description": "We use \"links\" in NetLogo to model non-spatial connections between turtles. Learn more about links and how to create network models in NetLogo",
+            "type": "essay",
+            "should_show_on_main_page": false
+        },
+        {
+            "title": "Getting started with NetLogo",
+            "href": "/article/getting-started-with-netlogo",
+            "short_description": "Learn how to install NetLogo on your computer and start creating your models.",
+            "type": "walkthrough",
+            "should_show_on_main_page": false
+        },
+        {
+            "title": "What is NetLogo?",
+            "href": "/article/what-is-netlogo",
+            "short_description": "If you are new to NetLogo, start here. ",
+            "type": "answer",
+            "should_show_on_main_page": false
+        },
+        {
+            "title": "The first 10 NetLogo primitives to learn",
+            "href": "/article/first-10-netlogo-primitives-to-learn",
+            "short_description": "If you are not where to start learning NetLogo, check out this list of the most useful and frequently used primitives in NetLogo. Once you learn these primitives well, you should be able to learn any other primitive easily.",
+            "type": "list",
+            "should_show_on_main_page": false
+        }
+    ]
+}
