@@ -3,11 +3,15 @@ import csv
 import urllib.request
 import io
 import sys
+import re
+import os
+import datetime
 
 ## constants
 STAGING_JSON_PATH = "./staging/"
 PRODUCTION_JSON_PATH = "../app/static/"
-IMGS_PATH = "../app/static/img/modelslibrary/"
+MODEL_IMGS_PATH = "../app/static/img/modelslibrary/"
+MODELS_LIBRARY_URL = "http://ccl.northwestern.edu/netlogo/models/"
 
 PRIMITIVES_FILE_NAME = "primitives.json"
 ARTICLES_FILE_NAME = "articles.json"
@@ -202,7 +206,67 @@ def processVideos():
             print("finished with videos")
 
 def processPictures():
-    sys.exit('not yet implemented')
+    sys.exit('not yet finished')
+    if verbose:
+        print("### Starting to pull pictures ###")
+    models_library_html = ""
+    with urllib.request.urlopen(MODELS_LIBRARY_URL) as HTTPResponse:
+        models_library_html = HTTPResponse.read().decode("utf-8")
+
+
+    bulletPointsRegex = re.compile('<BR><IMG .+><A HREF="models/.+">.+</A>')
+    linkToPageRegex = re.compile('models/.+(?=")') ## (?=") is a lookahead
+    imgTagRegex = re.compile('<img width=200 height=200 .+>')
+    srcRegex = re.compile('(?<=src=").+(?=">)')
+    fileNameRegex = re.compile('(?<=\/)[^/]+png$')
+    urlDecodeRegex = re.compile('%20')
+
+    bulletPoints = re.findall(bulletPointsRegex, models_library_html)
+    # print(bulletPoints)
+    def getModelLinkFromBulletPoint(s):
+        match = re.search(linkToPageRegex, s)
+        if match:
+            return "https://ccl.northwestern.edu/netlogo/" + match.group(0)
+        else:
+            ""
+
+    modelLinks = filter(lambda s: s != "", map(getModelLinkFromBulletPoint, bulletPoints))
+
+    if verbose:
+        print("Got the list of all the urls to the models")
+
+    for modelLink in modelLinks:
+        with urllib.request.urlopen(modelLink) as modelPageResponse:
+            modelPageSource = modelPageResponse.read().decode('utf-8')
+            # print(modelPageSource)
+            imgTag = re.search(imgTagRegex, modelPageSource)
+            if imgTag:
+                imgSRC = "http://ccl.northwestern.edu/netlogo/" + re.search(srcRegex, imgTag.group(0)).group(0)
+                imgName = re.search(fileNameRegex, re.sub(urlDecodeRegex, "", imgSRC)).group(0)
+                imgDestination = MODEL_IMGS_PATH + imgName
+
+                imgHeadRequest = urllib.request.Request(imgSRC, method='HEAD')
+                response =  urllib.request.urlopen(imgHeadRequest)
+                responseModifiedTimeStr = response.info().get('Last-Modified')
+                ## see https://stackoverflow.com/a/1472008/6141684
+                responseModifiedTime = datetime.datetime.strptime(responseModifiedTimeStr, '%a, %d %b %Y %H:%M:%S GMT').timestamp()
+                
+                haveLocalCopy = os.path.exists(imgDestination)
+                if(haveLocalCopy):
+                    localModifiedTime = os.path.getmtime(imgDestination)
+                    if (localModifiedTime > responseModifiedTime):
+                        if verboser:
+                            print("passing on ", imgDestination)
+                        continue
+
+                if verboser:
+                    print("downloading", imgDestination)
+
+                file_name, headers = urllib.request.urlretrieve(imgSRC, imgDestination);
+
+    if(verbose):
+        print("Finished with primitives")
+
 
 ## Main
 usageString = """Usage:  python3 pull-data.py --production --primitives
@@ -254,8 +318,13 @@ if __name__ == "__main__":
 
         arg_index += 1
 
-    if(not outputtingPrimitives and not outputtingArticles and not outputtingVideos):
+    if(not outputtingPrimitives and not outputtingArticles and not outputtingVideos and not outputtingPictures):
         sys.exit('You did not specify any data sources to update. Try the "--help" option to see usage')
+
+    ## see https://stackoverflow.com/a/1432949/6141684
+    abspath = os.path.abspath(__file__)
+    dname = os.path.dirname(abspath)
+    os.chdir(dname)
 
     if outputtingPrimitives:
         populatePrimitives()
