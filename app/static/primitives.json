@@ -1509,7 +1509,9 @@
                 "patches",
                 "turtles"
             ],
-            "library_models": []
+            "library_models": [
+                "Fire"
+            ]
         },
         "clear-all": {
             "identity": "clear-all",
@@ -1604,7 +1606,8 @@
                 "hatch",
                 "sprout",
                 "ask",
-                "turtles-own"
+                "turtles-own",
+                "breeds"
             ],
             "agents": [
                 "observer"
@@ -1613,9 +1616,12 @@
                 "hatch",
                 "sprout",
                 "ask",
-                "turtles-own"
+                "turtles-own",
+                "breeds"
             ],
-            "library_models": []
+            "library_models": [
+                "Flocking"
+            ]
         },
         "facexy": {
             "identity": "facexy",
@@ -1657,7 +1663,9 @@
                 "turtles",
                 "move-to"
             ],
-            "library_models": []
+            "library_models": [
+                "Ant Lines"
+            ]
         },
         "import-pcolors": {
             "identity": "import-pcolors",
@@ -1699,7 +1707,10 @@
                 "distance",
                 "distancexy"
             ],
-            "library_models": []
+            "library_models": [
+                "Fairy Circles",
+                "Party"
+            ]
         },
         "neighbors": {
             "identity": "neighbors",
@@ -1721,7 +1732,10 @@
                 "pxcor",
                 "pycor"
             ],
-            "library_models": []
+            "library_models": [
+                "Recycling",
+                "Rumor Mill"
+            ]
         },
         "neighbors4": {
             "identity": "neighbors4",
@@ -1743,7 +1757,9 @@
                 "pxcor",
                 "pycor"
             ],
-            "library_models": []
+            "library_models": [
+                "Rumor Mill"
+            ]
         },
         "other": {
             "identity": "other",
@@ -1764,7 +1780,9 @@
                 "nobody",
                 "ask"
             ],
-            "library_models": []
+            "library_models": [
+                "Traffic Basic"
+            ]
         },
         "patch-ahead": {
             "identity": "patch-ahead",
@@ -1785,7 +1803,9 @@
                 "pxcor",
                 "pycor"
             ],
-            "library_models": []
+            "library_models": [
+                "Traffic Basic"
+            ]
         },
         "pcolor": {
             "identity": "pcolor",
@@ -1913,12 +1933,15 @@
                 "ask",
                 "repeat"
             ],
-            "library_models": []
+            "library_models": [
+                "Bird Breeder",
+                "Rabbits Grass Weeds"
+            ]
         },
         "turtles": {
             "identity": "turtles",
             "display_name": "turtles",
-            "short_description": "an agent that is used to complete actions in NetLogo",
+            "short_description": "used to complete actions in NetLogo",
             "search_terms": [
                 "ask",
                 "turtles-own",
@@ -1934,7 +1957,9 @@
                 "patches",
                 "links"
             ],
-            "library_models": []
+            "library_models": [
+                "Ant Lines"
+            ]
         }
     }
 }
