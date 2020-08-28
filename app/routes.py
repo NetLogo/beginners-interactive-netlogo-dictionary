@@ -111,3 +111,19 @@ def article(article_name):
 def page_not_found(e):
     # note that we set the 404 status explicitly
     return render_template('404.html'), 404
+
+@app.route('/articles')
+def articles():
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    afile = os.path.join(BASE_DIR, 'static/articles.json')
+    with open(afile, 'r') as af:
+        a = json.load(af)
+        return render_template('articles.html', articles = a['articles'], title="Articles and Guides")
+
+@app.route('/videos')
+def videos():
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    vfile = os.path.join(BASE_DIR, 'static/videos.json')
+    with open(vfile, 'r') as vf:
+        v = json.load(vf)
+        return render_template('videos.html', videos = v['videos'], title="Videos")

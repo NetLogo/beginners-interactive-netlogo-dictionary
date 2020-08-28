@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% import 'common_macros.html' as common %}
+
+{% block app_content %}
+
+<div class="clearfix">&nbsp;</div>
+<h1 class="display-4">Articles and Guides</h1>
+<div class="clearfix">&nbsp;</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p class="lead">
+            <span class="badge badge-pill badge-warning">DEVS: FIX THIS!!!</span> A welcoming sentence here telling users how to use this page.
+        </p>
+    </div>
+</div>
+
+<div class="clearfix">&nbsp;</div>
+<div class="clearfix">&nbsp;</div>
+
+<div id="description" class="cm-s-netlogo-default col-md-12">
+    {% for article in articles %}
+    
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{article.title}}</h4>
+                <p class="card-text">{{article.short_description}}</p>
+                <span><a href="{{article.href}}" class="ml-md-auto stretched-link text-decoration-none">Read more</a></span>
+            </div>
+        </div>
+        <div class="clearfix">&nbsp;</div>
+    
+    
+    {% endfor %}
+</div>
+
+{% endblock %}
