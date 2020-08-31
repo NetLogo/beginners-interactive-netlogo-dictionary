@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-md-12">
         <p class="lead">
-            <span class="badge badge-pill badge-warning">DEVS: FIX THIS!!!</span> A welcoming sentence here telling users how to use this page.
+            Learning how to create agent-based models with NetLogo takes more than just learning how to write code. The articles below will help you understand important concepts, familiarize yourself with useful tools, and accelerate your learning of agent-based modeling with NetLogo.
         </p>
     </div>
 </div>
@@ -22,11 +22,45 @@
     {% for article in articles %}
     
         <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">{{article.title}}</h4>
-                <p class="card-text">{{article.short_description}}</p>
-                <span><a href="{{article.href}}" class="ml-md-auto stretched-link text-decoration-none">Read more</a></span>
+            <div class="row">
+                <div class="col-1">
+                    {%if article.type == 'answer'%}
+                    <span class="badge badge-success m-4">
+                        <i class="fas fa-2x fa-question p-3"></i>
+                    </span>
+                    {%endif%}
+                    
+                    {%if article.type == 'walkthrough'%}
+                    <span class="badge badge-warning m-4">
+                        <i class="fas fa-2x fa-university p-3 mt-1 "></i>
+                    </span>
+                    {%endif%}
+                    
+                    {%if article.type == 'essay'%}
+                    <span class="badge badge-info m-4">
+                        <i class="fas fa-2x fa-feather-alt p-3"></i>    
+                    </span>
+                    {%endif%}
+                    
+                    {%if article.type == 'list'%}
+                    <span class="badge badge-primary m-4">
+                        <i class="fas fa-2x fa-list-alt p-3"></i>    
+                    </span>
+                    {%endif%}
+                    
+                    
+                </div>
+                <div class="col-11">
+                    <div class="card-body">
+                        <h4 class="card-title">{{article.title}}</h4>
+                        <p class="card-text">{{article.short_description}}</p>
+                        <span><a href="{{article.href}}" class="ml-md-auto stretched-link text-decoration-none">Read more</a></span>
+                    </div>
+                </div>
+                
             </div>
+            
+
         </div>
         <div class="clearfix">&nbsp;</div>
     

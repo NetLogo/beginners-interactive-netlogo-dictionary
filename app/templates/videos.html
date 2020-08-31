@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-md-12">
         <p class="lead">
-            <span class="badge badge-pill badge-warning">DEVS: FIX THIS!!!</span> A welcoming sentence here telling users how to use this page.
+            It may be a daunting task to figure out how to create a NetLogo models from scratch. The video tutorials below will walk you through creating simple NetLogo models from scratch, explaining each step along the way.
         </p>
     </div>
 </div>
@@ -23,12 +23,21 @@
     
     
     <div class="media border rounded p-4">
-      <img src="/static/vid/img/{{video.href.replace('.mp4', '')}}.jpg" class="align-self-start mr-3 w-25 border rounded" alt="...">
+
       <div class="media-body">
+        <div class="row">
+            <div class="col-2">
+                <img src="/static/vid/img/{{video.href.replace('.mp4', '')}}.jpg" class="align-self-start mr-4 w-100 border rounded" alt="...">
+            </div>
+            <div class="col-10">
         <h4>{{video.title}}</h4>
         <p>{{video.short_description}}</p>
-        <p><a href="/watch/{{video.href.replace('.mp4', '')}}" class="ml-md-auto text-decoration-none">Watch</a></p>
-      </div>
+        <p class="mt-4"><a href="/watch/{{video.href.replace('.mp4', '')}}" class="ml-md-auto text-decoration-none"><i class="fas fa-play mr-2"></i>Watch</a></p>
+      </div>    
+            </div>
+        </div>
+      
+
     </div>
     
     <div class="clearfix">&nbsp;</div>
