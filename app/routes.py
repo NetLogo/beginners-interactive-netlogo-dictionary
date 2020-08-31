@@ -127,3 +127,14 @@ def videos():
     with open(vfile, 'r') as vf:
         v = json.load(vf)
         return render_template('videos.html', videos = v['videos'], title="Videos")
+    
+@app.route('/watch/<video_name>', methods = ['GET'])
+def watch(video_name):
+    vn = escape(video_name)
+    
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    vfile = os.path.join(BASE_DIR, 'static/videos.json')
+    with open(vfile, 'r') as vf:
+        v = json.load(vf)
+        vdata = list(filter(lambda x:x["href"]==vn+".mp4",v["videos"]))
+        return render_template('watch.html', vid = vn, title = vdata[0]["title"], description = vdata[0]["short_description"])
