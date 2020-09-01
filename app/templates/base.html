@@ -160,7 +160,7 @@
             return Bloodhound.tokenizers.nonword(datum);
         }
 
-        var sortByClosestToPrimitive = function(a, b){
+        let sortByClosestToPrimitive = function(a, b){
             let searchTerm = $local("#primitive-search").val();
             let primitiveOnlyOfA = a.replace(/ .*/,'');
             if(primitiveOnlyOfA.includes(searchTerm)){

@@ -6,8 +6,11 @@
 
 <div id="results" class="container cm-s-netlogo-default">
 
+</div>
+<div id="possibleResults" style="display: none;" class="container cm-s-netlogo-default">
+
     {%for p in dictionary.primitives.keys()%}
-    <div id="{{p}}" style="display: none;" class="dictionary-entry">
+    <div id="{{p}}"  class="dictionary-entry">
         <div  class="card  
                     {%if 'observer'  in dictionary.primitives[p].agents%} observer  {%endif%}
                     {%if 'turtles'   in dictionary.primitives[p].agents%} turtles   {%endif%}
@@ -63,6 +66,19 @@
 <script type="text/javascript">
     "use strict";
 
+    var searchTerm = "";
+    let sortByClosestToSearchTerm = function(a, b){
+            let primitiveOnlyOfA = a.replace(/ .*/,'');
+            if(primitiveOnlyOfA.includes(searchTerm)){
+                return -1;
+            }
+            let primitiveOnlyOfB = b.replace(/ .*/,'');
+            if(primitiveOnlyOfB.includes(searchTerm)){
+                return 1;
+            }
+            return 0;
+        }
+
     window.addEventListener('primitivesLoaded', function(){
         const url = window.location.search;
         const urlParams = new URLSearchParams(url);
@@ -73,13 +89,16 @@
             const term = urlParams.get("term");
 
             let numMatches = 0;
-            let matches = primitivesBloodhound.search(term, function(datums){
+            primitivesBloodhound.search(term, function(datums){
                 numMatches = datums.length;
+                searchTerm = term;
+                datums.sort(sortByClosestToSearchTerm);
+                let resultsDiv = $local("#results");
                 datums.forEach(function(e){
                     if(e.endsWith("?")){
                         e = e.substring(0, e.length - 1);
                     }
-                    $local('#' + e).attr("style", "display: default;");
+                    $local('#' + e).appendTo(resultsDiv);
                 });
             });
 
