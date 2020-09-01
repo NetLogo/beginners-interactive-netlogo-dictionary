@@ -1,4 +1,5 @@
 import os.path
+import random
 import markdown
 import markdown.extensions.fenced_code
 import json
@@ -16,8 +17,20 @@ def index():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     vfile = os.path.join(BASE_DIR, 'static/videos.json')
     with open(vfile, 'r') as vf:
+        # load the videos and pick 4 of them randomly
         v = json.load(vf)
-        return render_template('index.html', videos = v['videos'], title="NetLogo Interactive Dictionary")
+        v_all = v['videos']
+        v_main_page = [vd for vd in v_all if vd['should_show_on_main_page'] == True] 
+        
+        # just to make sure we don't get an error if less than 4 of them are marked as show on main page
+        l = len(v_main_page)
+        c = 4 if l > 3 else l
+        
+        #shuffle the list
+        ran = random.sample(range(0, l), c)
+        v4 = [ v_all[i] for i in ran ]
+        
+        return render_template('index.html', videos = v4, title="NetLogo Interactive Dictionary")
     
 @app.route('/dictionary')
 def dictionary():
@@ -129,6 +142,7 @@ def videos():
     vfile = os.path.join(BASE_DIR, 'static/videos.json')
     with open(vfile, 'r') as vf:
         v = json.load(vf)
+        
         return render_template('videos.html', videos = v['videos'], title="Videos")
     
 @app.route('/watch/<video_name>', methods = ['GET'])
