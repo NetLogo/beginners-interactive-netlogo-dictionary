@@ -1,13 +1,13 @@
 {
     "videos": [
         {
-            "title": "Creating a disease model from scratch",
+            "title": "Disease model from scratch",
             "href": "disease.mp4",
             "short_description": "Let's create a simple infectious disease model from scratch.",
             "should_show_on_main_page": true
         },
         {
-            "title": "Creating a forest fire model from scratch",
+            "title": "Forest fire model from scratch",
             "href": "fire.mp4",
             "short_description": "Learn how to use patches to model the spread of a forest fire.",
             "should_show_on_main_page": true
@@ -19,7 +19,7 @@
             "should_show_on_main_page": true
         },
         {
-            "title": "What is emergence?",
+            "title": "Exploring emergence with the ants model",
             "href": "emergence.mp4",
             "short_description": "NetLogo is a powerful tool to model emergence? But what is emergence?",
             "should_show_on_main_page": true
