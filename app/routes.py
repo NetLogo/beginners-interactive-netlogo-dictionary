@@ -13,8 +13,11 @@ from app import app
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html')
-    # return render_template('index.html', title='Landing page', user=user)
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    vfile = os.path.join(BASE_DIR, 'static/videos.json')
+    with open(vfile, 'r') as vf:
+        v = json.load(vf)
+        return render_template('index.html', videos = v['videos'], title="NetLogo Interactive Dictionary")
     
 @app.route('/dictionary')
 def dictionary():
