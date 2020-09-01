@@ -160,6 +160,19 @@
             return Bloodhound.tokenizers.nonword(datum);
         }
 
+        var sortByClosestToPrimitive = function(a, b){
+            let searchTerm = $local("#primitive-search").val();
+            let primitiveOnlyOfA = a.replace(/ .*/,'');
+            if(primitiveOnlyOfA.includes(searchTerm)){
+                return -1;
+            }
+            let primitiveOnlyOfB = b.replace(/ .*/,'');
+            if(primitiveOnlyOfB.includes(searchTerm)){
+                return 1;
+            }
+            return 0;
+        }
+
         $local.getJSON("/static/primitives.json", function(obj){
             primitives = obj["primitives"];
             primitiveNames = Object.entries(obj["primitives"]).map(function(e){return e[1]["display_name"];});
@@ -169,7 +182,9 @@
                 // for `create-links-with` by typing `links`
                 datumTokenizer: myTokenizer, 
                 queryTokenizer: Bloodhound.tokenizers.nonword,
-                local: primitiveNames
+                sufficent : 20,
+                local: primitiveNames,
+                sorter: sortByClosestToPrimitive
             });
             window.dispatchEvent(primitivesLoaded);
         });
