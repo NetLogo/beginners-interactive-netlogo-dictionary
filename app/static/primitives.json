@@ -521,7 +521,6 @@
             ],
             "library_models": [
                 "Segregation",
-                "Party",
                 "Voting"
             ]
         },
@@ -546,8 +545,7 @@
             ],
             "library_models": [
                 "Single Collision",
-                "Gravity Box",
-                "Dice"
+                "Gravity Box"
             ]
         },
         "count": {
@@ -570,9 +568,7 @@
                 "if-else"
             ],
             "library_models": [
-                "Wolf Sheep Predation",
-                "Dice",
-                "Party"
+                "Wolf Sheep Predation"
             ]
         },
         "die": {
@@ -671,7 +667,6 @@
                 "count"
             ],
             "library_models": [
-                "Party",
                 "Rebellion",
                 "Atmosphere"
             ]
@@ -722,8 +717,7 @@
             ],
             "library_models": [
                 "Virus",
-                "Shepherds",
-                "Party"
+                "Shepherds"
             ]
         },
         "left": {
@@ -771,7 +765,6 @@
                 "set"
             ],
             "library_models": [
-                "Party",
                 "Sunflower",
                 "Flocking"
             ]
@@ -863,7 +856,6 @@
                 "of"
             ],
             "library_models": [
-                "Party",
                 "Flocking",
                 "Paths"
             ]
@@ -913,7 +905,6 @@
                 "if-else"
             ],
             "library_models": [
-                "Party",
                 "Flocking",
                 "Rumor Mill"
             ]
@@ -1014,7 +1005,6 @@
             ],
             "library_models": [
                 "Virus on a Network",
-                "Party",
                 "Scatter"
             ]
         },
@@ -1064,8 +1054,7 @@
             ],
             "library_models": [
                 "Flocking",
-                "Disease",
-                "Party"
+                "Disease"
             ]
         },
         "patch": {
@@ -1088,7 +1077,6 @@
                 "neighbors"
             ],
             "library_models": [
-                "Party",
                 "Paths",
                 "Rumor Mill"
             ]
@@ -1284,7 +1272,6 @@
                 "face"
             ],
             "library_models": [
-                "Party",
                 "Paths",
                 "Segregation"
             ]
@@ -1309,7 +1296,6 @@
                 "patches-own"
             ],
             "library_models": [
-                "Party",
                 "Minority Game",
                 "Voting"
             ]
@@ -1708,8 +1694,7 @@
                 "distancexy"
             ],
             "library_models": [
-                "Fairy Circles",
-                "Party"
+                "Fairy Circles"
             ]
         },
         "neighbors": {
