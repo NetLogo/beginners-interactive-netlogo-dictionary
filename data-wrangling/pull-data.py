@@ -10,7 +10,7 @@ import datetime
 ## constants
 STAGING_JSON_PATH = "./staging/"
 PRODUCTION_JSON_PATH = "../app/static/"
-MODEL_IMGS_PATH = "../app/static/img/modelslibrary/"
+MODEL_IMGS_PATH = "../app/static/img/models/"
 MODELS_LIBRARY_URL = "http://ccl.northwestern.edu/netlogo/models/"
 
 PRIMITIVES_FILE_NAME = "primitives.json"
