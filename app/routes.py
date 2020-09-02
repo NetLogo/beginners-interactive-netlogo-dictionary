@@ -15,9 +15,11 @@ from app import app
 @app.route('/index')
 def index():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    
+    # open the video file
     vfile = os.path.join(BASE_DIR, 'static/videos.json')
     with open(vfile, 'r') as vf:
-        # load the videos and pick 4 of them randomly
+        # load the videos as json object and pick 4 of them randomly
         v = json.load(vf)
         v_all = v['videos']
         v_main_page = [vd for vd in v_all if vd['should_show_on_main_page'] == True] 
@@ -30,7 +32,22 @@ def index():
         ran = random.sample(range(0, l), c)
         v4 = [ v_all[i] for i in ran ]
         
-        return render_template('index.html', videos = v4, title="NetLogo Interactive Dictionary")
+        # now open the articles file
+        afile = os.path.join(BASE_DIR, 'static/articles.json')
+        with open(afile, 'r') as af:
+            a = json.load(af)
+            a_all = a['articles']
+            a_main_page = [ad for ad in a_all if ad['should_show_on_main_page'] == True] 
+
+            # just to make sure we don't get an error if less than 4 of them are marked as show on main page
+            l = len(a_main_page)
+            c = 6 if l > 5 else l
+
+            #shuffle the list
+            ran = random.sample(range(0, l), c)
+            a6 = [ a_all[i] for i in ran ]
+        
+            return render_template('index.html', videos = v4, articles=a6, title="NetLogo Interactive Dictionary")
     
 @app.route('/dictionary')
 def dictionary():

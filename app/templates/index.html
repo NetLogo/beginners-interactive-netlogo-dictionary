@@ -51,7 +51,7 @@
 
 <div class="row">
     <div class="col-md-12 mt-5">
-        <h3>Video Tutorials</h3>
+        <h3>Video tutorials</h3>
         <div class="clearfix">&nbsp;</div>
         
         <div class="card-deck row no-gutters d-block d-lg-flex">
@@ -76,75 +76,42 @@
 
 <div class="row">
     <div class="col-md-12 mt-5">
-        <h3>Articles and Guides</h3>
+        <h3>Articles and guides</h3>
         <div class="clearfix">&nbsp;</div>
 
 
         <ul class="list-unstyled">
             
+            {% for article in articles %}
+            
             <li class="media">
+                
+                {%if article.type == 'answer' %}
                 <i class="fas fa-2x fa-question mr-4 p-2"></i>
+                {%endif%}
+                
+                {%if article.type == 'essay' %}
+                <i class="fas fa-2x fa-feather-alt mr-4 p-2"></i>
+                {%endif%}
+                
+                {%if article.type == 'list' %}
+                <i class="fas fa-2x fa-list-alt mr-4 p-2"></i>
+                {%endif%}
+                
+                {%if article.type == 'walkthrough' %}
+                <i class="fas fa-2x fa-university mr-4 p-2"></i>
+                {%endif%}
+                
+                
                 <div class="media-body">
-                    <h5 class="mt-0 mb-1">What is a primitive?</h5>
-                    <p>This guide is all about NetLogo's primitives. But what do we mean by primitive? This article summarizes it for you.</p>
+                    <h5 class="mt-0 mb-1">{{article.title}}</h5>
+                    <p>{{article.short_description}}</p>
                     <p>
-                        <a href="/article/what-is-a-primitive">Read this tutorial</a>
+                        <a href="{{article.href}}">Read this tutorial</a>
                     </p>
                 </div>
             </li>
-            
-            <li class="media">
-                <i class="fas fa-2x fa-shoe-prints mr-2 p-2"></i>
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">Introduction to the NetTango Builder</h5>
-                    <p>NetTango is a domain-blocks-based interface for the NetLogo agent-based modeling environment. It is a great tool for teachers to create easy-to-learn programming activities for their students. In this step-by-step tutorial, we explain how to create a blocks-based blocks-based programming interface for the NetLogo Ants model. Along the way, we are going to explain each component of the NetTango Builder in detail. We are also going to cover the relevant concepts, interface tools, and alternative design choices.</p>
-                    <p>
-                        <a href="https://anttango.netlify.app" target="_blank">Read this tutorial</a>
-                    </p>
-                </div>
-            </li>
-            <li class="media">
-                <i class="fas fa-2x fa-shoe-prints mr-2 p-2"></i>
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">Introduction to Behaviorspace</h5>
-                    <p>Behaviorspace is a tool bundled with NetLogo that allows us to run automated experiments with our NetLogo models. In this tutorial, we will briefly show you how to create a BehaviorSpace experiment and run it.Though this can be a video.</p>
-                    <p>
-                        <a href="/article/introduction-to-behaviorspace">Read this tutorial</a>
-                    </p>
-                </div>
-            </li>
-            <li class="media">
-                <i class="fas fa-2x fa-list mr-3 p-2"></i>
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">Resources to Learn about Complex Systems</h5>
-                    <p>If you are interested in learning more about complex systems, we compiled a book &amp; online resource list.</p>
-                    <p>
-                        <a href="/article/complex-systems-resources">Read this tutorial</a>
-                    </p>
-                </div>
-            </li>
-            
-            <li class="media">
-                <i class="fas fa-2x fa-list mr-3 p-2"></i>
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">Common NetLogo error messages and how to fix them</h5>
-                    <p>To be written</p>
-                    <p>
-                        <a href="/article/complex-systems-resources">Read this tutorial</a>
-                    </p>
-                </div>
-            </li>
-            
-            <li class="media">
-                <i class="fas fa-2x fa-list mr-3 p-2"></i>
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">What does each color indicate in NetLogo programming</h5>
-                    <p>To be written</p>
-                    <p>
-                        <a href="/article/complex-systems-resources">Read this tutorial</a>
-                    </p>
-                </div>
-            </li>
+            {% endfor %}
             
         </ul>
 
