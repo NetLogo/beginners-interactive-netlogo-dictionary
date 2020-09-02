@@ -23,16 +23,8 @@ def index():
         v = json.load(vf)
 
     v_all = v['videos']
-    v_main_page = [vd for vd in v_all if vd['should_show_on_main_page'] == True] 
+    v_main_page = [video for video in v_all if video['should_show_on_main_page'] == True] 
     
-    # just to make sure we don't get an error if less than 4 of them are marked as show on main page
-    l = len(v_main_page)
-    c = 4 if l > 3 else l
-    
-    #shuffle the list
-    ran = random.sample(range(0, l), c)
-    v4 = [ v_all[i] for i in ran ]
-        
     # now open the articles file
     afile = os.path.join(BASE_DIR, 'static/articles.json')
     with open(afile, 'r') as af:
@@ -41,17 +33,9 @@ def index():
     a_all = a['articles']
     a_main_page = [ad for ad in a_all if ad['should_show_on_main_page'] == True] 
 
-    # just to make sure we don't get an error if less than 4 of them are marked as show on main page
-    l = len(a_main_page)
-    c = 6 if l > 5 else l
-
-    #shuffle the list
-    ran = random.sample(range(0, l), c)
-    a6 = [ a_all[i] for i in ran ]
-
     return render_template('index.html', 
-                            videos = v4, 
-                            articles=a6, 
+                            videos = v_all, ## TODO: CHANGE BACK TO v_main_page & a_main_page
+                            articles=a_all, 
                             title="NetLogo Interactive Dictionary")
     
 @app.route('/dictionary')

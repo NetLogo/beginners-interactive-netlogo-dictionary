@@ -57,7 +57,7 @@
         <div class="card-deck row no-gutters d-block d-lg-flex">
         {% for video in videos %}
         
-            <div class="card mb-2">
+            <div style="display:none;" class="video-card card mb-2">
                 <img class="card-img-top p-1" src="/static/vid/img/{{video.href.replace('.mp4', '.jpg')}}">
                 <div class="card-body">
                     <h5 class="card-title">{{video.title}}</h5>
@@ -84,7 +84,7 @@
             
             {% for article in articles %}
             
-            <li class="media">
+            <li style="display:none;" class="article-list-entry media">
                 
                 {%if article.type == 'answer' %}
                 <i class="fas fa-2x fa-question mr-3 p-2"></i>
@@ -118,5 +118,34 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    /**
+    * Return a combination of k values selected from the integers from 0 to n exclusive. Just like in math. 
+    * If k > n, return all values. 
+    */
+    function n_choose_k(n, k) {
+        return [...Array(n).keys()]
+            .sort(function (a, b) {return Math.random() - 0.5;})
+            .slice(0, k);
+    }
+
+    let videoCards = $local('.video-card');
+    let articleEntries = $local('.article-list-entry');
+
+    let videoIndicesToShow = n_choose_k(videoCards.length, 4);
+    let articleIndicesToShow = n_choose_k(articleEntries.length, 6);
+
+    videoCards.each(function(i, e){
+        if(videoIndicesToShow.includes(i)){
+            $local(e).attr('style', '');
+        }
+    });
+
+    articleEntries.each(function(i, e){
+        if(articleIndicesToShow.includes(i)){
+            $local(e).attr('style', '');
+        }
+    });
+</script>
 
 {% endblock %}
