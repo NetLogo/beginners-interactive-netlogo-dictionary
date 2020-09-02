@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-md-12">
         <p class="lead">
-            It may be a daunting task to figure out how to create a NetLogo models from scratch. The video tutorials below will walk you through creating simple NetLogo models from scratch, explaining each step along the way.
+            It may be a daunting task to figure out how to create a NetLogo models from scratch. The video tutorials below will walk you through creating simple NetLogo models, explaining each step in detail along the way.
         </p>
     </div>
 </div>
@@ -20,28 +20,30 @@
 
 <div id="description" class="cm-s-netlogo-default col-md-12">
     {% for video in videos %}
-    
-    
-    <div class="media border rounded p-4">
 
-      <div class="media-body">
-        <div class="row">
-            <div class="col-2">
-                <img src="/static/vid/img/{{video.href.replace('.mp4', '')}}.jpg" class="align-self-start mr-4 w-100 border rounded" alt="...">
-            </div>
-            <div class="col-10">
-        <h4>{{video.title}}</h4>
-        <p>{{video.short_description}}</p>
-        <p class="mt-4"><a href="/watch/{{video.href.replace('.mp4', '')}}" class="ml-md-auto text-decoration-none stretched-link"><i class="fas fa-play mr-2"></i>Watch</a></p>
-      </div>    
+
+    <div class="media border rounded px-2 pt-2">
+
+        <div class="media-body">
+            <div class="row">
+                <div class="col-xs-4 col-lg-2 mb-lg-2">
+                    <img src="/static/vid/img/{{video.href.replace('.mp4', '')}}.jpg" class="align-self-start mr-4 w-100 border rounded">
+                </div>
+                <div class="col-xs-8 col-lg-10 mt-2">
+                    <h4>{{video.title}}</h4>
+                    <p>{{video.short_description}}</p>
+                    <p class="mt-4 mr-2 text-right">
+                        <a href="/watch/{{video.href.replace('.mp4', '')}}" class="ml-md-auto text-decoration-none stretched-link btn btn-primary"><i class="fas fa-play mr-2"></i>Watch</a>
+                    </p>
+                </div>
             </div>
         </div>
-      
+
 
     </div>
-    
+
     <div class="clearfix">&nbsp;</div>
-    
+
     {% endfor %}
 </div>
 
