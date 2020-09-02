@@ -13,6 +13,7 @@ from app import app
 
 @app.route('/')
 @app.route('/index')
+@app.route('/index.html')
 def index():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     
@@ -39,6 +40,7 @@ def index():
                             title="NetLogo Interactive Dictionary")
     
 @app.route('/dictionary')
+@app.route('/dictionary.html')
 def dictionary():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     dfile = os.path.join(BASE_DIR, 'static/primitives.json')
@@ -47,6 +49,7 @@ def dictionary():
         return render_template('dictionary.html', letters = ascii_uppercase, dictionary = d, title="Explore the NetLogo Dictionary")
     
 @app.route('/primitive/<primitive_name>', methods = ['GET'])
+@app.route('/primitive/<primitive_name>.html', methods = ['GET'])
 def primitive(primitive_name):
     
     primitive_name = escape(primitive_name)
@@ -109,6 +112,7 @@ def primitive(primitive_name):
         abort(404) ## update the error message maybe?
             
 @app.route('/search', methods = ['GET'])
+@app.route('/search.html', methods = ['GET'])
 def search():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     dfile = os.path.join(BASE_DIR, 'static/primitives.json')
@@ -117,6 +121,7 @@ def search():
     return render_template('search.html', dictionary = d, title = "Search results")
     
 @app.route('/article/<article_name>', methods = ['GET'])
+@app.route('/article/<article_name>.html', methods = ['GET'])
 def article(article_name):
     an = escape(article_name)
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -136,6 +141,7 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 @app.route('/articles')
+@app.route('/articles.html')
 def articles():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     afile = os.path.join(BASE_DIR, 'static/articles.json')
@@ -144,6 +150,7 @@ def articles():
     return render_template('articles.html', articles = a['articles'], title="Articles and Guides")
 
 @app.route('/videos')
+@app.route('/videos.html')
 def videos():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     vfile = os.path.join(BASE_DIR, 'static/videos.json')
@@ -153,6 +160,7 @@ def videos():
     return render_template('videos.html', videos = v['videos'], title="Videos")
     
 @app.route('/watch/<video_name>', methods = ['GET'])
+@app.route('/watch/<video_name>.html', methods = ['GET'])
 def watch(video_name):
     vn = escape(video_name)
     

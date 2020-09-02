@@ -16,17 +16,17 @@
         </p>
 
         <p class="text-center text-lg-left">
-            <a href="/article/what-is-netlogo"><u>What is NetLogo?</u></a>
+            <a href="/article/what-is-netlogo.html"><u>What is NetLogo?</u></a>
             &nbsp; &nbsp;
-            <a href="/article/create-your-first-netlogo-model"><u>Create your first model</u></a>
+            <a href="/article/create-your-first-netlogo-model.html"><u>Create your first model</u></a>
             &nbsp; &nbsp;
             <!--        The following version only shows in non-small, in the same line-->
-            <a href="/article/first-10-netlogo-primitives-to-learn" class="d-none d-md-inline-block"><u>The first 10 primitives to learn</u></a>
+            <a href="/article/first-10-netlogo-primitives-to-learn.html" class="d-none d-md-inline-block"><u>The first 10 primitives to learn</u></a>
             &nbsp; &nbsp;
         </p>
         <!--        The following version only shows in small, in a new line-->
         <p class="d-block d-md-none mb-4  text-center text-md-left">
-            <a href="/article/first-10-netlogo-primitives-to-learn"><u>The first 10 primitives to learn</u></a>
+            <a href="/article/first-10-netlogo-primitives-to-learn.html"><u>The first 10 primitives to learn</u></a>
         </p>
     </div>
 
@@ -63,7 +63,7 @@
                     <h5 class="card-title">{{video.title}}</h5>
                     <p class="card-text">{{video.short_description}}</p>
                 </div>
-                <a href="/watch/{{video.href.replace('.mp4', '')}}" class="btn btn-primary align-baseline mx-2 mb-1 stretched-link"><i class="fas fa-play mr-2"></i> Watch</a>
+                <a href="/watch/{{video.href.replace('.mp4', '')}}.html" class="btn btn-primary align-baseline mx-2 mb-1 stretched-link"><i class="fas fa-play mr-2"></i> Watch</a>
             </div> 
         
         {% endfor %}
@@ -107,7 +107,7 @@
                     <h5 class="mt-0 mb-1">{{article.title}}</h5>
                     <p>{{article.short_description}}</p>
                     <p>
-                        <a href="{{article.href}}">Read this tutorial</a>
+                        <a href="{{article.href}}.html">Read this tutorial</a>
                     </p>
                 </div>
             </li>

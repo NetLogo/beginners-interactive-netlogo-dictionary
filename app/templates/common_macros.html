@@ -21,9 +21,9 @@
                 }
                 let card    = $local('<div class="card mb-2 "></div>').appendTo(primitives_card_deck);
                 let body    = $local('<div class="card-body"></div>').appendTo(card);
-                    $local('<h5 class="card-title"><a id="card-title-a"  href="/primitive/' + primitive_name + '"><code class="font-weight-bold">' + primitive_name + '</code></a></h5>').appendTo(body);
+                    $local('<h5 class="card-title"><a id="card-title-a"  href="/primitive/' + primitive_name + '.html' + '"><code class="font-weight-bold">' + primitive_name + '</code></a></h5>').appendTo(body);
                 $local('<p class="card-text">' + primitive_object["short_description"] + '</p>').appendTo(body);
-                $local('<a href="/primitive/' + primitive_name + '" class="btn btn-primary align-baseline m-2 stretched-link">Read more</a>').appendTo(card);
+                $local('<a href="/primitive/' + primitive_name + '.html' + '" class="btn btn-primary align-baseline m-2 stretched-link">Read more</a>').appendTo(card);
             }
         });
     </script>
@@ -35,9 +35,9 @@
             <div class="card mb-2">
                 <div class="card-body">
                     <h5 class="card-title"><a id="card-title-a"
-                            href="/primitive/{{primitive['identity']}}"><code class="font-weight-bold">{{primitive['display_name']}}</code></a></h5>
+                            href="/primitive/{{primitive['identity']}}.html"><code class="font-weight-bold">{{primitive['display_name']}}</code></a></h5>
                     <p class="card-text">{{primitive['short_description']}}</p>
-                </div><a href="/primitive/{{primitive['identity']}}" class="btn btn-primary align-baseline m-2 stretched-link">Read more</a>
+                </div><a href="/primitive/{{primitive['identity']}}.html" class="btn btn-primary align-baseline m-2 stretched-link">Read more</a>
             </div> 
         {% endfor %}
     </div>

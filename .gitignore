@@ -2,3 +2,4 @@ venv/
 *.pyc
 *.tmp.nlogo
 **/.DS_STORE
+app/build/*

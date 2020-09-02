@@ -48,27 +48,27 @@
                         Contents
                     </a>
                     <div class="dropdown-menu mt-2 mb-2 ml-1" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/article/getting-started-with-netlogo">Getting Started with NetLogo</a>
+                        <a class="dropdown-item" href="/article/getting-started-with-netlogo.html">Getting Started with NetLogo</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/article/turtles-in-netlogo">Turtles</a>
-                        <a class="dropdown-item" href="/article/patches-in-netlogo">Patches</a>
-                        <a class="dropdown-item" href="/article/links-in-netlogo">Links</a>
+                        <a class="dropdown-item" href="/article/turtles-in-netlogo.html">Turtles</a>
+                        <a class="dropdown-item" href="/article/patches-in-netlogo.html">Patches</a>
+                        <a class="dropdown-item" href="/article/links-in-netlogo.html">Links</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/dictionary"><i class="fas fa-bookmark"></i> &nbsp; Explore the Dictionary</a>
+                        <a class="dropdown-item" href="/dictionary.html"><i class="fas fa-bookmark"></i> &nbsp; Explore the Dictionary</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/articles">Articles and Guides</a>
-                        <a class="dropdown-item" href="/videos">Videos Tutorials</a>
+                        <a class="dropdown-item" href="/articles.html">Articles and Guides</a>
+                        <a class="dropdown-item" href="/videos.html">Videos Tutorials</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/article/shapes-and-colors-in-netlogo">Shapes and Colors</a>
-                        <a class="dropdown-item" href="/article/netlogo-interface">NetLogo Interface </a>
+                        <a class="dropdown-item" href="/article/shapes-and-colors-in-netlogo.html">Shapes and Colors</a>
+                        <a class="dropdown-item" href="/article/netlogo-interface.html">NetLogo Interface </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="https://ccl.northwestern.edu/netlogo/models/" target="_blank">Models Library</a>
                         <a class="dropdown-item" href="http://www.modelingcommons.org" target="_blank">Modeling Commons</a>
                         <a class="dropdown-item" href="http://www.intro-to-abm.com" target="_blank">Introduction to ABM Textbook</a>
                         <a class="dropdown-item" href="https://ct-stem.northwestern.edu" target="_blank">Teach STEM with NetLogo</a>
-                        <a class="dropdown-item" href="/article/external-resources">External Resources</a>
+                        <a class="dropdown-item" href="/article/external-resources.html">External Resources</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/article/about-this-webpage">About this webpage</a>
+                        <a class="dropdown-item" href="/article/about-this-webpage.html">About this webpage</a>
                     </div>
                 </li>
                 <li class="nav-item ml-lg-4 ml-xs-0 ml-sm-0">
@@ -178,11 +178,11 @@
         var processSearch = function(){
             let text = $local("#primitive-search").val();
             if (primitiveNames.includes(text)){
-                window.location.assign("/primitive/" + text);
+                window.location.assign("/primitive/" + text + '.html');
             } else if (text != ""){
-                window.location.assign("/search?term=" + encodeURI(text));
+                window.location.assign("/search.html?term=" + encodeURI(text));
             } else {
-                window.location.assign("/search?"); 
+                window.location.assign("/search.html?"); 
             }
         }
 
