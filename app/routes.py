@@ -18,36 +18,41 @@ def index():
     
     # open the video file
     vfile = os.path.join(BASE_DIR, 'static/videos.json')
+    # load the videos as json object and pick 4 of them randomly
     with open(vfile, 'r') as vf:
-        # load the videos as json object and pick 4 of them randomly
         v = json.load(vf)
-        v_all = v['videos']
-        v_main_page = [vd for vd in v_all if vd['should_show_on_main_page'] == True] 
-        
-        # just to make sure we don't get an error if less than 4 of them are marked as show on main page
-        l = len(v_main_page)
-        c = 4 if l > 3 else l
-        
-        #shuffle the list
-        ran = random.sample(range(0, l), c)
-        v4 = [ v_all[i] for i in ran ]
-        
-        # now open the articles file
-        afile = os.path.join(BASE_DIR, 'static/articles.json')
-        with open(afile, 'r') as af:
-            a = json.load(af)
-            a_all = a['articles']
-            a_main_page = [ad for ad in a_all if ad['should_show_on_main_page'] == True] 
 
-            # just to make sure we don't get an error if less than 4 of them are marked as show on main page
-            l = len(a_main_page)
-            c = 6 if l > 5 else l
-
-            #shuffle the list
-            ran = random.sample(range(0, l), c)
-            a6 = [ a_all[i] for i in ran ]
+    v_all = v['videos']
+    v_main_page = [vd for vd in v_all if vd['should_show_on_main_page'] == True] 
+    
+    # just to make sure we don't get an error if less than 4 of them are marked as show on main page
+    l = len(v_main_page)
+    c = 4 if l > 3 else l
+    
+    #shuffle the list
+    ran = random.sample(range(0, l), c)
+    v4 = [ v_all[i] for i in ran ]
         
-            return render_template('index.html', videos = v4, articles=a6, title="NetLogo Interactive Dictionary")
+    # now open the articles file
+    afile = os.path.join(BASE_DIR, 'static/articles.json')
+    with open(afile, 'r') as af:
+        a = json.load(af)
+
+    a_all = a['articles']
+    a_main_page = [ad for ad in a_all if ad['should_show_on_main_page'] == True] 
+
+    # just to make sure we don't get an error if less than 4 of them are marked as show on main page
+    l = len(a_main_page)
+    c = 6 if l > 5 else l
+
+    #shuffle the list
+    ran = random.sample(range(0, l), c)
+    a6 = [ a_all[i] for i in ran ]
+
+    return render_template('index.html', 
+                            videos = v4, 
+                            articles=a6, 
+                            title="NetLogo Interactive Dictionary")
     
 @app.route('/dictionary')
 def dictionary():
@@ -73,47 +78,48 @@ def primitive(primitive_name):
     if os.path.exists(md):
         with open(dfile, 'r') as df:
             primitives = json.load(df)["primitives"]
-            if primitive_name not in primitives:
-                abort(404)
+        if primitive_name not in primitives:
+            abort(404)
 
 
-            this_primitive = primitives[primitive_name]
+        this_primitive = primitives[primitive_name]
+        
+        display_name = this_primitive["display_name"] if "display_name" in this_primitive else primitive_name
+        
+        see_also_names = this_primitive["see_also"] if "see_also" in this_primitive else []
+        ## get full object entries for all primitives in the "see_also" list that we have entries for. 
+        see_also = [primitives[name] for name in see_also_names if name in primitives] 
+        
+        library_models = this_primitive["library_models"] if "library_models" in this_primitive else []
+        
+        with open(md, 'r') as d: 
+            description_rendered = markdown.markdown(d.read(), extensions=["fenced_code"])
+        if os.path.exists(mdl):
+            with open(mdl, 'r') as m:
+                full_model = m.read().replace('`', '\`')
+            code = full_model.split("\n@#$#@#$#@")[0] 
+            ## that string of characters separates the sections of a .nlogo file, 
+            ## the first of which is the code itself.
             
-            display_name = this_primitive["display_name"] if "display_name" in this_primitive else primitive_name
-            
-            see_also_names = this_primitive["see_also"] if "see_also" in this_primitive else []
-            ## get full object entries for all primitives in the "see_also" list that we have entries for. 
-            see_also = [primitives[name] for name in see_also_names if name in primitives] 
-            
-            library_models = this_primitive["library_models"] if "library_models" in this_primitive else []
-            
-            with open(md, 'r') as d: 
-                description_rendered = markdown.markdown(d.read(), extensions=["fenced_code"])
-                if os.path.exists(mdl):
-                    with open(mdl, 'r') as m:
-                        full_model = m.read().replace('`', '\`')
-                        code = full_model.split("\n@#$#@#$#@")[0] 
-                        ## that string of characters separates the sections of a .nlogo file, 
-                        ## the first of which is the code itself.
-                        
-                        with open(basemdl, 'r') as bm:
-                            return render_template('primitive.html', 
-                                                    primitive = primitive_name, 
-                                                    display_name = display_name,
-                                                    description = description_rendered, 
-                                                    code = code, 
-                                                    basemodel = bm.read(), 
-                                                    model = full_model,
-                                                    title = display_name + " primitive",
-                                                    see_also = see_also,
-                                                    library_models = library_models)
-                else:
-                    return render_template('primitive_no_model.html',
-                                            primitive = display_name, 
-                                            body=description_rendered, 
-                                            title= display_name + " primitive",
-                                            see_also = see_also,
-                                            library_models = library_models)
+            with open(basemdl, 'r') as bm:
+                basemodel = bm.read()
+            return render_template('primitive.html', 
+                                    primitive = primitive_name, 
+                                    display_name = display_name,
+                                    description = description_rendered, 
+                                    code = code, 
+                                    basemodel = basemodel, 
+                                    model = full_model,
+                                    title = display_name + " primitive",
+                                    see_also = see_also,
+                                    library_models = library_models)
+        else:
+            return render_template('primitive_no_model.html',
+                                    primitive = display_name, 
+                                    body=description_rendered, 
+                                    title= display_name + " primitive",
+                                    see_also = see_also,
+                                    library_models = library_models)
     else:
         ## MAKE THIS RENDER A 404 File!!!
         abort(404) ## update the error message maybe?
@@ -124,7 +130,7 @@ def search():
     dfile = os.path.join(BASE_DIR, 'static/primitives.json')
     with open(dfile, 'r') as df:
         d = json.load(df)
-        return render_template('search.html', dictionary = d, title = "Search results")
+    return render_template('search.html', dictionary = d, title = "Search results")
     
 @app.route('/article/<article_name>', methods = ['GET'])
 def article(article_name):
@@ -134,8 +140,8 @@ def article(article_name):
     if os.path.exists(afile):
         with open(afile, 'r') as af:
             maf = markdown.markdown(af.read(), extensions=["fenced_code"])
-            maf = maf.replace('<h1>', '<h1 class="display-4">') # just to make it look nicer
-            return render_template('article.html', body = maf, title=an.replace('-', ' ').title())
+        maf = maf.replace('<h1>', '<h1 class="display-4">') # just to make it look nicer
+        return render_template('article.html', body = maf, title=an.replace('-', ' ').title())
     else:
         abort(404)  ## update the error message maybe?
     
@@ -151,7 +157,7 @@ def articles():
     afile = os.path.join(BASE_DIR, 'static/articles.json')
     with open(afile, 'r') as af:
         a = json.load(af)
-        return render_template('articles.html', articles = a['articles'], title="Articles and Guides")
+    return render_template('articles.html', articles = a['articles'], title="Articles and Guides")
 
 @app.route('/videos')
 def videos():
@@ -160,7 +166,7 @@ def videos():
     with open(vfile, 'r') as vf:
         v = json.load(vf)
         
-        return render_template('videos.html', videos = v['videos'], title="Videos")
+    return render_template('videos.html', videos = v['videos'], title="Videos")
     
 @app.route('/watch/<video_name>', methods = ['GET'])
 def watch(video_name):
@@ -170,5 +176,5 @@ def watch(video_name):
     vfile = os.path.join(BASE_DIR, 'static/videos.json')
     with open(vfile, 'r') as vf:
         v = json.load(vf)
-        vdata = list(filter(lambda x:x["href"]==vn+".mp4",v["videos"]))
-        return render_template('watch.html', vid = vn, title = vdata[0]["title"], description = vdata[0]["short_description"])
+    vdata = list(filter(lambda x:x["href"]==vn+".mp4",v["videos"]))
+    return render_template('watch.html', vid = vn, title = vdata[0]["title"], description = vdata[0]["short_description"])
