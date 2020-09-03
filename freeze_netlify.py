@@ -39,3 +39,8 @@ validVideoNames = [video[:-4] for video in videoFiles if video.endswith('.mp4')]
 def watch():
     for video in validVideoNames:
         yield '/watch/' + video + '.html'
+        
+
+if __name__ == '__main__':
+    #freezer.run(port=4141)
+    freezer.freeze()
