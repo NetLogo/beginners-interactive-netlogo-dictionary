@@ -1,3 +1,0 @@
-`link-neighbors` is a turtle command that reports back the agentset of all the turtles connected that are connected to the calling turtle via links (both directed and undirected). For instance, if we were using links to represent friendship relationships, `link-neighbors` of `turtle 3` would report back all of turtle 3's friends.
-
-In this contact tracing model, links represent "contacts", so calling `link-neighbors`  on an individual would report back every other person that this individual had contact with. When we implement the `trace-back` procedure in our code (on line 26), we ask all of the `link-neighbors` of any exposed (red) individuals to turn red themselves to signify that they have been exposed as well.

@@ -1,2 +1,0 @@
-`Left` and `right` turn a turtle a certain number of degrees to the left or right, respectively. The number following `left/right` is the number of degrees the turtle will rotate. For example, `ask turtles [ left 90 ]` will rotate the turtles a quarter of a turn to the left, and `ask turtles [ right 90 ]` will rotate the turtles a quarter of a turn to the right. If the number is negative, the turtle will turn the opposite way (a negative number for left will turn the turtle to the right, and vice versa). 
-

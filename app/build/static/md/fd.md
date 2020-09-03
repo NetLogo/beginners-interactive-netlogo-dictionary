@@ -1,2 +1,0 @@
-`forward` allows turtles to move in any number of units that the programmer desires.  The shorthand version of this function is *fd*. For example, you can write `ask turtles [ fd 2 ]` to make all the turtles move forward by 2 units. Keep in mind that the forward function directs the turtle to move in the direction/heading it is facing. So if a turtle had a heading of 90, forward 1 would move it one unit to the right. Decimals can be used as well; for example, `ask turtles [fd 0.2]`. 
-

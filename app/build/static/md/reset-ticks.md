@@ -1,1 +1,0 @@
-`Reset-ticks` sets the tick counter back to zero. It is only used in models that use *tick-based* updates. `Reset-ticks` is usually found at the end of a setup procedure. In some models, the **“disable until ticks start”** box will be checked on the **go** button; this means the ticks must be reset for the model to run. 
