@@ -30,19 +30,21 @@ James Hovet
 &nbsp;
 
 ##### Other Active Contributors
-Jacob Kelter, Content Advisor
+Jacob Kelter, Advisor, Instructional Design, NetLogo Programming, & Agent-based Modeling
 
-John Chen, Web Development Advisor
+John Chen, Advisor, Web & NetLogo Development
 
-Jason Bertsche, Web Development Advisor
+Jason Bertsche, Advisor, Web & NetLogo Development
+
+Jeremy Baker, Advisor, Web & NetLogo Development
 
 &nbsp;
 
 
 ##### Past Contributors
 
-Mitchel Estberg, Research Assistant, Content
+Mitchel Estberg, Undergraduate Research Assistant, Content
 
-Kevin Mui, Research Assistant, Web Development
+Kevin Mui, Undergraduate Research Assistant, Web Development
 
-Shin Lee, Research Assistant, Web Development
+Shin Lee, Undergraduate Research Assistant, Web Development
