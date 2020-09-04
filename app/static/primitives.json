@@ -19,7 +19,10 @@
                 "if-else",
                 "ifelse-value"
             ],
-            "library_models": []
+            "library_models": [
+                "Virus on a Network",
+                "Tetris"
+            ]
         },
         "any": {
             "identity": "any",
@@ -40,7 +43,11 @@
                 "if",
                 "other"
             ],
-            "library_models": []
+            "library_models": [
+                "Team Assembly",
+                "Fireworks",
+                "Traffic Basic"
+            ]
         },
         "breed": {
             "identity": "breed",
@@ -61,13 +68,22 @@
                 "die",
                 "ask"
             ],
-            "library_models": []
+            "library_models": [
+                "Wolf Sheep Predation",
+                "Fireworks",
+                "Minesweeper"
+            ]
         },
         "create-links-with": {
             "identity": "create-links-with",
             "display_name": "create-links-with",
             "short_description": "creates links with every agent in an agentset",
-            "search_terms": [],
+            "search_terms": [
+                "link-neighbors",
+                "layout-circle",
+                "links",
+                "n-of"
+            ],
             "agents": [
                 "turtles"
             ],
@@ -77,13 +93,21 @@
                 "links",
                 "n-of"
             ],
-            "library_models": []
+            "library_models": [
+                "Fully Connected Network Example",
+                "Random Network Example"
+            ]
         },
         "diffuse": {
             "identity": "diffuse",
             "display_name": "diffuse",
             "short_description": "speads a patch variable around to its neighbors",
-            "search_terms": [],
+            "search_terms": [
+                "patches-own",
+                "patches",
+                "globals",
+                "neighbors"
+            ],
             "agents": [
                 "patches"
             ],
@@ -93,32 +117,10 @@
                 "globals",
                 "neighbors"
             ],
-            "library_models": []
-        },
-        "distance": {
-            "identity": "distance",
-            "display_name": "distance",
-            "short_description": "Find the distance from the caller to an agent.",
-            "search_terms": [
-                "face",
-                "move-to",
-                "max-pxcor",
-                "neighbors"
-            ],
-            "agents": [
-                "turtles",
-                "patches"
-            ],
-            "see_also": [
-                "face",
-                "move-to",
-                "max-pxcor",
-                "neighbors"
-            ],
             "library_models": [
-                "Wave Machine",
-                "Mousetraps",
-                "Erosion"
+                "Ants",
+                "Slime",
+                "Diffusion Graphics"
             ]
         },
         "globals": {
@@ -140,7 +142,10 @@
                 "set",
                 "if-else"
             ],
-            "library_models": []
+            "library_models": [
+                "Simple Birth Rates",
+                "Wealth Distribution"
+            ]
         },
         "if-else": {
             "identity": "if-else",
@@ -161,7 +166,10 @@
                 "of",
                 "or"
             ],
-            "library_models": []
+            "library_models": [
+                "Virus",
+                "Segregation"
+            ]
         },
         "ifelse-value": {
             "identity": "ifelse-value",
@@ -182,7 +190,9 @@
                 "of",
                 "count"
             ],
-            "library_models": []
+            "library_models": [
+                "Spread of Disease"
+            ]
         },
         "in-cone": {
             "identity": "in-cone",
@@ -203,7 +213,10 @@
                 "neighbors",
                 "with"
             ],
-            "library_models": []
+            "library_models": [
+                "Traffic 2 Lanes",
+                "Vision Cone Example"
+            ]
         },
         "in-radius": {
             "identity": "in-radius",
@@ -225,7 +238,10 @@
                 "in-radius",
                 "neighbors"
             ],
-            "library_models": []
+            "library_models": [
+                "Flocking",
+                "Scatter"
+            ]
         },
         "layout-circle": {
             "identity": "layout-circle",
@@ -246,7 +262,9 @@
                 "create-links-with",
                 "setxy"
             ],
-            "library_models": []
+            "library_models": [
+                "Network Example"
+            ]
         },
         "link-neighbors": {
             "identity": "link-neighbors",
@@ -267,7 +285,9 @@
                 "layout-circle",
                 "any?"
             ],
-            "library_models": []
+            "library_models": [
+                "Virus on a Network"
+            ]
         },
         "links": {
             "identity": "links",
@@ -288,7 +308,9 @@
                 "turtles",
                 "patches"
             ],
-            "library_models": []
+            "library_models": [
+                "Random Network"
+            ]
         },
         "n-of": {
             "identity": "n-of",
@@ -309,7 +331,10 @@
                 "any?",
                 "all?"
             ],
-            "library_models": []
+            "library_models": [
+                "Virus",
+                "Segregation Simple"
+            ]
         },
         "of": {
             "identity": "of",
@@ -351,7 +376,9 @@
                 "and",
                 "xor"
             ],
-            "library_models": []
+            "library_models": [
+                "Voronoi"
+            ]
         },
         "random": {
             "identity": "random",
@@ -372,7 +399,10 @@
                 "globals",
                 "turtles-own"
             ],
-            "library_models": []
+            "library_models": [
+                "Fireworks",
+                "Virus"
+            ]
         },
         "random-float": {
             "identity": "random-float",
@@ -393,7 +423,10 @@
                 "globals",
                 "turtles-own"
             ],
-            "library_models": []
+            "library_models": [
+                "Virus",
+                "Wolf Sheep Predation"
+            ]
         },
         "scale-color": {
             "identity": "scale-color",
@@ -414,7 +447,10 @@
                 "set",
                 "turtles-own"
             ],
-            "library_models": []
+            "library_models": [
+                "Ants",
+                "Wolf Sheep Simple 3"
+            ]
         },
         "setxy": {
             "identity": "setxy",
@@ -435,7 +471,10 @@
                 "max-pxcor",
                 "neighbors"
             ],
-            "library_models": []
+            "library_models": [
+                "Wolf Sheep Simple 2",
+                "Segregation Simple"
+            ]
         },
         "sort-by": {
             "identity": "sort-by",
@@ -456,7 +495,9 @@
                 "count",
                 "mean"
             ],
-            "library_models": []
+            "library_models": [
+                "Ask Ordering Example"
+            ]
         },
         "sort-on": {
             "identity": "sort-on",
@@ -477,7 +518,9 @@
                 "count",
                 "mean"
             ],
-            "library_models": []
+            "library_models": [
+                "Birthdays"
+            ]
         },
         "tie": {
             "identity": "tie",
@@ -498,7 +541,9 @@
                 "link-neighbors",
                 "layout-circle"
             ],
-            "library_models": []
+            "library_models": [
+                "Tie System Example"
+            ]
         },
         "all": {
             "identity": "all",
@@ -595,6 +640,33 @@
                 "Wolf Sheep Predation",
                 "Virus",
                 "Tumor"
+            ]
+        },
+        "distance": {
+            "identity": "distance",
+            "display_name": "distance",
+            "short_description": "Find the distance from the caller to an agent.",
+            "search_terms": [
+                "face",
+                "move-to",
+                "max-pxcor",
+                "neighbors"
+            ],
+            "agents": [
+                "turtles",
+                "patches"
+            ],
+            "see_also": [
+                "face",
+                "move-to",
+                "max-pxcor",
+                "neighbors"
+            ],
+            "library_models": [
+                "Wave Machine",
+                "Mousetraps",
+                "Erosion",
+                "Flocking"
             ]
         },
         "end": {
