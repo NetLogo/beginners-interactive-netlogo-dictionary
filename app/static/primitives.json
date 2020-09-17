@@ -191,7 +191,8 @@
                 "count"
             ],
             "library_models": [
-                "Spread of Disease"
+                "Spread of Disease",
+                "Ant Adaptation"
             ]
         },
         "in-cone": {
