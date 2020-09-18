@@ -9,8 +9,8 @@ end
 
 to go
   ask turtles [
-  pd repeat 40 [ ;; this will repeat the command 40 times
-      fd 2 rt 4
+  pd repeat 10 [ ;; this will repeat the command 10 times
+      fd 0.2 rt 1 ;; circles
     ]
   ]
   tick
@@ -37,8 +37,8 @@ GRAPHICS-WINDOW
 16
 -16
 16
-0
-0
+1
+1
 1
 ticks
 30.0

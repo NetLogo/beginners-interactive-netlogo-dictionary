@@ -89,7 +89,7 @@ MONITOR
 103
 202
 dead
-turtles with [color = red]
+count turtles with [color = red]
 17
 1
 11
@@ -100,7 +100,7 @@ MONITOR
 207
 202
 alive
-turtles with [color = green]
+count turtles with [color = green]
 17
 1
 11

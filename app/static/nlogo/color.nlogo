@@ -1,62 +1,79 @@
 to setup
   clear-all
-  ask patches [set pcolor 88]
-  create-turtles 1 [set shape "family"
-    setxy random-xcor random-ycor
-    set size 15
+
+  ask patches [
+    set pcolor 86
   ]
 
-  create-turtles 1 [set shape "house"
-    set size 15
-    setxy 3 10
-  set color brown]
+  create-turtles 3 [
+    set shape "flower"
+    set size 7
+    set color red ;; initial color of the turtles
+ set label who ]
+
+  ask turtle 0 [
+    setxy -8 -9
+  ]
+
+  ask turtle 1 [
+    setxy 0 -9
+  ]
+
+    ask turtle 2 [
+    setxy 8 -9
+  ]
 
   reset-ticks
 end
 
 
-
 to go
-  ask turtle 0 [ ;; the family is turtle 0
-    face turtle 1 ;; the house is turtle 1
- move-to one-of turtles with [shape = "house"] ;; this will move the family to the house
+  ask turtle 0 [
+    set color 65 ;; changes the color of the turtle to green
+  ]
+
+  ask turtle 1 [
+    set color 18 ;; changes the color of this turtle to pink
+  ]
+
+  ask turtle 2 [
+    set color 117 ;; changes the color of this turtle to purple
   ]
   tick
-
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-828
-629
+647
+448
 -1
 -1
-10.0
+13.0
 1
 10
 1
 1
 1
 0
+1
+1
+1
+-16
+16
+-16
+16
 0
 0
-1
--30
-30
--30
-30
-1
-1
 1
 ticks
 30.0
 
 BUTTON
-25
-53
-91
-86
+15
+54
+81
+87
 NIL
 setup
 NIL
@@ -70,10 +87,10 @@ NIL
 1
 
 BUTTON
-108
-54
-171
-87
+104
+53
+167
+86
 NIL
 go
 NIL
@@ -231,35 +248,6 @@ Circle -16777216 true false 60 75 60
 Circle -16777216 true false 180 75 60
 Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
 
-family
-false
-0
-Circle -1 true false 24 144 42
-Circle -1 true false 54 84 42
-Circle -1 true false 99 69 42
-Circle -1 true false 144 159 42
-Line -1 false 45 180 45 240
-Line -1 false 75 120 75 225
-Line -1 false 120 105 120 210
-Line -1 false 165 195 165 255
-Line -1 false 165 255 150 270
-Line -1 false 165 255 180 270
-Line -1 false 165 225 195 210
-Line -1 false 45 240 60 255
-Line -1 false 45 240 30 255
-Line -1 false 45 210 60 195
-Line -1 false 45 210 30 195
-Line -1 false 75 225 60 255
-Line -1 false 75 225 90 255
-Line -1 false 75 165 105 135
-Line -1 false 75 165 45 135
-Line -1 false 120 225 105 255
-Line -1 false 120 225 135 255
-Line -1 false 120 150 165 105
-Line -1 false 120 150 90 120
-Line -1 false 165 225 135 210
-Line -1 false 120 210 120 225
-
 fish
 false
 0
@@ -297,9 +285,9 @@ Polygon -10899396 true false 180 255 150 210 105 210 75 240 135 240
 house
 false
 0
-Polygon -7500403 true true 15 120 150 15 285 120
 Rectangle -7500403 true true 45 120 255 285
 Rectangle -16777216 true false 120 210 180 285
+Polygon -7500403 true true 15 120 150 15 285 120
 Line -16777216 false 30 120 270 120
 
 leaf

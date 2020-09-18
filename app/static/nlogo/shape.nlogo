@@ -3,7 +3,7 @@ to setup
   ask patches [set pcolor 34]
 
   create-turtles 20 [
-    set color blue
+    set color black
     set shape "bug" ;; changes the default turtle shape to a bug shape
     setxy random-xcor random-ycor ;; this randomizes the location of the bugs
   ]

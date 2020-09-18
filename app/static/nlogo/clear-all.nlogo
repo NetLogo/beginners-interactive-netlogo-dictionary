@@ -1,51 +1,51 @@
 to setup
-  clear-all
-  ask patches [set pcolor 88]
-  create-turtles 1 [set shape "family"
+  ask patches [set pcolor 87]
+
+  create-turtles 200 [
+  set shape "circle"
+  set color white
+  set size 1
+  setxy random-xcor random-ycor
+  ]
+
+  create-turtles 10 [
+  set shape "tree pine"
+  set color green
+  set size 3
+  setxy random-xcor random-ycor
+  ]
+
+  create-turtles 5 [
+    set shape "moose"
+    set color brown
+    set size 3
     setxy random-xcor random-ycor
-    set size 15
   ]
 
-  create-turtles 1 [set shape "house"
-    set size 15
-    setxy 3 10
-  set color brown]
-
-  reset-ticks
 end
 
-
-
-to go
-  ask turtle 0 [ ;; the family is turtle 0
-    face turtle 1 ;; the house is turtle 1
- move-to one-of turtles with [shape = "house"] ;; this will move the family to the house
-  ]
-  tick
-
-end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-828
-629
+647
+448
 -1
 -1
-10.0
+13.0
 1
 10
 1
 1
 1
 0
-0
-0
 1
--30
-30
--30
-30
+1
+1
+-16
+16
+-16
+16
 1
 1
 1
@@ -53,12 +53,12 @@ ticks
 30.0
 
 BUTTON
-25
-53
-91
-86
+40
+189
+173
+267
 NIL
-setup
+clear-all
 NIL
 1
 T
@@ -70,12 +70,12 @@ NIL
 1
 
 BUTTON
-108
-54
-171
-87
+75
+133
+141
+166
 NIL
-go
+setup
 NIL
 1
 T
@@ -231,35 +231,6 @@ Circle -16777216 true false 60 75 60
 Circle -16777216 true false 180 75 60
 Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
 
-family
-false
-0
-Circle -1 true false 24 144 42
-Circle -1 true false 54 84 42
-Circle -1 true false 99 69 42
-Circle -1 true false 144 159 42
-Line -1 false 45 180 45 240
-Line -1 false 75 120 75 225
-Line -1 false 120 105 120 210
-Line -1 false 165 195 165 255
-Line -1 false 165 255 150 270
-Line -1 false 165 255 180 270
-Line -1 false 165 225 195 210
-Line -1 false 45 240 60 255
-Line -1 false 45 240 30 255
-Line -1 false 45 210 60 195
-Line -1 false 45 210 30 195
-Line -1 false 75 225 60 255
-Line -1 false 75 225 90 255
-Line -1 false 75 165 105 135
-Line -1 false 75 165 45 135
-Line -1 false 120 225 105 255
-Line -1 false 120 225 135 255
-Line -1 false 120 150 165 105
-Line -1 false 120 150 90 120
-Line -1 false 165 225 135 210
-Line -1 false 120 210 120 225
-
 fish
 false
 0
@@ -297,9 +268,9 @@ Polygon -10899396 true false 180 255 150 210 105 210 75 240 135 240
 house
 false
 0
-Polygon -7500403 true true 15 120 150 15 285 120
 Rectangle -7500403 true true 45 120 255 285
 Rectangle -16777216 true false 120 210 180 285
+Polygon -7500403 true true 15 120 150 15 285 120
 Line -16777216 false 30 120 270 120
 
 leaf
@@ -317,6 +288,16 @@ line half
 true
 0
 Line -7500403 true 150 0 150 150
+
+moose
+false
+0
+Polygon -7500403 true true 196 228 198 297 180 297 178 244 166 213 136 213 106 213 79 227 73 259 50 257 49 229 38 197 26 168 26 137 46 120 101 122 147 102 181 111 217 121 256 136 294 151 286 169 256 169 241 198 211 188
+Polygon -7500403 true true 74 258 87 299 63 297 49 256
+Polygon -7500403 true true 25 135 15 186 10 200 23 217 25 188 35 141
+Polygon -7500403 true true 270 150 253 100 231 94 213 100 208 135
+Polygon -7500403 true true 225 120 204 66 207 29 185 56 178 27 171 59 150 45 165 90
+Polygon -7500403 true true 225 120 249 61 241 31 265 56 272 27 280 59 300 45 285 90
 
 pentagon
 false
@@ -394,6 +375,14 @@ Circle -7500403 true true 65 21 108
 Circle -7500403 true true 116 41 127
 Circle -7500403 true true 45 90 120
 Circle -7500403 true true 104 74 152
+
+tree pine
+false
+0
+Rectangle -6459832 true false 120 225 180 300
+Polygon -7500403 true true 150 240 240 270 150 135 60 270
+Polygon -7500403 true true 150 75 75 210 150 195 225 210
+Polygon -7500403 true true 150 7 90 157 150 142 210 157 150 7
 
 triangle
 false

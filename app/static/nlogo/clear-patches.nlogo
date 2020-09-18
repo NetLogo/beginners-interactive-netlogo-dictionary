@@ -1,13 +1,13 @@
 to setup
-crt 10 [
-    set shape "cow"
-    set color brown
-    set size 3
-    setxy random-xcor random-ycor
-  ]
+  clear-all
   ask patches [set pcolor green]
 
-  reset-ticks
+  create-turtles 20 [
+    set shape "cow"
+    set size 5
+    set color brown
+    setxy random-xcor random-ycor
+  ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -38,10 +38,10 @@ ticks
 30.0
 
 BUTTON
-19
-32
-189
-65
+47
+34
+160
+95
 NIL
 setup
 NIL
@@ -55,12 +55,12 @@ NIL
 1
 
 BUTTON
-50
-78
-162
-111
-clear turtles
-ct
+23
+109
+204
+190
+create 20 newborn cows
+create-turtles 20 [set shape \"cow\" \nset color black\nset size 3\nsetxy random-xcor random-ycor\n]
 NIL
 1
 T
@@ -72,12 +72,12 @@ NIL
 1
 
 BUTTON
-49
-123
-162
-156
-clear patches
-cp
+39
+206
+170
+273
+NIL
+clear-all
 NIL
 1
 T
@@ -86,16 +86,6 @@ NIL
 NIL
 NIL
 NIL
-1
-
-TEXTBOX
-21
-197
-200
-434
-Click \"setup\" a few times to begin. Notice how if you keep clicking \"setup\", more cows will begin to pop up. \n\nNow click \"clear-turtles\" and all of the cows will be gone!\n\nNow click clear patches and notice how all of the patches will be gone!
-14
-0.0
 1
 
 @#$#@#$#@

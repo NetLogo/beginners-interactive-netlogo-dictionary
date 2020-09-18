@@ -1,38 +1,37 @@
 to setup
   clear-all
-  ask patches [set pcolor 88]
-  create-turtles 1 [set shape "family"
-    setxy random-xcor random-ycor
-    set size 15
+
+ask patches [
+    if pycor = -10 [set pcolor yellow ]
   ]
 
-  create-turtles 1 [set shape "house"
-    set size 15
-    setxy 3 10
-  set color brown]
-
-  reset-ticks
-end
-
-
-
-to go
-  ask turtle 0 [ ;; the family is turtle 0
-    face turtle 1 ;; the house is turtle 1
- move-to one-of turtles with [shape = "house"] ;; this will move the family to the house
+  crt 2 [
+    set shape "car top"
+    set size 5
   ]
-  tick
+
+    ask turtle 0 [
+    set heading 180
+      setxy 2 12
+      set color red
+    ]
+
+    ask turtle 1 [
+    set heading 180
+      setxy -5 12
+      set color green
+    ]
 
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-828
-629
+647
+448
 -1
 -1
-10.0
+13.0
 1
 10
 1
@@ -42,21 +41,21 @@ GRAPHICS-WINDOW
 0
 0
 1
--30
-30
--30
-30
-1
-1
+-16
+16
+-16
+16
+0
+0
 1
 ticks
 30.0
 
 BUTTON
-25
 53
+58
+119
 91
-86
 NIL
 setup
 NIL
@@ -70,12 +69,29 @@ NIL
 1
 
 BUTTON
-108
-54
-171
-87
+18
+139
+188
+249
+forward 2 units (red car)
+ask turtle 0 [fd 2]
 NIL
-go
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+18
+265
+187
+367
+forward 0.2 units (green car)
+ask turtle 1 [fd 0.2]
 NIL
 1
 T
@@ -179,6 +195,21 @@ Polygon -16777216 true false 162 80 132 78 134 135 209 135 194 105 189 96 180 89
 Circle -7500403 true true 47 195 58
 Circle -7500403 true true 195 195 58
 
+car top
+true
+0
+Polygon -7500403 true true 151 8 119 10 98 25 86 48 82 225 90 270 105 289 150 294 195 291 210 270 219 225 214 47 201 24 181 11
+Polygon -16777216 true false 210 195 195 210 195 135 210 105
+Polygon -16777216 true false 105 255 120 270 180 270 195 255 195 225 105 225
+Polygon -16777216 true false 90 195 105 210 105 135 90 105
+Polygon -1 true false 205 29 180 30 181 11
+Line -7500403 false 210 165 195 165
+Line -7500403 false 90 165 105 165
+Polygon -16777216 true false 121 135 180 134 204 97 182 89 153 85 120 89 98 97
+Line -16777216 false 210 90 195 30
+Line -16777216 false 90 90 105 30
+Polygon -1 true false 95 29 120 30 119 11
+
 circle
 false
 0
@@ -231,35 +262,6 @@ Circle -16777216 true false 60 75 60
 Circle -16777216 true false 180 75 60
 Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
 
-family
-false
-0
-Circle -1 true false 24 144 42
-Circle -1 true false 54 84 42
-Circle -1 true false 99 69 42
-Circle -1 true false 144 159 42
-Line -1 false 45 180 45 240
-Line -1 false 75 120 75 225
-Line -1 false 120 105 120 210
-Line -1 false 165 195 165 255
-Line -1 false 165 255 150 270
-Line -1 false 165 255 180 270
-Line -1 false 165 225 195 210
-Line -1 false 45 240 60 255
-Line -1 false 45 240 30 255
-Line -1 false 45 210 60 195
-Line -1 false 45 210 30 195
-Line -1 false 75 225 60 255
-Line -1 false 75 225 90 255
-Line -1 false 75 165 105 135
-Line -1 false 75 165 45 135
-Line -1 false 120 225 105 255
-Line -1 false 120 225 135 255
-Line -1 false 120 150 165 105
-Line -1 false 120 150 90 120
-Line -1 false 165 225 135 210
-Line -1 false 120 210 120 225
-
 fish
 false
 0
@@ -297,9 +299,9 @@ Polygon -10899396 true false 180 255 150 210 105 210 75 240 135 240
 house
 false
 0
-Polygon -7500403 true true 15 120 150 15 285 120
 Rectangle -7500403 true true 45 120 255 285
 Rectangle -16777216 true false 120 210 180 285
+Polygon -7500403 true true 15 120 150 15 285 120
 Line -16777216 false 30 120 270 120
 
 leaf
