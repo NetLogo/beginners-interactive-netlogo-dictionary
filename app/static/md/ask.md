@@ -1,4 +1,4 @@
-`ask` is a reporter that is used to make the agents in the agentset do something. The syntax of this command is `ask *agentset/agent* [insert command here] `. When `ask` is used with an agentset, each agent will take its turn in a random order. For example, 
+`ask` is a command that is used to make the agents in the agentset do something. The syntax of this command is `ask *agentset/agent* [insert command here] `. When `ask` is used with an agentset, each agent will take its turn in a random order. For example, 
 
 ```
 ask turtles [ fd 1 ] 
