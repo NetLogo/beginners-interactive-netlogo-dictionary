@@ -1,4 +1,8 @@
-`setxy` is a simple procedure that moves a turtle to a given X (left/right) and Y (up/down) coordinate in the world.
+`setxy` is a simple procedure that moves a turtle to a given coordinate in the world. It takes the form of 
+
+``` setxy x y ```
+
+where **x** is the desired x-coordinate (left/right), and **y** is the desired y-coordinate (up/down). 
 
 By default, Netlogo follows a traditional cartesian coordinate system, meaning that the X and Y coordinates at the center of the world are both 0, so `setxy 0 0` will set the position of the turtle back to the center of the world. Note that the x and y coordinates passed in can be decimal values, not just whole numbers, so `setxy 0.5 -0.5` is perfectly valid, and will place the turtle 0.5 units to the right and 0.5 units down from the center.
 

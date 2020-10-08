@@ -5,5 +5,5 @@ ask turtles [ fd 1 ]
 ask patches [set pcolor pink]
 ```
 
-Each time this is run in the observer, *either* the turtles will move forward first *or* the patches will turn pink first. It is random every time!
+Each time this is run in the observer a random turtle will move forward, then a random patch will become pink. It is random every time!
 
