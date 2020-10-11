@@ -6,8 +6,6 @@
 
 ```if any? turtles with [size > 2][stop]``` .
 
-
-
 Note that you can, as always, use the `with` primitive to narrow down an agentset as the example below does to for turtles with a size greater than 2.
 
 

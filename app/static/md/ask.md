@@ -7,3 +7,4 @@ ask patches [set pcolor pink]
 
 Each time this is run in the observer a random turtle will move forward, then a random patch will become pink. It is random every time!
 
+In the model below, we want the fish to swim, the plants to wiggle, and all the turtles to move forward. To make them do their actions, we just `ask` !

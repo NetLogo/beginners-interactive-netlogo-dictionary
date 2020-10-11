@@ -1,2 +1,12 @@
-### **all?** agentset [ *reporter* ]
-Similar to `any?`, `all?` checks if all agents of a given agentset reports true for a given reporter, where reporter is a **true-or-false condition**. For example, `all? turtles [ size > 1]` would return **True** if and only if every turtle in the model had a size greater than one. `All?` reports as **False** if a single agent reports **False** for the **true-or-false condition**. 
+Similar to `any?`, `all?` is used to check if all agents of an agentset return **True** for a given true-or-false condition. If all agents return **True**, `all?` will return **True**, otherwise it will return **False**. Its syntax is
+
+``` all? agentset [ reporter ] ```
+
+For example, `all? turtles [ size > 1]` would return **True** if and only if every turtle in the model had a size greater than one. 
+
+
+
+In the model below, there is a flock of sheep. As the sheep move around, if they have not eaten yet and are on a green patch of grass, they will eat. We want the model to stop after all sheep have eaten, so we include the line
+
+``` if all? turtles [ have-eaten? = true ] [ stop ] ```
+
