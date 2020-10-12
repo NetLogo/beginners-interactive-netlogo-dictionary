@@ -77,7 +77,7 @@ BUTTON
 170
 273
 NIL
-clear-all
+clear-patches
 NIL
 1
 T

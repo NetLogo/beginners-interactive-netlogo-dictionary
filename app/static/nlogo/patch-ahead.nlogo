@@ -4,11 +4,11 @@ to setup
     if pycor = 0 [set pcolor gray ]
   ]
 
-  ask patch -5 0 [ set pcolor red ] ;; make the stop sign
+  ask patch -5 0 [ set pcolor red ]
 
   create-turtles 1 [
     set shape "car"
-    set heading 90 ;; this is the heading of the car
+    set heading 90
     move-to one-of patches with [pcolor = gray]
   ]
 
@@ -19,10 +19,9 @@ to go
   ask turtles [
     ;fd 0.3
 
-    if not ([pcolor] of patch-ahead 1 = red) [ ;; The car will continue to move forward as long as one of the patches is not red
+    if not ([pcolor] of patch-ahead 1 = red) [
       fd 0.3
     ]
-
   ]
 
   tick
@@ -93,7 +92,7 @@ SLIDER
 37
 99
 210
-133
+132
 stop-distance
 stop-distance
 0
@@ -103,16 +102,6 @@ stop-distance
 1
 NIL
 HORIZONTAL
-
-TEXTBOX
-38
-158
-315
-201
-implement slider\nangled road or angled patch-ahead\n
-11
-0.0
-1
 
 @#$#@#$#@
 ## WHAT IS IT?
