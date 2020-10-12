@@ -147,9 +147,9 @@
                 "Wealth Distribution"
             ]
         },
-        "if-else": {
-            "identity": "if-else",
-            "display_name": "if-else",
+        "ifelse": {
+            "identity": "ifelse",
+            "display_name": "ifelse",
             "short_description": "execute specific code if a condition is true, otherwise, execute other code",
             "search_terms": [
                 "if",
@@ -1660,7 +1660,7 @@
         "create-turtles": {
             "identity": "create-turtles",
             "display_name": "create-turtles",
-            "short_description": "creates turtles with random colors and headings in the default shape of a turtle",
+            "short_description": "creates turtles with random colors and headings in the default shape of a triangle",
             "search_terms": [
                 "hatch",
                 "sprout",
@@ -1703,9 +1703,9 @@
             ],
             "library_models": []
         },
-        "fd": {
-            "identity": "fd",
-            "display_name": "fd",
+        "forward": {
+            "identity": "forward",
+            "display_name": "forward",
             "short_description": "allows turtles to move in any number of units that the programmer desires",
             "search_terms": [
                 "right",
