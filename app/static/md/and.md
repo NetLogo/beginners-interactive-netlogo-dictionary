@@ -1,5 +1,7 @@
 `and` is a primitive used to combine two true-or-false statements into a single statement that is true *if and only if* both statements are true. For example, if we wanted a turtle to eat **only** if (A) they were hungry *and* (B) if there was food in their patch, we could say:
 
+
+
 ```
 if hungry? and food-here? [
   eat

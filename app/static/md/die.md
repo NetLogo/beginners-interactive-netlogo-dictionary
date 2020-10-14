@@ -2,9 +2,9 @@
 
 
 
-In the model below, a flock of sheep move around and eat grass to gain energy. As a sheep moves, it loses energy; if a sheep ever has 0 energy it should die. So we include
+In the model below, a flock of sheep move around and eat grass to gain energy. As a sheep moves, it loses energy; if a sheep ever has 0 energy it will die and remove itself from the model. So we include the following code to remove those sheep:
+
+
 
 ``` if energy <= 0 [ die ] ```
-
-to remove those sheep from the model.
 

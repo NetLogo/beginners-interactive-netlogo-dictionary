@@ -1,6 +1,10 @@
 `any?` is used when you want to determine if there are any agents within an agentset. If there are, it will return **True**, otherwise it will return **False**. Its syntax is: 
 
+
+
 ```any? <agentset>```
+
+
 
 `any?` can be combined with a conditional statement to perform an action if there are at least one agent that fit a given criteria:
 
