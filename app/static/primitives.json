@@ -1549,6 +1549,23 @@
                 "Shepherds"
             ]
         },
+        "with": {
+            "identity": "with",
+            "display_name": "with",
+            "short_description": "Narrows down an agentset.",
+            "search_terms": [
+                "turtles",
+                "if",
+                "ask"
+            ],
+            "agents": [],
+            "see_also": [
+                "turtles",
+                "if",
+                "ask"
+            ],
+            "library_models": []
+        },
         "ask": {
             "identity": "ask",
             "display_name": "ask",
