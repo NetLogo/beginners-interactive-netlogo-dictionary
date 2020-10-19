@@ -1,4 +1,4 @@
-`sort-by` is an advanced procedure that allows you to sort lists or agentsets using a user-defined comparison. Although `sort-by` does work on agentsets as well as lists, to sort agentsets, you will almost always want to use `sort-on` instead as it is significantly easier to use. `sort-by` is best used in the specific circumstance that you are sorting a list and you need very specific control of how the elements in that list are sorted. 
+`sort-by` allows you to sort lists or agentsets using a user-defined comparison. Although `sort-by` does work on agentsets as well as lists, to sort agentsets you will almost always want to use `sort-on` because  it is significantly easier to use. `sort-by` is best used in the specific circumstance that you are sorting a list and you need very specific control of how the elements in that list are sorted. 
 
 As an example of how to use `sort-by`, consider the example of sorting a list of strings according to their length:
 ```

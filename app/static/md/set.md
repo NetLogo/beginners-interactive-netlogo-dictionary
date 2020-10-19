@@ -1,4 +1,12 @@
-`Set` sets a variable to a certain value, and takes the form `set variable value`. It can set global variables that have been defined at the top of the code, and local variables that were defined by `let`. It can also set variables belonging to the agent who calls `set` (including turtle, breed, or patch variables defined by turtles-own or patches-own); for example, 
+`Set` sets a variable to a certain value, and takes the form:
+
+
+
+ ```set variable value```
+
+
+
+ It can set global variables that have been defined at the top of the code, and local variables that were defined by `let`. It can also set variables belonging to the agent who calls `set` (including turtle, breed, or patch variables defined by turtles-own or patches-own); for example, 
 
 ```
 turtles-own [age] 
