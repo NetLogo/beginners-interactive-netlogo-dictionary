@@ -1,29 +1,24 @@
 to setup
   clear-all
   reset-ticks
-  ; create 100 individuals and spread them around the map
   create-turtles 100 [
     set shape "person"
     set color green
     move-to one-of patches
   ]
-
-  ; infect one of them with a virus
   ask one-of turtles [
     set color red
   ]
 end
 
 to go
-  if not any? turtles with [color = green][ ; stop running the model if there are no more healthy agents.
+  if not any? turtles with [color = green][
     stop
   ]
-
   ask turtles [
     move
   ]
-
-  ask turtles with [color = red][ ; each infected individual will infect all those within a 2 unit radiu                                 ; within 2 units
+  ask turtles with [color = red][
     ask turtles in-radius 2 [
       set color red
     ]

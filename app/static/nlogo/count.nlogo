@@ -14,20 +14,22 @@ to setup
 end
 
 to can-we-play?
-  ; if there are less than 10 players or an odd amount of players, they can't play
   ifelse count players < 10
       [ ask players [
         set shape "face sad"
         set label "not enough players!"
-        set label-color red] ]
+        set label-color red
+     ]
+  ]
       [ ask players [
         set shape "face happy"
         set label "enough players!"
-        set label-color red]]
+        set label-color red
+    ]
+  ]
   tick
 end
 
-; set label for sad/happy
 
 to setup-court
   ask patches [set pcolor brown]

@@ -1,6 +1,6 @@
 breed [sheep a-sheep]
-sheep-own [ energy ]  ;; agents own energy
-patches-own [ grass-amount ]  ;; patches have grass
+sheep-own [ energy ]
+patches-own [ grass-amount ]
 
 to setup
   clear-all
@@ -16,25 +16,20 @@ end
 to go
   if not any? sheep [ stop ]
   ask sheep [ right random 90 left random 90 forward 1
-    ; as a sheep moves around, it looses energy
     set energy energy - 1
-    ; if a sheep has no more energy, they die
     if energy <= 0 [ die ]
     eat ]
   tick
 end
 
-;; recolor the grass to indicate how much has been eaten
 to recolor-grass
   set pcolor scale-color green grass-amount 0 20
 end
 
 
 to eat
-  ; sheep eat grass and gain energy
   if grass-amount >= 1 [
     set energy energy + 1
-    ;; decrement the grass
     set grass-amount grass-amount - 1
     recolor-grass ]
 end
@@ -84,10 +79,10 @@ NIL
 1
 
 BUTTON
-77
-115
-140
-148
+74
+109
+137
+142
 NIL
 go
 T
@@ -101,10 +96,10 @@ NIL
 1
 
 MONITOR
-73
-247
-162
-292
+63
+168
+152
+213
 NIL
 count sheep
 17

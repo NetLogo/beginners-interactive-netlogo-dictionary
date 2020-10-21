@@ -20,13 +20,14 @@ to setup
     move-to one-of patches
     set size 1.5
   ]
+
 end
 
 to go
   ask lumberjacks [
     move
     if any? trees-here [
-      ask trees-here [ die ] ; In NetLogo, one agent cannot remove another per se, one just asks another, rather morbidly, to die.
+      ask trees-here [ die ]
     ]
   ]
   tick

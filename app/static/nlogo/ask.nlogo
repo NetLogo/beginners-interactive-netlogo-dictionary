@@ -3,7 +3,6 @@ breed [fish a-fish]
 breed [stars star]
 
 
-
 to setup
   clear-all
  create-plants 5 [
@@ -34,17 +33,15 @@ end
 
 
 to go
-  ask turtles [ fd 0.2  ;; this asks plants, fish, and stars to move forward and wait
-  if wait-in-between? [wait 0.5
-     display
-    ]
+  ask turtles [
+    fd 0.2
   ]
   ask plants [
-    wiggle]
+    wiggle
+  ]
   ask fish [
-    swim]
-
-
+    swim
+  ]
   tick
 end
 
@@ -118,17 +115,6 @@ NIL
 NIL
 NIL
 1
-
-SWITCH
-21
-10
-184
-43
-wait-in-between?
-wait-in-between?
-1
-1
--1000
 
 @#$#@#$#@
 ## WHAT IS IT?

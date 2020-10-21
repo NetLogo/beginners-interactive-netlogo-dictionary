@@ -17,13 +17,10 @@ to move-and-eat
     if have-eaten? = false and pcolor = green
      [ set have-eaten? true
         set size 2 ]
-  right random 90 left random 90 forward 1 ]
-  ; if all of the sheep have eaten, the model stops
+    right random 90 left random 90 forward 1 ]
   if all? turtles [ have-eaten? = true ] [stop]
   tick
 end
-
-; shepherd moving around and feeding, then stops
 @#$#@#$#@
 GRAPHICS-WINDOW
 210

@@ -25,7 +25,6 @@ to setup
 end
 
 to go
-  ;; Ask the lumberjack to cut down the trees on the patch it is standing on.
   ask lumberjacks [
    if any? trees-here [
      ask trees-here [
@@ -34,19 +33,12 @@ to go
    ]
   ]
 
-  ;; if there are no more trees, we can stop.
   if not any? trees [stop]
-  ;; Note that if we removed this line, we would get an
-  ;; error once we cut down the final tree because we would
-  ;; be asking for the distance from the lumberjack to
-  ;; `nobody`, which is an error.
 
-
-  ;; find the new target if needed and move towards the target.
   ask lumberjacks [
-   if target = nobody [ ;; once an agent dies, all references to it turn to `nobody`.
-      set target min-one-of trees [distance myself]
-   ]
+   if target = nobody [
+      set target min-one-of trees [ distance myself ]
+    ]
    face target
    fd 1
   ]

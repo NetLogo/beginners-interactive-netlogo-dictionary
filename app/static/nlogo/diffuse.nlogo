@@ -12,13 +12,10 @@ to setup
 end
 
 to go
-  diffuse pollution (8.0 / 9.0) ;; each iteration, diffuse sends some fraction
-                                ;; of the value to the 8 neighboring patches.
-                                ;; By setting this value to 8/9, both the given patch
-                                ;; and the 8 surrounding patches all end up with the
-                                ;; same amount of pollution.
+  diffuse pollution (8.0 / 9.0)
+
   ask turtles [
-    if random 100 < 20 [ ;; add new pollution 20% of the time.
+    if random 100 < 20 [
      set pollution pollution + 3
     ]
   ]
@@ -76,9 +73,9 @@ NIL
 
 BUTTON
 63
-129
+125
 144
-162
+158
 go once
 go
 NIL
