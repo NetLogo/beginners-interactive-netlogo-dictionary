@@ -1,49 +1,47 @@
-globals [ food-pile ]
 
 to setup
   clear-all
-  ask patches [
-    set pcolor green ]
-  ask one-of patches [
-    set food-pile self
-    set pcolor brown ]
-  create-turtles 5 [
-    set shape "squirrel"
-    set color black
-    move-to one-of patches ]
-  reset-ticks
+
+  ask patch 5 10 [
+    set pcolor green
+  ]
+
+  create-turtles 30 [
+    set shape "fish"
+    set size 3
+    move-to one-of patches
+  ]
+
 end
 
 
-to go
+to look-at-food
  ask turtles [
-    if [pcolor] of patch-here = green [
-      facexy ([xcor] of food-pile) ([ycor] of food-pile)
-      forward 1 ] ]
-  tick
+      facexy 5 10
+  ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
 648
-449
+448
 -1
 -1
-39.1
+13.0
 1
 10
 1
 1
 1
 0
+0
+0
 1
-1
-1
--5
-5
--5
-5
+-16
+16
+-16
+16
 1
 1
 1
@@ -68,12 +66,12 @@ NIL
 1
 
 BUTTON
-98
-65
-161
-98
+90
+66
+203
+100
 NIL
-go
+look-at-food
 NIL
 1
 T
@@ -230,13 +228,13 @@ Circle -16777216 true false 180 75 60
 Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
 
 fish
-false
+true
 0
-Polygon -1 true false 44 131 21 87 15 86 0 120 15 150 0 180 13 214 20 212 45 166
-Polygon -1 true false 135 195 119 235 95 218 76 210 46 204 60 165
-Polygon -1 true false 75 45 83 77 71 103 86 114 166 78 135 60
-Polygon -7500403 true true 30 136 151 77 226 81 280 119 292 146 292 160 287 170 270 195 195 210 151 212 30 166
-Circle -16777216 true false 215 106 30
+Polygon -1 true false 131 256 87 279 86 285 120 300 150 285 180 300 214 287 212 280 166 255
+Polygon -1 true false 195 165 235 181 218 205 210 224 204 254 165 240
+Polygon -1 true false 45 225 77 217 103 229 114 214 78 134 60 165
+Polygon -7500403 true true 136 270 77 149 81 74 119 20 146 8 160 8 170 13 195 30 210 105 212 149 166 270
+Circle -16777216 true false 106 55 30
 
 flag
 false
@@ -314,7 +312,7 @@ Polygon -7500403 true true 165 105 165 135 225 105 255 45 210 60
 Polygon -7500403 true true 135 90 120 45 150 15 180 45 165 90
 
 sheep
-false
+true
 15
 Circle -1 true true 203 65 88
 Circle -1 true true 70 65 162
