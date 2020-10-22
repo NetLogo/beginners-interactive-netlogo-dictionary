@@ -17,9 +17,9 @@ end
 
 
 to go
-  ask turtle 0 [ ;; the family is turtle 0
-    face turtle 1 ;; the house is turtle 1
- move-to one-of turtles with [shape = "house"] ;; this will move the family to the house
+  ask turtle 0 [
+    face turtle 1
+ move-to one-of turtles with [shape = "house"]
   ]
   tick
 

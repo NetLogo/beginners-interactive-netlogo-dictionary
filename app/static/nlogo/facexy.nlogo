@@ -1,37 +1,36 @@
+globals [ food-pile ]
+
 to setup
   clear-all
-  create-turtles 2 [
-    set size 5
-
-    ;; turtles begin in their own space
-    ask turtle 0 [setxy -10 0
-    set heading 0]
-    ask turtle 1 [setxy 10 0
-    set heading 0]
-  ]
-
+  ask patches [
+    set pcolor green ]
+  ask one-of patches [
+    set food-pile self
+    set pcolor brown ]
+  create-turtles 5 [
+    set shape "squirrel"
+    set color black
+    move-to one-of patches ]
   reset-ticks
 end
 
 
 to go
-  ask turtle 1 [
-    set heading 270
-    facexy 5 0  ;; this faces the turtle towards the other
-  fd 13 ] ;; the turtle moves forward to approach the turtle and make friends!
-
-
+ ask turtles [
+    if [pcolor] of patch-here = green [
+      facexy ([xcor] of food-pile) ([ycor] of food-pile)
+      forward 1 ] ]
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-752
-553
+648
+449
 -1
 -1
-16.2
+39.1
 1
 10
 1
@@ -41,10 +40,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
+-5
+5
+-5
+5
 1
 1
 1
@@ -340,6 +339,22 @@ false
 0
 Rectangle -7500403 true true 30 30 270 270
 Rectangle -16777216 true false 60 60 240 240
+
+squirrel
+true
+0
+Polygon -7500403 true true 87 267 106 290 145 292 157 288 175 292 209 292 207 281 190 276 174 277 156 271 154 261 157 245 151 230 156 221 171 209 214 165 231 171 239 171 263 154 281 137 294 136 297 126 295 119 279 117 241 145 242 128 262 132 282 124 288 108 269 88 247 73 226 72 213 76 208 88 190 112 151 107 119 117 84 139 61 175 57 210 65 231 79 253 65 243 46 187 49 157 82 109 115 93 146 83 202 49 231 13 181 12 142 6 95 30 50 39 12 96 0 162 23 250 68 275
+Polygon -16777216 true false 237 85 249 84 255 92 246 95
+Line -16777216 false 221 82 213 93
+Line -16777216 false 253 119 266 124
+Line -16777216 false 278 110 278 116
+Line -16777216 false 149 229 135 211
+Line -16777216 false 134 211 115 207
+Line -16777216 false 117 207 106 211
+Line -16777216 false 91 268 131 290
+Line -16777216 false 220 82 213 79
+Line -16777216 false 286 126 294 128
+Line -16777216 false 193 284 206 285
 
 star
 false

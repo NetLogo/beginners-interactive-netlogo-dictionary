@@ -1,55 +1,47 @@
+breed [ eagles eagle ]
+breed [ rats rat ]
+
+
 to setup
   clear-all
-
-  ask patches [
-    set pcolor 86
-  ]
-
-  create-turtles 3 [
-    set shape "flower"
-    set size 7
-    set color red ;; initial color of the turtles
- set label who ]
-
-  ask turtle 0 [
-    setxy -8 -9
-  ]
-
-  ask turtle 1 [
-    setxy 0 -9
-  ]
-
-    ask turtle 2 [
-    setxy 8 -9
-  ]
+  create-eagles 3 [
+    set shape "bird"
+    set color brown
+    move-to one-of patches
+    set size 2 ]
+  create-rats 8 [
+    set shape "mouse side"
+    set color one-of [ white gray ]
+    move-to one-of patches ]
 
   reset-ticks
 end
 
 
 to go
-  ask turtle 0 [
-    set color 65 ;; changes the color of the turtle to green
+  ask eagles [
+    left random 60 right random 60
+    forward 1
+    if any? rats-here with [ color = white ] [
+      ask rats-here with [ color = white ] [ die ]
+    ]
   ]
-
-  ask turtle 1 [
-    set color 18 ;; changes the color of this turtle to pink
-  ]
-
-  ask turtle 2 [
-    set color 117 ;; changes the color of this turtle to purple
-  ]
+  ask rats [
+    left random 60 right random 60
+    forward 1 ]
+  if not any? rats with [ color = white ] [
+    stop ]
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-647
-448
+616
+417
 -1
 -1
-13.0
+23.412
 1
 10
 1
@@ -59,10 +51,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
+-8
+8
+-8
+8
 0
 0
 1
@@ -93,7 +85,7 @@ BUTTON
 86
 NIL
 go
-NIL
+T
 1
 T
 OBSERVER
@@ -154,6 +146,16 @@ arrow
 true
 0
 Polygon -7500403 true true 150 0 0 150 105 150 105 293 195 293 195 150 300 150
+
+bird
+false
+0
+Polygon -7500403 true true 135 165 90 270 120 300 180 300 210 270 165 165
+Rectangle -7500403 true true 120 105 180 237
+Polygon -7500403 true true 135 105 120 75 105 45 121 6 167 8 207 25 257 46 180 75 165 105
+Circle -16777216 true false 128 21 42
+Polygon -7500403 true true 163 116 194 92 212 86 230 86 250 90 265 98 279 111 290 126 296 143 298 158 298 166 296 183 286 204 272 219 259 227 235 240 241 223 250 207 251 192 245 180 232 168 216 162 200 162 186 166 175 173 171 180
+Polygon -7500403 true true 137 116 106 92 88 86 70 86 50 90 35 98 21 111 10 126 4 143 2 158 2 166 4 183 14 204 28 219 41 227 65 240 59 223 50 207 49 192 55 180 68 168 84 162 100 162 114 166 125 173 129 180
 
 box
 false
@@ -305,6 +307,17 @@ line half
 true
 0
 Line -7500403 true 150 0 150 150
+
+mouse side
+false
+0
+Polygon -7500403 true true 38 162 24 165 19 174 22 192 47 213 90 225 135 230 161 240 178 262 150 246 117 238 73 232 36 220 11 196 7 171 15 153 37 146 46 145
+Polygon -7500403 true true 289 142 271 165 237 164 217 185 235 192 254 192 259 199 245 200 248 203 226 199 200 194 155 195 122 185 84 187 91 195 82 192 83 201 72 190 67 199 62 185 46 183 36 165 40 134 57 115 74 106 60 109 90 97 112 94 92 93 130 86 154 88 134 81 183 90 197 94 183 86 212 95 211 88 224 83 235 88 248 97 246 90 257 107 255 97 270 120
+Polygon -16777216 true false 234 100 220 96 210 100 214 111 228 116 239 115
+Circle -16777216 true false 246 117 20
+Line -7500403 true 270 153 282 174
+Line -7500403 true 272 153 255 173
+Line -7500403 true 269 156 268 177
 
 pentagon
 false

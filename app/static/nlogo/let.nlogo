@@ -22,8 +22,6 @@ to speaker-give-knowledge
     set label knowledge ]
   tick
 end
-
-; take out movement, maybe use links, rumor spread
 @#$#@#$#@
 GRAPHICS-WINDOW
 275

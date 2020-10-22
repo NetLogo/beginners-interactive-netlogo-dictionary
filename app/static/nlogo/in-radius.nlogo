@@ -10,8 +10,8 @@ end
 
 to turn-on
   ask turtles[
-   ask patches in-radius pollution-radius [ ; for each patch a given radius close to a factory
-     set pcolor pcolor - 1 ; set their color to one shade darker than it currently is
+   ask patches in-radius pollution-radius [
+     set pcolor pcolor - 1
    ]
   ]
 end

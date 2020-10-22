@@ -47,8 +47,6 @@ to draw-road
     ]
   ]
 end
-
-;;TODO: add label with toggle (` set label (word "gas: " gas)`)
 @#$#@#$#@
 GRAPHICS-WINDOW
 210

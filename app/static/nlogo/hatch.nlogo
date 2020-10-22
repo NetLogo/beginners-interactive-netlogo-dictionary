@@ -9,10 +9,7 @@ end
 
 to go
   ask turtles [
-    ; hatch creates 1 new turtles from each existing turtle that inherits the parent's characteristics
     hatch 1
-    ; the monitor shows how the number of turtles doubles each tick, as every
-    ; turtles hatches one new turtle
     right random 360
     forward 1 ]
   tick

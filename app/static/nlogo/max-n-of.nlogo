@@ -13,7 +13,6 @@ to race
   ask turtles [
     set color black
     forward random 5 ]
-  ; the three fastest people in the race, or the three people with the max x coordinate, will turn yellow
   ask max-n-of 3 turtles [xcor] [
     set color yellow ]
   tick

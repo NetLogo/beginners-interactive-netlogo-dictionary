@@ -1,10 +1,8 @@
 globals [ members-list ]
 
-; this model is of a selective club that only allows its members inside the building
 to setup
   clear-all
   create-turtles 10 [ set shape "person" set color yellow move-to one-of patches ]
-  ; the members-list contains only five specific turtles
   set members-list n-of 4 turtles
   create-turtles 1 [ set shape "building institution" set color red set size 3  move-to one-of patches]
   reset-ticks
@@ -14,7 +12,6 @@ to try-to-enter-club
   ask turtles with [ shape = "person" ][
     if member? self members-list [ set color blue ]
     if any? turtles-here with [ shape = "building institution" ] [
-      ; if a turtle is on the list, they are allowed to enter the club
       if member? self members-list
           [ die ] ]
     right random 90 left random 90 forward 1 ]

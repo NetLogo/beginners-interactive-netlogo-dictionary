@@ -1,4 +1,3 @@
-
 breed [ people person ]
 people-own [ home? ]
 
@@ -22,7 +21,6 @@ to wander-or-stay-home
       right random 90 left random 90 forward 1 ] ]
   ask turtles with [ shape = "house"] [
     ask people-here [
-      ; if person walks into a house of their same color, they are home and stay there
       if color = [color] of myself
       [ set home? true ]]]
   tick

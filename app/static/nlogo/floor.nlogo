@@ -1,8 +1,5 @@
 turtles-own [ test-score ]
 
-; this model is a class of students who have taken a test
-; the students who scored above average will become happy
-
 to setup
   clear-all
   create-turtles 20 [ set shape "person student"
@@ -14,13 +11,11 @@ to setup
 end
 
 to above-average?
-  ; the class has a nice teacher who rounds up test scores, using ceiling
   if rounding = "round-score-up" [
     ask turtles [
     set test-score ceiling test-score
     if test-score >= mean [test-score] of turtles
       [ set shape "face happy" ] ] ]
-  ; the class has a mean teacher who rounds down test scores, using floor
   if rounding = "round-score-down" [
     ask turtles [
     set test-score floor test-score
@@ -30,10 +25,6 @@ to above-average?
     set xcor test-score ]
   update-plots
 end
-
-; arrange on pxcor my test, have a turtle mark average
-; set scores out of 10 to show more difference
-; add histogram
 @#$#@#$#@
 GRAPHICS-WINDOW
 257

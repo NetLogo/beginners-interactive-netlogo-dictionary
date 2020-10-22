@@ -1,5 +1,3 @@
-; this model is like a game of 'the floor is lava'
-; if a person steps on a patch that is red, or lava, they lose (change color and stop moving)
 
 to setup
   clear-all
@@ -9,7 +7,7 @@ to setup
     forward 5 ]
   ask patches [
     ifelse (random 100) < density-of-lava
-      [ set pcolor red ] ; this randomly makes patches red (lava) or blue (safe) depending on the density-of-lava set
+      [ set pcolor red ]
       [ set pcolor blue ] ]
   reset-ticks
 end
@@ -17,8 +15,7 @@ end
 to go
   ask turtles [
     if  pcolor = red [ set color orange ]
-    ; if a turtle is on a red patch, then they change color and stop moving
-    if  pcolor = blue [ ; if a turtle is on a blue patch, they keep moving
+    if  pcolor = blue [
       right random 360
       forward 1 ] ]
   tick
@@ -94,7 +91,7 @@ density-of-lava
 density-of-lava
 0
 100
-6.0
+15.0
 1
 1
 NIL

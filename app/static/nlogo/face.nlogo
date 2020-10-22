@@ -19,17 +19,13 @@ to setup
 end
 
 to chase
-   ; if the cat catches the mouse, the model stops
   if not any? mice [ stop ]
   ask cats [
-    ; the cat will face the mouse and move towards it
     face one-of mice
     forward 1 ]
   ask mice [
     if any? cats-here [ die ]
-    ; if the mouse makes it to the mouse-hole, it is safe from the cat and the model stops
-    if patch-here = mouse-hole [ die ] ; using 'die' to make the mouse dissapear, like it went in the hole
-    ; the mouse will face the mouse-hole and move towards it
+    if patch-here = mouse-hole [ die ]
     face mouse-hole forward 1 ]
   tick
 end
@@ -79,10 +75,10 @@ NIL
 1
 
 BUTTON
-75
-109
-142
-142
+72
+102
+139
+135
 NIL
 chase
 T

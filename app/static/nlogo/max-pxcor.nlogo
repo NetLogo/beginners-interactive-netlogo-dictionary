@@ -1,7 +1,6 @@
 to setup-field
   ask patches [set pcolor green]
 
-  ; if a patch's pxcor or pycor is the max or min, set its color to white
   ask patches with [ pxcor = max-pxcor or
                      pxcor = min-pxcor or
                      pycor = max-pycor or

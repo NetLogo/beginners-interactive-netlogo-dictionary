@@ -14,7 +14,6 @@ end
 to spin-left
   ask turtles [
     if shape = "arrow" [
-      ; every tick, our arrow turns one degree to the left
       left 1
       set degrees degrees - 1 ] ]
   if degrees = 0 [ stop ]
@@ -24,7 +23,6 @@ end
 to spin-right
   ask turtles [
     if shape = "arrow" [
-      ; every tick, our arrow turns one degree to the right
       right 1
       set degrees degrees - 1 ] ]
   if degrees = 0 [ stop ]

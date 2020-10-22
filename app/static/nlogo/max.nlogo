@@ -14,7 +14,6 @@ to who-is-the-oldest
   ask turtles [
     set age age + 1
     if age = 100 [ die ]
-    ; the turtle with the max age is colored blue
     if age = max [age] of turtles [
       set color blue ]
     set label age]

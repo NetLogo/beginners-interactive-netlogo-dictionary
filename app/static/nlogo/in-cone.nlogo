@@ -14,9 +14,9 @@ to setup
     set color grey
     set size 2
   ]
-  layout-circle cameras 2 ;; arrange the cameras in a circle around the center
+  layout-circle cameras 2
 
-  ask cameras [ ;; highlight the area that the cameras can see
+  ask cameras [
     ask patches in-cone 8 50 [
       set pcolor green + 1
     ]
@@ -29,7 +29,7 @@ to setup
     setxy random-xcor random-ycor
   ]
 
-  crt 1 [ ;; create a tree for the cameras to wrap around (for the visual)
+  crt 1 [
     set color green - 1
     set shape "tree"
     set size 2
@@ -45,10 +45,10 @@ to go
   ]
 
   ask cameras [
-    ifelse any? animals in-cone 8 50 [ ;; if I see any animals in my cone of vision
-      set color yellow                 ;; light up
-    ] [                                ;; otherwise
-      set color grey                   ;; set my light to off
+    ifelse any? animals in-cone 8 50 [
+      set color yellow
+    ] [
+      set color grey
     ]
   ]
   tick
@@ -113,36 +113,6 @@ NIL
 NIL
 NIL
 NIL
-1
-
-TEXTBOX
-22
-199
-111
-240
-maybe have the turtle follow the cone?
-11
-0.0
-1
-
-TEXTBOX
-28
-266
-117
-321
-patch is only considered when center is in the cone
-11
-0.0
-1
-
-TEXTBOX
-22
-336
-111
-350
-drawing lines
-11
-0.0
 1
 
 @#$#@#$#@
