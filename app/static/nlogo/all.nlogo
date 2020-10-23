@@ -2,23 +2,30 @@ turtles-own [ have-eaten? ]
 
 to setup
   clear-all
-  ask patches [ set pcolor one-of [green brown]]
+
+  ask patches [
+    set pcolor one-of [ green brown ]
+  ]
+
   create-turtles 10 [
     set shape "sheep"
     set color white
     set have-eaten? false
-    move-to one-of patches]
+    move-to one-of patches
+  ]
+
   reset-ticks
 end
 
 to move-and-eat
   ask turtles [
-    set label have-eaten?
-    if have-eaten? = false and pcolor = green
-     [ set have-eaten? true
-        set size 2 ]
+    if all? turtles [ have-eaten? = true ] [stop]
+    if not have-eaten? and pcolor = green [
+      set have-eaten? true
+      set size 2
+    ]
     right random 90 left random 90 forward 1 ]
-  if all? turtles [ have-eaten? = true ] [stop]
+
   tick
 end
 @#$#@#$#@

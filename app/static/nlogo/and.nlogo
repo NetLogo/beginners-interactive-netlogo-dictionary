@@ -1,5 +1,6 @@
 to draw-river
   clear-all
+
   ask patches [
     set pcolor green
     if pxcor <= (width / 2) and pxcor >= (- width / 2) [

@@ -1,28 +1,34 @@
 to setup
   clear-all
   reset-ticks
+
   create-turtles 100 [
     set shape "person"
     set color green
     move-to one-of patches
   ]
+
   ask one-of turtles [
     set color red
   ]
+
 end
 
 to go
   if not any? turtles with [color = green][
     stop
   ]
+
   ask turtles [
     move
   ]
-  ask turtles with [color = red][
+
+  ask turtles with [color = red] [
     ask turtles in-radius 2 [
       set color red
     ]
   ]
+
   tick
 end
 

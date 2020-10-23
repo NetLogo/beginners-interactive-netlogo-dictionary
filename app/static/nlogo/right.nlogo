@@ -1,33 +1,42 @@
 to setup
   clear-all
-  ask patches [ set pcolor white ]
-  create-turtles 12 [ set color black
-  set shape "dot" ]
+
+  create-turtles 12 [
+    set color white
+    set shape "dot"
+  ]
+
   layout-circle turtles 5
-  create-turtles 1 [ set color red
+
+  create-turtles 1 [
     set shape "arrow"
     set size 3
-    set heading 0 ]
+    set heading 0
+  ]
   reset-ticks
 end
 
 to spin-left
+  if degrees = 0 [ stop ]
   ask turtles [
     if shape = "arrow" [
-      ; every tick, our arrow turns one degree to the left
       left 1
-      set degrees degrees - 1 ] ]
-  if degrees = 0 [ stop ]
+      set degrees degrees - 1
+    ]
+  ]
+
   tick
 end
 
 to spin-right
+  if degrees = 0 [ stop ]
   ask turtles [
     if shape = "arrow" [
-      ; every tick, our arrow turns one degree to the right
       right 1
-      set degrees degrees - 1 ] ]
-  if degrees = 0 [ stop ]
+      set degrees degrees - 1
+    ]
+  ]
+
   tick
 end
 @#$#@#$#@

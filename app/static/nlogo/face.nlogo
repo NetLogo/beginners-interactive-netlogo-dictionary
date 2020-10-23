@@ -1,20 +1,26 @@
 breed [cats cat]
 breed [mice mouse]
 
-globals [mouse-hole]
 
 to setup
   clear-all
-  ask patches [ set pcolor green ]
-  set mouse-hole one-of patches
-  ask mouse-hole [ set pcolor brown ]
-  create-cats 1 [ set color orange
+
+  ask patch 2 3 [
+    set pcolor brown
+  ]
+
+  create-cats 1 [
+    set color orange
     set shape "cat"
     set size 2
-    move-to one-of patches]
-  create-mice 1 [ set color white
+    move-to one-of patches
+  ]
+
+  create-mice 1 [
+    set color white
     set shape "mouse side"
-    move-to one-of patches]
+    move-to one-of patches
+  ]
   reset-ticks
 end
 
@@ -22,11 +28,15 @@ to chase
   if not any? mice [ stop ]
   ask cats [
     face one-of mice
-    forward 1 ]
+    forward 1
+  ]
+
   ask mice [
     if any? cats-here [ die ]
-    if patch-here = mouse-hole [ die ]
-    face mouse-hole forward 1 ]
+    if patch-here = patch 2 3 [ die ]
+    face patch 2 3
+    forward 1
+  ]
   tick
 end
 @#$#@#$#@

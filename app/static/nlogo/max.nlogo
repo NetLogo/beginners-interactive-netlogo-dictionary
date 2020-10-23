@@ -6,7 +6,8 @@ to setup
     set shape "person"
     set color red
     set age random 100
-    move-to one-of patches]
+    move-to one-of patches
+  ]
   reset-ticks
 end
 
@@ -15,8 +16,10 @@ to who-is-the-oldest
     set age age + 1
     if age = 100 [ die ]
     if age = max [age] of turtles [
-      set color blue ]
-    set label age]
+      set color blue
+    ]
+    set label age
+  ]
   tick
 end
 @#$#@#$#@

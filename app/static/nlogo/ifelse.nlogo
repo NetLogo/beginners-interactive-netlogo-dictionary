@@ -13,13 +13,7 @@ to setup
     set gas random-float 1
   ]
 
-  create-turtles 1 [
-    setxy 0 2
-    set shape "building store"
-    set color brown
-    set size 2
-  ]
-
+  create-gas-station
   draw-road
 end
 
@@ -45,6 +39,15 @@ to draw-road
     ][
       set pcolor green
     ]
+  ]
+end
+
+to create-gas-station
+   create-turtles 1 [
+    setxy 0 2
+    set shape "building store"
+    set color brown
+    set size 2
   ]
 end
 @#$#@#$#@

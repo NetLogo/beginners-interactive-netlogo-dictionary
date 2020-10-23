@@ -8,17 +8,20 @@ to setup
     set shape "bird"
     set color brown
     move-to one-of patches
-    set size 2 ]
+    set size 2
+  ]
+
   create-rats 8 [
     set shape "mouse side"
     set color one-of [ white gray ]
-    move-to one-of patches ]
+    move-to one-of patches
+  ]
 
   reset-ticks
 end
 
 
-to go
+to eagles-hunt-white-rats
   ask eagles [
     left random 60 right random 60
     forward 1
@@ -26,18 +29,22 @@ to go
       ask rats-here with [ color = white ] [ die ]
     ]
   ]
+
   ask rats [
     left random 60 right random 60
-    forward 1 ]
+    forward 1
+  ]
   if not any? rats with [ color = white ] [
-    stop ]
+    stop
+  ]
+
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+258
 10
-616
+664
 417
 -1
 -1
@@ -62,10 +69,10 @@ ticks
 30.0
 
 BUTTON
-15
-54
-81
-87
+102
+58
+168
+91
 NIL
 setup
 NIL
@@ -79,12 +86,12 @@ NIL
 1
 
 BUTTON
-104
-53
-167
-86
+44
+115
+221
+148
 NIL
-go
+eagles-hunt-white-rats
 T
 1
 T

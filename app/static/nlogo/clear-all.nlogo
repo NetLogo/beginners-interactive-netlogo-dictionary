@@ -1,29 +1,16 @@
-to setup
-  ask patches [set pcolor 87]
-
-  create-turtles 200 [
-  set shape "circle"
-  set color white
-  set size 1
-  setxy random-xcor random-ycor
+to make-drawing
+  ask patches [
+    set pcolor yellow
   ]
-
-  create-turtles 10 [
-  set shape "tree pine"
-  set color green
-  set size 3
-  setxy random-xcor random-ycor
-  ]
-
   create-turtles 5 [
-    set shape "moose"
-    set color brown
-    set size 3
-    setxy random-xcor random-ycor
+    move-to one-of patches
+    pen-down
+    repeat 20 [
+      right random 90
+      forward 5
+    ]
   ]
-
 end
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
@@ -53,10 +40,10 @@ ticks
 30.0
 
 BUTTON
-40
-189
-173
-267
+57
+121
+137
+161
 NIL
 clear-all
 NIL
@@ -70,12 +57,12 @@ NIL
 1
 
 BUTTON
-75
-133
-141
-166
+42
+70
+162
+103
 NIL
-setup
+make-drawing
 NIL
 1
 T

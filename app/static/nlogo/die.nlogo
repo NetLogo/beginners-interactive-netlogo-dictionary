@@ -1,12 +1,14 @@
 breed [sheep a-sheep]
 sheep-own [ energy ]
-patches-own [ grass-amount ]
 
 to setup
   clear-all
-  ask patches [ set grass-amount random 10
-    recolor-grass ]
-  create-sheep 15 [ move-to one-of patches
+  ask patches [
+    set pcolor green
+  ]
+
+  create-sheep 10 [
+    move-to one-of patches
     set color white
     set shape "sheep"
     set energy random 15 ]
@@ -15,23 +17,18 @@ end
 
 to go
   if not any? sheep [ stop ]
-  ask sheep [ right random 90 left random 90 forward 1
+  ask sheep [
+    right random 90 left random 90 forward 1
     set energy energy - 1
     if energy <= 0 [ die ]
-    eat ]
+    if pcolor = green [
+      set energy energy + 5
+      ask patch-here [
+        set pcolor brown
+      ]
+    ]
+  ]
   tick
-end
-
-to recolor-grass
-  set pcolor scale-color green grass-amount 0 20
-end
-
-
-to eat
-  if grass-amount >= 1 [
-    set energy energy + 1
-    set grass-amount grass-amount - 1
-    recolor-grass ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW

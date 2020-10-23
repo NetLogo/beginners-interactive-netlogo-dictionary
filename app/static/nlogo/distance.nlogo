@@ -25,6 +25,8 @@ to setup
 end
 
 to go
+  if not any? trees [stop]
+
   ask lumberjacks [
    if any? trees-here [
      ask trees-here [
@@ -32,8 +34,6 @@ to go
      ]
    ]
   ]
-
-  if not any? trees [stop]
 
   ask lumberjacks [
    if target = nobody [

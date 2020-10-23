@@ -1,14 +1,18 @@
-
 to setup
   clear-all
   create-turtles 5 [
     set shape "person"
     set color black
-    forward 5 ]
+    forward 5
+  ]
+
   ask patches [
-    ifelse (random 100) < density-of-lava
-      [ set pcolor red ]
-      [ set pcolor blue ] ]
+    ifelse (random 100) < density-of-lava [
+       set pcolor red
+    ] [
+       set pcolor blue
+    ]
+  ]
   reset-ticks
 end
 
@@ -17,7 +21,9 @@ to go
     if  pcolor = red [ set color orange ]
     if  pcolor = blue [
       right random 360
-      forward 1 ] ]
+      forward 1
+    ]
+  ]
   tick
 end
 @#$#@#$#@

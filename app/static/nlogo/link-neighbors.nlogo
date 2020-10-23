@@ -17,7 +17,6 @@ to go
     right random 90
     left random 90
     forward random-float 1
-
     create-links-with other turtles in-radius 2
   ]
   tick

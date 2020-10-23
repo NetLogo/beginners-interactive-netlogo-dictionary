@@ -1,6 +1,8 @@
 to setup
   clear-all
-  ask patches [set pcolor green]
+  ask patches [
+    set pcolor green
+  ]
 
   create-turtles 20 [
     set shape "cow"

@@ -1,31 +1,37 @@
 to setup
   clear-all
-  ask patches [ set pcolor red - 1 ]
-  ask patches with [ abs pycor = 5 ] [ set pcolor white ]
-  create-turtles 10 [
-    set shape "person" set color black
-    set heading 90
-    setxy -10 random-ycor ]
+  create-turtles 20 [
+    set size random-float 5.0
+    set shape "checker piece"
+    set color yellow
+    move-to one-of patches
+  ]
   reset-ticks
 end
 
-to race
+to grow-and-divide
   ask turtles [
-    set color black
-    forward random 5 ]
-  ask max-n-of 3 turtles [xcor] [
-    set color yellow ]
+    set size size + 0.2
+    if ticks mod 10 = 1 [
+      ask max-n-of 5 turtles [ size ] [
+        hatch 2 [
+          set size 0.5
+        ]
+        die
+      ]
+    ]
+  ]
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-207
-31
-771
-331
+223
+27
+660
+465
 -1
 -1
-26.5
+13.0
 1
 10
 1
@@ -35,10 +41,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--10
-10
--5
-5
+-16
+16
+-16
+16
 1
 1
 1
@@ -63,13 +69,13 @@ NIL
 1
 
 BUTTON
-39
+43
 116
-177
+181
 149
 NIL
-race
-T
+grow-and-divide
+NIL
 1
 T
 OBSERVER
@@ -171,6 +177,14 @@ Circle -16777216 true false 30 180 90
 Polygon -16777216 true false 162 80 132 78 134 135 209 135 194 105 189 96 180 89
 Circle -7500403 true true 47 195 58
 Circle -7500403 true true 195 195 58
+
+checker piece
+false
+0
+Circle -7500403 true true 60 60 180
+Circle -16777216 false false 60 60 180
+Circle -7500403 true true 75 45 180
+Circle -16777216 false false 75 45 180
 
 circle
 false

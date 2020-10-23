@@ -2,11 +2,13 @@ turtles-own [ test-score ]
 
 to setup
   clear-all
-  create-turtles 20 [ set shape "person student"
+  create-turtles 20 [
+    set shape "person student"
     set color red
     move-to one-of patches
-    set test-score random-float 10]
-  ask patches [ set pcolor green ]
+    set test-score random-float 10
+  ]
+
   update-plots
 end
 
@@ -27,9 +29,11 @@ to above-average?
       ]
     ]
   ]
+
   ask turtles [
     set xcor test-score
   ]
+
   update-plots
 end
 @#$#@#$#@

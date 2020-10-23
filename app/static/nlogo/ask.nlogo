@@ -5,6 +5,7 @@ breed [stars star]
 
 to setup
   clear-all
+
  create-plants 5 [
      setxy random-xcor random-ycor
     set color green
@@ -36,12 +37,15 @@ to go
   ask turtles [
     fd 0.2
   ]
+
   ask plants [
     wiggle
   ]
+
   ask fish [
     swim
   ]
+
   tick
 end
 

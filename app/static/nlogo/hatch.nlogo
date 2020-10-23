@@ -2,16 +2,18 @@ to setup
   clear-all
   create-turtles 2 [
   forward 10
-  set shape "turtle" ]
+  set shape "turtle"
+  ]
   reset-ticks
 end
 
 
-to go
+to hatch-new-turtles
   ask turtles [
     hatch 1
     right random 360
-    forward 1 ]
+    forward 1
+  ]
   tick
 end
 @#$#@#$#@
@@ -60,12 +62,12 @@ NIL
 1
 
 BUTTON
-66
-114
-151
-147
-go-once
-go
+38
+104
+182
+137
+NIL
+hatch-new-turtles
 NIL
 1
 T

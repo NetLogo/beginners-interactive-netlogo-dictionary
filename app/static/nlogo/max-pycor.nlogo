@@ -1,24 +1,48 @@
 to setup-field
-  ask patches [set pcolor green]
+  ask patches [
+    set pcolor green
+  ]
 
   ask patches with [ pxcor = max-pxcor or
                      pxcor = min-pxcor or
                      pycor = max-pycor or
-    pycor = min-pycor ]
-  [ set pcolor white ]
+                     pycor = min-pycor ] [
+    set pcolor white
+  ]
 
    ask patch 0 0 [
-    ask patches in-radius 4 [ set pcolor white ]
-    ask patches in-radius 3 [ set pcolor green ] ]
+    ask patches in-radius 4 [
+      set pcolor white
+    ]
+    ask patches in-radius 3 [
+      set pcolor green
+    ]
+  ]
 
-  ask patches with [pycor = 0] [ set pcolor white ]
+  ask patches with [pycor = 0] [
+    set pcolor white ]
 
-  create-turtles 22 [ set color white set shape "person" set size 2 move-to one-of patches]
-  ask n-of 11 turtles [ set color red
-    set ycor random 16 ]
-  ask turtles with [ color = white ]
-      [ set color blue
-        set ycor random -16 ]
+  create-players
+
+end
+
+to create-players
+  create-turtles 22 [
+    set color white
+    set shape "person"
+    set size 2
+    move-to one-of patches
+  ]
+
+  ask n-of 11 turtles [
+    set color red
+    set ycor random 16
+  ]
+
+  ask turtles with [ color = white ][
+    set color blue
+    set ycor random -16
+  ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
