@@ -2,11 +2,11 @@ turtles-own [ test-score ]
 
 to setup
   clear-all
-  create-turtles 20 [ set shape "person student"
-    set color red
+  create-turtles 20 [
+    set shape "person student"
     move-to one-of patches
-    set test-score random-float 10]
-  ask patches [ set pcolor green ]
+    set test-score random-float 10
+  ]
   update-plots
 end
 
@@ -15,14 +15,23 @@ to above-average?
     ask turtles [
     set test-score ceiling test-score
     if test-score >= mean [test-score] of turtles
-      [ set shape "face happy" ] ] ]
+      [ set shape "face happy"
+      ]
+    ]
+  ]
+
   if rounding = "round-score-down" [
     ask turtles [
     set test-score floor test-score
     if test-score >= mean [test-score] of turtles
-      [ set shape "face happy" ] ] ]
+      [ set shape "face happy"
+      ]
+    ]
+  ]
+
   ask turtles [
-    set xcor test-score ]
+    set xcor test-score
+  ]
   update-plots
 end
 @#$#@#$#@

@@ -1,26 +1,28 @@
 patches-own [nutrients]
-; creating a variable called nutrients that all patches have
 
-; in this model, there is a garden of patches of soil with some level of nutrients
-; if a patch has more nutrients, the flower on it will grow bigger
 to setup
   clear-all
   ask patches [
     set nutrients random 10
-      ; patches with more nutrients are darker brown
     set pcolor scale-color brown nutrients 10 -5
-    sprout 1 [set shape "flower" set size 0.1]]
+    sprout 1 [
+      set shape "flower" set size 0.1
+    ]
+  ]
   reset-ticks
 end
 
 to grow-flowers
   ask turtles [
-    ; turtles can access the variables of the patch it is on
     if nutrients >= 1 [
       set size size + 0.1
-      ; as a flower grows, it sucks up nutrients from the soil it is on, increasing its size and decreasing the soil's nutrients
-      set nutrients nutrients - 1 ] ]
-  ask patches [ set pcolor scale-color brown nutrients 10 -5 ]
+      set nutrients nutrients - 1
+    ]
+  ]
+
+  ask patches [
+    set pcolor scale-color brown nutrients 10 -5
+  ]
   tick
 end
 @#$#@#$#@

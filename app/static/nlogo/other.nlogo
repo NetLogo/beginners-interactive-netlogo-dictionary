@@ -1,11 +1,13 @@
 to setup
   clear-all
-  create-turtles 5 [set shape "fish"
+  create-turtles 5 [
+    set shape "fish"
     set size 3
     setxy random-xcor random-ycor
-    set color green]
+    set color green
+  ]
 
-ask patches [set pcolor 77]
+  ask patches [set pcolor 77]
 
   show count turtles with [color = green]
   show count turtles with [color = red]
@@ -13,11 +15,12 @@ ask patches [set pcolor 77]
 end
 
 
-
 to go
 ask turtles [
     fd 0.2
-    If any? other turtles-here [set color red];; this makes the fish kill any fish who come on their patch
+    If any? other turtles-here [
+      set color red
+    ]
   ]
   tick
 end

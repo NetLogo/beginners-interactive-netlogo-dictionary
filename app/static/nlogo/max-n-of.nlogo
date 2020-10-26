@@ -1,8 +1,8 @@
 to setup
   clear-all
-  create-turtles 20 [
+  create-turtles 10 [
     set size random-float 5.0
-    set shape "checker piece"
+    set shape "circle"
     set color yellow
     move-to one-of patches
   ]
@@ -10,15 +10,13 @@ to setup
 end
 
 to grow-and-divide
-  ask turtles [
+   ask turtles [
     set size size + 0.2
-    if ticks mod 10 = 1 [
-      ask max-n-of 5 turtles [ size ] [
-        hatch 2 [
-          set size 0.5
-        ]
-        die
-      ]
+  ]
+  if ticks mod 10 = 9 [
+    ask max-n-of 3 turtles [ size ] [
+      set size size / 2
+      hatch 1 [ fd 0.5]
     ]
   ]
   tick
@@ -75,7 +73,7 @@ BUTTON
 149
 NIL
 grow-and-divide
-NIL
+T
 1
 T
 OBSERVER

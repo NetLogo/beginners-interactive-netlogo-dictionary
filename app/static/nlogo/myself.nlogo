@@ -3,26 +3,43 @@ people-own [ home? ]
 
 to setup
   clear-all
-  create-turtles 6 [ set shape "house"
+  create-turtles 6 [
+    set shape "house"
     move-to one-of patches
-    set color red]
-  ask n-of 3 turtles [ set color blue ]
+    set color red
+  ]
+
+  ask n-of 3 turtles [
+    set color blue
+  ]
+
   create-people 10 [ set shape "person"
     move-to one-of patches
     set color red
-    set home? false ]
-  ask n-of 5 people [ set color blue ]
+    set home? false
+  ]
+
+  ask n-of 5 people [
+    set color blue
+  ]
   reset-ticks
 end
 
 to wander-or-stay-home
   ask people [
     if home? = false [
-      right random 90 left random 90 forward 1 ] ]
+      right random 90
+      left random 90
+      forward 1
+    ]
+  ]
   ask turtles with [ shape = "house"] [
     ask people-here [
-      if color = [color] of myself
-      [ set home? true ]]]
+      if color = [color] of myself [
+      set home? true
+      ]
+    ]
+  ]
   tick
 end
 @#$#@#$#@

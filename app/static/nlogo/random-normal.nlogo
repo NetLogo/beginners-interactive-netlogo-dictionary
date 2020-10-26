@@ -2,19 +2,20 @@ to go
   clear-all
   if height-distribution = "uniform-height-distribution" [
     create-turtles 100 [
-    set shape "person"
-    set color red
-    move-to one-of patches
-      ; in the uniform distribution, each height is equally as likely
-    set size random-float 8.0 ] ]
+      set shape "person"
+      set color red
+      move-to one-of patches
+      set size random-float 8.0
+    ]
+  ]
   if height-distribution = "normal-height-distribution" [
     create-turtles 100 [
     set shape "person"
     set color blue
     move-to one-of patches
-      ; in the normal distribution, heights around the mean of 6'5 are more likely, with a
-      ; standard deviation of 3.5 inches
-    set size random-normal 6.5 0.35 ] ]
+    set size random-normal 6.5 0.35
+    ]
+  ]
   update-plots
 end
 @#$#@#$#@

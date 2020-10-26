@@ -1,37 +1,44 @@
 to setup
   clear-all
-  ask patches [set pcolor blue]
-  create-turtles 1 [ set shape "airplane"
-  set color white ]
+  ask patches [
+    set pcolor blue
+  ]
+
+  create-turtles 1 [
+    set shape "airplane"
+    set color white
+  ]
   reset-ticks
 end
 
-; fly with pen-up, leaving no trace
 to fly
   ask turtles [
     pen-up
-    right random 60 left random 60 forward 1 ]
+    right random 60
+    left random 60
+    forward 1
+  ]
   tick
 end
 
-;fly with pen-down, leaving a tracing of movement
 to fly-and-draw
   ask turtles [
-    ; as the airplane flies around, if the leave-a-trail? switch is on,
-    ; it will use pen-down to start tracing its path
     pen-down
-    right random 60 left random 60
-    forward 1 ]
+    right random 60
+    left random 60
+    forward 1
+  ]
   tick
 end
 
-; fly with pen-erase, erasing past drawn movements
 to fly-and-erase
   ask turtles [
     pen-up
     pen-erase
-    right random 60 left random 60
-    forward 1 ]
+    right random 60
+    left random 60
+    forward 1
+  ]
   tick
 end
 @#$#@#$#@

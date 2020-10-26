@@ -8,10 +8,8 @@ to throw
     set shape "circle"
     set size 10
     set color yellow
-
     set heading random-float 360
     fd random-float 100
-
     show (word xcor " " ycor)
   ]
 end

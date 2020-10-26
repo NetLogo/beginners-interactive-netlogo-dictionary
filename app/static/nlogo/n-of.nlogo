@@ -14,6 +14,7 @@ to pick-teams
   ask n-of red-team-size turtles [
    set color red
   ]
+
   ask n-of blue-team-size turtles with [color = gray] [
     set color blue
   ]

@@ -14,4 +14,4 @@
 
 
 
-**Note:** if the turtle is already on the point (x, y),  the turtle's heading won't change. 
+**Note:** if the turtle is already on the point (x, y),  the turtle's heading won't change. In the model below, there are some fish and a single patch of food. The fish are hungry, and all face the patch of food using `facexy` .

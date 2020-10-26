@@ -1,27 +1,42 @@
 to setup-tennis-court
   clear-all
-  ask patches [ set pcolor green ]
-  ; set up alleys and mid line
-  ask patches with [ abs pxcor = 14 or abs pycor = 21]
-  [set pcolor white ]
-  ; set up center line
-  ask patches with [pxcor = 0 and abs pycor < 21 ]
-  [set pcolor white ]
-  ask patches with [ abs pxcor > 14 and abs pxcor < 18 ]
-  [ set pcolor green ]
-  ; set the edges of the court
-  ask patches with [ abs pycor = max-pycor or abs pxcor = max-pxcor ]
-  [ set pcolor white ]
-  ;set up net
-  ask patches with [pycor = 0]
-  [ set pcolor black ]
-  ; set specific patches to white for tick marks
-  ask patch 0 39 [ set pcolor white ]
-  ask patch 0 -39 [ set pcolor white ]
-  create-turtles 1 [ set shape "ball tennis"
+  ask patches [
+    set pcolor green
+  ]
+
+  ask patches with [ abs pxcor = 14 or abs pycor = 21] [
+    set pcolor white
+  ]
+
+  ask patches with [pxcor = 0 and abs pycor < 21 ] [
+    set pcolor white
+  ]
+  ask patches with [ abs pxcor > 14 and abs pxcor < 18 ] [
+    set pcolor green
+  ]
+
+  ask patches with [ abs pycor = max-pycor or abs pxcor = max-pxcor ] [
+    set pcolor white
+  ]
+
+  ask patches with [pycor = 0] [
+    set pcolor black
+  ]
+
+  ask patch 0 39 [
+    set pcolor white
+  ]
+
+  ask patch 0 -39 [
+    set pcolor white
+  ]
+
+  create-turtles 1 [
+    set shape "ball tennis"
     set color green + 2
     move-to one-of patches
-    set size 3]
+    set size 3
+  ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW

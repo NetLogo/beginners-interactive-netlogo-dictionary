@@ -1,18 +1,29 @@
 to setup
   clear-all
-  ask patches with [pxcor mod 3 = 0 or pycor mod 3 = 0] [ set pcolor gray ]
-  create-turtles 20 [ set shape "car"
+  ask patches with [pxcor mod 3 = 0 or pycor mod 3 = 0] [
+    set pcolor gray
+  ]
+
+  create-turtles 20 [
+    set shape "car"
     move-to one-of patches with [pcolor = gray]
-    set heading one-of [ 0 90 180 270 ] ]
+    set heading one-of [ 0 90 180 270 ]
+  ]
   reset-ticks
 end
 
-to go
+to drive-on-roads
   ask turtles [
-    ifelse [pcolor] of patch-ahead 0.5 = gray [ forward 1 ] [set heading heading + 90 ]]
+    ifelse [pcolor] of patch-ahead 0.5 = gray [
+      forward 1 ] [
+      set heading heading + 90
+    ]
+  ]
   if ticks mod 10 = 1 [
     ask one-of patches with [pcolor = gray] [
-      set pcolor black ] ]
+      set pcolor black
+    ]
+  ]
     tick
 end
 @#$#@#$#@
@@ -61,12 +72,12 @@ NIL
 1
 
 BUTTON
-67
-119
-131
-153
+34
+108
+162
+142
 NIL
-go
+drive-on-roads
 T
 1
 T

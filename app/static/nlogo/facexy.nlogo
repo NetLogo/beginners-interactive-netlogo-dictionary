@@ -1,4 +1,3 @@
-
 to setup
   clear-all
 
@@ -24,7 +23,7 @@ end
 GRAPHICS-WINDOW
 210
 10
-648
+647
 448
 -1
 -1
@@ -67,9 +66,9 @@ NIL
 
 BUTTON
 90
-66
+64
 203
-100
+98
 NIL
 look-at-food
 NIL

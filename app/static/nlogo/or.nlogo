@@ -22,12 +22,12 @@ to setup
 end
 
 to check-if-miss
-  ifelse (xcor > width / 2 or       ;; if the ball is too far to the right
-          xcor < (- width / 2) or   ;; or too far to the left
-          ycor > height) [          ;; or too high
-       set color red                ;; then we color it red
-     ][                             ;; otherwise
-       set color white              ;; we color it white.
+  ifelse (xcor > width / 2 or
+          xcor < (- width / 2) or
+          ycor > height) [
+       set color red
+     ][
+       set color white
      ]
 end
 
@@ -124,16 +124,6 @@ NIL
 NIL
 NIL
 NIL
-1
-
-TEXTBOX
-328
-289
-478
-345
-When in \"Click-to-kick mode\", click somewhere in the world to send a ball towards the net.
-11
-0.0
 1
 
 @#$#@#$#@

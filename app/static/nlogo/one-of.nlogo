@@ -1,21 +1,26 @@
 to setup
   clear-all
-  ask patches [ set pcolor green ]
-  create-turtles number-of-people [ set color blue
-  set shape "person"
-  forward 2 ]
-  ; sets only one of the people as red, this person is infected
-  ask one-of turtles [ set color red ]
+  create-turtles 15 [
+    set color blue
+    set shape "person"
+    forward 2
+  ]
+
+  ask one-of turtles [
+    set color red
+  ]
   reset-ticks
 end
 
-; if an infected person comes into contact with a healthy person, the healthy person will be infected
 to spread-disease
+  if not any? turtles with [color = blue] [ stop ]
+
   ask turtles [
       if any? other turtles-here [
-        set color red]
-    move ]
-  if not any? turtles with [color = blue] [ stop ]
+        set color red
+    ]
+    move
+  ]
   tick
 end
 
@@ -85,21 +90,6 @@ NIL
 NIL
 NIL
 1
-
-SLIDER
-17
-170
-190
-203
-number-of-people
-number-of-people
-0
-25
-15.0
-1
-1
-NIL
-HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?

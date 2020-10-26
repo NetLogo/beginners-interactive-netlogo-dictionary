@@ -1,10 +1,14 @@
 to setup
   clear-all
   ask patches [
-    if pycor = 0 [set pcolor gray ]
+    if pycor = 0 [
+      set pcolor gray
+    ]
   ]
 
-  ask patch -5 0 [ set pcolor red ]
+  ask patch -5 0 [
+    set pcolor red
+  ]
 
   create-turtles 1 [
     set shape "car"
@@ -15,23 +19,20 @@ to setup
   reset-ticks
 end
 
-to go
+to drive
   ask turtles [
-    ;fd 0.3
-
     if not ([pcolor] of patch-ahead 1 = red) [
       fd 0.3
     ]
   ]
-
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
-10
-647
-136
+234
+17
+671
+143
 -1
 -1
 13.0
@@ -77,7 +78,7 @@ BUTTON
 176
 71
 NIL
-go
+drive
 T
 1
 T
@@ -87,21 +88,6 @@ NIL
 NIL
 NIL
 1
-
-SLIDER
-37
-99
-210
-132
-stop-distance
-stop-distance
-0
-100
-50.0
-1
-1
-NIL
-HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?

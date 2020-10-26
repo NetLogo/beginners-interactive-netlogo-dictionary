@@ -1,24 +1,38 @@
 to setup
   clear-all
-  ask patches [ set pcolor blue ]
-  create-turtles 10 [ set shape "turtle"
+  ask patches [
+    set pcolor blue
+  ]
+
+  create-turtles 10 [
+    set shape "turtle"
     set color green
-    move-to one-of patches ]
+    move-to one-of patches
+  ]
   reset-ticks
 end
 
-; this procedure checks first that one-of turtles != nobody
 to go-with-check
-  ask turtles [ right random 90 left random 90 forward 1
-     if one-of turtles with [ color = red ] != nobody [ set size 5 ] ]
+  ask turtles [
+    right random 90
+    left random 90
+    forward 1
+     if one-of turtles with [ color = red ] != nobody [
+      set size 5
+    ]
+  ]
   tick
 end
 
-; this procedure does not have a check, and will cause an error
 to go-without-check
-  ask turtles [ right random 90 left random 90 forward 1 ]
-  ask one-of turtles with [ color = red ]
-      [ set size 5 ]
+  ask turtles [
+    right random 90
+    left random 90
+    forward 1
+  ]
+  ask one-of turtles with [ color = red ] [
+      set size 5
+  ]
   tick
 end
 @#$#@#$#@

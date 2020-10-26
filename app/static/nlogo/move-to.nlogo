@@ -1,15 +1,16 @@
 to setup
   clear-all
-  ask patches [set pcolor 88]
-  create-turtles 1 [set shape "family"
+  create-turtles 1 [
+    set shape "family"
     setxy random-xcor random-ycor
-    set size 15
+    set size 3
   ]
 
   create-turtles 1 [set shape "house"
-    set size 15
+    set size 5
     setxy 3 10
-  set color brown]
+  set color brown
+  ]
 
   reset-ticks
 end
@@ -21,18 +22,18 @@ to go
     face turtle 1
  move-to one-of turtles with [shape = "house"]
   ]
-  tick
 
+  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-828
-629
+614
+415
 -1
 -1
-10.0
+12.0
 1
 10
 1
@@ -42,10 +43,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--30
-30
--30
-30
+-16
+16
+-16
+16
 1
 1
 1
