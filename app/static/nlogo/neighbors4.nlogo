@@ -1,43 +1,66 @@
+globals [ initial-trees ]
+
 to setup
   clear-all
-  create-turtles 1 [set shape "square"
-  set color 124
- set size 20 ]
 
+  ask patches [
+    if (random 100) < density [
+      set pcolor green
+    ]
+
+    if pxcor = min-pxcor [
+      set pcolor red
+    ]
+  ]
+
+  set initial-trees count patches with [pcolor = green]
   reset-ticks
 end
 
-to paint-neighbors4
-  clear-patches
-  ask neighbors4
-    [set pcolor 134 ];; The 4 neighboring patches (north, south, east, & west) will turn a different color
-  display
+to go
+  if all? patches [ pcolor != red ] [
+    stop
+  ]
+  if neighbors-type = "neighbors" [
+    ask patches with [ pcolor = red ] [
+      ask neighbors with [pcolor = green] [
+        set pcolor red
+      ]
+      set pcolor red - 3.5
+    ]
+  ]
+  if neighbors-type = "neighbors4" [
+    ask patches with [ pcolor = red ] [
+      ask neighbors4 with [pcolor = green] [
+        set pcolor red
+      ]
+      set pcolor red - 3.5
+    ]
+  ]
+  tick
 end
-
-;; Have a turtles follow a certain path of patches (maze) w/ no diagnol movements
-;; Have bacteria pop up on certain patches and reproduce
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+302
 10
-647
-448
+815
+524
 -1
 -1
-13.0
+5.0
 1
 10
 1
 1
 1
 0
+0
+0
 1
-1
-1
--16
-16
--16
-16
+-50
+50
+-50
+50
 0
 0
 1
@@ -45,9 +68,9 @@ ticks
 30.0
 
 BUTTON
-79
+57
 64
-145
+123
 97
 NIL
 setup
@@ -62,13 +85,13 @@ NIL
 1
 
 BUTTON
-43
-109
-184
-142
+156
+64
+219
+97
 NIL
-paint-neighbors4
-NIL
+go
+T
 1
 T
 OBSERVER
@@ -76,6 +99,31 @@ NIL
 NIL
 NIL
 NIL
+1
+
+SLIDER
+53
+122
+225
+155
+density
+density
+0
+100
+25.0
+1
+1
+NIL
+HORIZONTAL
+
+CHOOSER
+73
+180
+211
+225
+neighbors-type
+neighbors-type
+"neighbors" "neighbors4"
 1
 
 @#$#@#$#@

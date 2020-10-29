@@ -4,10 +4,8 @@ to setup
 end
 
 to sort-planets
-  let sorted sort-on [size] turtles  ;; create a variable `sorted` and put the
-                                     ;; list of turtles sorted by size into it.
-  put-planets-in-order sorted        ;; pass it into the procedure that actually
-                                     ;; lines up the turtles in the world
+  let sorted sort-on [size] turtles
+  put-planets-in-order sorted
 end
 
 to put-planets-in-order [turtle-list]
@@ -144,16 +142,6 @@ NIL
 NIL
 NIL
 NIL
-1
-
-TEXTBOX
-439
-249
-589
-267
-Not to scale
-14
-0.0
 1
 
 @#$#@#$#@

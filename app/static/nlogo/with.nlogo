@@ -3,27 +3,30 @@ cars-own [gas]
 
 to setup
   clear-all
-  create-cars 5 [ set color blue
+  create-cars 5 [
+    set color blue
     set shape "car"
     setxy random-xcor random-ycor
     set heading 90
     set gas random 10
     forward 10
-  set label gas]
-  ; here we are making three cars turn red
-  ; red cars have better gas mileage than blue cars, and use less gas when driving
-  ask n-of 3 cars [set color red]
+    set label gas
+  ]
+
+  ask n-of 3 cars [
+    set color red
+  ]
   reset-ticks
 end
 
 
 to drive
-  ; we ask ONLY the blue cars with gas greater than 0 to move and use 1 gas
   ask cars with [ gas > 0 and color = blue ] [
     forward 1
     set gas gas - 1
-    set label gas]
-  ; we ask only the red cars with gas greater than 0 to move and use 0.5 gas
+    set label gas
+  ]
+
   ask cars with [ gas > 0 and color = red ] [
     forward 1
     set gas gas - 0.5

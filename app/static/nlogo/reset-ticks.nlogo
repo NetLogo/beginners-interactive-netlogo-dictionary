@@ -1,17 +1,26 @@
 to setup
   clear-all
-  ask patches [ set pcolor green ]
+  ask patches [
+    set pcolor green
+  ]
   create-turtles 5 [
     set shape "house"
-    move-to one-of patches ]
+    move-to one-of patches
+  ]
 end
 
 to start-the-day
   ask patches [
-    ifelse (ticks > 0) and (ticks < 12) [set pcolor black]
-    [ set pcolor green] ]
-  ; as the model completes the cycle of night and day, it resets the ticks and keeps cycling
-  if ticks >= 24 [reset-ticks]
+    ifelse (ticks > 0) and (ticks < 12) [
+      set pcolor black
+    ]
+    [
+      set pcolor green
+    ]
+  ]
+  if ticks >= 24 [
+    reset-ticks
+  ]
   tick
 end
 @#$#@#$#@

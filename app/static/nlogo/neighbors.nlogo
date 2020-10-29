@@ -1,60 +1,66 @@
+globals [ initial-trees ]
+
 to setup
   clear-all
 
-ask patches [ set pcolor 96 ]
- ;; create the island
-  ask patches with [distancexy 0 0 < 13] [ set pcolor 33 ]
-create-turtles 20 [
-    set shape "person"
-    set size 2
-  ]
-    create-turtles 2 [
-      set shape "coconut tree"
-      set size 15
-    ask turtle 20 [setxy 4 12]
-    ask turtle 21 [setxy -4 12]
+  ask patches [
+    if (random 100) < density [
+      set pcolor green
+    ]
+
+    if pxcor = min-pxcor [
+      set pcolor red
+    ]
   ]
 
-
-
+  set initial-trees count patches with [pcolor = green]
   reset-ticks
 end
 
-
 to go
-  ask turtles with [shape = "person"] ;; This line makes sure that only the people move and not the trees
-  [move-to one-of neighbors with [pcolor = 33] ;; This makes the turtles move to neighboring patches
-    fd 0.5                                     ;; that are BROWN (part of the island). They will never
-                                               ;; go into the blue part (the ocean).
-
+  if all? patches [ pcolor != red ] [
+    stop
   ]
-
-
+  if neighbors-type = "neighbors" [
+    ask patches with [ pcolor = red ] [
+      ask neighbors with [pcolor = green] [
+        set pcolor red
+      ]
+      set pcolor red - 3.5
+    ]
+  ]
+  if neighbors-type = "neighbors4" [
+    ask patches with [ pcolor = red ] [
+      ask neighbors4 with [pcolor = green] [
+        set pcolor red
+      ]
+      set pcolor red - 3.5
+    ]
+  ]
   tick
-
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-647
-448
+723
+524
 -1
 -1
-13.0
+5.0
 1
 10
 1
 1
 1
 0
+0
+0
 1
-1
-1
--16
-16
--16
-16
+-50
+50
+-50
+50
 1
 1
 1
@@ -94,6 +100,31 @@ NIL
 NIL
 NIL
 1
+
+SLIDER
+13
+104
+185
+137
+density
+density
+0
+100
+25.0
+1
+1
+NIL
+HORIZONTAL
+
+CHOOSER
+31
+152
+169
+197
+neighbors-type
+neighbors-type
+"neighbors" "neighbors4"
+0
 
 @#$#@#$#@
 ## WHAT IS IT?

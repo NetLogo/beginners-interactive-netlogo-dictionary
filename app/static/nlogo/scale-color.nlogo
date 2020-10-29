@@ -11,19 +11,9 @@ to setup
     set size 1
   ]
 
-  ;; ask the factories
   ask turtles [
-    ;; to ask the patches around them
     ask patches in-radius signal-radius [
-     ;; to increase their signal-strength by the signal-strength radius minus
-     ;; the distance to the tower. This way, the patches closer to
-     ;; the towers have their signal-strength increased more than those
-     ;; farther away.
      set signal-strength signal-strength + (signal-radius - distance myself)
-     ;; scale-color each patch a shade of green according to their
-     ;; signal-strength. Since signal-radius (the second parameter)
-     ;; is greater than 0 (the first parameter), higher values
-     ;; of smell will result in brighter shades of green.
      set pcolor scale-color green signal-strength 0 signal-radius
     ]
   ]

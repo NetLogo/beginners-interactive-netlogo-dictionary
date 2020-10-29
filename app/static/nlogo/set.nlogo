@@ -1,7 +1,6 @@
 globals [total-food-eaten]
 
 breed [ sheep a-sheep ]
-sheep-own [ energy ]
 
 to setup
   clear-all
@@ -19,14 +18,11 @@ to setup
   ]
 end
 
-to go
+to move-and-eat
   ask sheep [
-    ; here we set the label of turtles to reflect their energy amount
-    set label energy
     move
     if pcolor = green [
       eat
-      ; increase the total-food-eaten variable by 1
       set total-food-eaten total-food-eaten + 1
     ]
   ]
@@ -41,8 +37,6 @@ to go
 end
 
 to eat
-  ; have the sheep set its energy variable to one higher
-  set energy energy + 1
   ask patch-here [
     set pcolor brown
   ]
@@ -99,12 +93,12 @@ NIL
 1
 
 BUTTON
-68
-117
-131
-150
+41
+95
+161
+128
 NIL
-go
+move-and-eat
 T
 1
 T
@@ -116,10 +110,10 @@ NIL
 1
 
 MONITOR
-58
-197
-175
-242
+49
+147
+166
+192
 total-food-eaten
 total-food-eaten
 17

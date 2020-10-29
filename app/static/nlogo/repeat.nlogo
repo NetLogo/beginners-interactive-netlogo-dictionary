@@ -9,8 +9,17 @@ end
 
 to go
   ask turtles [
-  pd repeat 10 [ ;; this will repeat the command 10 times
-      fd 0.2 rt 1 ;; circles
+    if color = red [
+      pd repeat 10 [
+        fd 0.2 rt 1
+      ]
+    set color blue
+    ]
+    if color = blue [
+      pd repeat 10 [
+        fd 0.2 rt 1
+      ]
+    set color red
     ]
   ]
   tick
@@ -67,7 +76,7 @@ BUTTON
 81
 NIL
 go
-T
+NIL
 1
 T
 OBSERVER

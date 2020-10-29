@@ -1,34 +1,48 @@
 to setup
   clear-all
-  ask patches [set pcolor 34]
+  ask patches [
+    set pcolor green
+  ]
 
-  create-turtles 20 [
+  create-turtles 10 [
+    set shape "sheep"
+    set color white
+  ]
+
+  create-turtles 10 [
+    set shape "wolf"
     set color black
-    set shape "bug" ;; changes the default turtle shape to a bug shape
-    setxy random-xcor random-ycor ;; this randomizes the location of the bugs
+  ]
+
+  ask turtles [
+    move-to one-of patches
   ]
 
   reset-ticks
 end
 
-
-
 to go
-  ask turtles [ ;; "turtles refers to all of the turtles no matter what shape they are
-fd 0.2
+  ask turtles [
+    left random 90 right random 90
+    forward 1
   ]
 
+  ask turtles with [ shape = "sheep" ] [
+    if [ pcolor ] of patch-here = green [
+      set pcolor brown
+    ]
+  ]
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-647
-448
+614
+415
 -1
 -1
-13.0
+36.0
 1
 10
 1
@@ -38,10 +52,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
+-5
+5
+-5
+5
 1
 1
 1

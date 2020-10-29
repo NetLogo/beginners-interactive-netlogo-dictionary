@@ -2,19 +2,37 @@ globals [ members-list ]
 
 to setup
   clear-all
-  create-turtles 10 [ set shape "person" set color yellow move-to one-of patches ]
+  create-turtles 1 [
+    set shape "building institution"
+    set color red set size 3
+    move-to one-of patches
+  ]
+
+  create-turtles 10 [
+    set shape "person"
+    set color yellow
+    move-to one-of patches
+  ]
+
   set members-list n-of 4 turtles
-  create-turtles 1 [ set shape "building institution" set color red set size 3  move-to one-of patches]
+  ask members-list [
+    set color blue
+  ]
+
   reset-ticks
 end
 
 to try-to-enter-club
   ask turtles with [ shape = "person" ][
-    if member? self members-list [ set color blue ]
+    face one-of turtles with [ shape = "building institution" ]
     if any? turtles-here with [ shape = "building institution" ] [
-      if member? self members-list
-          [ die ] ]
-    right random 90 left random 90 forward 1 ]
+      if member? self members-list [
+           die
+      ]
+    ]
+    right random 90 left random 90
+    forward 1
+  ]
   tick
 end
 @#$#@#$#@

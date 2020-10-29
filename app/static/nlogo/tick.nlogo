@@ -1,28 +1,32 @@
 to setup
   clear-all
-  ask patches [ set pcolor black ]
+  ask patches [
+    set pcolor black
+  ]
+
   create-turtles 5 [
     set shape "house"
-    forward 10]
+    forward 10
+  ]
   reset-ticks
 end
 
 to go
-  ifelse ticks < 12
-    ; if less than 12 ticks have passed, set the patches color to black
-    ; this is our night time
-    [ ask patches [ set pcolor black ] ]
-    ; if more than twelve ticks have passed, set the patches color to green
-    ; this is our day time
-    [ ask patches [ set pcolor green ] ]
-  if ticks >= 24 [ reset-ticks ]
-  ; here we are reseting the tick counter, to keep our 'day' at 24 ticks
-  tick ; this tick increases the tick counter by 1
-  ; in this model, each tick acts like an hour in the day, with 0-12 ticks being nighttime
-  ; and 13-24 ticks being daytime
-end
+  ifelse ticks < 12 [
+     ask patches [
+      set pcolor black
+      ]
+  ] [
+    ask patches [
+      set pcolor green
+    ]
+  ]
 
-; note: slow down the ticks in the slider on the interface tab to see the count better
+  if ticks >= 24 [
+    reset-ticks
+  ]
+  tick
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210

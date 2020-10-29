@@ -2,19 +2,29 @@ patches-own [ swampyness ]
 
 to setup
   clear-all
-  ask patches [ set swampyness random 10
-    recolor-water]
+  ask patches [
+    set swampyness random 10
+    recolor-water
+  ]
   reset-ticks
 end
 
 to go
-  ask patches [ if swampyness >= 7
-    ; if a patch is swampy enough, it will sprout a bug
-    [ sprout 1 [ set shape "bug" set color black ]
-      set swampyness swampyness - 3 ]
+  ask patches [
+    if swampyness >= 5 [
+      sprout 1 [
+        set shape "bug"
+        set color black
+      ]
+      set swampyness swampyness - 5
+    ]
     set swampyness swampyness + 1
-    recolor-water]
-  ask turtles [ move ]
+    recolor-water
+  ]
+
+  ask turtles [
+    move
+  ]
   tick
 end
 

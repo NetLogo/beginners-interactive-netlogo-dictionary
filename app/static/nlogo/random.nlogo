@@ -16,9 +16,6 @@ end
 
 to roll-self
   set my-roll (random 6) + 1
-  ; random returns a number from 0 to n inclusive
-  ; because there is no side of an actual die with 0 pips,
-  ; we add 1 to the result.
   update-shape
 end
 

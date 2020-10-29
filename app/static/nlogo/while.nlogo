@@ -1,16 +1,25 @@
 to setup
   clear-all
-  ask patches [ set pcolor blue ]
-  create-turtles 1 [ set color red set heading 90 set shape "turtle"]
+  ask patches [
+    set pcolor blue
+  ]
+  create-turtles 1 [
+    set color red
+    set heading 90
+    set shape "turtle"
+  ]
   reset-ticks
 end
 
 to draw-square
   ask turtles [
-    ; this while loop draws a square, stopping when the turtle's patch is no longer blue
-    while [ [pcolor] of patch-here = blue ]
-    [ repeat 4 [ set pcolor white forward 1 ]
-      right 90 ] ]
+    while [ [ pcolor ] of patch-here = blue ] [
+      repeat 4 [
+        set pcolor white forward 1
+      ]
+      right 90
+    ]
+  ]
   tick
 end
 @#$#@#$#@

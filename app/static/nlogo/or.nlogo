@@ -8,16 +8,7 @@ to setup
   set height 4
   set-default-shape balls "circle"
 
-  ask patches [
-    set pcolor green
-  ]
-
-  ask patches with [pycor = height and abs pxcor <= width / 2] [
-    set pcolor white - 2
-  ]
-  ask patches with [abs pxcor = width / 2 and pycor <= height] [
-    set pcolor white - 2
-  ]
+  create-goal
 
 end
 
@@ -31,20 +22,23 @@ to check-if-miss
      ]
 end
 
-to track-mouse
-  if mouse-down? [
-    create-balls 1 [
-     setxy mouse-xcor mouse-ycor
-     check-if-miss
-    ]
-  ]
-  tick
-end
-
 to throw-random-ball
   create-balls 1 [
     setxy random-xcor random-ycor
     check-if-miss
+  ]
+end
+
+to create-goal
+  ask patches [
+    set pcolor green
+  ]
+
+  ask patches with [pycor = height and abs pxcor <= width / 2] [
+    set pcolor white - 2
+  ]
+  ask patches with [abs pxcor = width / 2 and pycor <= height] [
+    set pcolor white - 2
   ]
 end
 @#$#@#$#@
@@ -91,23 +85,6 @@ NIL
 NIL
 NIL
 1
-
-BUTTON
-480
-293
-635
-326
-Click to kick mode
-track-mouse
-T
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-0
 
 BUTTON
 153

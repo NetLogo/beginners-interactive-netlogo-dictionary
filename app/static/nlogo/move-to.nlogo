@@ -1,15 +1,15 @@
 to setup
   clear-all
+   create-turtles 1 [set shape "house"
+    set size 5
+    setxy 3 10
+  set color brown
+  ]
+
   create-turtles 1 [
     set shape "family"
     setxy random-xcor random-ycor
     set size 3
-  ]
-
-  create-turtles 1 [set shape "house"
-    set size 5
-    setxy 3 10
-  set color brown
   ]
 
   reset-ticks
@@ -18,9 +18,8 @@ end
 
 
 to go
-  ask turtle 0 [
-    face turtle 1
- move-to one-of turtles with [shape = "house"]
+  ask turtles with [shape = "family"] [
+    move-to one-of turtles with [shape = "house"]
   ]
 
   tick

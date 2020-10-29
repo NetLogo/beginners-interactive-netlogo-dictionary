@@ -1,15 +1,28 @@
 to setup
   clear-all
+
   ask patches [
-    set pcolor red ;; initial color of the background
+    set pcolor one-of [ brown green ]
   ]
+
+  create-turtles 5 [
+    set shape "sheep"
+    set color white
+    move-to one-of patches
+  ]
+
   reset-ticks
 end
 
+to eat-grass
+  if not any? patches with [ pcolor = green ] [ stop ]
 
-to go
-  ask patches [
-    set pcolor 65 ;; changes the color of the background to green
+  ask turtles [
+    left random 90 right random 90
+    forward 1
+    if [ pcolor ] of patch-here = green [
+      set pcolor brown
+    ]
   ]
   tick
 end
@@ -17,11 +30,11 @@ end
 GRAPHICS-WINDOW
 210
 10
-647
-448
+602
+403
 -1
 -1
-13.0
+29.54
 1
 10
 1
@@ -31,12 +44,12 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
-0
-0
+-6
+6
+-6
+6
+1
+1
 1
 ticks
 30.0
@@ -61,11 +74,11 @@ NIL
 BUTTON
 104
 53
-167
+196
 86
 NIL
-go
-NIL
+eat-grass
+T
 1
 T
 OBSERVER

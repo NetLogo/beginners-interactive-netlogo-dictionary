@@ -2,50 +2,96 @@ turtles-own [hungry? energy]
 
 to setup
   clear-all
-  ask patches [ set pcolor green ]
-  create-turtles 10 [ move-to one-of patches
-    set shape "bee"
-    set color yellow
-    set hungry? false
-    set energy random 10]
-  ask n-of 5 turtles with [ shape = "bee" ][ set color red ]
-  create-turtles 2 [ set shape "flower" move-to one-of patches set size 2 set color yellow]
-  ask one-of turtles with [ shape = "flower" ]
-  [ set color red ]
+  ask patches [
+    set pcolor green
+  ]
+
+  make-bees
+  make-flowers
+
   reset-ticks
 end
 
 to go
   ask turtles with [ shape = "bee" and color = yellow] [
-    if hungry? = true
-    [ face one-of turtles with [ shape = "flower" and color = yellow ] forward 1]
-    if yellow-flower-here? [ set energy 10 set hungry? false ]  ]
+    if hungry? = true [
+      face one-of turtles with [ shape = "flower" and color = yellow ]
+      forward 1
+    ]
+    if yellow-flower-here? [
+      set energy 10
+      set hungry? false
+    ]
+  ]
 
   ask turtles with [ shape = "bee" and color = red] [
-    if hungry? = true
-    [ face one-of turtles with [ shape = "flower" and color = red ] forward 1]
-    if red-flower-here? [ set energy 10 set hungry? false ]  ]
+    if hungry? = true [
+      face one-of turtles with [ shape = "flower" and color = red ]
+      forward 1
+    ]
+    if red-flower-here? [
+      set energy 10
+      set hungry? false
+    ]
+  ]
 
-  ask turtles with [shape = "bee" and hungry? = false]
-  [ right random 90 left random 90
+  ask turtles with [ shape = "bee" and hungry? = false ] [
+    right random 90 left random 90
     forward 1
     set energy energy - 1
-    if energy <= 0 [ set hungry? true ]]
+    if energy <= 0 [
+      set hungry? true
+    ]
+  ]
+
   tick
 end
 
 to-report yellow-flower-here?
-  ifelse any? turtles-here with [ shape = "flower" and color = yellow ]
-  [ report true ] [ report false ]
+  ifelse any? turtles-here with [ shape = "flower" and color = yellow ] [
+    report true
+  ] [
+    report false
+  ]
 end
 
 to-report red-flower-here?
-  ifelse any? turtles-here with [ shape = "flower" and color = red ]
-  [report true] [report false]
+  ifelse any? turtles-here with [ shape = "flower" and color = red ] [
+    report true
+  ] [
+    report false
+  ]
 end
 
 to-report hungry-bees
   report count turtles with [ hungry? = true ]
+end
+
+to make-bees
+   create-turtles 10 [
+    move-to one-of patches
+    set shape "bee"
+    set color yellow
+    set hungry? false
+    set energy random 10
+  ]
+
+  ask n-of 5 turtles with [ shape = "bee" ][
+    set color red
+  ]
+end
+
+to make-flowers
+   create-turtles 2 [
+    set shape "flower"
+    move-to one-of patches
+    set size 2
+    set color yellow
+  ]
+
+  ask one-of turtles with [ shape = "flower" ] [
+   set color red
+  ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW

@@ -3,26 +3,36 @@ to setup
   create-turtles 1 [
     set shape "cat"
     set color orange set size 2
-    move-to one-of patches ]
+    move-to one-of patches
+  ]
+
   create-turtles 1 [
     set shape "mouse side"
     set color white
-    move-to one-of patches ]
-  ask patches [ set pcolor green ]
+    move-to one-of patches
+  ]
+
+  ask patches [
+    set pcolor green
+  ]
+
   reset-ticks
 end
 
 
 to chase-or-run
-  ask turtles with [shape = "mouse side"]
-  ; if the cat is looking at the mouse, the mouse will run in the opposite direction
-  [ if any? other turtles with [ towards myself < 90 ]
-    [ set heading towards one-of turtles with [shape = "cat"] - 180 ]
-      move  ]
-  ; the cat will always face and move towards the mouse
-  ask turtles with [shape = "cat"]
-  [ set heading towards one-of turtles with [shape = "mouse side"]
-    move  ]
+  ask turtles with [ shape = "mouse side" ] [
+    if any? other turtles with [ towards myself < 90 ] [
+      set heading towards one-of turtles with [shape = "cat"] - 180
+    ]
+      move
+  ]
+
+  ask turtles with [shape = "cat"] [
+    set heading towards one-of turtles with [ shape = "mouse side" ]
+    move
+  ]
+
   tick
 end
 

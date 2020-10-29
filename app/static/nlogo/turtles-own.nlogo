@@ -1,9 +1,5 @@
 breed [ cars car ]
-cars-own [gas] ; this creates a variable called 'gas' that each car has
-
-; alternatively we could have just given all turtles the 'gas' variable
-; turtles-own [gas]
-
+cars-own [ gas ]
 
 to setup
   clear-all
@@ -12,23 +8,24 @@ to setup
     set color blue
     set shape "car"
     set heading 90
-    set gas initial-gas
-    set label gas]
+    set gas random 25
+    set label gas
+  ]
   reset-ticks
 end
 
 to drive
   ask cars [
-    set label gas ; this shows up how much gas a car has
-    ; if a car has gas, it will move
-    if gas > 0
-    [ move ] ]
+    set label gas
+    if gas > 0 [
+      move
+    ]
+  ]
   tick
 end
 
 to move
   forward 1
-  ; everytime a car moves forward, it loses gas
   set gas (gas - 1)
 end
 @#$#@#$#@
@@ -92,21 +89,6 @@ NIL
 NIL
 NIL
 1
-
-SLIDER
-20
-150
-192
-183
-initial-gas
-initial-gas
-0
-25
-19.0
-1
-1
-NIL
-HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?

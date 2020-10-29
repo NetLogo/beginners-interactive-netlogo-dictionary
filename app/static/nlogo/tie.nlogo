@@ -4,9 +4,11 @@ breed [barnacles barnacle]
 to setup
   clear-all
   reset-ticks
-  ask patches [set pcolor sky]
+  ask patches [
+    set pcolor sky
+  ]
 
-  create-whales 1[
+  create-whales 1 [
     set shape "fish-rotatable"
     set size 6
     set color grey
@@ -82,10 +84,10 @@ NIL
 1
 
 BUTTON
-53
-132
-116
-165
+54
+127
+117
+160
 NIL
 go
 T
@@ -96,33 +98,6 @@ NIL
 NIL
 NIL
 NIL
-1
-
-BUTTON
-44
-200
-125
-233
-go once
-go
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-TEXTBOX
-51
-297
-145
-325
-lets draw a whale
-11
-0.0
 1
 
 @#$#@#$#@

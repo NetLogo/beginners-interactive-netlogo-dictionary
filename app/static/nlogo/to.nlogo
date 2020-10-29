@@ -3,8 +3,12 @@ breed [leaves leaf]
 
 to setup
   clear-all
-  ask patches [set pcolor green]
+  ask patches [
+    set pcolor green
+  ]
+
   set-default-shape rabbits "rabbit"
+
   create-rabbits 10 [
     set size 4
     set color white
@@ -24,30 +28,25 @@ end
 
 to wiggle
   ask rabbits [
-rt random 90
-lt random 90
+    rt random 90
+    lt random 90
   ]
 end
 
 
 to move
   ask rabbits [
-  fd 1
+    fd 1
   ]
 end
 
 to eat
   ask rabbits [
   if any? leaves-here [
-      ask leaves-here [die]
+      ask leaves-here [ die ]
     ]
   ]
 end
-
-;; decrease size of the rabbits
-;; make world smaller/make more leaves
-
-
 
 @#$#@#$#@
 GRAPHICS-WINDOW

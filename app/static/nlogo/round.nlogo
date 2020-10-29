@@ -3,25 +3,22 @@ globals [
   rounded-average-househould-income
 ]
 
-turtles-own [
-  money
-]
+turtles-own [ money ]
 
 to setup
   clear-all
-  create-turtles 15[
+
+  create-turtles 15 [
     set shape "house"
     set size 5
     setxy random-xcor random-ycor
     set money random 100
     set label money
-
   ]
 
   set average-househould-income (mean [money] of turtles)
 
-  set rounded-average-househould-income round (mean [money] of turtles) ;; The number will be rounded
-                                                                        ;; to the nearest whole number
+  set rounded-average-househould-income round (mean [money] of turtles)
 
   reset-ticks
 

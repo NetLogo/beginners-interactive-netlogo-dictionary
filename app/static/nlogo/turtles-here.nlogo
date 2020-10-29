@@ -1,25 +1,39 @@
 globals [ lilypads ]
 
-; there are some frogs and some lilypads in a pond
-; as the frogs swim around, if they swim on a lilypad, they press it into the water
-
 to setup
   clear-all
-  ask patches [ set pcolor blue ]
+  ask patches [
+    set pcolor blue
+  ]
+
   set lilypads n-of 10 patches
-  ask lilypads [ set pcolor green ]
-  create-turtles 5 [ set shape "frog top"
+
+  ask lilypads [
+    set pcolor green
+  ]
+
+  create-turtles 5 [
+    set shape "frog top"
     set color green - 2
-    move-to one-of patches]
+    move-to one-of patches
+  ]
+
   reset-ticks
 end
 
 to go
-  ask turtles [ right random 90 left random 90 forward 1 ]
+  ask turtles [
+    right random 90 left random 90
+    forward 1
+  ]
+
   ask lilypads [
-    ; if there is a frog on a lilypad, it goes under water and the patch turns blue
-    ifelse any? turtles-here [ set pcolor blue ]
-        [set pcolor green ] ]
+    ifelse any? turtles-here [
+      set pcolor blue
+    ] [
+      set pcolor green
+    ]
+  ]
   tick
 end
 @#$#@#$#@
