@@ -15,3 +15,7 @@
 ```ask turtle 1 [```
 
  ```ask neighbors4 [ set pcolor yellow ] ] ```
+
+
+
+In the model below, there is a fire spreading in a forest. A patch on fire will spread to its neighboring patches that contain trees. Depending on if the switch is on `neighbors` or `neighbors4`, the fire will spread to all neighboring trees or to only trees in the cardinal directions, respectively. 

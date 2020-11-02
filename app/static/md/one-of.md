@@ -18,5 +18,5 @@ For example, `ask one-of patches [ set pcolor red ]` will turn one random patch 
 
 
 
-In the model below, a disease is being spreaded. It starts with one infected person, who is chosen randomly. To pick one person to begin the disease spread, we use `one-of` to randomly chose one turtle. 
+In the model below, a disease is being spread. It starts with one infected person, who is chosen randomly. To pick one person to begin the disease spread, we use `one-of` to randomly chose one turtle. 
 

@@ -1,2 +1,5 @@
 `pcolor` is a built-in patch variable that reports the color of the patch. Because `pcolor` is a variable as well as a reporter, you can use  `set` to change it. `pcolor` can be set by simply stating the color (e.g., brown, yellow, red; note that there are no quotation marks around the color names) or NetLogo color (a single number). For example, you can write `ask patches [set pcolor pink]` or `ask patches [ set pcolor 15]`. Turtles can directly access and change the color of the patch they are on using this primitive. For example: `ask turtles [ set pcolor yellow]`.   To change the color of the turtles, see [*color*](http://ccl.northwestern.edu/netlogo/docs/dictionary.html#color) . 
 
+
+
+In the model below, there are sheep wandering around and eating grass. Sheep can only eat when they are on a patch with grass on it, so they can only eat `if [ pcolor ] of patch-here = green` . This model not only changes the `pcolor` of a patch using `set`, but it shows how `pcolor` can be used in conditional statements.

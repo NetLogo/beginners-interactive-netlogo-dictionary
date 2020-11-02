@@ -6,5 +6,4 @@
 
 
 
-will set the initial color of the turtles brown. 
-
+will set the initial color of the turtles brown. In the model below, there are some eagles, white rats, and gray rats. The eagles are hunting the rats, but can see the white rats much better than the gray. So if an eagle is on the same patch as a white rat (but not a gray one) it will eat it.

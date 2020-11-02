@@ -10,5 +10,5 @@ For example, `max-n-of 3 patches [ count turtles-here ]` would return an agentse
 
 
 
-In the model below, there are a group of people in a footrace. We want to be able to identify the leaders in the race, and will turn the 3 furthest people to a different color using `max-n-of`.
+In the model below, there cells that are growing and dividing. Every tenth tick, we ask the three biggest cells to divide using `max-n-of`.
 

@@ -4,8 +4,24 @@ to setup
 ask patches [
     if pycor = -10 [set pcolor yellow ]
   ]
+  make-cars
 
-  crt 2 [
+end
+
+to move-red-car
+  ask turtles with [ color = red ] [
+    forward 2
+  ]
+end
+
+to move-green-car
+  ask turtles with [ color = green ] [
+    forward 0.2
+  ]
+end
+
+to make-cars
+    crt 2 [
     set shape "car top"
     set size 5
   ]
@@ -21,8 +37,8 @@ ask patches [
       setxy -5 12
       set color green
     ]
-
 end
+
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
@@ -69,11 +85,11 @@ NIL
 1
 
 BUTTON
-18
-139
-188
-249
-forward 2 units (red car)
+36
+108
+140
+153
+move-red-car
 ask turtle 0 [fd 2]
 NIL
 1
@@ -86,12 +102,12 @@ NIL
 1
 
 BUTTON
-18
-265
-187
-367
-forward 0.2 units (green car)
-ask turtle 1 [fd 0.2]
+34
+171
+143
+222
+NIL
+move-green-car
 NIL
 1
 T

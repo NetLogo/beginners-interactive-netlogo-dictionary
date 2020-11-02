@@ -10,6 +10,9 @@ ask turtles [
 		setxy random-xcor random-ycor
 ]
 ```
- 
 
 `Pen-erase` (shortened to `pe`) erases any previously drawn lines when the turtle passes over them. Think of it as an eraser on the belly of the turtle. 
+
+
+
+In the model below, an airplane is flying around. Depending on the procedure selected, the airplane will simply fly around (using `pen-up`), fly around while leaving a trail (using `pen-down`), or fly around while erasing past lines (using `pen-erase`). 

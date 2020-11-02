@@ -14,3 +14,8 @@ ask one-of turtles [
 	set age 10 ]
 ```
 would set the age of a turtle to 10. Turtles can also access and set the variable of the patch they are standing on. 
+
+
+
+In the model below, `set` is used to change a variety of variables, including a global variable, patch variables, and turtle variables.
+

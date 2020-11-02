@@ -14,3 +14,7 @@ create-turtles 1 [ set shape “turtle” set my-turtle self]
 ask my-turtle [ forward 2]
 ```
 would set the variable `my-turtle` to be the newly created turtle.  It is rarely used, because  `[color] of self` is equivalent to just saying `color`. 
+
+
+
+In the model below, we use `myself` to make the people only enter the house that is their same color, by `if color = [ color ] of myself [ stay home ]`

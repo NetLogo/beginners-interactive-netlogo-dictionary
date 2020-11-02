@@ -57,27 +57,10 @@ NIL
 1
 
 BUTTON
-23
-109
-204
-190
-create 20 newborn cows
-create-turtles 20 [set shape \"cow\" \nset color black\nset size 3\nsetxy random-xcor random-ycor\n]
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-BUTTON
-39
-206
-170
-273
+42
+120
+173
+187
 NIL
 clear-patches
 NIL

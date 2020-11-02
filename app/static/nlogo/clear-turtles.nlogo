@@ -1,6 +1,8 @@
 to setup
   clear-all
-  ask patches [set pcolor green]
+  ask patches [
+    set pcolor green
+  ]
 
   create-turtles 20 [
     set shape "cow"
@@ -55,27 +57,10 @@ NIL
 1
 
 BUTTON
-23
-109
-204
-190
-create 20 newborn cows
-create-turtles 20 [set shape \"cow\" \nset color black\nset size 3\nsetxy random-xcor random-ycor\n]
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-BUTTON
-39
-206
-170
-273
+38
+118
+169
+185
 NIL
 clear-turtles
 NIL
