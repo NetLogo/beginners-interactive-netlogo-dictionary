@@ -10,7 +10,7 @@ to setup
   ]
 end
 
-to go
+to get-older
   ask turtles [
     set age age + 1
     if age > 100 [
@@ -29,17 +29,7 @@ to go
   tick
 end
 
-to-report get-oldest-asking-method
-  let oldest 0
-  ask turtles [
-    if age > oldest [
-      set oldest age
-    ]
-  ]
-  report oldest
-end
-
-to-report get-oldest-of-method
+to-report age-of-oldest-person
   report max [age] of turtles
 end
 @#$#@#$#@
@@ -88,12 +78,12 @@ NIL
 1
 
 BUTTON
-136
-84
-199
-117
+124
+85
+214
+118
 NIL
-go
+get-older
 T
 1
 T
@@ -105,23 +95,12 @@ NIL
 1
 
 MONITOR
-32
-145
-211
-190
+27
+146
+214
+191
 NIL
-get-oldest-asking-method
-17
-1
-11
-
-MONITOR
-31
-223
-218
-268
-NIL
-get-oldest-of-method
+age-of-oldest-person
 17
 1
 11

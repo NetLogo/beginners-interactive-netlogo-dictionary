@@ -15,14 +15,26 @@ to setup
     set color white
     set thickness .2
   ]
+
+
 end
 
 to create-airports
-  create-turtles 1 [ set label "MDW" setxy -10 3] ; 0
-  create-turtles 1 [ set label "ORD" setxy -11 5] ; 1
-  create-turtles 1 [ set label "BOS" setxy 12 6]  ; 2
-  create-turtles 1 [ set label "JFK" setxy 6 2]   ; 3
-  create-turtles 1 [ set label "LGA" setxy 6 4]   ; 4
+  create-turtles 1 [
+    set label "MDW" setxy -10 3
+  ] ; 0
+  create-turtles 1 [
+    set label "ORD" setxy -11 5
+  ] ; 1
+  create-turtles 1 [
+    set label "BOS" setxy 12 6
+  ]  ; 2
+  create-turtles 1 [
+    set label "JFK" setxy 6 2
+  ]   ; 3
+  create-turtles 1 [
+    set label "LGA" setxy 6 4
+  ]   ; 4
 end
 
 to create-routes
