@@ -3,6 +3,9 @@
 
 
 **“No closing bracket for this open bracket.”**
+
+
+
 This error occurs when you are missing a closing bracket. Each opening bracket must have a closing bracket, and vice versa; brackets always come in pairs. To be sure each bracket has its matching bracket, you can click the bracket and its pair will be highlighted. If no other bracket is highlighted, you know you are missing one!
 
 #### <span class="bg-warning"> <i class="fas fa-hand-paper text-danger"></i> “Expected command.”</span>
@@ -16,7 +19,7 @@ This error occurs when you have one too many brackets. Each opening bracket must
 
 
 
-**If a button turns red and you see a “Nothing named [word] has been defined” error when you click the button**
+#### If a button turns red and you see a “Nothing named [word] has been defined” error when you click the button
 A button will turn red if it doesn’t have a matching procedure defined in the code tab. Often, this is because the procedure has a different name than the button, or something has been misspelled. To fix this error, make sure that your button name corresponds with a procedure name.
 
 **“END expected”**
@@ -86,18 +89,30 @@ When you try to run a model and nothing seems to happen or update, you may have 
 
 This error occurs when you are trying to use a primitive in a context it is not meant for. Turtles have some primitives that are exclusive to them; there are also patch-specific, link-specific, and observer-specific primitives. For example, asking turtles to `sprout` new turtles (or using `sprout` within an `ask turtles [ … ]` context) will result in this error, because only patches can use `sprout`. 
 To fix this error, make sure you are using the primitive correctly and by the correct agent type. You may have forgotten to use the primitive within an `ask turtles [...]` or `ask patches [...]` context. Check the NetLogo Dictionary to find which agent types a primitive is compatible with. You may need to use a similar primitive that is used by a different type of agent. (`create-turtles`, `hatch`, and `sprout` all create new turtles, but are used by different agents.)
+
 This error applies to other types of agent types such as links, patches, and observer.
 Some examples are: 
+
+
 
 **You can't use SETXY in a patch context, because SETXY is turtle-only.**	
 
 You may be wrongly asking the patches to move, which they cannot. Make sure your code is within an ask turtles or ask [breed-name] block. Only turtles and turtle breeds can change their position.
 
+
+
 **You can’t use DIE in a patch context, because DIE is turtle or link-only.**
 
  You may be asking turtles to `die` within an `ask patches [...]` context, which is not allowed. Only turtles can make turtles `die`. If you were hoping to clear a patch, use `clear-patches` instead of `die`.
+
+
 
 **You can’t use CREATE-TURTLES in a turtle context, because CREATE-TURTLES is observer-only.**	 
 
 If you are within an `ask turtles [...]` context, you are not allowed to use `create-turtles` to make more turtles. `create-turtles` is an observer-only primitive, which means it is not used within any `ask … [...]` context. If you were wanting to create more turtles from existing turtles, use `hatch`. If you were wanting to create more turtles from a patch, use `sprout`.
 
+
+
+![](/static/articles/img/keywordexpected.png)
+
+This explanation will be updated
