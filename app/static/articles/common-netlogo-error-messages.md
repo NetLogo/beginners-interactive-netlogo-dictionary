@@ -6,7 +6,15 @@
 This error occurs when you are missing a closing bracket. Each opening bracket must have a closing bracket, and vice versa; brackets always come in pairs. To be sure each bracket has its matching bracket, you can click the bracket and its pair will be highlighted. If no other bracket is highlighted, you know you are missing one!
 
 #### <span class="bg-warning"> <i class="fas fa-hand-paper text-danger"></i> “Expected command.”</span>
+
+
+![](/static/articles/img/expectedcommand.png)
+
 This error occurs when you have one too many brackets. Each opening bracket must have a closing bracket, and vice versa; brackets always come in pairs. To be sure each bracket has its matching bracket, you can click the bracket and its pair will be highlighted. The error will either state which line the extra bracket is on, or will highlight the line. To fix the error, simply delete the extra bracket.
+
+
+
+
 
 **If a button turns red and you see a “Nothing named [word] has been defined” error when you click the button**
 A button will turn red if it doesn’t have a matching procedure defined in the code tab. Often, this is because the procedure has a different name than the button, or something has been misspelled. To fix this error, make sure that your button name corresponds with a procedure name.
