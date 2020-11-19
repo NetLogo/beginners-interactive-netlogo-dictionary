@@ -6,8 +6,12 @@
 
 When beginning to learn NetLogo, there are some primitives you will use in nearly every model you create. Here is a Beginner’s Guide to the first 9 primitives you should learn.
 
-1. `to` and `end`
-   `to` and `end` are essential for creating procedures in NetLogo. `to` begins a procedure, and `end` concludes it. You can create procedures that can do anything! Simply add all your code within `to procedure-name` and `end`. 
+#### `to` and `end`
+`to` and `end` are essential for creating procedures in NetLogo. `to` begins a procedure, and `end` concludes it. You can create procedures that can do anything! Simply add all your code within `to procedure-name` and `end`. 
+
+
+
+
 
 2. `ask`
 
