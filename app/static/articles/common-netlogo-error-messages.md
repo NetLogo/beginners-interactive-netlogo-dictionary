@@ -8,7 +8,7 @@
 
 This error occurs when you are missing a closing bracket. Each opening bracket must have a closing bracket, and vice versa; brackets always come in pairs. To be sure each bracket has its matching bracket, you can click the bracket and its pair will be highlighted. If no other bracket is highlighted, you know you are missing one!
 
-#### <span class="bg-warning"> <i class="fas fa-hand-paper text-danger"></i> “Expected command.”</span>
+
 
 
 ![](/static/articles/img/expectedcommand.png)
@@ -26,11 +26,15 @@ A button will turn red if it doesn’t have a matching procedure defined in the 
 This error occurs when you have forgotten to add `end` to the end of your procedure. NetLogo will either state which line the `end` is missing from, or will highlight the line in code. Because each procedure must conclude in `end`, simply add it after your procedure’s code to fix the error.
 For example, the code below would get this error:
 
-```To go   ```
+```
+to go
+   ask turtles [
+     forward 1
+   ]
+end
+```
 
-```   Ask turtles  [  ```
 
-```   	Forward 1   ] ```
 
 While this code would fix the error:
 
