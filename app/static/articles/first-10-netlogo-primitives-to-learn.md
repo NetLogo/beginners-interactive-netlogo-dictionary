@@ -1,75 +1,61 @@
-# The First 10 NetLogo Primitives to Learn
+# The First 9 NetLogo Primitives to Learn
 
 &nbsp;
 
 <p class="badge badge-warning">Note to the devs: this page needs to be finished.</p>
 
-Here is a nice, welcoming introductory sentence which tells you what to expect in this article but also tells you to check the [`What is a Primitive?`](/article/what-is-a-primitive) article if you are new to NetLogo.
+When beginning to learn NetLogo, there are some primitives you will use in nearly every model you create. Here is a Beginner’s Guide to the first 9 primitives you should learn.
 
-#### [`ask`](/primitive/ask)
-Explanation here ...  Explanation here ...  Explanation here ...  Explanation here ...  Explanation here ...  Explanation here ...  Explanation here ...  Explanation here ... 
+1. `to` and `end`
+   `to` and `end` are essential for creating procedures in NetLogo. `to` begins a procedure, and `end` concludes it. You can create procedures that can do anything! Simply add all your code within `to procedure-name` and `end`. 
 
-```
-ask turtles [
-    forward 10
-]
+2. `ask`
 
-ask patches [
-    ask turtles-here [do-things]
-]
-```
+   `ask` is used to make agents and agentsets do things. This is how you accomplish almost all actions in NetLogo. You can use `ask` on turtles, links, and patches. Within the `[...]` following `ask`, simply define the actions you want the agents to complete.
 
-&nbsp;
+   3. tick`
 
-#### [`create-turtles`](/primitive/create-turtles)
+   ``tick` is used to advance the tick-counter in your model. A tick is just a measure of time in NetLogo, like minutes or seconds. `tick` is only necessary when using tick-based updates. When you use `tick`, it increases the tick counter by 1, and updates all the plots and monitors in your model.
 
-Praesent consequat tortor in velit ullamcorper, id pretium turpis vestibulum. Phasellus tellus nisi, vehicula vel blandit et, pellentesque eget nunc. Duis porta euismod nisi, commodo dapibus orci luctus eu. Suspendisse potenti.
+   
 
-&nbsp;
+   4. `if`
 
-#### [`tick`](/primitive/tick)
+   `if` is used to conditionally run a command. If you want a portion of code to run only if a certain check passes, you would use `if`. For example, if you want turtles to move **only** if they are standing on a red patch, you could use `if` to say:
 
-Integer quis lacus at dui sollicitudin varius. Donec vitae convallis libero. Maecenas gravida vestibulum ligula a rutrum. Suspendisse vel elit lorem. Sed eget diam ac ante volutpat placerat. 
+   ``` ask turtles [```
 
-&nbsp;
+   `````` if [ pcolor ] of patch-here = red [```
 
-#### [`clear-all`](/primitive/clear-all)
+    forward 1`````
 
-Integer quis lacus at dui sollicitudin varius. Donec vitae convallis libero. Maecenas gravida vestibulum ligula a rutrum. Suspendisse vel elit lorem. 
+   
 
-&nbsp;
+   5. `set`
 
-#### [`of`](/primitive/of)
+   `set` is used to set the value of a certain variable. A variable is (how to describe a variable here??) This can be used for any type of variable: turtle variables, patch variables, locally defined and globally defined variables. 
 
-Integer quis lacus at dui sollicitudin varius. Donec vitae convallis libero. Maecenas gravida vestibulum ligula a rutrum. Suspendisse vel elit lorem. 
+   
 
-&nbsp;
+   6. `clear-all`
 
-#### [`turtles-own`](/primitive/turtles-own)
+   `clear-all` is used to clear out everything in your model. This is usually used in your `setup` procedure, to start your model off with a clean slate. `clear-all` clears any turtles and links, resets all variables, and sets patches back to black.
 
-Integer quis lacus at dui sollicitudin varius. Donec vitae convallis libero. Maecenas gravida vestibulum ligula a rutrum. Suspendisse vel elit lorem. Sed eget diam ac ante volutpat placerat. Proin dapibus erat vitae arcu tincidunt ultricies. Suspendisse potenti.
+   
 
+   7. `and` and `or`
 
-&nbsp;
+   `and` and `or` are used to check multiple conditions at the same time. `and` will only return true if both of the individual conditions are true, while `or` will return true if at least one of the individual conditions are true. `and` and `or` are commonly used with `if` to conditionally run commands. 
 
-#### [`with`](/primitive/with)
+   
 
-Integer quis lacus at dui sollicitudin varius. Donec vitae convallis libero. Maecenas gravida vestibulum ligula a rutrum. Suspendisse vel elit lorem. Sed eget diam ac ante volutpat placerat. Proin dapibus erat vitae arcu tincidunt ultricies. Suspendisse potenti.
+   8. `turtles` and `patches`
 
-&nbsp;
+   `turtles` and `patches` are used to report the agentsets of either `turtles` or `patches`. They are commonly used with `ask` to 	make the turtles or patches do things. So to make all patches or all turtles complete an action, you would say `ask turtles [ commands ]` or `ask patches [ commands ]`. 
 
-#### [`if`](/primitive/if)
+   
 
-Integer quis lacus at dui sollicitudin varius. Donec vitae convallis libero. Maecenas gravida vestibulum ligula a rutrum. 
+   9. `create-turtles`
 
-&nbsp;
+   `create-turtles` is how you first make turtles in your models. `create-turtles` is used by the Observer, or not within any `ask [ … ]` block. You can create any number of turtles you would like, and make them complete any action that is defined in the `[ … ]` following `create-turtles`. 
 
-#### [`and`](/primitive/and)
-
-Integer quis lacus at dui sollicitudin varius. Donec vitae convallis libero. Maecenas gravida vestibulum ligula a rutrum. 
-
-&nbsp;
-
-#### [`to`](/primitive/to)
-
-Integer quis lacus at dui sollicitudin varius. Donec vitae convallis libero. Maecenas gravida vestibulum ligula a rutrum. 
