@@ -2,9 +2,7 @@
 
 
 
-**“No closing bracket for this open bracket.”**
-
-
+![](/static/articles/img/noclosingbracket.png)
 
 This error occurs when you are missing a closing bracket. Each opening bracket must have a closing bracket, and vice versa; brackets always come in pairs. To be sure each bracket has its matching bracket, you can click the bracket and its pair will be highlighted. If no other bracket is highlighted, you know you are missing one!
 
