@@ -169,12 +169,31 @@ You may be wrongly asking the patches to move, which they cannot. Make sure your
 
 
 
-**You can’t use CREATE-TURTLES in a turtle context, because CREATE-TURTLES is observer-only.**	 
+![](/static/articles/img/createturtlescontext.png)
 
 If you are within an `ask turtles [...]` context, you are not allowed to use `create-turtles` to make more turtles. `create-turtles` is an observer-only primitive, which means it is not used within any `ask … [...]` context. If you were wanting to create more turtles from existing turtles, use `hatch`. If you were wanting to create more turtles from a patch, use `sprout`.
 
 
 
+
+
 ![](/static/articles/img/keywordexpected.png)
 
-This explanation will be updated
+This error occurs when your code is not contained within a procedure. In the Code Tab, all code must be written within a procedure, except for defining global variables, breeds, turtle variables or patch variables. To fix this error, simply enclose your code within a procedure, beginning with `to` and ending with `end`. For example, this code would get the error:
+
+```
+ask turtles [
+	forward 1
+]
+```
+
+But to fix the error, simply add it into a procedure:
+
+```
+to move-turtles
+	ask turtles [
+		forward 1
+	]
+end
+```
+
