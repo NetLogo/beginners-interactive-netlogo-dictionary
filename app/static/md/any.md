@@ -1,18 +1,26 @@
-`any?` is used when you want to determine if there are any agents within an agentset. If there are, it will return **True**, otherwise it will return **False**. Its syntax is: 
+`any?` is used to determine if there are at least one agent within a given agentset. If there are, it will return **true**, otherwise it will return **false**. 
+
+<br />
+
+Its syntax is: **```any? agentset```**
+
+<br />
+
+For example, the following code would stop the model if there are zero turtles in the unit. If there is even one turtle, the model would continue running: 
+
+```
+if not any? turtles [stop]
+```
 
 
 
-```any? <agentset>```
+You can combine `any?` with a conditional statement  using the `with` primitive such as the following example that stops the model if any of the turtles in the model are smaller than 1 unit: 
+
+```
+if any? turtles with [size < 1] [stop]
+```
 
 
 
-`any?` can be combined with a conditional statement to perform an action if there are at least one agent that fit a given criteria:
-
-```if any? turtles with [size > 2][stop]``` .
-
-Note that you can, as always, use the `with` primitive to narrow down an agentset as the example below does to for turtles with a size greater than 2.
-
-
-
-In the model example below, imagine that you are modeling how long it takes a virus to become eradicated. It would be useful to stop the model once there are no more infected individuals to collect that data. In the model below, infected individuals are represented as red turtles. At the start of the go procedure, we check if there are any red turtles present, and if so, use the stop command to stop running the model.
+The model example below represents the spread of a contagious disease (red) within a healthy population (green). We use `any?` primitive to run the model as long as there is at least one green individual in the model. Once all of the individuals turned red, the model automatically stops.
 

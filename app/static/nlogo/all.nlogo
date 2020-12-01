@@ -1,7 +1,7 @@
-turtles-own [ have-eaten? ]
+turtles-own [ food-eaten ]
 
 to setup
-  clear-all
+  ca
 
   ask patches [
     set pcolor one-of [ green brown ]
@@ -10,8 +10,7 @@ to setup
   create-turtles 10 [
     set shape "sheep"
     set color white
-    set have-eaten? false
-    move-to one-of patches
+    move-to one-of patches with [pcolor = brown]
   ]
 
   reset-ticks
@@ -19,24 +18,30 @@ end
 
 to move-and-eat
   ask turtles [
-    if all? turtles [ have-eaten? = true ] [stop]
-    if not have-eaten? and pcolor = green [
-      set have-eaten? true
-      set size 2
+    if all? turtles [ food-eaten > 0 ] [stop]
+
+    if pcolor = green [
+      set food-eaten food-eaten + 1
+      set pcolor brown
+      set size size + 0.5
     ]
-    right random 90 left random 90 forward 1 ]
+
+    right random 90
+    left random 90
+    forward 0.1
+  ]
 
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+140
 10
-598
-399
+456
+327
 -1
 -1
-34.55
+28.0
 1
 10
 1
@@ -57,10 +62,10 @@ ticks
 30.0
 
 BUTTON
-64
-56
-130
-89
+5
+10
+105
+60
 NIL
 setup
 NIL
@@ -74,10 +79,10 @@ NIL
 1
 
 BUTTON
-40
-109
-160
-142
+5
+80
+130
+140
 NIL
 move-and-eat
 T
@@ -88,15 +93,15 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 MONITOR
-55
-183
-143
-228
-have-eaten?
-count turtles with [ have-eaten? = true ]
+5
+170
+130
+215
+haven't eaten yet
+count turtles with [ food-eaten = 0 ]
 17
 1
 11
@@ -460,5 +465,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

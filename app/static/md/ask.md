@@ -1,4 +1,4 @@
-`ask` is a command that is used to make the agents in the agentset do something. The syntax is: 
+`ask` is a command that we use to make all the agents in a given agentset follow a set of rules. Its syntax is: 
 
 
 

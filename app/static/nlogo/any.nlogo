@@ -20,32 +20,28 @@ to go
   ]
 
   ask turtles [
-    move
+    right random 90
+    left random 90
+    forward 0.1
   ]
 
-  ask turtles with [color = red] [
-    ask turtles in-radius 2 [
-      set color red
-    ]
+  ask turtles with [color = red][
+   ask turtles-here [
+     set color red
+   ]
   ]
 
   tick
 end
-
-to move
-  right random 90
-  left random 90
-  fd random-float 1
-end
 @#$#@#$#@
 GRAPHICS-WINDOW
-332
+243
 10
-665
-344
+551
+319
 -1
 -1
-13.0
+12.0
 1
 10
 1
@@ -66,10 +62,10 @@ ticks
 30.0
 
 BUTTON
-32
-43
-166
-76
+7
+10
+141
+61
 NIL
 setup
 NIL
@@ -83,10 +79,10 @@ NIL
 1
 
 BUTTON
-190
-42
-315
-75
+8
+66
+140
+121
 NIL
 go
 T
@@ -100,10 +96,10 @@ NIL
 1
 
 PLOT
-31
-92
-317
-242
+9
+132
+231
+282
 population sickness
 NIL
 NIL

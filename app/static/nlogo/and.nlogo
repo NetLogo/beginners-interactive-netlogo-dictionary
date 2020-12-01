@@ -3,16 +3,17 @@ to draw-river
 
   ask patches [
     set pcolor green
-    if pxcor <= (width / 2) and pxcor >= (- width / 2) [
+    if pxcor > -10 and pxcor < 10 [
       set pcolor blue
     ]
   ]
+
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+125
 10
-505
+420
 306
 -1
 -1
@@ -37,10 +38,10 @@ ticks
 30.0
 
 BUTTON
-38
-52
-135
-85
+14
+11
+111
+60
 NIL
 draw-river
 NIL
@@ -52,21 +53,6 @@ NIL
 NIL
 NIL
 1
-
-SLIDER
-23
-101
-195
-134
-width
-width
-1
-20
-11.0
-2
-1
-NIL
-HORIZONTAL
 
 @#$#@#$#@
 `and` is a primitive that can be used to combine two true-or-false statements, known as booleans in the computer world, into a single true-or-false statement such that the result is true *if and only if* both inputs are true. For instance, if we wanted a turtle to eat if (A) they were hungry *and* (B) if there was food in their patch, we could say: 
