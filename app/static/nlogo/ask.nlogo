@@ -1,72 +1,50 @@
-breed [plants plant]
 breed [fish a-fish]
 breed [stars star]
-
 
 to setup
   clear-all
 
- create-plants 5 [
-     setxy random-xcor random-ycor
-    set color green
-    set size 3
-    set shape "plant"
-  ]
-
   create-fish 10 [
     set shape "fish"
     set color red
-    set size 2
-    setxy random-xcor random-ycor
+    move-to one-of patches
   ]
 
   create-stars 10 [
     set shape "star"
     set color pink
-    set size 2
-    setxy random-xcor random-ycor
+    move-to one-of patches
   ]
 
   ask patches [ set pcolor blue ]
+
   reset-ticks
 end
 
-
-
 to go
-  ask turtles [
-    fd 0.2
-  ]
 
-  ask plants [
-    wiggle
-  ]
+  ask fish [ wiggle forward 0.1 ]
 
-  ask fish [
-    swim
-  ]
+  ask stars [ right 1 ]
+
+  ask turtles [ set size size + 0.001 ]
 
   tick
 end
 
 to wiggle
-  rt random 90
-  lt random 90
-end
-
-
-to swim
- fd 1
+  right random 60
+  left random 60
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 120
 10
-458
-349
+468
+359
 -1
 -1
-10.0
+20.0
 1
 10
 1
@@ -76,10 +54,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
+-8
+8
+-8
+8
 1
 1
 1
@@ -268,11 +246,11 @@ Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 
 fish
 false
 0
-Polygon -1 true false 44 131 21 87 15 86 0 120 15 150 0 180 13 214 20 212 45 166
-Polygon -1 true false 135 195 119 235 95 218 76 210 46 204 60 165
-Polygon -1 true false 75 45 83 77 71 103 86 114 166 78 135 60
-Polygon -7500403 true true 30 136 151 77 226 81 280 119 292 146 292 160 287 170 270 195 195 210 151 212 30 166
-Circle -16777216 true false 215 106 30
+Polygon -1 true false 256 131 279 87 285 86 300 120 285 150 300 180 287 214 280 212 255 166
+Polygon -1 true false 165 195 181 235 205 218 224 210 254 204 240 165
+Polygon -1 true false 225 45 217 77 229 103 214 114 134 78 165 60
+Polygon -7500403 true true 270 136 149 77 74 81 20 119 8 146 8 160 13 170 30 195 105 210 149 212 270 166
+Circle -16777216 true false 55 106 30
 
 flag
 false
@@ -377,7 +355,7 @@ Rectangle -7500403 true true 30 30 270 270
 Rectangle -16777216 true false 60 60 240 240
 
 star
-false
+true
 0
 Polygon -7500403 true true 151 1 185 108 298 108 207 175 242 282 151 216 59 282 94 175 3 108 116 108
 
