@@ -2,24 +2,30 @@ to make-drawing
   ask patches [
     set pcolor yellow
   ]
+
   create-turtles 5 [
     move-to one-of patches
     pen-down
+
     repeat 20 [
       right random 90
       forward 5
     ]
   ]
 end
+
+to clear-everything
+  clear-all
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+136
 10
-647
-448
+441
+316
 -1
 -1
-13.0
+9.0
 1
 10
 1
@@ -40,12 +46,12 @@ ticks
 30.0
 
 BUTTON
-57
-121
-137
-161
+6
+88
+131
+154
 NIL
-clear-all
+clear-everything
 NIL
 1
 T
@@ -57,10 +63,10 @@ NIL
 1
 
 BUTTON
-42
-70
-162
-103
+4
+10
+130
+63
 NIL
 make-drawing
 NIL
@@ -74,41 +80,16 @@ NIL
 1
 
 @#$#@#$#@
-## WHAT IS IT?
+`clear-all` essentially removes *all* the drawings, turtles, plots, links, etc. from the model, sets the values of all the `globals` and agent properties to zero, and makes all the patches black. It esentially leaves a blank slate. You can also use `ca` as a shortened version.
 
-(a general understanding of what the model is trying to show or explain)
+ 
 
-## HOW IT WORKS
+`clear-all` is usually located at the beginning of a model’s setup procedure to make sure the model starts out with nothing already there. 
 
-(what rules the agents use to create the overall behavior of the model)
 
-## HOW TO USE IT
 
-(how to use the model, including a description of each of the items in the Interface tab)
+In the model example below, we have two buttons. The first one makes patches' color yellow and asks turtles to draw lines. The second button simply runs the `clear-all` primitive to clear everything.
 
-## THINGS TO NOTICE
-
-(suggested things for the user to notice while running the model)
-
-## THINGS TO TRY
-
-(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
-
-## EXTENDING THE MODEL
-
-(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
-
-## NETLOGO FEATURES
-
-(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
-
-## RELATED MODELS
-
-(models in the NetLogo Models Library and elsewhere which are of related interest)
-
-## CREDITS AND REFERENCES
-
-(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
 @#$#@#$#@
 default
 true

@@ -25,7 +25,7 @@ ask turtles [
 
 
 
-You should keep four things in mind when using `ask`: 
+Things to keep in mind when using `ask`: 
 
 * You can use the `ask  ` primitive with the custom turtle types that you define with the `breed` primitive. 
 * You can ask individual turtles to follow a set of rules using the form `turtle n`, such as `ask turtle 1 [...]`, `ask turtle 2 [...]`

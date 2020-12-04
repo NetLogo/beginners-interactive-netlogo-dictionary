@@ -1,6 +1,10 @@
-`clear-all` essentially clears *all* the drawings, turtles, plots, etc., leaving a blank slate. A shorthand version of `clear-all` is `ca` . `clear-all` is usually located at the beginning of a model’s setup procedure, to make sure the model starts out with nothing already there. To remove turtles from the model, see [*clear-turtles*](http://ccl.northwestern.edu/netlogo/docs/dictionary.html#clear-turtles). To remove patches from the model, see [*clear-patches*](http://ccl.northwestern.edu/netlogo/docs/dictionary.html#clear-patches).
+`clear-all` essentially removes *all* the drawings, turtles, plots, links, etc. from the model, sets the values of all the `globals` and agent properties to zero, and makes all the patches black. It esentially leaves a blank slate. You can also use `ca` as a shortened version.
+
+ 
+
+`clear-all` is usually located at the beginning of a model’s setup procedure to make sure the model starts out with nothing already there. 
 
 
 
-In the model below, we both change the patches' color and ask turtles to draw lines. Then we use `clear-all` to clear everything from the model.
+In the model example below, we have two buttons. The first one makes patches' color yellow and asks turtles to draw lines. The second button simply runs the `clear-all` primitive to clear everything. 
 

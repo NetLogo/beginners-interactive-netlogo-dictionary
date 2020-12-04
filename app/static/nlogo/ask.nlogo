@@ -99,41 +99,45 @@ NIL
 1
 
 @#$#@#$#@
-## WHAT IS IT?
+`ask` is one of the foundational primitives in NetLogo. It allows us to *ask* one or more agents (i.e., turtles, links, patches) to follow a provided set of rules. When `ask` is used with more than one agents, each agent will take its turn in a random order. 
 
-(a general understanding of what the model is trying to show or explain)
 
-## HOW IT WORKS
 
-(what rules the agents use to create the overall behavior of the model)
+For example, the following code would make all the turtles in a model to move forward one unit and all the patches in a model pink.
 
-## HOW TO USE IT
+```
+ask turtles [ fd 1 ] 
+ask patches [ set pcolor pink ]
+```
 
-(how to use the model, including a description of each of the items in the Interface tab)
 
-## THINGS TO NOTICE
 
-(suggested things for the user to notice while running the model)
+You can also provide more than one commands with an `ask` primitive. For example, the following code would make all the turtles put their `pen-down`, and then turn right by ten degrees and go forward one unit 36 times, which would draw a circle.
 
-## THINGS TO TRY
+```
+ask turtles [
+	pen-down
+	repeat 36 [
+	   right 10
+	   forward 1
+	]
+]
+```
 
-(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
 
-## EXTENDING THE MODEL
 
-(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
+Things to keep in mind when using `ask`: 
 
-## NETLOGO FEATURES
+* You can use the `ask  ` primitive with the custom turtle types that you define with the `breed` primitive. 
+* You can ask individual turtles to follow a set of rules using the form `turtle n`, such as `ask turtle 1 [...]`, `ask turtle 2 [...]`
+* You can ask individual patches to follow a set of rules using the form `patch x y`, such as `patch 3 0 [...]`.
+* You can use the `with` primitive to ask an even smaller subset of given agents such as `ask turtles with [color = red][ ... ]` or `ask patches with [xcor = 5][ ... ]`.
 
-(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
 
-## RELATED MODELS
 
-(models in the NetLogo Models Library and elsewhere which are of related interest)
+<br />
 
-## CREDITS AND REFERENCES
-
-(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
+In the model below, we want the fish to swim around randomly and the stars to just rotate, and we want all the turtles (fish + stars) to grow little by little. To make them follow these actions, we just use the `ask` primitive !
 @#$#@#$#@
 default
 true

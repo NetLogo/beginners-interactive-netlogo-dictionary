@@ -17,7 +17,7 @@ if my-hunger-level > 100 and food-here > 0 [
 
 <br />
 
-You should keep two things in mind when using `and`:
+Things to keep in mind when using `and`:
 
 * You can use more than one `and` primitives in the same conditional primitive such as `if color = red and size > 3 and xcor < 0 [ ... ]` or `ask turtles with [hunger > 1 and food < 1 and money > 10 ]`.
 * `and` itself does not do anything; you should use it within a conditional statement such as `if` and `if-else` or other primitives that require true-false values such as `while`. 

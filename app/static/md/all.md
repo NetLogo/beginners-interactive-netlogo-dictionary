@@ -6,7 +6,7 @@ For example, `all? turtles [ size > 1 ]` would report **true** if and only if ev
 
 
 
-You should keep four things in mind when using `all?`: 
+Things to keep in mind when using `all?`: 
 
 * Don't forget the question mark (`?`) at the end. 
 * You should encapsulate your conditionals within square brackets `[...]`.

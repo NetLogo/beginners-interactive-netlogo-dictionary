@@ -115,9 +115,36 @@ PENS
 "healthy" 1.0 0 -10899396 true "" "plot count turtles with [color = green]"
 
 @#$#@#$#@
-`any?` is used when you want to determine if there are any agents within an agentset. If there are, it will return true, otherwise it will return false. It can be combined with an if statement to perform an action if there are any agents at all that fit a given criteria, regardless of how many. Its syntax is `any? <agentset>`
+`any?` is used to determine if there are at least one agent within a given agentset. If there are, it will return **true**, otherwise it will return **false**.
 
-For example, imagine that you are modeling how long it takes a virus to become eradicated. It would be useful to stop the model once there are no more infected individuals to collect that data. In the model below, infected individuals are represented as red turtles. At the start of the go procedure, we check if there are any red turtles present, and if so, use the stop command to stop running the model. 
+
+
+For example, the following code would repeat running the `go` procedure on a repeated basis as long as there is at least 1 turtle in the model. If, let's say, there were many turtles but they could `die`, the model would stop when all the turtles die.
+
+```
+while any? turtles [ go ]
+```
+
+
+
+You can combine `any?` with a conditional reporter using the `with` primitive such as the following example that stops the model if any of the turtles in the model are smaller than 1 unit: 
+
+```
+if any? turtles with [size < 1] [stop]
+```
+
+
+
+Things to keep in mind in mind when using `any?`: 
+
+* Don't forget the question mark (`?`) at the end. 
+* You can use the `not` primitive, like in the example above, to reverse the outcome of `any?`. This would come handy if you 
+* `any?` itself does not do anything; you should use it within a conditional statement such as `if` and `if-else` or other primitives that require true-false values such as `while`. 
+
+<br />
+
+The model example below represents the spread of a contagious disease within a healthy population. We use `any?` primitive to run the model as long as there is at least one healthy (green) individual in the model. Once all of the individuals turned red, the model automatically stops.
+
 @#$#@#$#@
 default
 true

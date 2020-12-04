@@ -107,41 +107,37 @@ count turtles with [ food-eaten = 0 ]
 11
 
 @#$#@#$#@
-## WHAT IS IT?
+`all?` checks if all agents of an agentset satisfy one or more true-false conditions. If all the agents satisfy the given condition, `all?` itself will report a `true` value. If even one of the agents in the given agentset fail to satisfy the condition, `all?` will report a **False** value. 
 
-(a general understanding of what the model is trying to show or explain)
 
-## HOW IT WORKS
 
-(what rules the agents use to create the overall behavior of the model)
+For example, `all? turtles [ size > 1 ]` would report **true** if and only if every turtle in the model were larger than one unit. 
 
-## HOW TO USE IT
 
-(how to use the model, including a description of each of the items in the Interface tab)
 
-## THINGS TO NOTICE
+Things to keep in mind when using `all?`: 
 
-(suggested things for the user to notice while running the model)
+* Don't forget the question mark (`?`) at the end. 
+* You should encapsulate your conditionals within square brackets `[...]`.
+* You can combine multiple conditional statements using the `and` primitive.
+* `all?` itself does not do anything; you should use it within a conditional statement such as `if` and `if-else` or other primitives that require true-false values such as `while`. 
 
-## THINGS TO TRY
+<br />
 
-(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
+In the model example below, there is a flock of sheep. The sheep move around randomly and once they are on a green patch, they eat the grass on that patch. We want the model to stop after all sheep have eaten at least once, so we include the line:
 
-## EXTENDING THE MODEL
 
-(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
 
-## NETLOGO FEATURES
+```
+if all? turtles [ food-eaten > 0 ][ 
+   stop 
+]
+```
 
-(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
 
-## RELATED MODELS
 
-(models in the NetLogo Models Library and elsewhere which are of related interest)
 
-## CREDITS AND REFERENCES
 
-(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
 @#$#@#$#@
 default
 true

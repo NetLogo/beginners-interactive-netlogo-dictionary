@@ -4,30 +4,34 @@ to setup
     set pcolor green
   ]
 
-  create-turtles 20 [
+  create-turtles 5 [
     set shape "cow"
     set size 5
     set color brown
     setxy random-xcor random-ycor
   ]
 end
+
+to remove-grass
+  clear-patches
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+129
 10
-647
-448
+434
+316
 -1
 -1
-13.0
+9.0
 1
 10
 1
 1
 1
 0
-1
-1
+0
+0
 1
 -16
 16
@@ -40,10 +44,10 @@ ticks
 30.0
 
 BUTTON
-47
-34
-160
-95
+4
+10
+117
+71
 NIL
 setup
 NIL
@@ -57,12 +61,12 @@ NIL
 1
 
 BUTTON
-42
-120
-173
-187
+5
+81
+124
+148
 NIL
-clear-patches
+remove-grass
 NIL
 1
 T

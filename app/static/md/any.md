@@ -18,7 +18,7 @@ if any? turtles with [size < 1] [stop]
 
 
 
-You should keep three things in mind when using `any?`: 
+Things to keep in mind in mind when using `any?`: 
 
 * Don't forget the question mark (`?`) at the end. 
 * You can use the `not` primitive, like in the example above, to reverse the outcome of `any?`. This would come handy if you 
