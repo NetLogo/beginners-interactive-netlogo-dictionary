@@ -46,7 +46,13 @@ def dictionary():
     dfile = os.path.join(BASE_DIR, 'static/primitives.json')
     with open(dfile, 'r') as df:
         d = json.load(df)
-        return render_template('dictionary.html', letters = ascii_uppercase, dictionary = d, title="Explore the NetLogo Dictionary")
+        
+        # need to pass keys in order to sort correctly
+        ks = sorted(list(d["primitives"].keys()))
+        
+        return render_template('dictionary.html', letters = ascii_uppercase, 
+                               dictionary = d, keys = ks,
+                               title="Explore the NetLogo Dictionary")
     
 @app.route('/primitive/<primitive_name>', methods = ['GET'])
 @app.route('/primitive/<primitive_name>.html', methods = ['GET'])

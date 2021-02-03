@@ -74,7 +74,7 @@
                 {%set outer_loop = loop%}
                 {%set ltr = letters[outer_loop.index - 1].lower()%}
                 
-                {%for p in dictionary.primitives.keys() if p.startswith(ltr)%}
+                {%for p in keys if p.startswith(ltr)%}
 
                         <div class="card dictionary-entry 
                                     {%if 'observer'  in dictionary.primitives[p].agents%} observer  {%endif%}
