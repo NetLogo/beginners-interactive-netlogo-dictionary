@@ -7,7 +7,7 @@
             "search_terms": [
                 "if",
                 "or",
-                "if-else",
+                "ifelse",
                 "ifelse-value"
             ],
             "agents": [
@@ -16,7 +16,7 @@
             "see_also": [
                 "if",
                 "or",
-                "if-else",
+                "ifelse",
                 "ifelse-value"
             ],
             "library_models": [
@@ -131,7 +131,7 @@
                 "turtles-own",
                 "patches-own",
                 "set",
-                "if-else"
+                "ifelse"
             ],
             "agents": [
                 "observer"
@@ -140,7 +140,7 @@
                 "turtles-own",
                 "patches-own",
                 "set",
-                "if-else"
+                "ifelse"
             ],
             "library_models": [
                 "Simple Birth Rates",
@@ -177,7 +177,7 @@
             "short_description": "execute different code for a number of different conditions",
             "search_terms": [
                 "if",
-                "if-else",
+                "ifelse",
                 "of",
                 "count"
             ],
@@ -186,7 +186,7 @@
             ],
             "see_also": [
                 "if",
-                "if-else",
+                "ifelse",
                 "of",
                 "count"
             ],
@@ -364,7 +364,7 @@
             "short_description": "checks if either of two conditions is true",
             "search_terms": [
                 "if",
-                "if-else",
+                "ifelse",
                 "and",
                 "xor"
             ],
@@ -373,7 +373,7 @@
             ],
             "see_also": [
                 "if",
-                "if-else",
+                "ifelse",
                 "and",
                 "xor"
             ],
@@ -602,7 +602,7 @@
                 "mean",
                 "mod",
                 "if",
-                "if-else"
+                "ifelse"
             ],
             "agents": [
                 "utilities"
@@ -611,7 +611,7 @@
                 "mean",
                 "mod",
                 "if",
-                "if-else"
+                "ifelse"
             ],
             "library_models": [
                 "Wolf Sheep Predation"
@@ -966,7 +966,7 @@
                 "any?",
                 "all?",
                 "count",
-                "if-else"
+                "ifelse"
             ],
             "agents": [
                 "utilities"
@@ -975,7 +975,7 @@
                 "any?",
                 "all?",
                 "count",
-                "if-else"
+                "ifelse"
             ],
             "library_models": [
                 "Flocking",
@@ -1431,7 +1431,7 @@
                 "to",
                 "end",
                 "ask",
-                "if-else"
+                "ifelse"
             ],
             "agents": [
                 "utilities"
@@ -1440,7 +1440,7 @@
                 "to",
                 "end",
                 "ask",
-                "if-else"
+                "ifelse"
             ],
             "library_models": [
                 "Boiling",
@@ -1530,7 +1530,7 @@
             "short_description": "Begins a loop that runs as long as the reporter returns true. ",
             "search_terms": [
                 "if",
-                "if-else",
+                "ifelse",
                 "repeat",
                 "tick"
             ],
@@ -1539,7 +1539,7 @@
             ],
             "see_also": [
                 "if",
-                "if-else",
+                "ifelse",
                 "repeat",
                 "tick"
             ],
