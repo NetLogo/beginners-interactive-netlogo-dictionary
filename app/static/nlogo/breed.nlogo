@@ -95,7 +95,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 `breed` is a special primitive that can only be placed in the top of a netlogo code tab. Using `breed`, you can define custom kinds or *breeds* of turtles. It is most useful when you have different groups of turtles that each need to have their own behavior and you want to have an easy way to reference each group within your code.  
@@ -455,7 +455,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

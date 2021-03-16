@@ -1,4 +1,4 @@
-`color` is a built-in turtle characteristic that represents the color of the turtle. `color` is a reporter, and can be used to access the color of the turtle. You can also use the `set` command to change the color of the turtle or you can change the color in the command center on the Interface tab.  Be sure to change the drop-down to “turtles” before typing in the command! For example
+`color` is a built-in turtle characteristic that represents the color of the turtles in a NetLogo model. Every time we create turtles, each one is assigned a random color. We can use the `set` command and the `color` primitive to change a turtle's color as follows: `set color red`. It is also a reporter; we use it to access the color of a turtle. 
 
 
 

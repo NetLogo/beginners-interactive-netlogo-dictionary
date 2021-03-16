@@ -1,42 +1,45 @@
 to setup
-  clear-all
   ask patches [
-    set pcolor green
+    set pcolor one-of [green lime]
   ]
 
-  create-turtles 5 [
+  create-turtles 20 [
     set shape "cow"
-    set size 5
     set color brown
+    set size 2
     setxy random-xcor random-ycor
   ]
 end
 
-to remove-grass
+to clear-cows
+  clear-turtles
+end
+
+to clear-grass
   clear-patches
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-129
+128
 10
-434
-316
+476
+359
 -1
 -1
-9.0
+20.0
 1
 10
 1
 1
 1
 0
-0
-0
 1
--16
-16
--16
-16
+1
+1
+-8
+8
+-8
+8
 0
 0
 1
@@ -44,10 +47,10 @@ ticks
 30.0
 
 BUTTON
-4
+5
 10
-117
-71
+118
+54
 NIL
 setup
 NIL
@@ -61,12 +64,29 @@ NIL
 1
 
 BUTTON
-5
-81
-124
-148
+7
+136
+120
+203
 NIL
-remove-grass
+clear-cows
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+6
+63
+118
+126
+NIL
+clear-grass
 NIL
 1
 T
@@ -78,15 +98,41 @@ NIL
 1
 
 @#$#@#$#@
-`Clear-patches` is a primitive that clears all the patches. It resets all patch variables to their default initial values and sets their color to black. The shorthand version of this primitive is `cp`. 
+## WHAT IS IT?
 
+(a general understanding of what the model is trying to show or explain)
 
+## HOW IT WORKS
 
-`clear-patches` is only used when we do not want to use *clear-all*. For example, if you wanted to clear the patches but keep some global variables’ values and the keep the existing turtles the same, you would use *clear-patches*. This may come 
+(what rules the agents use to create the overall behavior of the model)
 
+## HOW TO USE IT
 
+(how to use the model, including a description of each of the items in the Interface tab)
 
-In the model example below, we have two buttons. The first one makes patches' color green and creates some cows on random positions. The second button simply runs the `clear-patches` primitive to clear the patches but leave the cows the same. 
+## THINGS TO NOTICE
+
+(suggested things for the user to notice while running the model)
+
+## THINGS TO TRY
+
+(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
+
+## EXTENDING THE MODEL
+
+(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
+
+## NETLOGO FEATURES
+
+(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
+
+## RELATED MODELS
+
+(models in the NetLogo Models Library and elsewhere which are of related interest)
+
+## CREDITS AND REFERENCES
+
+(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
 @#$#@#$#@
 default
 true
@@ -393,7 +439,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

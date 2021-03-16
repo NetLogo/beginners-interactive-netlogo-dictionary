@@ -4,4 +4,4 @@ This primitive is used when you want to simulate processes where diffusion happe
 
 See the related command `diffuse4` which does the same exact thing with the 4 cardinal direction neighbors.
 
-In the example below, `diffuse` is used to model air pollution from factories. Each tick, each factory has a 20% chance of releasing some pollutant into the air. `diffuse` is then used to model how that pollutant would spread through the air, creating zones and hotspots of pollution.
+In the example below, `diffuse` is used to model air pollution from a factory. Each tick, the factory releases some pollutant into the air. `diffuse` is then used to model how that pollutant would spread through the air, creating zones and hotspots of pollution.

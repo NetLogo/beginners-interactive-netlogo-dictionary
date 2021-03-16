@@ -1,63 +1,50 @@
-breed [balls ball]
-breed [players player]
-
 to setup
   clear-all
-  setup-court
-  create-balls 1 [set shape "ball basketball" set color orange set size 2]
-  create-players random 20 [
-    set shape "person"
-    set color blue
-    set size 3
-    setxy random-xcor random-ycor]
+  ask patches with [distancexy 0 0 < 4][
+    set pcolor brown
+  ]
+  create-turtles 30 [
+    set shape "dog"
+    setxy random-xcor random-ycor
+  ]
+
   reset-ticks
 end
 
-to can-we-play?
-  ifelse count players < 10
-      [ ask players [
-        set shape "face sad"
-        set label "not enough players!"
-        set label-color red
-     ]
+to go
+  ask turtles [
+   wiggle
+   forward 0.5
   ]
-      [ ask players [
-        set shape "face happy"
-        set label "enough players!"
-        set label-color red
+
+  let dogs-in-playground count turtles with [ pcolor = brown]
+
+  ask patch 3 0 [
+    set plabel ""
+    if dogs-in-playground > 5 [
+      set plabel "The Playground is too crowded!!!"
     ]
   ]
+
   tick
 end
 
-
-to setup-court
-  ask patches [set pcolor brown]
-  ask patch 0 0 [
-    ask patches in-radius 4 [
-      set pcolor white
-    ]
-    ask patches in-radius 3 [
-      set pcolor brown
-    ]
-  ]
-  ask patches with [abs pxcor = max-pxcor  or
-                    abs pycor = max-pycor  or
-                    pycor = 0 ] [
-    set pcolor white
-  ]
+to wiggle
+  left random 90
+  right random 90
 end
+
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+112
 10
-613
-414
+459
+358
 -1
 -1
-18.81
+20.0
 1
-10
+12
 1
 1
 1
@@ -65,10 +52,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--10
-10
--10
-10
+-8
+8
+-8
+8
 1
 1
 1
@@ -76,10 +63,10 @@ ticks
 30.0
 
 BUTTON
-68
-58
-134
-91
+4
+10
+101
+57
 NIL
 setup
 NIL
@@ -93,13 +80,13 @@ NIL
 1
 
 BUTTON
-33
-116
-165
-149
+5
+64
+101
+120
 NIL
-can-we-play?
-NIL
+go
+T
 1
 T
 OBSERVER
@@ -110,15 +97,67 @@ NIL
 1
 
 MONITOR
-48
-173
-160
-218
-players
-count players
+110
+421
+459
+466
+NIL
+count turtles with [pcolor = brown]
 17
 1
 11
+
+TEXTBOX
+7
+420
+106
+462
+Number of dogs in the playground
+11
+0.0
+1
+
+TEXTBOX
+9
+373
+159
+391
+Number of dogs
+11
+0.0
+1
+
+MONITOR
+111
+369
+459
+414
+NIL
+count turtles
+17
+1
+11
+
+MONITOR
+112
+477
+457
+522
+NIL
+count turtles with [pcolor = black]
+17
+1
+11
+
+TEXTBOX
+8
+477
+105
+521
+Number of dogs outside the playground
+11
+0.0
+1
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -243,6 +282,22 @@ cylinder
 false
 0
 Circle -7500403 true true 0 0 300
+
+dog
+false
+0
+Polygon -7500403 true true 300 165 300 195 270 210 183 204 180 240 165 270 165 300 120 300 0 240 45 165 75 90 75 45 105 15 135 45 165 45 180 15 225 15 255 30 225 30 210 60 225 90 225 105
+Polygon -16777216 true false 0 240 120 300 165 300 165 285 120 285 10 221
+Line -16777216 false 210 60 180 45
+Line -16777216 false 90 45 90 90
+Line -16777216 false 90 90 105 105
+Line -16777216 false 105 105 135 60
+Line -16777216 false 90 45 135 60
+Line -16777216 false 135 60 135 45
+Line -16777216 false 181 203 151 203
+Line -16777216 false 150 201 105 171
+Circle -16777216 true false 171 88 34
+Circle -16777216 false false 261 162 30
 
 dot
 false
@@ -470,7 +525,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

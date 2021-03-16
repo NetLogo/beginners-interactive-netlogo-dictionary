@@ -1,54 +1,43 @@
-breed [ eagles eagle ]
-breed [ rats rat ]
-
-
 to setup
   clear-all
-  create-eagles 3 [
-    set shape "bird"
-    set color brown
-    move-to one-of patches
-    set size 2
+  create-turtles 1 [
+    set shape "sheep"
+    set color white
   ]
-
-  create-rats 8 [
-    set shape "mouse side"
-    set color one-of [ white gray ]
-    move-to one-of patches
+  create-turtles 100 [
+    set shape "plant"
+    set color one-of [ yellow green ]
+    setxy random-xcor random-ycor
   ]
-
   reset-ticks
 end
 
-
-to eagles-hunt-white-rats
-  ask eagles [
-    left random 60 right random 60
-    forward 1
-    if any? rats-here with [ color = white ] [
-      ask rats-here with [ color = white ] [ die ]
+to go
+  ask turtles with [color = white ] [
+    wiggle
+    forward 0.5
+    if any? turtles-here with [ color = green ] [
+      ask turtles-here with [ color = green ] [
+        die
+      ]
     ]
   ]
-
-  ask rats [
-    left random 60 right random 60
-    forward 1
-  ]
-  if not any? rats with [ color = white ] [
-    stop
-  ]
-
   tick
+end
+
+to wiggle
+  left random 90
+  right random 90
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-258
+118
 10
-664
-417
+466
+359
 -1
 -1
-23.412
+20.0
 1
 10
 1
@@ -62,17 +51,17 @@ GRAPHICS-WINDOW
 8
 -8
 8
-0
-0
+1
+1
 1
 ticks
 30.0
 
 BUTTON
-102
-58
-168
-91
+3
+10
+110
+66
 NIL
 setup
 NIL
@@ -86,12 +75,12 @@ NIL
 1
 
 BUTTON
-44
-115
-221
-148
+4
+77
+111
+139
 NIL
-eagles-hunt-white-rats
+go
 T
 1
 T
@@ -465,7 +454,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

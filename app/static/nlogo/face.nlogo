@@ -1,66 +1,57 @@
-breed [cats cat]
-breed [mice mouse]
+breed [butterflies butterfly]
+breed [people person]
 
 
 to setup
   clear-all
-
-  ask patch 2 3 [
-    set pcolor brown
-  ]
-
-  create-cats 1 [
-    set color orange
-    set shape "cat"
-    set size 2
+  create-people 1 [
+    set shape "person"
     move-to one-of patches
   ]
-
-  create-mice 1 [
-    set color white
-    set shape "mouse side"
+  create-butterflies 1 [
+    set shape "butterfly"
     move-to one-of patches
   ]
   reset-ticks
 end
 
-to chase
-  if not any? mice [ stop ]
-  ask cats [
-    face one-of mice
-    forward 1
+to go
+  ask people [
+    if any? butterflies-here [ stop ]
+    face one-of butterflies
+    forward 0.5
   ]
 
-  ask mice [
-    if any? cats-here [ die ]
-    if patch-here = patch 2 3 [ die ]
-    face patch 2 3
-    forward 1
+  ask butterflies [
+    if any? people-here [ stop ]
+    face one-of people
+    rt 180 + random 90 - random 90
+    forward 0.5
   ]
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+105
 10
-622
-423
+452
+358
 -1
 -1
-36.73
+20.0
 1
 10
 1
 1
 1
 0
-0
-0
 1
--5
-5
--5
-5
+1
+1
+-8
+8
+-8
+8
 1
 1
 1
@@ -68,10 +59,10 @@ ticks
 30.0
 
 BUTTON
-73
-46
-139
-79
+5
+10
+100
+50
 NIL
 setup
 NIL
@@ -85,12 +76,12 @@ NIL
 1
 
 BUTTON
-72
-102
-139
-135
+5
+65
+100
+121
 NIL
-chase
+go
 T
 1
 T
@@ -99,7 +90,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -483,7 +474,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -500,5 +491,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

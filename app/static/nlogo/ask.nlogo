@@ -67,7 +67,7 @@ ticks
 BUTTON
 3
 11
-104
+114
 63
 NIL
 setup
@@ -84,7 +84,7 @@ NIL
 BUTTON
 4
 70
-103
+115
 135
 NIL
 go
@@ -96,7 +96,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 `ask` is one of the foundational primitives in NetLogo. It allows us to *ask* one or more agents (i.e., turtles, links, patches) to follow a provided set of rules. When `ask` is used with more than one agents, each agent will take its turn in a random order. 
@@ -444,7 +444,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

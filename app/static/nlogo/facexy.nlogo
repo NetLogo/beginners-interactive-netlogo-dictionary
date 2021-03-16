@@ -1,33 +1,28 @@
 to setup
   clear-all
-
-  ask patch 5 10 [
+  ask patch 5 -5 [
     set pcolor green
   ]
-
-  create-turtles 30 [
+  create-turtles 50 [
     set shape "fish"
-    set size 3
     move-to one-of patches
   ]
-
 end
-
 
 to look-at-food
  ask turtles [
-      facexy 5 10
-  ]
+      facexy 5 -5
+ ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+125
 10
-647
-448
+473
+359
 -1
 -1
-13.0
+20.0
 1
 10
 1
@@ -37,10 +32,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--16
-16
--16
-16
+-8
+8
+-8
+8
 1
 1
 1
@@ -48,10 +43,10 @@ ticks
 30.0
 
 BUTTON
-14
-65
-80
-98
+5
+10
+120
+50
 NIL
 setup
 NIL
@@ -65,10 +60,10 @@ NIL
 1
 
 BUTTON
-90
-64
-203
-98
+5
+60
+120
+125
 NIL
 look-at-food
 NIL
@@ -439,7 +434,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -456,5 +451,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

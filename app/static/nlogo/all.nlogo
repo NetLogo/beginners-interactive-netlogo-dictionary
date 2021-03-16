@@ -35,9 +35,9 @@ to move-and-eat
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-140
+125
 10
-456
+441
 327
 -1
 -1
@@ -64,7 +64,7 @@ ticks
 BUTTON
 5
 10
-105
+120
 60
 NIL
 setup
@@ -80,9 +80,9 @@ NIL
 
 BUTTON
 5
-80
+70
+120
 130
-140
 NIL
 move-and-eat
 T
@@ -97,9 +97,9 @@ NIL
 
 MONITOR
 5
-170
-130
-215
+140
+120
+185
 haven't eaten yet
 count turtles with [ food-eaten = 0 ]
 17
@@ -133,8 +133,6 @@ if all? turtles [ food-eaten > 0 ][
    stop 
 ]
 ```
-
-
 
 
 
@@ -444,7 +442,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

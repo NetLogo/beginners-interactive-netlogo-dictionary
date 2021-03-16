@@ -4,7 +4,6 @@ lumberjacks-own [target]
 
 to setup
   clear-all
-  reset-ticks
 
   ask patches [
     set pcolor brown - 3
@@ -17,28 +16,26 @@ to setup
   ]
 
   create-lumberjacks 1 [
-    set shape "person lumberjack"
+    set shape "lumberjack"
     move-to one-of patches
     set size 1.5
     set target nobody
   ]
+
+  reset-ticks
 end
 
 to go
-  if not any? trees [stop]
-
   ask lumberjacks [
-   if any? trees-here [
-     ask trees-here [
-        die
-     ]
+   ask trees-here [
+      die
    ]
   ]
 
   ask lumberjacks [
    if target = nobody [
       set target min-one-of trees [ distance myself ]
-    ]
+   ]
    face target
    fd 1
   ]
@@ -47,13 +44,13 @@ to go
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+102
 10
-554
-355
+450
+359
 -1
 -1
-16.0
+20.0
 1
 10
 1
@@ -63,10 +60,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--10
-10
--10
-10
+-8
+8
+-8
+8
 1
 1
 1
@@ -74,10 +71,10 @@ ticks
 30.0
 
 BUTTON
-40
+4
+10
+94
 55
-106
-88
 NIL
 setup
 NIL
@@ -91,10 +88,10 @@ NIL
 1
 
 BUTTON
-43
-109
-106
-142
+5
+70
+93
+130
 NIL
 go
 T
@@ -105,7 +102,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 `distance` is a turtle and patch primitive that reports the distance between the current agent and some other agent. For example, if you wanted to print out the distance from turtle 0 to turtle 1, you could write `ask turtle 0 [show distance turtle 1]`, or, from the other direction, `ask turtle 1 [show distance turtle 0]` 
@@ -280,21 +277,33 @@ true
 0
 Line -7500403 true 150 0 150 150
 
-pentagon
+lumberjack
 false
 0
-Polygon -7500403 true true 150 15 15 120 60 285 240 285 285 120
+Polygon -11221820 true false 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Polygon -1 true false 60 196 90 211 114 155 120 196 180 196 187 158 210 211 240 196 195 91 165 91 150 106 150 135 135 91 105 91
+Circle -11221820 true false 110 5 80
+Rectangle -11221820 true false 127 79 172 94
+Polygon -6459832 true false 174 90 181 90 180 195 165 195
+Polygon -13345367 true false 180 195 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285
+Polygon -6459832 true false 126 90 119 90 120 195 135 195
+Rectangle -6459832 true false 45 180 255 195
+Polygon -6459832 true false 255 165 255 195 240 225 255 240 285 240 300 225 285 195 285 165
+Line -16777216 false 135 165 165 165
+Line -16777216 false 135 135 165 135
+Line -16777216 false 90 135 120 135
+Line -16777216 false 105 120 120 120
+Line -16777216 false 180 120 195 120
+Line -16777216 false 180 135 210 135
+Line -16777216 false 90 150 105 165
+Line -16777216 false 225 165 210 180
+Line -16777216 false 75 165 90 180
+Line -16777216 false 210 150 195 165
+Line -16777216 false 180 105 210 180
+Line -16777216 false 120 105 90 180
+Line -16777216 false 150 135 150 165
 
-person
-false
-0
-Circle -7500403 true true 110 5 80
-Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
-Rectangle -7500403 true true 127 79 172 94
-Polygon -7500403 true true 195 90 240 150 225 180 165 105
-Polygon -7500403 true true 105 90 60 150 75 180 135 105
-
-person lumberjack
+lumberjack copy
 false
 0
 Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
@@ -305,7 +314,7 @@ Polygon -6459832 true false 174 90 181 90 180 195 165 195
 Polygon -13345367 true false 180 195 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285
 Polygon -6459832 true false 126 90 119 90 120 195 135 195
 Rectangle -6459832 true false 45 180 255 195
-Polygon -16777216 true false 255 165 255 195 240 225 255 240 285 240 300 225 285 195 285 165
+Polygon -6459832 true false 255 165 255 195 240 225 255 240 285 240 300 225 285 195 285 165
 Line -16777216 false 135 165 165 165
 Line -16777216 false 135 135 165 135
 Line -16777216 false 90 135 120 135
@@ -320,6 +329,20 @@ Line -16777216 false 180 105 210 180
 Line -16777216 false 120 105 90 180
 Line -16777216 false 150 135 150 165
 Polygon -2674135 true false 100 30 104 44 189 24 185 10 173 10 166 1 138 -1 111 3 109 28
+
+pentagon
+false
+0
+Polygon -7500403 true true 150 15 15 120 60 285 240 285 285 120
+
+person
+false
+0
+Circle -7500403 true true 110 5 80
+Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Rectangle -7500403 true true 127 79 172 94
+Polygon -7500403 true true 195 90 240 150 225 180 165 105
+Polygon -7500403 true true 105 90 60 150 75 180 135 105
 
 plant
 false
@@ -446,7 +469,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -463,5 +486,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

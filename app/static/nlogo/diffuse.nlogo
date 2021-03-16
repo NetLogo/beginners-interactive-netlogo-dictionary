@@ -2,39 +2,37 @@ patches-own [pollution]
 
 to setup
   clear-all
-  reset-ticks
-  create-turtles 2 [
+  create-turtles 1 [
     move-to one-of patches
     set shape "factory"
     set color red
-    set size 1
+    set size 2
   ]
+  reset-ticks
 end
 
 to go
-  diffuse pollution (8.0 / 9.0)
-
   ask turtles [
-    if random 100 < 20 [
-     set pollution pollution + 3
-    ]
+     set pollution pollution + 1
   ]
 
   ask patches [
     set pcolor scale-color brown pollution 0 3
   ]
 
+  diffuse pollution 1
+
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+129
 10
-620
-421
+476
+358
 -1
 -1
-30.9231
+20.0
 1
 10
 1
@@ -44,10 +42,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--6
-6
--6
-6
+-8
+8
+-8
+8
 1
 1
 1
@@ -55,10 +53,10 @@ ticks
 30.0
 
 BUTTON
-69
-72
-135
-105
+5
+10
+119
+50
 NIL
 setup
 NIL
@@ -72,10 +70,10 @@ NIL
 1
 
 BUTTON
-63
-125
-144
-158
+7
+58
+117
+104
 go once
 go
 NIL
@@ -89,10 +87,10 @@ NIL
 1
 
 BUTTON
-69
-179
-132
-212
+9
+117
+119
+180
 NIL
 go
 T
@@ -112,7 +110,7 @@ This primitive is used when you want to simulate processes where diffusion happe
 
 See the related command `diffuse4` which does the same exact thing with the 4 cardinal direction neighbors.
 
-In the example below, `diffuse` is used to model air pollution from factories. Each tick, each factory has a 20% chance of releasing some pollutant into the air. `diffuse` is then used to model how that pollutant would spread through the air, creating zones and hotspots of pollution. 
+In the example below, `diffuse` is used to model air pollution from the factory. Each tick, the factory releases some pollutant into the air. `diffuse` is then used to model how that pollutant would spread through the air, creating zones and hotspots of pollution. 
 @#$#@#$#@
 default
 true
@@ -439,7 +437,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

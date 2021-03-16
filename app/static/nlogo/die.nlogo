@@ -1,44 +1,48 @@
-breed [sheep a-sheep]
-sheep-own [ energy ]
+breed [cows cow]
+cows-own [ energy ]
 
 to setup
   clear-all
   ask patches [
     set pcolor green
   ]
-
-  create-sheep 10 [
+  create-cows 10 [
     move-to one-of patches
     set color white
-    set shape "sheep"
-    set energy random 15 ]
+    set shape "cow"
+    set energy 10
+  ]
   reset-ticks
 end
 
 to go
-  if not any? sheep [ stop ]
-  ask sheep [
-    right random 90 left random 90 forward 1
+  ask cows [
+    wiggle
+    forward 1
     set energy energy - 1
-    if energy <= 0 [ die ]
+    if energy < 1 [ die ]
+
     if pcolor = green [
-      set energy energy + 5
-      ask patch-here [
-        set pcolor brown
-      ]
+      set energy energy + 2
+      set pcolor brown
     ]
   ]
   tick
 end
+
+to wiggle
+  right random 90
+  left random 90
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+107
 10
-612
-413
+454
+358
 -1
 -1
-35.82
+20.0
 1
 10
 1
@@ -48,10 +52,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--5
-5
--5
-5
+-8
+8
+-8
+8
 1
 1
 1
@@ -59,10 +63,10 @@ ticks
 30.0
 
 BUTTON
-73
-52
-139
-85
+5
+10
+99
+50
 NIL
 setup
 NIL
@@ -76,10 +80,10 @@ NIL
 1
 
 BUTTON
-74
-109
-137
-142
+5
+61
+99
+117
 NIL
 go
 T
@@ -93,12 +97,12 @@ NIL
 1
 
 MONITOR
-63
-168
-152
-213
+8
+136
+97
+181
 NIL
-count sheep
+count cows
 17
 1
 11
@@ -445,7 +449,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

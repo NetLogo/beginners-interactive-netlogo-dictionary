@@ -35,13 +35,13 @@ to go
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-243
+132
 10
-526
-294
+480
+359
 -1
 -1
-11.0
+20.0
 1
 10
 1
@@ -51,10 +51,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--12
-12
--12
-12
+-8
+8
+-8
+8
 1
 1
 1
@@ -64,8 +64,8 @@ ticks
 BUTTON
 7
 10
-141
-61
+119
+62
 NIL
 setup
 NIL
@@ -79,10 +79,10 @@ NIL
 1
 
 BUTTON
-8
-66
-140
-121
+7
+79
+120
+142
 NIL
 go
 T
@@ -93,13 +93,13 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 PLOT
-9
-132
-231
-282
+133
+367
+479
+503
 population sickness
 NIL
 NIL
@@ -144,7 +144,6 @@ Things to keep in mind in mind when using `any?`:
 <br />
 
 The model example below represents the spread of a contagious disease within a healthy population. We use `any?` primitive to run the model as long as there is at least one healthy (green) individual in the model. Once all of the individuals turned red, the model automatically stops.
-
 @#$#@#$#@
 default
 true
@@ -451,7 +450,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -468,5 +467,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

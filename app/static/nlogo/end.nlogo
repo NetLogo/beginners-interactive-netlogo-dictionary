@@ -1,28 +1,25 @@
-to setup
+to draw
   clear-all
-  create-turtles 10 [
-    set shape "turtle"
-    move-to one-of patches ]
-  ask patches [ set pcolor blue ]
-  reset-ticks
-end
-
-to go
-  ask turtles [
-    right random 90
-    left random 90
-    forward 1 ]
-  tick
+  ask patches [ set pcolor white ]
+  create-turtles 50 [ pen-down ]
+  repeat 180 [
+    ask turtles [
+      pen-down
+      fd 0.1
+      rt 2
+    ]
+    display
+  ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+105
 10
-582
-383
+453
+359
 -1
 -1
-33.1
+20.0
 1
 10
 1
@@ -32,10 +29,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--5
-5
--5
-5
+-8
+8
+-8
+8
 1
 1
 1
@@ -43,30 +40,13 @@ ticks
 30.0
 
 BUTTON
-74
-52
-140
-85
+6
+10
+101
+70
 NIL
-setup
+draw
 NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-BUTTON
-76
-109
-139
-142
-NIL
-go
-T
 1
 T
 OBSERVER
@@ -418,7 +398,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -435,5 +415,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

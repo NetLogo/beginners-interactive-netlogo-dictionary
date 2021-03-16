@@ -1,25 +1,32 @@
 to setup
-  clear-all
   ask patches [
-    set pcolor green
+    set pcolor one-of [green lime]
   ]
 
   create-turtles 20 [
     set shape "cow"
-    set size 5
     set color brown
+    set size 2
     setxy random-xcor random-ycor
   ]
 end
+
+to clear-cows
+  clear-turtles
+end
+
+to clear-grass
+  clear-patches
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+128
 10
-647
-448
+476
+359
 -1
 -1
-13.0
+20.0
 1
 10
 1
@@ -29,10 +36,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
+-8
+8
+-8
+8
 0
 0
 1
@@ -40,10 +47,10 @@ ticks
 30.0
 
 BUTTON
-47
-34
-160
-95
+5
+10
+118
+54
 NIL
 setup
 NIL
@@ -57,12 +64,29 @@ NIL
 1
 
 BUTTON
-38
-118
-169
-185
+7
+136
+120
+203
 NIL
-clear-turtles
+clear-cows
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+6
+63
+118
+126
+NIL
+clear-grass
 NIL
 1
 T
@@ -415,7 +439,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
