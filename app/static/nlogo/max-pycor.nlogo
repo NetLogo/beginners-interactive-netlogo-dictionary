@@ -1,71 +1,58 @@
-to setup-field
-  ask patches [
+to setup
+  clear-all
+  ask patches with [pxcor = max-pxcor][
     set pcolor green
   ]
-
-  ask patches with [ pxcor = max-pxcor or
-                     pxcor = min-pxcor or
-                     pycor = max-pycor or
-                     pycor = min-pycor ] [
-    set pcolor white
+  ask patches with [pycor = max-pycor][
+    set pcolor green
   ]
-
-   ask patch 0 0 [
-    ask patches in-radius 4 [
-      set pcolor white
-    ]
-    ask patches in-radius 3 [
-      set pcolor green
-    ]
+  ask patches with [pxcor = min-pxcor][
+    set pcolor red
   ]
-
-  ask patches with [pycor = 0] [
-    set pcolor white ]
-
-  create-players
-
+  ask patches with [pycor = min-pycor][
+    set pcolor red
+  ]
+  create-turtles 5 [
+    set shape "circle"
+  ]
+  reset-ticks
 end
 
-to create-players
-  create-turtles 22 [
-    set color white
-    set shape "person"
-    set size 2
-    move-to one-of patches
-  ]
+to go
+  ask turtles [
+    if pcolor = black [
+      forward 0.3
+    ]
+    if pcolor = green [
+      right 180
+     forward 0.3
+    ]
 
-  ask n-of 11 turtles [
-    set color red
-    set ycor random 16
   ]
-
-  ask turtles with [ color = white ][
-    set color blue
-    set ycor random -16
-  ]
+  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+110
 10
-647
-448
+508
+409
 -1
 -1
-13.0
+30.0
 1
 10
 1
 1
 1
 0
+0
+0
 1
-1
-1
--16
-16
--16
-16
+-6
+6
+-6
+6
 1
 1
 1
@@ -73,12 +60,12 @@ ticks
 30.0
 
 BUTTON
-61
-70
-167
-103
+5
+10
+100
+50
 NIL
-setup-field
+setup
 NIL
 1
 T
@@ -90,13 +77,13 @@ NIL
 1
 
 BUTTON
-72
-139
-154
-172
+5
+55
+100
+115
 NIL
-clear-all
-NIL
+go
+T
 1
 T
 OBSERVER
@@ -448,7 +435,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -465,5 +452,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

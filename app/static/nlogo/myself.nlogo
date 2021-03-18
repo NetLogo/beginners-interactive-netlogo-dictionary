@@ -1,56 +1,42 @@
-breed [ people person ]
-people-own [ home? ]
-
 to setup
   clear-all
-  create-turtles 6 [
-    set shape "house"
-    move-to one-of patches
-    set color red
+  create-turtles 100 [
+    set shape "circle"
+    set size 0.1 + random-float 0.2
+    setxy random-xcor random-ycor
   ]
 
-  ask n-of 3 turtles [
-    set color blue
-  ]
-
-  create-people 10 [ set shape "person"
-    move-to one-of patches
-    set color red
-    set home? false
-  ]
-
-  ask n-of 5 people [
-    set color blue
-  ]
   reset-ticks
 end
 
-to wander-or-stay-home
-  ask people [
-    if home? = false [
-      right random 90
-      left random 90
-      forward 1
-    ]
-  ]
-  ask turtles with [ shape = "house"] [
-    ask people-here [
-      if color = [color] of myself [
-      set home? true
+
+to go
+
+  ask turtles [
+    forward 0.05
+    let r (size / 2)
+    if any? other turtles in-radius r [
+      ask one-of other turtles in-radius r [
+        if [size] of self < [size] of myself [
+          set color [color] of myself
+        ]
+        set size [size] of self + [size] of myself
       ]
+      die
     ]
   ]
+
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-273
-23
-684
-435
+120
+10
+458
+349
 -1
 -1
-36.64
+30.0
 1
 10
 1
@@ -71,10 +57,10 @@ ticks
 30.0
 
 BUTTON
-105
-62
-171
-95
+5
+10
+115
+55
 NIL
 setup
 NIL
@@ -88,12 +74,12 @@ NIL
 1
 
 BUTTON
-53
-122
-224
-155
+5
+65
+115
+141
 NIL
-wander-or-stay-home
+go
 T
 1
 T
@@ -102,7 +88,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -446,7 +432,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -463,5 +449,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

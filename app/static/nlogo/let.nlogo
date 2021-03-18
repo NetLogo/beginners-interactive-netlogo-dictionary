@@ -1,36 +1,43 @@
-turtles-own [ knowledge ]
+turtles-own [ friends ]
 
 to setup
   clear-all
-  ask patches [ set pcolor green ]
+  ask patches [ set pcolor white ]
   create-turtles 8 [
-    set shape "person"
-    set color red
-    set knowledge random 10 ]
-  layout-circle turtles 4
+    set shape one-of ["face happy" "face sad"]
+    set friends 0
+    setxy random-xcor random-ycor
+  ]
   reset-ticks
 end
 
-to speaker-give-knowledge
-  ask turtles [ set color red ]
-  let speaker one-of turtles
-  ask speaker [
-    set color blue ]
+to go
   ask turtles [
-      let new-knowledge knowledge + [knowledge] of speaker
-      set knowledge new-knowledge
-    set label knowledge ]
+    wiggle
+    forward 0.5
+    let people-near-me other turtles-here
+    if any? people-near-me [
+      ask one-of people-near-me [
+        set shape [shape] of myself
+      ]
+    ]
+  ]
   tick
+end
+
+to wiggle
+  right random 30
+  left random 30
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-275
-20
-642
-388
+115
+10
+462
+358
 -1
 -1
-32.64
+20.0
 1
 10
 1
@@ -40,10 +47,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--5
-5
--5
-5
+-8
+8
+-8
+8
 1
 1
 1
@@ -51,10 +58,10 @@ ticks
 30.0
 
 BUTTON
-95
-57
-161
-90
+5
+10
+110
+50
 NIL
 setup
 NIL
@@ -68,13 +75,13 @@ NIL
 1
 
 BUTTON
-42
-114
-227
-147
+5
+60
+110
+126
 NIL
-speaker-give-knowledge
-NIL
+go
+T
 1
 T
 OBSERVER
@@ -82,7 +89,29 @@ NIL
 NIL
 NIL
 NIL
+0
+
+MONITOR
+15
+155
+72
+200
+happy
+count turtles with [shape = \"face happy\"]
+17
 1
+11
+
+MONITOR
+15
+205
+72
+250
+sad
+count turtles with [shape = \"face sad\"]
+17
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -426,7 +455,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -443,5 +472,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

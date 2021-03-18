@@ -1,36 +1,48 @@
-turtles-own [ age ]
-
+turtles-own[money]
 to setup
   clear-all
   create-turtles 10 [
     set shape "person"
-    set color red
-    set age random 100
-    move-to one-of patches
+    set color gray
+    set money 100
   ]
+  layout-circle turtles 4
   reset-ticks
 end
 
-to who-is-the-oldest
+to go
   ask turtles [
-    set age age + 1
-    if age = 100 [ die ]
-    if age = max [age] of turtles [
+    set color gray
+    if money > 0 [
+      set money money - 5
+      ask one-of other turtles [
+        set money money + 5
+      ]
+    ]
+    set label money
+  ]
+
+  ask turtles [
+    if money = max [money] of turtles [
       set color blue
     ]
-    set label age
+
+    if money = min [money] of turtles [
+      set color red
+    ]
   ]
+
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+105
 10
-615
-416
+443
+349
 -1
 -1
-36.1
+30.0
 1
 10
 1
@@ -51,10 +63,10 @@ ticks
 30.0
 
 BUTTON
-68
-66
-134
-99
+5
+10
+100
+60
 NIL
 setup
 NIL
@@ -68,12 +80,12 @@ NIL
 1
 
 BUTTON
-29
-132
-175
-165
+5
+70
+100
+130
 NIL
-who-is-the-oldest
+go
 T
 1
 T
@@ -83,6 +95,25 @@ NIL
 NIL
 NIL
 1
+
+PLOT
+105
+360
+445
+510
+total income of the richest vs poorest
+NIL
+NIL
+0.0
+10.0
+0.0
+10.0
+true
+true
+"" ""
+PENS
+"richest person" 1.0 0 -13345367 true "" "plot max [money] of turtles"
+"poorest person" 1.0 0 -2674135 true "" "plot min [money] of turtles"
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -176,6 +207,14 @@ Circle -16777216 true false 30 180 90
 Polygon -16777216 true false 162 80 132 78 134 135 209 135 194 105 189 96 180 89
 Circle -7500403 true true 47 195 58
 Circle -7500403 true true 195 195 58
+
+checker piece
+false
+0
+Circle -7500403 true true 60 60 180
+Circle -16777216 false false 60 60 180
+Circle -7500403 true true 75 45 180
+Circle -16777216 false false 75 45 180
 
 circle
 false
@@ -426,7 +465,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -443,5 +482,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

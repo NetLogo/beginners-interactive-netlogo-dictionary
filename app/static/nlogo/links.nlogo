@@ -1,67 +1,50 @@
 to setup
   clear-all
+
+  create-turtles 12 [
+    set shape "workstation"
+    set color gray
+  ]
+  layout-circle turtles 5
+  ask turtle 0 [
+    setxy 0 0
+    set color green
+    create-links-with other turtles
+  ]
+
   reset-ticks
+end
 
-  create-airports
-  create-routes
 
+to go
   ask turtles [
-    set color blue
-    set shape "circle"
-    set size 1.5
+    set color gray
   ]
-
   ask links [
-    set color white
-    set thickness .2
+    set thickness 0
+    set color gray
+    set shape "dashed"
+  ]
+  ask turtle 0[
+    ask one-of my-links [
+      set shape one-of ["curved" "line"]
+      set color green
+      ask both-ends [ set color green ]
+    ]
   ]
 
-
-end
-
-to create-airports
-  create-turtles 1 [
-    set label "MDW" setxy -10 3
-  ] ; 0
-  create-turtles 1 [
-    set label "ORD" setxy -11 5
-  ] ; 1
-  create-turtles 1 [
-    set label "BOS" setxy 12 6
-  ]  ; 2
-  create-turtles 1 [
-    set label "JFK" setxy 6 2
-  ]   ; 3
-  create-turtles 1 [
-    set label "LGA" setxy 6 4
-  ]   ; 4
-end
-
-to create-routes
-  ; MDW to JFK
-  ask turtle 0 [create-link-with turtle 3]
-  ; MDW to LGA
-  ask turtle 0 [create-link-with turtle 4]
-  ; ORD to JFK
-  ask turtle 1 [create-link-with turtle 3]
-  ; ORD to LGA
-  ask turtle 1 [create-link-with turtle 4]
-  ; ORD to BOS
-  ask turtle 1 [create-link-with turtle 2]
-  ; JFK to BOS
-  ask turtle 3 [create-link-with turtle 2]
-  ; LGA to BOS
-  ask turtle 4 [create-link-with turtle 2]
+  tick
+  wait 0.3
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-8
-11
-662
-196
+125
+10
+459
+344
 -1
 -1
-19.6
+25.0
 1
 10
 1
@@ -71,10 +54,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--16
-16
-0
-8
+-6
+6
+-6
+6
 1
 1
 1
@@ -82,10 +65,10 @@ ticks
 30.0
 
 BUTTON
-17
-219
-83
-252
+5
+10
+115
+50
 NIL
 setup
 NIL
@@ -98,26 +81,22 @@ NIL
 NIL
 1
 
-CHOOSER
-123
-218
-261
-263
-airport-choice
-airport-choice
-"MDW" "ORD" "BOS" "JFK" "LGA"
-2
-
-MONITOR
-276
-219
-656
-264
-neighbors
-sort [label] of [link-neighbors] of (ifelse-value \nairport-choice = \"MDW\" [turtle 0]\nairport-choice = \"ORD\" [turtle 1]\nairport-choice = \"BOS\" [turtle 2]\nairport-choice = \"JFK\" [turtle 3]\nairport-choice = \"LGA\" [turtle 4])
-17
+BUTTON
+5
+55
+115
+115
+NIL
+go
+T
 1
-11
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+0
 
 @#$#@#$#@
 Links are a tool in NetLogo to represent connections between turtles. A link itself is just a connection between any two (distinct) turtles with some information attached. Once created, we can use links to reference connected turtles, for example, sending commands to all the turtles connected to a given turtle. With just this simple tool of connections between turtles, we can represent very sophisticated relationships between turtles such as family trees, "friend" relationships on social media (commonly refered to as a "social graph"), or even road maps for navigation software like google maps or waze. 
@@ -324,6 +303,27 @@ Polygon -7500403 true true 135 105 90 60 45 45 75 105 135 135
 Polygon -7500403 true true 165 105 165 135 225 105 255 45 210 60
 Polygon -7500403 true true 135 90 120 45 150 15 180 45 165 90
 
+server
+false
+0
+Rectangle -7500403 true true 75 30 225 270
+Line -16777216 false 210 30 210 195
+Line -16777216 false 90 30 90 195
+Line -16777216 false 90 195 210 195
+Rectangle -10899396 true false 184 34 200 40
+Rectangle -10899396 true false 184 47 200 53
+Rectangle -10899396 true false 184 63 200 69
+Line -16777216 false 90 210 90 255
+Line -16777216 false 105 210 105 255
+Line -16777216 false 120 210 120 255
+Line -16777216 false 135 210 135 255
+Line -16777216 false 165 210 165 255
+Line -16777216 false 180 210 180 255
+Line -16777216 false 195 210 195 255
+Line -16777216 false 210 210 210 255
+Rectangle -7500403 true true 84 232 219 236
+Rectangle -16777216 false false 101 172 112 184
+
 sheep
 false
 15
@@ -431,13 +431,23 @@ Polygon -16777216 true false 253 133 245 131 245 133
 Polygon -7500403 true true 2 194 13 197 30 191 38 193 38 205 20 226 20 257 27 265 38 266 40 260 31 253 31 230 60 206 68 198 75 209 66 228 65 243 82 261 84 268 100 267 103 261 77 239 79 231 100 207 98 196 119 201 143 202 160 195 166 210 172 213 173 238 167 251 160 248 154 265 169 264 178 247 186 240 198 260 200 271 217 271 219 262 207 258 195 230 192 198 210 184 227 164 242 144 259 145 284 151 277 141 293 140 299 134 297 127 273 119 270 105
 Polygon -7500403 true true -1 195 14 180 36 166 40 153 53 140 82 131 134 133 159 126 188 115 227 108 236 102 238 98 268 86 269 92 281 87 269 103 269 113
 
+workstation
+false
+0
+Rectangle -7500403 true true 60 45 240 180
+Polygon -7500403 true true 90 180 105 195 135 195 135 210 165 210 165 195 195 195 210 180
+Rectangle -16777216 true false 75 60 225 165
+Rectangle -7500403 true true 45 210 255 255
+Rectangle -10899396 true false 249 223 237 217
+Line -16777216 false 60 225 120 225
+
 x
 false
 0
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -453,6 +463,39 @@ true
 0
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
-@#$#@#$#@
+
+curved
+0.75
+-0.2 1 4.0 4.0 2.0 2.0
+0.0 1 1.0 0.0
+0.2 1 4.0 4.0 2.0 2.0
+link direction
+true
 0
+Line -7500403 true 150 150 90 180
+Line -7500403 true 150 150 210 180
+
+dashed
+0.0
+-0.2 0 0.0 1.0
+0.0 1 4.0 4.0
+0.2 0 0.0 1.0
+link direction
+true
+0
+Line -7500403 true 150 150 90 180
+Line -7500403 true 150 150 210 180
+
+line
+0.0
+-0.2 0 0.0 1.0
+0.0 1 1.0 0.0
+0.2 0 0.0 1.0
+link direction
+true
+0
+Line -7500403 true 150 150 90 180
+Line -7500403 true 150 150 210 180
+@#$#@#$#@
+1
 @#$#@#$#@

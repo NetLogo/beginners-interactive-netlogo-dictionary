@@ -1,35 +1,48 @@
+turtles-own[money]
 to setup
   clear-all
   create-turtles 10 [
-    set size random-float 5.0
-    set shape "circle"
-    set color yellow
-    move-to one-of patches
+    set shape "person"
+    set color gray
+    set money 100
   ]
+  layout-circle turtles 4
   reset-ticks
 end
 
-to grow-and-divide
-   ask turtles [
-    set size size + 0.2
-  ]
-  if ticks mod 10 = 9 [
-    ask max-n-of 3 turtles [ size ] [
-      set size size / 2
-      hatch 1 [ fd 0.5]
+to go
+  ask turtles [
+    set color gray
+    if money > 0 [
+      set money money - 5
+      ask one-of other turtles [
+        set money money + 5
+      ]
     ]
+    set label money
   ]
+
+  let three-richest max-n-of 3 turtles [money]
+  ask three-richest [
+     set color blue
+  ]
+
+  let three-poorest min-n-of 3 turtles [money]
+  ask three-poorest [
+     set color red
+  ]
+
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-223
-27
-660
-465
+105
+10
+443
+349
 -1
 -1
-13.0
+30.0
 1
 10
 1
@@ -39,10 +52,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
+-5
+5
+-5
+5
 1
 1
 1
@@ -50,10 +63,10 @@ ticks
 30.0
 
 BUTTON
-78
-58
-144
-91
+5
+10
+100
+60
 NIL
 setup
 NIL
@@ -67,12 +80,12 @@ NIL
 1
 
 BUTTON
-43
-116
-181
-149
+5
+70
+100
+130
 NIL
-grow-and-divide
+go
 T
 1
 T
@@ -82,6 +95,25 @@ NIL
 NIL
 NIL
 1
+
+PLOT
+105
+360
+445
+510
+total income of the richest vs poorest
+NIL
+NIL
+0.0
+10.0
+0.0
+10.0
+true
+true
+"" ""
+PENS
+"richest three" 1.0 0 -13345367 true "" "plot sum [money] of (max-n-of 3 turtles [money])"
+"poorest three" 1.0 0 -2674135 true "" "plot sum [money] of (min-n-of 3 turtles [money])"
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -433,7 +465,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -450,5 +482,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

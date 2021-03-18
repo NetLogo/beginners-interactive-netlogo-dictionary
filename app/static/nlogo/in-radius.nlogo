@@ -1,29 +1,37 @@
-to place-factories
+turtles-own[
+  pollution-radius
+]
+to setup
   clear-all
-  ask patches [set pcolor green]
-  create-turtles 5 [
+  ask patches [set pcolor lime]
+  create-turtles 1 [
     set shape "factory"
     set color grey
-    move-to one-of patches
+    set size 2
   ]
+  reset-ticks
 end
 
-to turn-on
+to go
   ask turtles[
-   ask patches in-radius pollution-radius [
-     set pcolor pcolor - 1
-   ]
+    ask patches in-radius pollution-radius [
+      set pcolor green
+    ]
+    if pollution-radius < 5 [
+      set pollution-radius pollution-radius + 0.1
+    ]
   ]
+  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+130
 10
-543
-344
+478
+359
 -1
 -1
-13.0
+20.0
 1
 10
 1
@@ -33,23 +41,23 @@ GRAPHICS-WINDOW
 1
 1
 1
--12
-12
--12
-12
-0
-0
+-8
+8
+-8
+8
+1
+1
 1
 ticks
 30.0
 
 BUTTON
-19
-48
-173
-81
+5
+10
+120
+55
 NIL
-place-factories
+setup
 NIL
 1
 T
@@ -61,13 +69,13 @@ NIL
 1
 
 BUTTON
-19
-103
-145
-136
+5
+60
+120
+130
 NIL
-turn-on
-NIL
+go
+T
 1
 T
 OBSERVER
@@ -75,22 +83,18 @@ NIL
 NIL
 NIL
 NIL
-1
-
-SLIDER
-19
-160
-191
-193
-pollution-radius
-pollution-radius
 0
-10
-4.0
+
+MONITOR
+5
+150
+120
+195
+pollution radius
+mean [pollution-radius] of turtles
+2
 1
-1
-NIL
-HORIZONTAL
+11
 
 @#$#@#$#@
 `in-radius` is used when you want to select agents within a certain radius of the current agent. For example, a turtle might like to know how many other turtles are within two units of itself, or a patch might like to know how many turtles are within three units of itself. You can think of `in-radius` as a filter that takes some large agentset and filters out all those agents too far away, leaving only those within a given radius. 
@@ -422,7 +426,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -439,5 +443,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

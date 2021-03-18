@@ -1,30 +1,41 @@
 to setup
   clear-all
-  create-turtles 2 [
-  forward 10
-  set shape "turtle"
+  ask n-of 15 patches [
+    set pcolor brown
+  ]
+  create-turtles 1 [
+    set shape "bug"
+    set size 2
   ]
   reset-ticks
 end
 
 
-to hatch-new-turtles
+to go
   ask turtles [
-    hatch 1
-    right random 360
-    forward 1
+    forward 0.5
+    if pcolor = brown [
+      hatch 1 [
+        right random 360
+      ]
+      set pcolor black
+    ]
+  ]
+
+  if count turtles > 100 [
+    stop
   ]
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+115
 10
-593
-394
+462
+358
 -1
 -1
-41.7
+20.0
 1
 10
 1
@@ -34,10 +45,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--4
-4
--4
-4
+-8
+8
+-8
+8
 1
 1
 1
@@ -45,10 +56,10 @@ ticks
 30.0
 
 BUTTON
-75
-53
-141
-86
+5
+10
+110
+50
 NIL
 setup
 NIL
@@ -62,13 +73,13 @@ NIL
 1
 
 BUTTON
-38
-104
-182
-137
+5
+60
+110
+121
 NIL
-hatch-new-turtles
-NIL
+go
+T
 1
 T
 OBSERVER
@@ -76,16 +87,16 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 MONITOR
-61
-181
-154
-226
-NIL
+5
+140
+110
+185
+# of bugs
 count turtles
-17
+2
 1
 11
 
@@ -431,7 +442,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -448,5 +459,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

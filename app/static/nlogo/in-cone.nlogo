@@ -3,7 +3,6 @@ breed [animals animal]
 
 to setup
   clear-all
-  reset-ticks
 
   ask patches [
     set pcolor green
@@ -12,56 +11,58 @@ to setup
   create-cameras 4 [
     set shape "arrow"
     set color grey
-    set size 2
   ]
   layout-circle cameras 2
 
   ask cameras [
-    ask patches in-cone 8 50 [
+    ask patches in-cone 5 60 [
       set pcolor green + 1
     ]
   ]
 
   create-animals 2 [
-    set shape "wolf"
+    set shape one-of ["wolf" "moose"]
     set color brown
-    set size 1.5
     setxy random-xcor random-ycor
   ]
 
-  crt 1 [
-    set color green - 1
-    set shape "tree"
+  create-turtles 1 [
+    set shape "house"
     set size 2
   ]
-
+  reset-ticks
 end
 
 to go
   ask animals [
-    right random 90
-    left random 90
-    fd random-float 1
+    wiggle
+    forward 0.5
   ]
 
   ask cameras [
-    ifelse any? animals in-cone 8 50 [
+    ifelse any? animals in-cone 5 60 [
       set color yellow
-    ] [
+    ]
+    [
       set color grey
     ]
   ]
   tick
 end
+
+to wiggle
+  right random 90
+  left random 90
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+125
 10
-586
-387
+472
+358
 -1
 -1
-17.524
+20.0
 1
 10
 1
@@ -71,10 +72,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--10
-10
--10
-10
+-8
+8
+-8
+8
 1
 1
 1
@@ -82,10 +83,10 @@ ticks
 30.0
 
 BUTTON
-44
-56
+5
+10
 110
-89
+50
 NIL
 setup
 NIL
@@ -99,10 +100,10 @@ NIL
 1
 
 BUTTON
-47
-111
+5
+55
 110
-144
+125
 NIL
 go
 T
@@ -113,7 +114,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 `in-cone` is a primitive that allows for simulating a "cone of vision" in front of a turtle. This allows us to simulate an agent having some sight or other sense in front of them, but not behind or to the side of them. 
@@ -290,6 +291,16 @@ true
 0
 Line -7500403 true 150 0 150 150
 
+moose
+false
+0
+Polygon -7500403 true true 196 228 198 297 180 297 178 244 166 213 136 213 106 213 79 227 73 259 50 257 49 229 38 197 26 168 26 137 46 120 101 122 147 102 181 111 217 121 256 136 294 151 286 169 256 169 241 198 211 188
+Polygon -7500403 true true 74 258 87 299 63 297 49 256
+Polygon -7500403 true true 25 135 15 186 10 200 23 217 25 188 35 141
+Polygon -7500403 true true 270 150 253 100 231 94 213 100 208 135
+Polygon -7500403 true true 225 120 204 66 207 29 185 56 178 27 171 59 150 45 165 90
+Polygon -7500403 true true 225 120 249 61 241 31 265 56 272 27 280 59 300 45 285 90
+
 pentagon
 false
 0
@@ -315,6 +326,24 @@ Polygon -7500403 true true 165 180 165 210 225 180 255 120 210 135
 Polygon -7500403 true true 135 105 90 60 45 45 75 105 135 135
 Polygon -7500403 true true 165 105 165 135 225 105 255 45 210 60
 Polygon -7500403 true true 135 90 120 45 150 15 180 45 165 90
+
+rabbit
+false
+0
+Polygon -7500403 true true 61 150 76 180 91 195 103 214 91 240 76 255 61 270 76 270 106 255 132 209 151 210 181 210 211 240 196 255 181 255 166 247 151 255 166 270 211 270 241 255 240 210 270 225 285 165 256 135 226 105 166 90 91 105
+Polygon -7500403 true true 75 164 94 104 70 82 45 89 19 104 4 149 19 164 37 162 59 153
+Polygon -7500403 true true 64 98 96 87 138 26 130 15 97 36 54 86
+Polygon -7500403 true true 49 89 57 47 78 4 89 20 70 88
+Circle -16777216 true false 37 103 16
+Line -16777216 false 44 150 104 150
+Line -16777216 false 39 158 84 175
+Line -16777216 false 29 159 57 195
+Polygon -5825686 true false 0 150 15 165 15 150
+Polygon -5825686 true false 76 90 97 47 130 32
+Line -16777216 false 180 210 165 180
+Line -16777216 false 165 180 180 165
+Line -16777216 false 180 165 225 165
+Line -16777216 false 180 210 210 240
 
 sheep
 false
@@ -429,7 +458,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -446,5 +475,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

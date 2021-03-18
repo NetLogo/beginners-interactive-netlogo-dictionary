@@ -1,77 +1,62 @@
 to setup
   clear-all
-
-ask patches [
-    if pycor = -10 [set pcolor yellow ]
+  ask patches with [pycor = 0][
+    set pcolor gray
   ]
-  make-cars
-
+  create-turtles 1 [
+    set shape "car"
+    set ycor 0
+    set heading 90
+  ]
+  reset-ticks
 end
 
-to move-red-car
-  ask turtles with [ color = red ] [
-    forward 2
+to go-slow
+  ask turtles [
+    forward 0.1
   ]
+  tick
 end
 
-to move-green-car
-  ask turtles with [ color = green ] [
-    forward 0.2
+to go-fast
+  ask turtles [
+    forward 1
   ]
+  tick
 end
-
-to make-cars
-    crt 2 [
-    set shape "car top"
-    set size 5
-  ]
-
-    ask turtle 0 [
-    set heading 180
-      setxy 2 12
-      set color red
-    ]
-
-    ask turtle 1 [
-    set heading 180
-      setxy -5 12
-      set color green
-    ]
-end
-
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+120
 10
-647
-448
+468
+159
 -1
 -1
-13.0
+20.0
 1
 10
 1
 1
 1
 0
-0
-0
 1
--16
-16
--16
-16
-0
-0
+1
+1
+-8
+8
+-3
+3
+1
+1
 1
 ticks
 30.0
 
 BUTTON
-53
-58
-119
-91
+5
+10
+110
+50
 NIL
 setup
 NIL
@@ -85,13 +70,13 @@ NIL
 1
 
 BUTTON
-36
-108
-140
-153
-move-red-car
-ask turtle 0 [fd 2]
+5
+55
+110
+106
 NIL
+go-slow
+T
 1
 T
 OBSERVER
@@ -99,16 +84,16 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 BUTTON
-34
-171
-143
-222
+5
+110
+110
+160
 NIL
-move-green-car
-NIL
+go-fast
+T
 1
 T
 OBSERVER
@@ -116,7 +101,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -475,7 +460,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -492,5 +477,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

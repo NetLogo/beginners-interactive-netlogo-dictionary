@@ -1,59 +1,55 @@
-globals [total-food-eaten]
+globals [ berries-picked ]
 
 to setup
   clear-all
-  reset-ticks
-  set total-food-eaten 0
+  set berries-picked 0
 
   ask patches [
-    set pcolor green
+    set pcolor brown
+  ]
+
+  ask n-of 100 patches [
+    if season = "spring" [
+      set pcolor green
+    ]
+    if season = "summer" [
+      set pcolor lime
+    ]
   ]
 
   create-turtles 20 [
-    set shape "sheep"
-    set color white
-    move-to one-of patches
+    set shape "person"
   ]
+  reset-ticks
 end
 
 to go
   ask turtles [
-    move
-    if pcolor = green [
-      eat
-      set total-food-eaten total-food-eaten + 1
+    wiggle
+    forward 0.5
+    if pcolor != brown [
+      set pcolor brown
+      set berries-picked berries-picked + 1
     ]
   ]
 
-  ask patches [
-    if random 100 < 1 [
-      set pcolor green
-    ]
-  ]
 
   tick
 end
 
-to eat
-  ask patch-here [
-    set pcolor brown
-  ]
-end
-
-to move
+to wiggle
   right random 90
   left random 90
-  fd random-float 1
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+115
 10
-643
-444
+463
+359
 -1
 -1
-25.0
+20.0
 1
 10
 1
@@ -74,10 +70,10 @@ ticks
 30.0
 
 BUTTON
-23
-52
-89
-85
+5
+10
+110
+50
 NIL
 setup
 NIL
@@ -91,10 +87,10 @@ NIL
 1
 
 BUTTON
-117
-53
-180
-86
+5
+60
+110
+120
 NIL
 go
 T
@@ -107,14 +103,50 @@ NIL
 NIL
 1
 
-MONITOR
-27
-99
-144
-144
+SLIDER
+115
+365
+460
+398
+number-of-sheep
+number-of-sheep
+0
+200
+50.0
+1
+1
 NIL
-total-food-eaten
-17
+HORIZONTAL
+
+SWITCH
+115
+415
+285
+448
+regrow-grass?
+regrow-grass?
+1
+1
+-1000
+
+CHOOSER
+290
+415
+460
+460
+season
+season
+"spring" "summer"
+0
+
+MONITOR
+5
+145
+107
+190
+NIL
+berries-picked
+2
 1
 11
 
@@ -428,7 +460,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -445,5 +477,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

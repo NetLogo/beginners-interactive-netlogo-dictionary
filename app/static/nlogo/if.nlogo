@@ -2,16 +2,13 @@ to setup
   clear-all
   create-turtles 5 [
     set shape "person"
-    set color black
-    forward 5
+    setxy random-xcor random-ycor
   ]
-
   ask patches [
-    ifelse (random 100) < density-of-lava [
-       set pcolor red
-    ] [
-       set pcolor blue
-    ]
+    set pcolor gray
+  ]
+  ask n-of 10 patches [
+    set pcolor red
   ]
   reset-ticks
 end
@@ -19,7 +16,7 @@ end
 to go
   ask turtles [
     if  pcolor = red [ set color orange ]
-    if  pcolor = blue [
+    if  pcolor = gray [
       right random 360
       forward 1
     ]
@@ -28,13 +25,13 @@ to go
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+115
 10
-636
-437
+463
+359
 -1
 -1
-38.0
+20.0
 1
 10
 1
@@ -44,10 +41,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--5
-5
--5
-5
+-8
+8
+-8
+8
 1
 1
 1
@@ -55,10 +52,10 @@ ticks
 30.0
 
 BUTTON
-68
-44
-134
-77
+5
+10
+110
+50
 NIL
 setup
 NIL
@@ -72,10 +69,10 @@ NIL
 1
 
 BUTTON
-69
-107
-132
-140
+5
+55
+110
+120
 NIL
 go
 T
@@ -86,22 +83,7 @@ NIL
 NIL
 NIL
 NIL
-1
-
-SLIDER
-14
-163
-186
-196
-density-of-lava
-density-of-lava
 0
-100
-15.0
-1
-1
-NIL
-HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -445,7 +427,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -462,5 +444,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

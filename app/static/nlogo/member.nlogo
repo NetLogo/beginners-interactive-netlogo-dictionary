@@ -1,49 +1,53 @@
 globals [ members-list ]
+breed [buildings building]
+breed [people person]
 
 to setup
   clear-all
-  create-turtles 1 [
-    set shape "building institution"
-    set color red set size 3
-    move-to one-of patches
+  create-buildings 1 [
+    set shape "building"
+    set size 3
   ]
-
-  create-turtles 10 [
+  create-people 6 [
     set shape "person"
-    set color yellow
+    set color gray
     move-to one-of patches
   ]
-
-  set members-list n-of 4 turtles
-  ask members-list [
-    set color blue
-  ]
-
+  set members-list n-of 3 turtles
   reset-ticks
 end
 
-to try-to-enter-club
-  ask turtles with [ shape = "person" ][
-    face one-of turtles with [ shape = "building institution" ]
-    if any? turtles-here with [ shape = "building institution" ] [
-      if member? self members-list [
-           die
+to go
+  ask people [
+    wiggle
+    forward 0.3
+  ]
+  ask buildings [
+    let client one-of people in-radius 1
+    if client != nobody [
+      if member? client members-list [
+        ask client [
+          set shape "person with books"
+        ]
       ]
     ]
-    right random 90 left random 90
-    forward 1
   ]
   tick
 end
+
+to wiggle
+  left random 90
+  right random 90
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-241
-21
-661
-442
+105
+10
+443
+349
 -1
 -1
-37.5
+30.0
 1
 10
 1
@@ -64,10 +68,10 @@ ticks
 30.0
 
 BUTTON
-70
-52
-136
-85
+5
+10
+95
+50
 NIL
 setup
 NIL
@@ -81,12 +85,12 @@ NIL
 1
 
 BUTTON
-19
-106
-193
-139
+5
+55
+95
+120
 NIL
-try-to-enter-club
+go
 T
 1
 T
@@ -95,7 +99,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -168,7 +172,7 @@ Circle -7500403 true true 110 75 80
 Line -7500403 true 150 100 80 30
 Line -7500403 true 150 100 220 30
 
-building institution
+building
 false
 0
 Rectangle -7500403 true true 0 60 300 270
@@ -346,6 +350,21 @@ Rectangle -7500403 true true 127 79 172 94
 Polygon -7500403 true true 195 90 240 150 225 180 165 105
 Polygon -7500403 true true 105 90 60 150 75 180 135 105
 
+person with books
+false
+0
+Polygon -13791810 true false 135 90 150 105 135 165 150 180 165 165 150 105 165 90
+Polygon -7500403 true true 195 90 240 195 210 210 165 105
+Circle -7500403 true true 110 5 80
+Rectangle -7500403 true true 127 79 172 94
+Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Polygon -1 true false 100 210 130 225 145 165 85 135 63 189
+Polygon -13791810 true false 75 240 120 255 135 165 67 130 15 210
+Polygon -1 true false 120 224 131 225 124 210
+Line -16777216 false 139 168 126 225
+Line -16777216 false 140 167 76 136
+Polygon -7500403 true true 105 90 60 195 90 210 135 105
+
 plant
 false
 0
@@ -471,7 +490,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -488,5 +507,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

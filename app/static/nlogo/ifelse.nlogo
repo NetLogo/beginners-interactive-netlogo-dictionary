@@ -3,10 +3,9 @@ cars-own [gas]
 
 to setup
   clear-all
-  reset-ticks
 
   create-cars 5 [
-    setxy (random-xcor) one-of [-1 0 1]
+    setxy (random-xcor) (one-of [-1 0 1])
     set heading 90
     set shape "car"
     set color yellow
@@ -15,6 +14,7 @@ to setup
 
   create-gas-station
   draw-road
+  reset-ticks
 end
 
 to go
@@ -23,7 +23,8 @@ to go
 
     ifelse pxcor = 0 and gas < 1 [
       set gas gas + .05
-    ] [
+    ]
+    [
       forward .5
       set gas gas - .025
     ]
@@ -52,13 +53,13 @@ to create-gas-station
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+115
 10
-626
-427
+463
+359
 -1
 -1
-24.0
+20.0
 1
 10
 1
@@ -79,10 +80,10 @@ ticks
 30.0
 
 BUTTON
-37
-68
-103
-101
+5
+10
+110
+50
 NIL
 setup
 NIL
@@ -96,10 +97,10 @@ NIL
 1
 
 BUTTON
-127
-69
-190
-102
+5
+55
+110
+120
 NIL
 go
 T
@@ -110,7 +111,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 `ifelse`, much like `if`, is used to run certain commands conditionally, that is, based on some true-or-false condition passed in. `ifelse` is used when you want to run one set of commands *if* a condition is true and another set otherwise. 
@@ -446,7 +447,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -463,5 +464,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

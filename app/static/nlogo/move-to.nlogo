@@ -1,15 +1,23 @@
 to setup
   clear-all
-   create-turtles 1 [set shape "house"
-    set size 5
-    setxy 3 10
-  set color brown
+
+
+
+  create-turtles 1 [
+    set shape "house"
+    set size 2
+    setxy 3 3
   ]
 
   create-turtles 1 [
-    set shape "family"
-    setxy random-xcor random-ycor
-    set size 3
+    set shape "restaurant"
+    set size 2
+    setxy -2 -4
+  ]
+
+  create-turtles 1 [
+    set shape "student"
+    setxy -2 0
   ]
 
   reset-ticks
@@ -18,21 +26,26 @@ end
 
 
 to go
-  ask turtles with [shape = "family"] [
-    move-to one-of turtles with [shape = "house"]
+  ask turtle 2 [
+    ifelse xcor = -2 [
+      move-to turtle 0
+    ][
+      move-to turtle 1
+    ]
+    wait 1
   ]
 
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+100
 10
-614
-415
+438
+349
 -1
 -1
-12.0
+30.0
 1
 10
 1
@@ -42,10 +55,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--16
-16
--16
-16
+-5
+5
+-5
+5
 1
 1
 1
@@ -53,10 +66,10 @@ ticks
 30.0
 
 BUTTON
-25
-53
-91
-86
+5
+10
+95
+50
 NIL
 setup
 NIL
@@ -70,13 +83,13 @@ NIL
 1
 
 BUTTON
-108
-54
-171
-87
+5
+55
+95
+115
 NIL
 go
-NIL
+T
 1
 T
 OBSERVER
@@ -84,7 +97,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -344,6 +357,21 @@ Polygon -7500403 true true 135 105 90 60 45 45 75 105 135 135
 Polygon -7500403 true true 165 105 165 135 225 105 255 45 210 60
 Polygon -7500403 true true 135 90 120 45 150 15 180 45 165 90
 
+restaurant
+false
+0
+Rectangle -7500403 true true 30 45 45 240
+Rectangle -16777216 false false 30 45 45 165
+Rectangle -7500403 true true 15 165 285 255
+Rectangle -16777216 true false 120 195 180 255
+Line -7500403 true 150 195 150 255
+Rectangle -16777216 true false 30 180 105 240
+Rectangle -16777216 true false 195 180 270 240
+Line -16777216 false 0 165 300 165
+Polygon -7500403 true true 0 165 45 135 60 90 240 90 255 135 300 165
+Rectangle -7500403 true true 0 0 75 45
+Rectangle -16777216 false false 0 0 75 45
+
 sheep
 false
 15
@@ -375,6 +403,24 @@ star
 false
 0
 Polygon -7500403 true true 151 1 185 108 298 108 207 175 242 282 151 216 59 282 94 175 3 108 116 108
+
+student
+false
+0
+Circle -16777216 false false 39 183 20
+Polygon -1 true false 50 203 85 213 118 227 119 207 89 204 52 185
+Circle -7500403 true true 110 5 80
+Rectangle -7500403 true true 127 79 172 94
+Polygon -8630108 true false 90 19 150 37 210 19 195 4 105 4
+Polygon -8630108 true false 120 90 105 90 60 195 90 210 120 165 90 285 105 300 195 300 210 285 180 165 210 210 240 195 195 90
+Polygon -1184463 true false 135 90 120 90 150 135 180 90 165 90 150 105
+Line -2674135 false 195 90 150 135
+Line -2674135 false 105 90 150 135
+Polygon -1 true false 135 90 150 105 165 90
+Circle -1 true false 104 205 20
+Circle -1 true false 41 184 20
+Circle -16777216 false false 106 206 18
+Line -2674135 false 208 22 208 57
 
 target
 false
@@ -457,7 +503,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -474,5 +520,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

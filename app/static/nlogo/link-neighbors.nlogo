@@ -14,10 +14,9 @@ end
 
 to go
   ask turtles [
-    right random 90
-    left random 90
-    forward random-float 1
-    create-links-with other turtles in-radius 2
+    wiggle
+    forward 0.5
+    create-links-with other turtles-here
   ]
   tick
 end
@@ -32,15 +31,20 @@ to trace-back
     ]
   ]
 end
+
+to wiggle
+  right random 90
+  left random 90
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-227
+106
 10
-647
-431
+454
+359
 -1
 -1
-24.24
+20.0
 1
 10
 1
@@ -61,10 +65,10 @@ ticks
 30.0
 
 BUTTON
-55
-51
-121
-84
+4
+10
+97
+58
 NIL
 setup
 NIL
@@ -78,10 +82,10 @@ NIL
 1
 
 BUTTON
-54
-160
-117
-193
+4
+121
+100
+184
 NIL
 go
 T
@@ -95,10 +99,10 @@ NIL
 1
 
 BUTTON
-50
-105
-131
-138
+4
+69
+99
+109
 go once
 go
 NIL
@@ -112,11 +116,11 @@ NIL
 1
 
 BUTTON
-0
-220
-217
-253
-contact trace back one degree
+239
+367
+456
+424
+contact trace (1 degree) 
 trace-back
 NIL
 1
@@ -438,7 +442,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

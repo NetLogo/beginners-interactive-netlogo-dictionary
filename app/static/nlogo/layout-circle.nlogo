@@ -1,20 +1,32 @@
-to setup
+to setup-empty
   clear-all
-  crt 20
-  layout-circle turtles 6
-  ask turtles [
-    create-links-with n-of 3 other turtles
+  reset-ticks
+end
+
+to setup-random
+  setup-empty
+  create-turtles 35 [
+    setxy random-xcor random-ycor
+    pen-down
   ]
+end
+
+to go
+  if count turtles < 36 [
+    create-turtles 1
+    layout-circle turtles 5
+  ]
+  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+120
 10
-626
-427
+468
+359
 -1
 -1
-24.0
+20.0
 1
 10
 1
@@ -28,19 +40,53 @@ GRAPHICS-WINDOW
 8
 -8
 8
-0
-0
+1
+1
 1
 ticks
 30.0
 
 BUTTON
-68
-89
-134
-122
+5
+10
+115
+56
 NIL
-setup
+setup-empty
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+5
+115
+115
+185
+NIL
+go
+T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+0
+
+BUTTON
+5
+60
+115
+105
+NIL
+setup-random
 NIL
 1
 T
@@ -363,7 +409,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -380,5 +426,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@
