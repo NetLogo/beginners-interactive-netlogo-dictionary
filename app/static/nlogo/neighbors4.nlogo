@@ -1,53 +1,40 @@
-globals [ initial-trees ]
-
 to setup
   clear-all
-
   ask patches [
-    if (random 100) < density [
+    set pcolor brown
+    if random 100 < 55 [
       set pcolor green
     ]
-
-    if pxcor = min-pxcor [
-      set pcolor red
-    ]
   ]
-
-  set initial-trees count patches with [pcolor = green]
+  ask one-of patches [
+    set pcolor red
+  ]
   reset-ticks
 end
-
 to go
-  if all? patches [ pcolor != red ] [
-    stop
-  ]
-  if neighbors-type = "neighbors" [
-    ask patches with [ pcolor = red ] [
-      ask neighbors with [pcolor = green] [
-        set pcolor red
+  ask patches [
+    if pcolor = red [
+      ask neighbors4 [
+        if pcolor = green [
+          set pcolor red
+        ]
+        if pcolor = brown [
+          set pcolor gray - 2
+        ]
       ]
-      set pcolor red - 3.5
-    ]
-  ]
-  if neighbors-type = "neighbors4" [
-    ask patches with [ pcolor = red ] [
-      ask neighbors4 with [pcolor = green] [
-        set pcolor red
-      ]
-      set pcolor red - 3.5
     ]
   ]
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-302
+95
 10
-815
-524
+431
+347
 -1
 -1
-5.0
+8.0
 1
 10
 1
@@ -57,21 +44,21 @@ GRAPHICS-WINDOW
 0
 0
 1
--50
-50
--50
-50
-0
-0
+-20
+20
+-20
+20
+1
+1
 1
 ticks
 30.0
 
 BUTTON
-57
-64
-123
-97
+5
+10
+90
+50
 NIL
 setup
 NIL
@@ -85,10 +72,10 @@ NIL
 1
 
 BUTTON
-156
-64
-219
-97
+5
+55
+90
+125
 NIL
 go
 T
@@ -99,31 +86,6 @@ NIL
 NIL
 NIL
 NIL
-1
-
-SLIDER
-53
-122
-225
-155
-density
-density
-0
-100
-25.0
-1
-1
-NIL
-HORIZONTAL
-
-CHOOSER
-73
-180
-211
-225
-neighbors-type
-neighbors-type
-"neighbors" "neighbors4"
 1
 
 @#$#@#$#@
@@ -229,6 +191,18 @@ false
 0
 Circle -7500403 true true 0 0 300
 Circle -16777216 true false 30 30 240
+
+coconut tree
+false
+0
+Polygon -10899396 true false 120 165
+Circle -6459832 true false 120 120 0
+Rectangle -6459832 true false 120 120 135 195
+Circle -10899396 true false 83 50 85
+Circle -6459832 true false 94 70 10
+Circle -6459832 true false 143 103 12
+Circle -6459832 true false 108 97 21
+Circle -6459832 true false 126 65 19
 
 cow
 false
@@ -468,7 +442,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -485,5 +459,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

@@ -5,37 +5,34 @@ to setup
       set pcolor gray
     ]
   ]
-
-  ask patch -5 0 [
+  ask patch 4 0 [
     set pcolor red
   ]
-
   create-turtles 1 [
     set shape "car"
     set heading 90
-    move-to one-of patches with [pcolor = gray]
+    setxy -5 0
   ]
 
   reset-ticks
 end
-
 to drive
   ask turtles [
-    if not ([pcolor] of patch-ahead 1 = red) [
-      fd 0.3
+    if not ([pcolor] of patch-ahead 0.5 = red) [
+      forward 0.5
     ]
   ]
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-234
-17
-671
-143
+100
+10
+438
+349
 -1
 -1
-13.0
+30.0
 1
 10
 1
@@ -45,10 +42,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--4
-4
+-5
+5
+-5
+5
 1
 1
 1
@@ -56,10 +53,10 @@ ticks
 30.0
 
 BUTTON
-36
-39
-102
-72
+5
+10
+95
+50
 NIL
 setup
 NIL
@@ -73,10 +70,10 @@ NIL
 1
 
 BUTTON
-113
-38
-176
-71
+5
+55
+95
+115
 NIL
 drive
 T
@@ -431,7 +428,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -448,5 +445,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

@@ -1,37 +1,41 @@
 to setup
   clear-all
   create-turtles 5 [
-    set shape "person"
+    set shape "mouse"
+    set color brown
     setxy random-xcor random-ycor
   ]
   ask patches [
     set pcolor gray
   ]
   ask n-of 10 patches [
-    set pcolor red
+    set pcolor violet
   ]
   reset-ticks
 end
-
 to go
   ask turtles [
-    if  pcolor = red [ set color orange ]
-    if  pcolor = gray [
-      right random 360
+    if  pcolor = violet [ set color orange ]
+    if pcolor = gray [
+      wiggle
       forward 1
     ]
   ]
   tick
 end
+to wiggle
+  right random 90
+  left random 90
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 115
 10
-463
-359
+453
+349
 -1
 -1
-20.0
+30.0
 1
 10
 1
@@ -41,10 +45,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--8
-8
--8
-8
+-5
+5
+-5
+5
 1
 1
 1
@@ -287,6 +291,24 @@ line half
 true
 0
 Line -7500403 true 150 0 150 150
+
+mouse
+true
+0
+Polygon -7500403 true true 144 238 153 255 168 260 196 257 214 241 237 234 248 243 237 260 199 278 154 282 133 276 109 270 90 273 83 283 98 279 120 282 156 293 200 287 235 273 256 254 261 238 252 226 232 221 211 228 194 238 183 246 168 246 163 232
+Polygon -7500403 true true 120 78 116 62 127 35 139 16 150 4 160 16 173 33 183 60 180 80
+Polygon -7500403 true true 119 75 179 75 195 105 190 166 193 215 165 240 135 240 106 213 110 165 105 105
+Polygon -7500403 true true 167 69 184 68 193 64 199 65 202 74 194 82 185 79 171 80
+Polygon -7500403 true true 133 69 116 68 107 64 101 65 98 74 106 82 115 79 129 80
+Polygon -16777216 true false 163 28 171 32 173 40 169 45 166 47
+Polygon -16777216 true false 137 28 129 32 127 40 131 45 134 47
+Polygon -16777216 true false 150 6 143 14 156 14
+Line -7500403 true 161 17 195 10
+Line -7500403 true 160 22 187 20
+Line -7500403 true 160 22 201 31
+Line -7500403 true 140 22 99 31
+Line -7500403 true 140 22 113 20
+Line -7500403 true 139 17 105 10
 
 pentagon
 false

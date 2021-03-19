@@ -1,49 +1,60 @@
+breed [tents tent]
+breed [people person]
+people-own [ my-tent ]
+
 to setup
   clear-all
-  ask patches [
-    set pcolor blue
+  create-turtles 1 [
+    set shape "fire"
   ]
-
-  create-turtles 10 [
-    set shape "turtle"
-    set color green
-    move-to one-of patches
+  create-tents 10 [
+    set shape "camp tent"
+    right random 360
+    set color red
+  ]
+  layout-circle tents 4
+  create-people 10 [
+    set shape "person"
+    set size 0.5
+    set my-tent nobody
+    set color gray
+    forward 1
   ]
   reset-ticks
 end
 
-to go-with-check
-  ask turtles [
-    right random 90
-    left random 90
-    forward 1
-     if one-of turtles with [ color = red ] != nobody [
-      set size 5
+to go
+  ask people [
+    if my-tent = nobody [
+      wiggle
+      forward 0.5
+      if any? tents-here [
+        if not any? other people-here [
+          set my-tent one-of tents-here
+          set color green
+        ]
+      ]
     ]
+  ]
+  if not any? people with [my-tent = nobody] [
+    stop
   ]
   tick
 end
 
-to go-without-check
-  ask turtles [
-    right random 90
-    left random 90
-    forward 1
-  ]
-  ask one-of turtles with [ color = red ] [
-      set size 5
-  ]
-  tick
+to wiggle
+  right random 90
+  left random 90
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-255
-35
-672
-453
+110
+10
+448
+349
 -1
 -1
-37.2
+30.0
 1
 10
 1
@@ -64,10 +75,10 @@ ticks
 30.0
 
 BUTTON
-90
-63
-156
-96
+5
+10
+100
+50
 NIL
 setup
 NIL
@@ -81,12 +92,12 @@ NIL
 1
 
 BUTTON
-61
-119
-184
-152
+5
+55
+100
+130
 NIL
-go-with-check
+go
 T
 1
 T
@@ -95,24 +106,7 @@ NIL
 NIL
 NIL
 NIL
-1
-
-BUTTON
-53
-172
-196
-205
-NIL
-go-without-check
-T
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -197,6 +191,13 @@ Circle -16777216 true false 135 90 30
 Line -16777216 false 150 105 195 60
 Line -16777216 false 150 105 105 60
 
+camp tent
+false
+0
+Polygon -7500403 true true 150 11 30 221 270 221
+Polygon -16777216 true false 151 90 92 221 212 221
+Line -7500403 true 150 30 150 225
+
 car
 false
 0
@@ -217,6 +218,16 @@ false
 0
 Circle -7500403 true true 0 0 300
 Circle -16777216 true false 30 30 240
+
+computer
+false
+0
+Rectangle -7500403 true true 60 45 240 180
+Polygon -7500403 true true 90 180 105 195 135 195 135 210 165 210 165 195 195 195 210 180
+Rectangle -16777216 true false 75 60 225 165
+Rectangle -7500403 true true 45 210 255 255
+Rectangle -10899396 true false 249 223 237 217
+Line -16777216 false 60 225 120 225
 
 cow
 false
@@ -258,6 +269,13 @@ Circle -7500403 true true 8 8 285
 Circle -16777216 true false 60 75 60
 Circle -16777216 true false 180 75 60
 Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
+
+fire
+false
+0
+Polygon -7500403 true true 151 286 134 282 103 282 59 248 40 210 32 157 37 108 68 146 71 109 83 72 111 27 127 55 148 11 167 41 180 112 195 57 217 91 226 126 227 203 256 156 256 201 238 263 213 278 183 281
+Polygon -955883 true false 126 284 91 251 85 212 91 168 103 132 118 153 125 181 135 141 151 96 185 161 195 203 193 253 164 286
+Polygon -2674135 true false 155 284 172 268 172 243 162 224 148 201 130 233 131 260 135 282
 
 fish
 false
@@ -422,13 +440,13 @@ Circle -7500403 false true 234 174 42
 
 turtle
 true
-0
-Polygon -10899396 true false 215 204 240 233 246 254 228 266 215 252 193 210
-Polygon -10899396 true false 195 90 225 75 245 75 260 89 269 108 261 124 240 105 225 105 210 105
-Polygon -10899396 true false 105 90 75 75 55 75 40 89 31 108 39 124 60 105 75 105 90 105
-Polygon -10899396 true false 132 85 134 64 107 51 108 17 150 2 192 18 192 52 169 65 172 87
-Polygon -10899396 true false 85 204 60 233 54 254 72 266 85 252 107 210
-Polygon -7500403 true true 119 75 179 75 209 101 224 135 220 225 175 261 128 261 81 224 74 135 88 99
+5
+Polygon -10899396 true true 215 204 240 233 246 254 228 266 215 252 193 210
+Polygon -10899396 true true 195 90 225 75 245 75 260 89 269 108 261 124 240 105 225 105 210 105
+Polygon -10899396 true true 105 90 75 75 55 75 40 89 31 108 39 124 60 105 75 105 90 105
+Polygon -10899396 true true 132 85 134 64 107 51 108 17 150 2 192 18 192 52 169 65 172 87
+Polygon -10899396 true true 85 204 60 233 54 254 72 266 85 252 107 210
+Polygon -6459832 true false 119 75 179 75 209 101 224 135 220 225 175 261 128 261 81 224 74 135 88 99
 
 wheel
 false
@@ -456,7 +474,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -473,5 +491,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

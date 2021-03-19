@@ -1,54 +1,52 @@
+breed [plants plant]
+breed [cows cow]
 to setup
   clear-all
-  draw-field
-
-  create-turtles 20 [
-   set color gray
-   set shape "person"
-   set size 2.5
-   setxy random-xcor random-ycor
-  ]
-end
-
-to pick-teams
-  ask n-of red-team-size turtles [
-   set color red
-  ]
-
-  ask n-of blue-team-size turtles with [color = gray] [
-    set color blue
-  ]
-end
-
-to draw-field
-  ask patches [
-    set pcolor green
-  ]
-
-  ask patch 0 0 [
-    ask patches in-radius 5 [
-      set pcolor white
-    ]
-    ask patches in-radius 4 [
-      set pcolor green
+  ask n-of 50 patches [
+    sprout-plants 1 [
+      set color lime
+      set shape "plant"
+      set size 0.5
     ]
   ]
-
-  ask patches with [pxcor = 0  or pycor = 0   or
-                    pycor = 10 or pycor = -10 or
-                    pycor = 20 or pycor = -20] [
-    set pcolor white
+  create-cows 5 [
+    set shape "cow"
+    setxy random-xcor random-ycor
+  ]
+  reset-ticks
+end
+to go
+  ask cows [
+    wiggle
+    forward 0.5
+    eat
+  ]
+  if ticks mod 10 = 0 [
+    ask n-of 2 cows [
+      hatch 1
+    ]
+  ]
+  if count cows > 20 [ stop ]
+  tick
+end
+to wiggle
+  right random 30
+  left random 30
+end
+to eat
+  if any? plants-here [
+    ask plants-here [ die ]
   ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+105
 10
-647
-448
+443
+349
 -1
 -1
-13.0
+30.0
 1
 10
 1
@@ -58,21 +56,21 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
-0
-0
+-5
+5
+-5
+5
+1
+1
 1
 ticks
 30.0
 
 BUTTON
-28
-60
-94
-93
+5
+10
+100
+55
 NIL
 setup
 NIL
@@ -85,29 +83,14 @@ NIL
 NIL
 1
 
-SLIDER
-27
-155
-199
-188
-red-team-size
-red-team-size
-0
-10
-5.0
-1
-1
-NIL
-HORIZONTAL
-
 BUTTON
-102
-60
-199
-93
+5
+65
+100
+130
 NIL
-pick-teams
-NIL
+go
+T
 1
 T
 OBSERVER
@@ -115,22 +98,18 @@ NIL
 NIL
 NIL
 NIL
-1
-
-SLIDER
-26
-204
-198
-237
-blue-team-size
-blue-team-size
 0
-10
-5.0
-1
-1
+
+MONITOR
+5
+140
+100
+185
 NIL
-HORIZONTAL
+count cows
+17
+1
+11
 
 @#$#@#$#@
 `n-of` is used when you want to randomly select exactly n elements out of an agent set. 
@@ -203,6 +182,16 @@ false
 0
 Circle -7500403 true true 0 0 300
 Circle -16777216 true false 30 30 240
+
+co2
+true
+0
+Circle -1 true false 183 63 84
+Circle -16777216 false false 183 63 84
+Circle -7500403 true true 75 75 150
+Circle -16777216 false false 75 75 150
+Circle -1 true false 33 63 84
+Circle -16777216 false false 33 63 84
 
 cow
 false
@@ -459,5 +448,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

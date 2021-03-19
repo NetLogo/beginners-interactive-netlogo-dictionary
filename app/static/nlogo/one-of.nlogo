@@ -1,43 +1,39 @@
 to setup
   clear-all
-  create-turtles 15 [
+  create-turtles 20 [
     set color blue
     set shape "person"
-    forward 2
+    move-to one-of patches
   ]
-
   ask one-of turtles [
     set color red
   ]
   reset-ticks
 end
-
-to spread-disease
-  if not any? turtles with [color = blue] [ stop ]
-
+to go
   ask turtles [
-      if any? other turtles-here [
-        set color red
+    wiggle
+    forward 0.5
+    if any? turtles-here with [color = red] [
+      set color red
     ]
-    move
   ]
+  if all? turtles [color = red] [ stop ]
   tick
 end
-
-to move
-  rt random 45
-  lt random 45
-  forward 1
+to wiggle
+  right random 90
+  left random 90
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+95
 10
-645
-446
+433
+349
 -1
 -1
-38.82
+30.0
 1
 10
 1
@@ -58,10 +54,10 @@ ticks
 30.0
 
 BUTTON
-64
-53
-130
-86
+5
+10
+90
+55
 NIL
 setup
 NIL
@@ -75,12 +71,12 @@ NIL
 1
 
 BUTTON
-38
-111
-166
-144
+5
+60
+90
+131
 NIL
-spread-disease
+go
 T
 1
 T
@@ -433,7 +429,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -450,5 +446,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

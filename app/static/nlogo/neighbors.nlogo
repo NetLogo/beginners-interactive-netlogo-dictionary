@@ -1,53 +1,38 @@
-globals [ initial-trees ]
-
 to setup
   clear-all
+  ask patches [ set pcolor green ]
 
-  ask patches [
-    if (random 100) < density [
-      set pcolor green
-    ]
-
-    if pxcor = min-pxcor [
-      set pcolor red
-    ]
+  create-turtles 5 [
+    set shape "bug"
+    set color brown
+    move-to one-of patches
   ]
 
-  set initial-trees count patches with [pcolor = green]
   reset-ticks
 end
-
 to go
-  if all? patches [ pcolor != red ] [
-    stop
-  ]
-  if neighbors-type = "neighbors" [
-    ask patches with [ pcolor = red ] [
-      ask neighbors with [pcolor = green] [
-        set pcolor red
-      ]
-      set pcolor red - 3.5
-    ]
-  ]
-  if neighbors-type = "neighbors4" [
-    ask patches with [ pcolor = red ] [
-      ask neighbors4 with [pcolor = green] [
-        set pcolor red
-      ]
-      set pcolor red - 3.5
+  ask turtles [
+    wiggle
+    set pcolor pcolor - 0.05
+    if pcolor < green - 4 [
+      move-to one-of neighbors
     ]
   ]
   tick
 end
+to wiggle
+  right random 30
+  left random 30
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+95
 10
-723
-524
+433
+349
 -1
 -1
-5.0
+30.0
 1
 10
 1
@@ -57,10 +42,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--50
-50
--50
-50
+-5
+5
+-5
+5
 1
 1
 1
@@ -68,10 +53,10 @@ ticks
 30.0
 
 BUTTON
-25
-55
-91
-88
+5
+10
+90
+50
 NIL
 setup
 NIL
@@ -85,10 +70,10 @@ NIL
 1
 
 BUTTON
-103
+5
 55
-166
-88
+90
+125
 NIL
 go
 T
@@ -99,31 +84,6 @@ NIL
 NIL
 NIL
 NIL
-1
-
-SLIDER
-13
-104
-185
-137
-density
-density
-0
-100
-25.0
-1
-1
-NIL
-HORIZONTAL
-
-CHOOSER
-31
-152
-169
-197
-neighbors-type
-neighbors-type
-"neighbors" "neighbors4"
 0
 
 @#$#@#$#@
@@ -480,7 +440,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -497,5 +457,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

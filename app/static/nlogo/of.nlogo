@@ -1,46 +1,37 @@
-turtles-own [age]
-
 to setup
   clear-all
-  reset-ticks
-  create-turtles 30 [
-    set shape "person"
+  create-turtles 100 [
+    set shape "circle"
+    set size 0.1 + random-float 0.2
     setxy random-xcor random-ycor
-    set age random 100
   ]
+  reset-ticks
 end
-
-to get-older
+to go
   ask turtles [
-    set age age + 1
-    if age > 100 [
-       die
-    ]
-    set label age
-  ]
-
-  if random 100 < 20 [
-    create-turtles 1 [
-      set shape "person"
-      setxy random-xcor random-ycor
-      set age 0
+    forward 0.05
+    let r (size / 2)
+    if any? other turtles in-radius r [
+      ask one-of other turtles in-radius r [
+        if [size] of self < [size] of myself [
+          set color [color] of myself
+        ]
+        set size [size] of self + [size] of myself
+      ]
+      die
     ]
   ]
   tick
 end
-
-to-report age-of-oldest-person
-  report max [age] of turtles
-end
 @#$#@#$#@
 GRAPHICS-WINDOW
-234
-12
-660
-439
+120
+10
+458
+349
 -1
 -1
-24.6
+30.0
 1
 10
 1
@@ -50,21 +41,21 @@ GRAPHICS-WINDOW
 1
 1
 1
--8
-8
--8
-8
+-5
+5
+-5
+5
 1
 1
 1
 ticks
-10.0
+30.0
 
 BUTTON
-41
-85
-107
-118
+5
+10
+115
+55
 NIL
 setup
 NIL
@@ -78,12 +69,12 @@ NIL
 1
 
 BUTTON
-124
-85
-214
-118
+5
+65
+115
+141
 NIL
-get-older
+go
 T
 1
 T
@@ -92,31 +83,44 @@ NIL
 NIL
 NIL
 NIL
-1
-
-MONITOR
-27
-146
-214
-191
-NIL
-age-of-oldest-person
-17
-1
-11
+0
 
 @#$#@#$#@
-`of` is a primitive that allows you to reach into an agent and pull out the value of some variable that they own. Normally, agent variables (such as `color`, `size`, `shape`, as well as variables defined with commands like `turtles-own`) are accessed within an agent context, i.e., within an `ask turtles []` or `ask patches []` block. However, sometimes you want to be able to get to those variables outside of such a block, or maybe you want to get all the values for each agent in an agentset all at once. In these cases, you can use `of` to reach into those agents and extract the variables out of them. 
+## WHAT IS IT?
 
-In practice, we use `of` with a reporter inside a `[]` block, like so: `[reporter] of agent` or `[reporter] of agentset`. As an example, say we wanted to get the `pcolor` of the patch at the center of the world, we would say `[pcolor] of patch 0 0`, because `pcolor` is the name of the variable we want to get or report and `patch 0 0` is the agent we want to get the variable from. If we wanted to get the `pcolor` values for every patch, we would write `[pcolor] of patches` and would get back a list of the pcolors of each patch. 
+(a general understanding of what the model is trying to show or explain)
 
-Note that your reporters can be more elaborate than just getting the value of a variable. You can treat the code inside the reporter block as you would any other code in Netlogo and write full expressions within it. For instance, say each turtle had a diameter stored in a `diameter` variable and you wanted to get a list of every turtle's radius, a simple way to do so would be to write `[diamter / 2] of turtles`. 
+## HOW IT WORKS
 
-In this example, I compare using an `ask` block and the `of` primitive to get the same information: the highest age in a population of individuals. Every individual in the model is initialized with a random age and they grow a year older every tick. At each tick, there is a 25% chance that a new individual will be born. 
+(what rules the agents use to create the overall behavior of the model)
 
-In the `ask` version, we set a variable `oldest` to represent the highest age we have encountered so far, and then we ask each turlte if they are older than that highest-so-far age. If so, we set the value of that variable to their age. Once we have asked every turtle, we have the highest age of the lot ready to report back. 
+## HOW TO USE IT
 
-In the `of` version, we use `[age] of turtles` to get a list of all the ages of the turtles and then use `max` to report back the highest one in the list. All in all this takes only one concise english-like line of code, showing the power of the `of` primitive for writing clean and readable code. 
+(how to use the model, including a description of each of the items in the Interface tab)
+
+## THINGS TO NOTICE
+
+(suggested things for the user to notice while running the model)
+
+## THINGS TO TRY
+
+(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
+
+## EXTENDING THE MODEL
+
+(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
+
+## NETLOGO FEATURES
+
+(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
+
+## RELATED MODELS
+
+(models in the NetLogo Models Library and elsewhere which are of related interest)
+
+## CREDITS AND REFERENCES
+
+(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
 @#$#@#$#@
 default
 true
@@ -423,7 +427,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -440,5 +444,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

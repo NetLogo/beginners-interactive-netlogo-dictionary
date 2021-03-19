@@ -1,38 +1,50 @@
+turtles-own[infected?]
 to setup
   clear-all
-  create-turtles 5 [
-    set shape "fish"
-    set size 3
-    setxy random-xcor random-ycor
-    set color green
+  ask n-of 10 patches [
+    sprout 5 [
+      set shape "person"
+      set color gray
+      set size 0.5
+      forward 0.5
+      set infected? one-of [true false]
+    ]
   ]
-
-  ask patches [set pcolor 77]
-
-  show count turtles with [color = green]
-  show count turtles with [color = red]
+  ask one-of turtles with [not infected?] [
+    set shape "doctor"
+  ]
   reset-ticks
 end
-
-
 to go
-ask turtles [
-    fd 0.2
-    If any? other turtles-here [
-      set color red
+  ask turtles with [shape = "doctor"] [
+    wiggle
+    forward 0.5
+    if any? other turtles-here [
+      ask other turtles-here [
+        ifelse infected?[
+          set color red
+        ][
+          set color green
+        ]
+      ]
     ]
   ]
   tick
 end
+
+to wiggle
+  right random 90
+  left random 90
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+115
 10
-647
-448
+453
+349
 -1
 -1
-13.0
+30.0
 1
 10
 1
@@ -42,10 +54,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
+-5
+5
+-5
+5
 1
 1
 1
@@ -53,10 +65,10 @@ ticks
 30.0
 
 BUTTON
-33
-75
-99
-108
+5
+10
+110
+55
 NIL
 setup
 NIL
@@ -70,10 +82,10 @@ NIL
 1
 
 BUTTON
-111
-75
-174
-108
+5
+65
+110
+140
 NIL
 go
 T
@@ -85,28 +97,6 @@ NIL
 NIL
 NIL
 1
-
-MONITOR
-9
-157
-103
-202
-dead
-count turtles with [color = red]
-17
-1
-11
-
-MONITOR
-109
-157
-207
-202
-alive
-count turtles with [color = green]
-17
-1
-11
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -212,6 +202,16 @@ false
 Circle -7500403 true true 0 0 300
 Circle -16777216 true false 30 30 240
 
+computer
+false
+0
+Rectangle -7500403 true true 60 45 240 180
+Polygon -7500403 true true 90 180 105 195 135 195 135 210 165 210 165 195 195 195 210 180
+Rectangle -16777216 true false 75 60 225 165
+Rectangle -7500403 true true 45 210 255 255
+Rectangle -10899396 true false 249 223 237 217
+Line -16777216 false 60 225 120 225
+
 cow
 false
 0
@@ -223,6 +223,25 @@ cylinder
 false
 0
 Circle -7500403 true true 0 0 300
+
+doctor
+false
+0
+Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Polygon -13345367 true false 135 90 150 105 135 135 150 150 165 135 150 105 165 90
+Polygon -7500403 true true 105 90 60 195 90 210 135 105
+Polygon -7500403 true true 195 90 240 195 210 210 165 105
+Circle -7500403 true true 110 5 80
+Rectangle -7500403 true true 127 79 172 94
+Polygon -1 true false 105 90 60 195 90 210 114 156 120 195 90 270 210 270 180 195 186 155 210 210 240 195 195 90 165 90 150 150 135 90
+Line -16777216 false 150 148 150 270
+Line -16777216 false 196 90 151 149
+Line -16777216 false 104 90 149 149
+Circle -1 true false 180 0 30
+Line -16777216 false 180 15 120 15
+Line -16777216 false 150 195 165 195
+Line -16777216 false 150 240 165 240
+Line -16777216 false 150 150 165 150
 
 dot
 false
@@ -312,7 +331,7 @@ true
 Line -7500403 true 150 0 150 150
 
 pentagon
-false
+true
 0
 Polygon -7500403 true true 150 15 15 120 60 285 240 285 285 120
 
@@ -450,7 +469,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -467,5 +486,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

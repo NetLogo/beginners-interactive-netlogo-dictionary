@@ -1,68 +1,67 @@
-globals [width height]
-breed [balls ball]
-
+breed [animals animal]
+breed [plants plant]
 to setup
   clear-all
-  reset-ticks
-  set width 10
-  set height 4
-  set-default-shape balls "circle"
-
-  create-goal
-
-end
-
-to check-if-miss
-  ifelse (xcor > width / 2 or
-          xcor < (- width / 2) or
-          ycor > height) [
-       set color red
-     ][
-       set color white
-     ]
-end
-
-to throw-random-ball
-  create-balls 1 [
-    setxy random-xcor random-ycor
-    check-if-miss
-  ]
-end
-
-to create-goal
   ask patches [
-    set pcolor green
+    set pcolor brown
   ]
-
-  ask patches with [pycor = height and abs pxcor <= width / 2] [
-    set pcolor white - 2
+  create-animals 30 [
+    set shape "sheep"
+    set color white
+    setxy random-xcor random-ycor
   ]
-  ask patches with [abs pxcor = width / 2 and pycor <= height] [
-    set pcolor white - 2
+  create-plants 100 [
+    set shape "plant"
+    set color one-of [green lime]
+    setxy random-xcor random-ycor
   ]
+  ask n-of 20 plants [
+    set color one-of [yellow magenta]
+  ]
+  reset-ticks
+end
+to go
+  ask animals [
+    wiggle
+    forward 0.5
+    let edible-plants (plants-here with [color = green or color = lime])
+    let poison-plants (plants-here with [color = yellow or color = magenta])
+    if any? edible-plants [
+      ask edible-plants [ die ]
+    ]
+    if any? poison-plants [
+      ask poison-plants [ die ]
+      die
+    ]
+  ]
+  tick
+end
+to wiggle
+  left random 90
+  right random 90
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-30
-22
-637
-277
+118
+10
+466
+359
 -1
 -1
-35.24
+20.0
 1
 10
 1
 1
 1
 0
-0
-0
+1
+1
 1
 -8
 8
-0
-6
+-8
+8
 1
 1
 1
@@ -70,10 +69,10 @@ ticks
 30.0
 
 BUTTON
-59
-299
-125
-332
+5
+10
+112
+55
 NIL
 setup
 NIL
@@ -87,13 +86,13 @@ NIL
 1
 
 BUTTON
-153
-297
-311
-330
-Throw a random ball
-throw-random-ball
+5
+65
+112
+127
 NIL
+go
+T
 1
 T
 OBSERVER
@@ -103,12 +102,53 @@ NIL
 NIL
 1
 
+MONITOR
+15
+155
+102
+200
+# of animals
+count animals
+17
+1
+11
+
 @#$#@#$#@
-`or` is a primitive that is used to check if *either* of two conditions is true. Given two checks to make (true-or-false statements), `or` will report true if 1) the first is true, 2) the second is true, 3) both are true and will only report false if *both* of the conditions are false. As a concrete example, say you had a pig and you wanted it to eat the food on its patch whether it was animal food or human food, you could model that in code using `if animal-food-here or people-food-here [eat]`. Additionally, if you wanted to check more than just two conditions, you can just string together a series of `of` statements like so: `if A or B or C or D [ do-something]`. 
+## WHAT IS IT?
 
-In this model, `or` is used to check if a soccer ball is within or outside of the net. Using the `check-if-miss` procedure, if the ball is outside of the boundaries of the net, we color it red, and if it is inside, we color it green. In the code, we check if the ball is too far to the right *or* too far to the left *or* too high. (In this model, the center of the world is set to be the center of the bottom edge to make the math easier.) 
+(a general understanding of what the model is trying to show or explain)
 
-PS. Note that under the hood, in practice NetLogo often only has to check the first of the two conditions to see if the `or` will report true or not. Imagine we are checking two conditions, `condition1` and `condition2`. If we write `if condition1 or condition2` and `condition1` is true, regardless of whether `condition2` is true or false, the `or` will always report true, so why bother checking `condition2`. This is called "short-circuit or" and you will see it in most modern programming languages because it allows for faster code execution as well as some other benefits to advanced programmers. The takeaway for beginner programmers, however, is simpler: if you need to use `or` to combine two checks, place the less computationally expensive check first, because if it reports true, then you never have to waste the computer's time checking the expensive one. 
+## HOW IT WORKS
+
+(what rules the agents use to create the overall behavior of the model)
+
+## HOW TO USE IT
+
+(how to use the model, including a description of each of the items in the Interface tab)
+
+## THINGS TO NOTICE
+
+(suggested things for the user to notice while running the model)
+
+## THINGS TO TRY
+
+(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
+
+## EXTENDING THE MODEL
+
+(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
+
+## NETLOGO FEATURES
+
+(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
+
+## RELATED MODELS
+
+(models in the NetLogo Models Library and elsewhere which are of related interest)
+
+## CREDITS AND REFERENCES
+
+(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
 @#$#@#$#@
 default
 true
@@ -125,26 +165,15 @@ true
 0
 Polygon -7500403 true true 150 0 0 150 105 150 105 293 195 293 195 150 300 150
 
-ball baseball
+bird
 false
 0
-Circle -7500403 true true 30 30 240
-Polygon -2674135 true false 247 79 243 86 237 106 232 138 232 167 235 199 239 215 244 225 236 234 229 221 224 196 220 163 221 138 227 102 234 83 240 71
-Polygon -2674135 true false 53 79 57 86 63 106 68 138 68 167 65 199 61 215 56 225 64 234 71 221 76 196 80 163 79 138 73 102 66 83 60 71
-Line -2674135 false 241 149 210 149
-Line -2674135 false 59 149 90 149
-Line -2674135 false 241 171 212 176
-Line -2674135 false 246 191 218 203
-Line -2674135 false 251 207 227 226
-Line -2674135 false 251 93 227 74
-Line -2674135 false 246 109 218 97
-Line -2674135 false 241 129 212 124
-Line -2674135 false 59 171 88 176
-Line -2674135 false 59 129 88 124
-Line -2674135 false 54 109 82 97
-Line -2674135 false 49 93 73 74
-Line -2674135 false 54 191 82 203
-Line -2674135 false 49 207 73 226
+Polygon -7500403 true true 135 165 90 270 120 300 180 300 210 270 165 165
+Rectangle -7500403 true true 120 105 180 237
+Polygon -7500403 true true 135 105 120 75 105 45 121 6 167 8 207 25 257 46 180 75 165 105
+Circle -16777216 true false 128 21 42
+Polygon -7500403 true true 163 116 194 92 212 86 230 86 250 90 265 98 279 111 290 126 296 143 298 158 298 166 296 183 286 204 272 219 259 227 235 240 241 223 250 207 251 192 245 180 232 168 216 162 200 162 186 166 175 173 171 180
+Polygon -7500403 true true 137 116 106 92 88 86 70 86 50 90 35 98 21 111 10 126 4 143 2 158 2 166 4 183 14 204 28 219 41 227 65 240 59 223 50 207 49 192 55 180 68 168 84 162 100 162 114 166 125 173 129 180
 
 box
 false
@@ -297,6 +326,17 @@ true
 0
 Line -7500403 true 150 0 150 150
 
+mouse side
+false
+0
+Polygon -7500403 true true 38 162 24 165 19 174 22 192 47 213 90 225 135 230 161 240 178 262 150 246 117 238 73 232 36 220 11 196 7 171 15 153 37 146 46 145
+Polygon -7500403 true true 289 142 271 165 237 164 217 185 235 192 254 192 259 199 245 200 248 203 226 199 200 194 155 195 122 185 84 187 91 195 82 192 83 201 72 190 67 199 62 185 46 183 36 165 40 134 57 115 74 106 60 109 90 97 112 94 92 93 130 86 154 88 134 81 183 90 197 94 183 86 212 95 211 88 224 83 235 88 248 97 246 90 257 107 255 97 270 120
+Polygon -16777216 true false 234 100 220 96 210 100 214 111 228 116 239 115
+Circle -16777216 true false 246 117 20
+Line -7500403 true 270 153 282 174
+Line -7500403 true 272 153 255 173
+Line -7500403 true 269 156 268 177
+
 pentagon
 false
 0
@@ -436,7 +476,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -453,5 +493,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

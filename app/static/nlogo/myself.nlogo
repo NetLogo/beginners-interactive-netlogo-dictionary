@@ -5,13 +5,9 @@ to setup
     set size 0.1 + random-float 0.2
     setxy random-xcor random-ycor
   ]
-
   reset-ticks
 end
-
-
 to go
-
   ask turtles [
     forward 0.05
     let r (size / 2)
@@ -25,7 +21,6 @@ to go
       die
     ]
   ]
-
   tick
 end
 @#$#@#$#@
