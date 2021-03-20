@@ -1,39 +1,38 @@
 patches-own [nutrients]
-
 to setup
   clear-all
   ask patches [
     set nutrients random 10
-    set pcolor scale-color brown nutrients 10 -5
-    sprout 1 [
-      set shape "flower" set size 0.1
+    recolor-soil
+    if nutrients > 0 [
+      sprout 1 [
+        set shape "flower" set size 0.1
+      ]
     ]
   ]
   reset-ticks
 end
-
-to grow-flowers
+to go
   ask turtles [
-    if nutrients >= 1 [
-      set size size + 0.1
+    if nutrients > 0 [
+      set size size + 0.05
       set nutrients nutrients - 1
     ]
   ]
-
-  ask patches [
-    set pcolor scale-color brown nutrients 10 -5
-  ]
   tick
+end
+to recolor-soil
+  set pcolor scale-color brown nutrients 10 -5
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+115
 10
-609
-410
+453
+349
 -1
 -1
-35.55
+30.0
 1
 10
 1
@@ -54,10 +53,10 @@ ticks
 30.0
 
 BUTTON
-69
-50
-135
-83
+5
+10
+105
+55
 NIL
 setup
 NIL
@@ -71,12 +70,12 @@ NIL
 1
 
 BUTTON
-40
-109
-164
-142
+5
+60
+105
+126
 NIL
-grow-flowers
+go
 T
 1
 T
@@ -429,7 +428,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -446,5 +445,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

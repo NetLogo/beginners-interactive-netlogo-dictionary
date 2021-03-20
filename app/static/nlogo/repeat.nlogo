@@ -1,38 +1,31 @@
+turtles-own[turn-angle]
 to setup
   clear-all
-  create-turtles 1
-
-
+  create-turtles 36 [
+    set shape "turtle"
+    pen-down
+  ]
+  layout-circle turtles 2
   reset-ticks
 end
-
-
 to go
-  ask turtles [
-    if color = red [
-      pd repeat 10 [
-        fd 0.2 rt 1
-      ]
-    set color blue
+  repeat 360 [
+    ask turtles [
+      right 1
+      forward 0.03
     ]
-    if color = blue [
-      pd repeat 10 [
-        fd 0.2 rt 1
-      ]
-    set color red
-    ]
+    tick
   ]
-  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-647
-448
+548
+349
 -1
 -1
-13.0
+30.0
 1
 10
 1
@@ -42,10 +35,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
+-5
+5
+-5
+5
 1
 1
 1
@@ -428,7 +421,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

@@ -1,40 +1,38 @@
 to setup
   clear-all
-
   ask patches [
     set pcolor one-of [ brown green ]
   ]
-
   create-turtles 5 [
     set shape "sheep"
     set color white
-    move-to one-of patches
   ]
-
   reset-ticks
 end
-
-to eat-grass
-  if not any? patches with [ pcolor = green ] [ stop ]
-
+to go
   ask turtles [
-    left random 90 right random 90
-    forward 1
-    if [ pcolor ] of patch-here = green [
+    wiggle
+    forward 0.5
+    if pcolor  = green [
       set pcolor brown
     ]
   ]
+  if not any? patches with [ pcolor = green ] [ stop ]
   tick
+end
+to wiggle
+  left random 90
+  right random 90
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+125
 10
-602
-403
+462
+348
 -1
 -1
-29.54
+30.0
 1
 10
 1
@@ -44,10 +42,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--6
-6
--6
-6
+-5
+5
+-5
+5
 1
 1
 1
@@ -55,10 +53,10 @@ ticks
 30.0
 
 BUTTON
-15
-54
-81
-87
+5
+10
+115
+60
 NIL
 setup
 NIL
@@ -72,12 +70,12 @@ NIL
 1
 
 BUTTON
-104
-53
-196
-86
+5
+70
+115
+141
 NIL
-eat-grass
+go
 T
 1
 T
@@ -86,7 +84,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -430,7 +428,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -447,5 +445,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

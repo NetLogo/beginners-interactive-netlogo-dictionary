@@ -1,63 +1,61 @@
+turtles-own [ next-city ]
 to setup
   clear-all
-  ask patches [
+  ask patch 4 4 [
     set pcolor blue
+    set plabel "Valhalla"
   ]
-
+  ask patch -4 -4 [
+    set pcolor green
+    set plabel "Atlantis"
+  ]
   create-turtles 1 [
     set shape "airplane"
-    set color white
+    set color one-of [white red yellow orange]
+    set next-city patch 4 4
+  ]
+  reset-ticks
+end
+to go
+  ask turtles [
+    ifelse draw-path?
+    [ pen-down ]
+    [ pen-up ]
+
+    face next-city
+    wiggle
+    forward 0.5
+    if patch-here = patch 4 4 [
+      set next-city patch -4 -4
+    ]
+    if patch-here = patch -4 -4 [
+      set next-city patch 4 4
+    ]
   ]
   reset-ticks
 end
 
-to fly
-  ask turtles [
-    pen-up
-    right random 60
-    left random 60
-    forward 1
-  ]
-  tick
-end
-
-to fly-and-draw
-  ask turtles [
-    pen-down
-    right random 60
-    left random 60
-    forward 1
-  ]
-  tick
-end
-
-to fly-and-erase
-  ask turtles [
-    pen-up
-    pen-erase
-    right random 60
-    left random 60
-    forward 1
-  ]
-  tick
+to wiggle
+  right random 30
+  left random 30
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+140
 10
-630
-431
+478
+349
 -1
 -1
-37.5
+30.0
 1
 10
 1
 1
 1
 0
-1
-1
+0
+0
 1
 -5
 5
@@ -70,10 +68,10 @@ ticks
 30.0
 
 BUTTON
+5
+10
+130
 65
-36
-131
-69
 NIL
 setup
 NIL
@@ -87,46 +85,12 @@ NIL
 1
 
 BUTTON
-42
-138
-155
-171
-NIL
-fly-and-draw
-T
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-BUTTON
-41
-192
-158
-225
-NIL
-fly-and-erase
-T
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-BUTTON
-67
-85
+5
+75
 130
-118
+155
 NIL
-fly
+go
 T
 1
 T
@@ -136,6 +100,17 @@ NIL
 NIL
 NIL
 1
+
+SWITCH
+5
+165
+132
+198
+draw-path?
+draw-path?
+0
+1
+-1000
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -479,7 +454,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -496,5 +471,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

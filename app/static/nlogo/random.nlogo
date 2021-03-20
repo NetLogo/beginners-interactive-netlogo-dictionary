@@ -1,30 +1,21 @@
 turtles-own [my-roll]
 
-to setup
+to roll-all
   clear-all
+  reset-ticks
   create-turtles 6 [
     set color white
     set size 3
+    set shape "square"
   ]
   layout-circle turtles 3
-
   ask turtles [
-    roll-self
-  ]
-
-end
-
-to roll-self
-  set my-roll (random 6) + 1
-  update-shape
-end
-
-to roll-all
-  ask turtles [
-    roll-self
+    set my-roll (random 6) + 1
+    update-shape
+    display
+    wait 0.1
   ]
 end
-
 to update-shape
   set shape (ifelse-value
     my-roll = 1 ["die 1"]
@@ -37,13 +28,13 @@ to update-shape
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+115
 10
-603
-404
+453
+349
 -1
 -1
-35.0
+30.0
 1
 10
 1
@@ -57,19 +48,19 @@ GRAPHICS-WINDOW
 5
 -5
 5
-0
-0
+1
+1
 1
 ticks
 30.0
 
 BUTTON
-37
-59
-103
-92
-roll
-setup
+5
+10
+110
+43
+NIL
+roll-all
 NIL
 1
 T
@@ -81,10 +72,10 @@ NIL
 1
 
 MONITOR
-36
-115
-93
-160
+5
+55
+110
+100
 Sum
 sum [my-roll] of turtles
 17
@@ -452,7 +443,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -469,5 +460,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

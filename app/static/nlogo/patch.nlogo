@@ -1,52 +1,51 @@
-to setup-tennis-court
+patches-own [ grass-amount ]
+to setup
   clear-all
   ask patches [
-    set pcolor green
+    set grass-amount random 6
+    recolor-grass
   ]
-
-  ask patches with [ abs pxcor = 14 or abs pycor = 21] [
-    set pcolor white
+  ask patches with [ abs pxcor = 5 or abs pycor = 5] [
+    set pcolor brown
+    set grass-amount 0
   ]
-
-  ask patches with [pxcor = 0 and abs pycor < 21 ] [
-    set pcolor white
+  ask n-of 5 patches [
+    sprout 1 [
+      set shape "cow"
+      set color white
+    ]
   ]
-  ask patches with [ abs pxcor > 14 and abs pxcor < 18 ] [
-    set pcolor green
+  reset-ticks
+end
+to go
+  ask turtles [
+    wiggle
+    if [pcolor] of patch-ahead 1 != brown [
+      forward 0.5
+      if grass-amount > 0 [
+        set grass-amount grass-amount - 1
+        recolor-grass
+      ]
+    ]
   ]
-
-  ask patches with [ abs pycor = max-pycor or abs pxcor = max-pxcor ] [
-    set pcolor white
-  ]
-
-  ask patches with [pycor = 0] [
-    set pcolor black
-  ]
-
-  ask patch 0 39 [
-    set pcolor white
-  ]
-
-  ask patch 0 -39 [
-    set pcolor white
-  ]
-
-  create-turtles 1 [
-    set shape "ball tennis"
-    set color green + 2
-    move-to one-of patches
-    set size 3
-  ]
+  tick
+end
+to wiggle
+  right random 90
+  left random 90
+end
+to recolor-grass
+  set pcolor 53 + grass-amount
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-274
+110
 10
-513
-524
+446
+348
 -1
 -1
-6.243243243243244
+30.0
 1
 10
 1
@@ -56,23 +55,23 @@ GRAPHICS-WINDOW
 1
 1
 1
--18
-18
--40
-40
-0
-0
+-5
+5
+-5
+5
+1
+1
 1
 ticks
 30.0
 
 BUTTON
-66
-70
-217
-103
+5
+10
+105
+50
 NIL
-setup-tennis-court
+setup
 NIL
 1
 T
@@ -82,6 +81,45 @@ NIL
 NIL
 NIL
 1
+
+BUTTON
+5
+60
+105
+130
+NIL
+go
+T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+0
+
+MONITOR
+110
+360
+335
+405
+NIL
+sum [grass-amount] of patches
+17
+1
+11
+
+MONITOR
+110
+420
+335
+465
+NIL
+mean [grass-amount] of patches
+3
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -435,7 +473,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -452,5 +490,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

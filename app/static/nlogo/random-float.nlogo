@@ -2,19 +2,15 @@ to setup
   clear-all
   draw-board
 end
-
 to throw
   create-turtles 1 [
     set shape "circle"
     set size 10
     set color yellow
     set heading random-float 360
-    fd random-float 100
-    show (word xcor " " ycor)
+    forward random-float 100
   ]
 end
-
-
 to draw-board
   ask patch 0 0 [
     ask other patches in-radius 100 [
@@ -417,7 +413,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

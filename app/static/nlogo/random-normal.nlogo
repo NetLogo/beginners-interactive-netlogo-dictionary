@@ -1,32 +1,44 @@
-to go
+turtles-own [ income ]
+to setup
   clear-all
-  if height-distribution = "uniform-height-distribution" [
-    create-turtles 100 [
-      set shape "person"
-      set color red
-      move-to one-of patches
-      set size random-float 8.0
+  ask patches [
+    set pcolor white
+  ]
+  create-turtles 5 [
+    set shape "butterfly"
+    set size random-normal 0.5 0.1
+    setxy random-xcor random-ycor
+  ]
+  reset-ticks
+end
+
+to go
+  ask turtles [
+    wiggle
+    forward 0.1
+    if ticks mod 50 = 0 [
+      let parent-size size
+      hatch 1 [
+        set size random-normal parent-size 0.1
+      ]
     ]
   ]
-  if height-distribution = "normal-height-distribution" [
-    create-turtles 100 [
-    set shape "person"
-    set color blue
-    move-to one-of patches
-    set size random-normal 6.5 0.35
-    ]
-  ]
-  update-plots
+  if count turtles > 400 [ stop ]
+  tick
+end
+to wiggle
+  right random 90
+  left random 90
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-313
-18
-753
+120
+10
 459
+350
 -1
 -1
-4.28
+30.0
 1
 10
 1
@@ -36,10 +48,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--50
-50
--50
-50
+-5
+5
+-5
+5
 1
 1
 1
@@ -47,12 +59,12 @@ ticks
 30.0
 
 BUTTON
-53
-93
-254
-126
+5
+10
+115
+55
 NIL
-go
+setup
 NIL
 1
 T
@@ -63,33 +75,84 @@ NIL
 NIL
 1
 
+BUTTON
+5
+60
+115
+125
+NIL
+go
+T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+0
+
 PLOT
-40
-160
-283
-343
-distribution
+120
+355
+460
+475
+butterfly size distribution
 NIL
 NIL
 0.0
-10.0
+1.0
 0.0
 10.0
 true
 false
 "" ""
 PENS
-"default" 0.2 1 -16777216 true "" "histogram [size] of turtles"
+"default" 0.05 1 -16777216 true "" "histogram [size] of turtles"
 
-CHOOSER
-47
-23
-271
-68
-height-distribution
-height-distribution
-"normal-height-distribution" "uniform-height-distribution"
+MONITOR
+120
+480
+212
+525
+NIL
+count turtles
+17
 1
+11
+
+MONITOR
+285
+480
+460
+525
+NIL
+min [size] of turtles
+3
+1
+11
+
+MONITOR
+285
+530
+460
+575
+NIL
+max [size] of turtles
+3
+1
+11
+
+MONITOR
+120
+530
+280
+575
+NIL
+mean [size] of turtles
+3
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -433,7 +496,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -450,5 +513,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

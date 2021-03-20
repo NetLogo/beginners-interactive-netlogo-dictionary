@@ -1,45 +1,67 @@
+breed [houses house]
+breed [bikers biker]
 to setup
   clear-all
   ask patches [
-    set pcolor green
+    set pcolor black
   ]
-  create-turtles 5 [
+  create-houses 5 [
     set shape "house"
-    move-to one-of patches
+    set color gray
   ]
-end
+  layout-circle (sort-on [who] houses) 3
+  create-bikers 1 [
+    set shape "bike"
 
+  ]
+  reset-ticks
+end
 to start-the-day
-  ask patches [
-    ifelse (ticks > 0) and (ticks < 12) [
-      set pcolor black
-    ]
-    [
-      set pcolor green
+  if ticks > 9 and ticks < 16 [
+    ask bikers [
+      repeat 30 [
+        face house (ticks mod 5)
+        forward 0.1
+        display
+      ]
     ]
   ]
-  if ticks >= 24 [
-    reset-ticks
+  ask patches [
+    change-brightness
   ]
   tick
+  if ticks > 24 [
+    reset-ticks
+  ]
+end
+to change-brightness
+  set pcolor (ifelse-value
+    ticks = 0 [ black ]
+    ticks = 5 [ yellow - 3]
+    ticks = 7 [ yellow - 2]
+    ticks = 9 [ yellow]
+    ticks = 18 [ yellow - 1]
+    ticks = 20 [yellow - 3]
+    [ pcolor ]
+  )
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-597
-398
+548
+349
 -1
 -1
-34.5
+30.0
 1
 10
 1
 1
 1
 0
-1
-1
+0
+0
 1
 -5
 5
@@ -153,6 +175,29 @@ arrow
 true
 0
 Polygon -7500403 true true 150 0 0 150 105 150 105 293 195 293 195 150 300 150
+
+bike
+false
+3
+Circle -13791810 false false 24 144 102
+Line -7500403 false 163 183 228 184
+Circle -7500403 false false 213 184 22
+Circle -7500403 false false 156 187 16
+Circle -13791810 false false 28 148 95
+Circle -13791810 false false 174 144 102
+Circle -13791810 false false 177 148 95
+Polygon -2674135 true false 75 195 90 90 98 92 97 107 192 122 207 83 215 85 202 123 211 133 225 195 165 195 164 188 214 188 202 133 94 116 82 195
+Polygon -2674135 true false 208 83 164 193 171 196 217 85
+Polygon -2674135 true false 165 188 91 120 90 131 164 196
+Line -7500403 false 159 173 170 219
+Line -7500403 false 155 172 166 172
+Line -7500403 false 166 219 177 219
+Polygon -13791810 true false 187 92 198 92 208 97 217 100 231 93 231 84 216 82 201 83 184 85
+Polygon -7500403 true false 71 86 98 93 101 85 74 81
+Rectangle -16777216 true false 75 75 75 90
+Polygon -13791810 true false 70 87 70 72 78 71 78 89
+Circle -7500403 false false 153 184 22
+Line -7500403 false 159 206 228 205
 
 box
 false
@@ -444,7 +489,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
