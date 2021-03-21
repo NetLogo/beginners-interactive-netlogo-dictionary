@@ -36,9 +36,9 @@ to spin-right
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-165
+115
 10
-513
+463
 359
 -1
 -1
@@ -65,7 +65,7 @@ ticks
 BUTTON
 5
 10
-105
+110
 50
 NIL
 setup
@@ -80,10 +80,10 @@ NIL
 1
 
 BUTTON
-5
-70
-110
-125
+115
+365
+220
+420
 <- spin-left
 spin-left
 T
@@ -97,10 +97,10 @@ NIL
 1
 
 SLIDER
-5
-130
-110
-163
+225
+365
+350
+398
 degrees
 degrees
 0
@@ -112,10 +112,10 @@ NIL
 HORIZONTAL
 
 BUTTON
-5
-170
-117
-221
+360
+365
+465
+416
 spin-right ->
 spin-right
 T

@@ -1,32 +1,39 @@
-patches-own [signal-strength]
-
+breed [farmers farmer]
+breed [plants plant]
+patches-own [ nutrition ]
 to setup
   clear-all
-  reset-ticks
-
-  create-turtles 4 [
-    move-to one-of patches
-    set shape "X"
-    set color grey
-    set size 1
+  ask patches [
+    set nutrition random-float 5
+    set pcolor scale-color brown nutrition 5 0
   ]
-
-  ask turtles [
-    ask patches in-radius signal-radius [
-     set signal-strength signal-strength + (signal-radius - distance myself)
-     set pcolor scale-color green signal-strength 0 signal-radius
+  create-farmers 1 [
+    set shape "person farmer"
+    set color green
+  ]
+  reset-ticks
+end
+to go
+  ask farmers [
+    move-to one-of neighbors4
+    if nutrition > 3 and not any? plants-here [
+      hatch-plants 1 [
+        set shape "plant"
+        set color scale-color lime nutrition 0 5
+      ]
     ]
   ]
+  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+100
 10
-625
-426
+438
+349
 -1
 -1
-19.4
+30.0
 1
 10
 1
@@ -36,10 +43,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--10
-10
--10
-10
+-5
+5
+-5
+5
 1
 1
 1
@@ -47,10 +54,10 @@ ticks
 30.0
 
 BUTTON
-69
-72
-135
-105
+5
+10
+95
+50
 NIL
 setup
 NIL
@@ -63,27 +70,59 @@ NIL
 NIL
 1
 
-SLIDER
-21
-133
-193
-166
-signal-radius
-signal-radius
-1
-10
-7.0
-1
-1
+BUTTON
+5
+55
+95
+130
 NIL
-HORIZONTAL
+go
+T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+0
 
 @#$#@#$#@
-`scale-color` is a primitive that reports a shade of a color proportional to the value of a given number. For example, in a traffic model, one might use `scale-color` to color cars with a full tank of gas brighter than those with an emptier tank of gas, or, in a model of a flock of sheep, color more lush patches of grass bighter than those that have already been eaten plenty. 
+## WHAT IS IT?
 
-In practice, you use `scale-color` like so: `scale-color color number range1 range2`, where `color` is the desired base hue (red, blue, green, etc.), `number` is the value you wish to scale by (often a turtle or patch variable), and `range1` and `range2` are parameters for describing the minimum and maximum expected values of `number`. If `range1` is less than `range2`, then larger numbers result in brighter colors, but if `range2` is less than `range`, then larger numbers result in darker colors. If the `number` is outside of the range, then either the lightest or darkest shade is chosen. 
+(a general understanding of what the model is trying to show or explain)
 
-In this model, `scale-color` is used to model cell-tower signal strength. Patches closer to the cell towers have better signal strength and are therefore colored brighter than those too far away from a tower to get any signal. 
+## HOW IT WORKS
+
+(what rules the agents use to create the overall behavior of the model)
+
+## HOW TO USE IT
+
+(how to use the model, including a description of each of the items in the Interface tab)
+
+## THINGS TO NOTICE
+
+(suggested things for the user to notice while running the model)
+
+## THINGS TO TRY
+
+(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
+
+## EXTENDING THE MODEL
+
+(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
+
+## NETLOGO FEATURES
+
+(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
+
+## RELATED MODELS
+
+(models in the NetLogo Models Library and elsewhere which are of related interest)
+
+## CREDITS AND REFERENCES
+
+(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
 @#$#@#$#@
 default
 true
@@ -130,6 +169,20 @@ Polygon -16777216 true false 150 255 135 225 120 150 135 120 150 105 165 120 180
 Circle -16777216 true false 135 90 30
 Line -16777216 false 150 105 195 60
 Line -16777216 false 150 105 105 60
+
+cactus
+false
+0
+Polygon -7500403 true true 130 300 124 206 110 207 94 201 81 183 75 171 74 95 79 79 88 74 97 79 100 95 101 151 104 169 115 180 126 169 129 31 132 19 145 16 153 20 158 32 162 142 166 149 177 149 185 137 185 119 189 108 199 103 212 108 215 121 215 144 210 165 196 177 176 181 164 182 159 302
+Line -16777216 false 142 32 146 143
+Line -16777216 false 148 179 143 300
+Line -16777216 false 123 191 114 197
+Line -16777216 false 113 199 96 188
+Line -16777216 false 95 188 84 168
+Line -16777216 false 83 168 82 103
+Line -16777216 false 201 147 202 123
+Line -16777216 false 190 162 199 148
+Line -16777216 false 174 164 189 163
 
 car
 false
@@ -193,26 +246,6 @@ Circle -16777216 true false 60 75 60
 Circle -16777216 true false 180 75 60
 Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
 
-factory
-false
-0
-Rectangle -7500403 true true 76 194 285 270
-Rectangle -7500403 true true 36 95 59 231
-Rectangle -16777216 true false 90 210 270 240
-Line -7500403 true 90 195 90 255
-Line -7500403 true 120 195 120 255
-Line -7500403 true 150 195 150 240
-Line -7500403 true 180 195 180 255
-Line -7500403 true 210 210 210 240
-Line -7500403 true 240 210 240 240
-Line -7500403 true 90 225 270 225
-Circle -1 true false 37 73 32
-Circle -1 true false 55 38 54
-Circle -1 true false 96 21 42
-Circle -1 true false 105 40 32
-Circle -1 true false 129 19 42
-Rectangle -7500403 true true 14 228 78 270
-
 fish
 false
 0
@@ -246,6 +279,15 @@ Circle -7500403 true true 96 51 108
 Circle -16777216 true false 113 68 74
 Polygon -10899396 true false 189 233 219 188 249 173 279 188 234 218
 Polygon -10899396 true false 180 255 150 210 105 210 75 240 135 240
+
+flower budding
+false
+0
+Polygon -7500403 true true 135 120 165 165 180 210 180 240 150 300 165 300 195 240 195 195 165 135
+Polygon -7500403 true true 189 233 219 188 249 173 279 188 234 218
+Polygon -7500403 true true 180 255 150 210 105 210 75 240 135 240
+Polygon -7500403 true true 180 150 180 120 165 97 135 84 128 121 147 148 165 165
+Polygon -7500403 true true 170 155 131 163 175 167 196 136
 
 house
 false
@@ -284,6 +326,21 @@ Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300
 Rectangle -7500403 true true 127 79 172 94
 Polygon -7500403 true true 195 90 240 150 225 180 165 105
 Polygon -7500403 true true 105 90 60 150 75 180 135 105
+
+person farmer
+false
+0
+Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Polygon -1 true false 60 195 90 210 114 154 120 195 180 195 187 157 210 210 240 195 195 90 165 90 150 105 150 150 135 90 105 90
+Circle -7500403 true true 110 5 80
+Rectangle -7500403 true true 127 79 172 94
+Polygon -13345367 true false 120 90 120 180 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 180 90 172 89 165 135 135 135 127 90
+Polygon -6459832 true false 116 4 113 21 71 33 71 40 109 48 117 34 144 27 180 26 188 36 224 23 222 14 178 16 167 0
+Line -16777216 false 225 90 270 90
+Line -16777216 false 225 15 225 90
+Line -16777216 false 270 15 270 90
+Line -16777216 false 247 15 247 90
+Rectangle -6459832 true false 240 90 255 300
 
 plant
 false
@@ -410,7 +467,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -427,5 +484,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

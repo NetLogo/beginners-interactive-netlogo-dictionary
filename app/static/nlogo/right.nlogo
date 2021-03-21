@@ -1,13 +1,10 @@
 to setup
   clear-all
-
   create-turtles 12 [
     set color white
     set shape "dot"
   ]
-
-  layout-circle turtles 5
-
+  layout-circle turtles 6
   create-turtles 1 [
     set shape "arrow"
     set size 3
@@ -17,37 +14,35 @@ to setup
 end
 
 to spin-left
-  if degrees = 0 [ stop ]
+  if degrees = 0 [ set degrees 60 stop ]
   ask turtles [
     if shape = "arrow" [
       left 1
       set degrees degrees - 1
     ]
   ]
-
   tick
 end
 
 to spin-right
-  if degrees = 0 [ stop ]
+  if degrees = 0 [ set degrees 60 stop ]
   ask turtles [
     if shape = "arrow" [
       right 1
       set degrees degrees - 1
     ]
   ]
-
   tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-252
-20
-652
-421
+115
+10
+463
+359
 -1
 -1
-35.64
+20.0
 1
 10
 1
@@ -57,10 +52,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--5
-5
--5
-5
+-8
+8
+-8
+8
 1
 1
 1
@@ -68,10 +63,10 @@ ticks
 30.0
 
 BUTTON
-84
-40
-150
-73
+5
+10
+110
+50
 NIL
 setup
 NIL
@@ -85,11 +80,11 @@ NIL
 1
 
 BUTTON
-20
-95
-105
-128
-NIL
+115
+365
+220
+420
+<- spin-left
 spin-left
 T
 1
@@ -102,26 +97,26 @@ NIL
 1
 
 SLIDER
-30
-159
-202
-192
+225
+365
+350
+398
 degrees
 degrees
 0
 360
-0.0
-1
+60.0
+10
 1
 NIL
 HORIZONTAL
 
 BUTTON
-123
-95
-218
-128
-NIL
+360
+365
+465
+416
+spin-right ->
 spin-right
 T
 1
@@ -475,7 +470,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -492,5 +487,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

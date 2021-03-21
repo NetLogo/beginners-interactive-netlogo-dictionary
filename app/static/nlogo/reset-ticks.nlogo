@@ -16,8 +16,8 @@ to setup
   ]
   reset-ticks
 end
-to start-the-day
-  if ticks > 9 and ticks < 16 [
+to go
+  ifelse ticks > 9 and ticks < 16 [
     ask bikers [
       repeat 30 [
         face house (ticks mod 5)
@@ -25,6 +25,8 @@ to start-the-day
         display
       ]
     ]
+  ][
+    ask bikers [ setxy 0 0 ]
   ]
   ask patches [
     change-brightness
@@ -47,9 +49,9 @@ to change-brightness
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+105
 10
-548
+443
 349
 -1
 -1
@@ -74,12 +76,12 @@ ticks
 30.0
 
 BUTTON
-48
-93
-164
+5
+60
+100
 126
 NIL
-start-the-day
+go
 T
 1
 T
@@ -91,29 +93,12 @@ NIL
 0
 
 BUTTON
-73
-39
-139
-72
+5
+10
+100
+55
 NIL
 setup
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-BUTTON
-59
-148
-157
-181
-NIL
-reset-ticks
 NIL
 1
 T
@@ -506,5 +491,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

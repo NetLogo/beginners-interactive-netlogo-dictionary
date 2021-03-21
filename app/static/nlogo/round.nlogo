@@ -1,50 +1,63 @@
-globals [
-  average-househould-income
-  rounded-average-househould-income
-]
-
-turtles-own [ money ]
-
+breed [farmers farmer]
+breed [plants plant]
+patches-own [ nutrition ]
 to setup
   clear-all
-
-  create-turtles 15 [
-    set shape "house"
-    set size 5
-    setxy random-xcor random-ycor
-    set money random 100
-    set label money
+  ask patches [
+    set nutrition random-float 5
+    set pcolor scale-color brown nutrition 5 0
+    set plabel round nutrition
   ]
-
-  set average-househould-income (mean [money] of turtles)
-
-  set rounded-average-househould-income round (mean [money] of turtles)
-
+  create-farmers 1 [
+    set shape "person farmer"
+    set color green
+  ]
   reset-ticks
-
+end
+to go
+  ask farmers [
+    move-to one-of neighbors4
+    if round nutrition >= 3 and not any? plants-here [
+      hatch-plants 1 [
+        if round nutrition = 3 [
+          set shape "plant"
+          set color green
+        ]
+        if round nutrition = 4 [
+          set shape "flower"
+          set color violet
+        ]
+        if round nutrition = 5 [
+          set shape "flower budding"
+          set color lime
+        ]
+      ]
+    ]
+  ]
+  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+100
 10
-647
-448
+438
+349
 -1
 -1
-13.0
+30.0
 1
 10
 1
 1
 1
 0
+0
+0
 1
-1
-1
--16
-16
--16
-16
+-5
+5
+-5
+5
 1
 1
 1
@@ -52,10 +65,10 @@ ticks
 30.0
 
 BUTTON
-16
-66
-82
-100
+5
+10
+95
+50
 NIL
 setup
 NIL
@@ -68,27 +81,22 @@ NIL
 NIL
 1
 
-MONITOR
-16
-116
-190
-161
-average income of houses
-average-househould-income
-17
+BUTTON
+5
+55
+95
+130
+NIL
+go
+T
 1
-11
-
-MONITOR
-16
-187
-134
-232
-rounded average
-rounded-average-househould-income
-17
-1
-11
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -172,6 +180,20 @@ Polygon -16777216 true false 150 255 135 225 120 150 135 120 150 105 165 120 180
 Circle -16777216 true false 135 90 30
 Line -16777216 false 150 105 195 60
 Line -16777216 false 150 105 105 60
+
+cactus
+false
+0
+Polygon -7500403 true true 130 300 124 206 110 207 94 201 81 183 75 171 74 95 79 79 88 74 97 79 100 95 101 151 104 169 115 180 126 169 129 31 132 19 145 16 153 20 158 32 162 142 166 149 177 149 185 137 185 119 189 108 199 103 212 108 215 121 215 144 210 165 196 177 176 181 164 182 159 302
+Line -16777216 false 142 32 146 143
+Line -16777216 false 148 179 143 300
+Line -16777216 false 123 191 114 197
+Line -16777216 false 113 199 96 188
+Line -16777216 false 95 188 84 168
+Line -16777216 false 83 168 82 103
+Line -16777216 false 201 147 202 123
+Line -16777216 false 190 162 199 148
+Line -16777216 false 174 164 189 163
 
 car
 false
@@ -269,6 +291,15 @@ Circle -16777216 true false 113 68 74
 Polygon -10899396 true false 189 233 219 188 249 173 279 188 234 218
 Polygon -10899396 true false 180 255 150 210 105 210 75 240 135 240
 
+flower budding
+false
+0
+Polygon -7500403 true true 135 120 165 165 180 210 180 240 150 300 165 300 195 240 195 195 165 135
+Polygon -7500403 true true 189 233 219 188 249 173 279 188 234 218
+Polygon -7500403 true true 180 255 150 210 105 210 75 240 135 240
+Polygon -7500403 true true 180 150 180 120 165 97 135 84 128 121 147 148 165 165
+Polygon -7500403 true true 170 155 131 163 175 167 196 136
+
 house
 false
 0
@@ -306,6 +337,21 @@ Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300
 Rectangle -7500403 true true 127 79 172 94
 Polygon -7500403 true true 195 90 240 150 225 180 165 105
 Polygon -7500403 true true 105 90 60 150 75 180 135 105
+
+person farmer
+false
+0
+Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Polygon -1 true false 60 195 90 210 114 154 120 195 180 195 187 157 210 210 240 195 195 90 165 90 150 105 150 150 135 90 105 90
+Circle -7500403 true true 110 5 80
+Rectangle -7500403 true true 127 79 172 94
+Polygon -13345367 true false 120 90 120 180 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 180 90 172 89 165 135 135 135 127 90
+Polygon -6459832 true false 116 4 113 21 71 33 71 40 109 48 117 34 144 27 180 26 188 36 224 23 222 14 178 16 167 0
+Line -16777216 false 225 90 270 90
+Line -16777216 false 225 15 225 90
+Line -16777216 false 270 15 270 90
+Line -16777216 false 247 15 247 90
+Rectangle -6459832 true false 240 90 255 300
 
 plant
 false
@@ -432,7 +478,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -449,5 +495,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

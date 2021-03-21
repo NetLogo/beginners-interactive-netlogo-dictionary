@@ -1,48 +1,43 @@
-;; THIS IS A COMMENT. Notice how the color changes grey so the reader can visibly notice a difference between a comment and a line of code.
-
-
+; a line that starts with a semicolon (;) is a comment
+; a commented  line does not affect how the code runs
+; but it helps us leave notes to ourselves
 to setup
   clear-all
-  ask patches [set pcolor 27]
-
-  create-turtles 1 [set shape "butterfly"
+  ask patches [set pcolor 27] ; 25 is orange, 27 is light orange
+  create-turtles 1 [
+    set shape "butterfly"
     set color pink
-    set size 7]
-
-  create-turtles 3 [set shape "tree"
+  ]
+  create-turtles 1 [
+    set shape "tree"
     set color green
-    set size 13]
-
-  ask turtle 1 [                               ;; COMMENT: This was done in order to set a specific turtle in a specific location,
-    setxy 15 -3]
-
-  ask turtle 2 [
-      setxy -10 -3]
-
-  ask turtle 3 [
-        setxy 2 -3]
-
+    set size 5
+  ]
   reset-ticks
 end
-
-
-
 to go
-ask turtle 0
-  [fd 0.5                                     ;; COMMENT: This makes the butterfly fly
-  right 0.2
+  ask turtle 0 ; turtle 0 is the butter fly
+  [
+    wiggle
+    forward 0.5
   ]
   tick
 end
+; to wiggle means to turn right or left randomly
+; before every newn step
+to wiggle
+  right random 90
+  left random 90
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+110
 10
-751
-292
+448
+349
 -1
 -1
-13.0
+30.0
 1
 10
 1
@@ -52,10 +47,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--20
-20
--10
-10
+-5
+5
+-5
+5
 1
 1
 1
@@ -63,10 +58,10 @@ ticks
 30.0
 
 BUTTON
-11
-70
-77
-103
+5
+10
+105
+50
 NIL
 setup
 NIL
@@ -80,10 +75,10 @@ NIL
 1
 
 BUTTON
-93
-70
-156
-103
+5
+55
+105
+135
 NIL
 go
 T
@@ -438,7 +433,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -455,5 +450,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@
