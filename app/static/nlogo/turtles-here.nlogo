@@ -1,50 +1,49 @@
-globals [ lilypads ]
-
 to setup
   clear-all
   ask patches [
-    set pcolor blue
+    set pcolor gray + 3
   ]
-
-  set lilypads n-of 10 patches
-
-  ask lilypads [
-    set pcolor green
+  ask n-of 3 patches [
+    set pcolor white
   ]
-
-  create-turtles 5 [
-    set shape "frog top"
-    set color green - 2
-    move-to one-of patches
+  create-turtles 20 [
+    set shape "person"
+    set color green
+    setxy random-xcor random-ycor
   ]
-
+  ask one-of turtles [
+    set color violet
+  ]
   reset-ticks
 end
-
 to go
   ask turtles [
-    right random 90 left random 90
-    forward 1
+    wiggle
+    forward 0.1
+    if any? turtles-here with [color = violet][
+      set color violet
+    ]
   ]
-
-  ask lilypads [
-    ifelse any? turtles-here [
-      set pcolor blue
-    ] [
-      set pcolor green
+  ask patches with [pcolor = white][
+    ask turtles-here [
+      set color green
     ]
   ]
   tick
 end
+to wiggle
+  left random 90
+  right random 90
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+120
 10
-601
-402
+458
+349
 -1
 -1
-34.82
+30.0
 1
 10
 1
@@ -65,10 +64,10 @@ ticks
 30.0
 
 BUTTON
-69
-58
-135
-91
+5
+10
+110
+55
 NIL
 setup
 NIL
@@ -82,10 +81,10 @@ NIL
 1
 
 BUTTON
-74
-133
-137
-166
+5
+60
+110
+125
 NIL
 go
 T
@@ -451,7 +450,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -468,5 +467,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

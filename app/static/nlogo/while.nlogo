@@ -1,32 +1,43 @@
+turtles-own [happy?]
 to setup
   clear-all
-  ask patches [
-    set pcolor blue
-  ]
-  create-turtles 1 [
-    set color red
-    set heading 90
-    set shape "turtle"
+  ask n-of 90 patches [
+    sprout 1 [
+      set color one-of [green violet]
+      check-happiness
+    ]
   ]
   reset-ticks
 end
-
-to draw-square
+to go
+  if all? turtles [happy?] [ stop ]
   ask turtles [
-    while [ [ pcolor ] of patch-here = blue ] [
-      repeat 4 [
-        set pcolor white forward 1
-      ]
-      right 90
+    let tries 2
+    while [not happy? and tries > 0] [
+      set tries tries - 1
+      move-to one-of patches with [not any? turtles-here]
+      check-happiness
     ]
+    set shape "face happy"
   ]
   tick
 end
+to check-happiness
+  let current-neighbors turtles-on neighbors
+  let different-neihbors current-neighbors with [color != [color] of myself]
+  ifelse count different-neihbors > 2 [
+    set happy? false
+    set shape "face sad"
+  ][
+    set happy? true
+    set shape "face happy"
+  ]
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+110
 10
-587
+487
 388
 -1
 -1
@@ -51,10 +62,10 @@ ticks
 30.0
 
 BUTTON
-74
-48
-140
-81
+5
+10
+105
+55
 NIL
 setup
 NIL
@@ -68,13 +79,13 @@ NIL
 1
 
 BUTTON
-50
-103
-161
-136
+5
+60
+105
+126
 NIL
-draw-square
-NIL
+go
+T
 1
 T
 OBSERVER
@@ -82,7 +93,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -426,7 +437,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -443,5 +454,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

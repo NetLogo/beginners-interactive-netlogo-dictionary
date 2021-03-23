@@ -1,42 +1,46 @@
-breed [ cars car ]
-cars-own [ gas ]
+turtles-own [ gas speed]
 
 to setup
   clear-all
-  create-cars 5 [
-    setxy random-xcor random-ycor
-    set color blue
-    set shape "car"
-    set heading 90
-    set gas random 25
-    set label gas
+
+  ask patches [
+    if pycor mod 3 = 0 [
+      set pcolor gray + 1
+      if pxcor = min-pxcor [
+        sprout 1 [
+          set shape "car"
+          set heading 90
+          set gas random 10
+          set speed one-of [0.1 0.25 0.5]
+          set label gas
+        ]
+      ]
+    ]
   ]
   reset-ticks
 end
-
-to drive
-  ask cars [
-    set label gas
+to go
+  ask turtles [
     if gas > 0 [
       move
     ]
+    set label round gas
   ]
   tick
 end
-
 to move
-  forward 1
-  set gas (gas - 1)
+  forward speed
+  set gas (gas - speed)
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+115
 10
-641
-442
+453
+349
 -1
 -1
-38.5
+30.0
 1
 10
 1
@@ -57,10 +61,10 @@ ticks
 30.0
 
 BUTTON
-73
-34
-139
-67
+5
+10
+110
+55
 NIL
 setup
 NIL
@@ -74,12 +78,12 @@ NIL
 1
 
 BUTTON
-75
-87
-138
-120
+5
+65
+110
+135
 NIL
-drive
+go
 T
 1
 T
@@ -88,7 +92,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -432,7 +436,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -449,5 +453,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

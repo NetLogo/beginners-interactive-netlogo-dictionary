@@ -26,13 +26,13 @@ to draw-chess-grid
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+135
 10
-647
-448
+493
+369
 -1
 -1
-61.3
+50.0
 1
 10
 1
@@ -53,10 +53,10 @@ ticks
 30.0
 
 BUTTON
-71
-58
-137
-91
+5
+10
+130
+55
 NIL
 setup
 NIL
@@ -70,10 +70,10 @@ NIL
 1
 
 BUTTON
-40
-275
-171
-308
+5
+195
+130
+270
 move the knight
 place
 NIL
@@ -84,24 +84,24 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 INPUTBOX
-30
+5
+65
+130
 125
-179
-185
 x-pos
-2.0
+-2.0
 1
 0
 Number
 
 INPUTBOX
-30
+5
+129
+130
 189
-179
-249
 y-pos
 2.0
 1
@@ -525,7 +525,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -542,5 +542,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

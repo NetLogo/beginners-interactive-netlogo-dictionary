@@ -1,55 +1,47 @@
+breed [hawks hawk]
+breed [butterflies butterfly]
 to setup
   clear-all
-  create-turtles 1 [
-    set shape "cat"
-    set color orange set size 2
+  create-hawks 1 [
+    set shape "hawk"
+    set color brown
+    set size 3
+  ]
+  create-butterflies 1 [
+    set shape "butterfly"
     move-to one-of patches
   ]
-
-  create-turtles 1 [
-    set shape "mouse side"
-    set color white
-    move-to one-of patches
-  ]
-
   ask patches [
-    set pcolor green
+    set pcolor green + 1 + random 3
   ]
-
   reset-ticks
 end
-
-
-to chase-or-run
-  ask turtles with [ shape = "mouse side" ] [
-    if any? other turtles with [ towards myself < 90 ] [
-      set heading towards one-of turtles with [shape = "cat"] - 180
-    ]
-      move
+to go
+  ask hawks [
+   set heading towards one-of butterflies
+   move
   ]
-
-  ask turtles with [shape = "cat"] [
-    set heading towards one-of turtles with [ shape = "mouse side" ]
+  ask butterflies [
+    set heading towards one-of hawks
+    right 180
     move
   ]
-
   tick
 end
-
 to move
-  right random 90
-  left random 90
-  forward 1
+  right random 10
+  left random 10
+  forward 0.1
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+120
 10
-635
-436
+458
+349
 -1
 -1
-37.91
+30.0
 1
 10
 1
@@ -70,10 +62,10 @@ ticks
 30.0
 
 BUTTON
-66
-52
-132
-85
+5
+10
+110
+55
 NIL
 setup
 NIL
@@ -87,12 +79,12 @@ NIL
 1
 
 BUTTON
-41
-108
-158
-141
+5
+65
+110
+136
 NIL
-chase-or-run
+go
 T
 1
 T
@@ -101,7 +93,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -311,6 +303,19 @@ Circle -16777216 true false 113 68 74
 Polygon -10899396 true false 189 233 219 188 249 173 279 188 234 218
 Polygon -10899396 true false 180 255 150 210 105 210 75 240 135 240
 
+hawk
+true
+0
+Polygon -7500403 true true 151 170 136 170 123 229 143 244 156 244 179 229 166 170
+Polygon -16777216 true false 152 154 137 154 125 213 140 229 159 229 179 214 167 154
+Polygon -7500403 true true 151 140 136 140 126 202 139 214 159 214 176 200 166 140
+Polygon -16777216 true false 151 125 134 124 128 188 140 198 161 197 174 188 166 125
+Polygon -7500403 true true 152 86 227 72 286 97 272 101 294 117 276 118 287 131 270 131 278 141 264 138 267 145 228 150 153 147
+Polygon -7500403 true true 160 74 159 61 149 54 130 53 139 62 133 81 127 113 129 149 134 177 150 206 168 179 172 147 169 111
+Circle -16777216 true false 144 55 7
+Polygon -16777216 true false 129 53 135 58 139 54
+Polygon -7500403 true true 148 86 73 72 14 97 28 101 6 117 24 118 13 131 30 131 22 141 36 138 33 145 72 150 147 147
+
 house
 false
 0
@@ -485,7 +490,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -502,5 +507,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

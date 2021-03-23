@@ -1,20 +1,60 @@
+;;; make a bunch of diffferent turtles
+;;; plants
+;;; houses
+;;; dogs
+;;; people
+;;; clouds
 to setup
   clear-all
-  create-turtles 1 ;; creates one turtle with a random color in a random location
-
+  create-turtles 10 [
+    set shape "plant"
+    set color green
+    set size 0.5
+  ]
+  create-turtles 1 [
+    set shape "house"
+    set size 3
+  ]
+  create-turtles 5 [
+    set shape "person"
+  ]
+  create-turtles 4 [
+    set shape "cloud"
+    set color white
+  ]
+  create-turtles 3 [
+    set shape "dog"
+  ]
+  ask turtles [
+    set heading 90
+    move-to one-of patches
+    if shape = "house" [
+      setxy 0 0
+    ]
+    if shape = "cloud" [
+      set ycor max-pycor
+    ]
+  ]
   reset-ticks
 end
 
 to go
-  ask turtles [fd 3] ;; mkaes the turtle go forward three units
-
+  ask turtles [
+    if shape != "house" and shape != "plant" [
+      forward random-float 0.5
+    ]
+    if shape = "plant" [
+      set size size + 0.01
+    ]
+  ]
+  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+115
 10
-728
-529
+453
+349
 -1
 -1
 30.0
@@ -27,10 +67,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--8
-8
--8
-8
+-5
+5
+-5
+5
 1
 1
 1
@@ -38,10 +78,10 @@ ticks
 30.0
 
 BUTTON
-15
-48
-81
-81
+5
+10
+105
+55
 NIL
 setup
 NIL
@@ -55,13 +95,13 @@ NIL
 1
 
 BUTTON
-96
-48
-159
-81
+5
+60
+105
+135
 NIL
 go
-NIL
+T
 1
 T
 OBSERVER
@@ -69,7 +109,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -175,6 +215,15 @@ false
 Circle -7500403 true true 0 0 300
 Circle -16777216 true false 30 30 240
 
+cloud
+false
+0
+Circle -7500403 true true 13 118 94
+Circle -7500403 true true 86 101 127
+Circle -7500403 true true 51 51 108
+Circle -7500403 true true 118 43 95
+Circle -7500403 true true 158 68 134
+
 cow
 false
 0
@@ -186,6 +235,22 @@ cylinder
 false
 0
 Circle -7500403 true true 0 0 300
+
+dog
+false
+0
+Polygon -7500403 true true 300 165 300 195 270 210 183 204 180 240 165 270 165 300 120 300 0 240 45 165 75 90 75 45 105 15 135 45 165 45 180 15 225 15 255 30 225 30 210 60 225 90 225 105
+Polygon -16777216 true false 0 240 120 300 165 300 165 285 120 285 10 221
+Line -16777216 false 210 60 180 45
+Line -16777216 false 90 45 90 90
+Line -16777216 false 90 90 105 105
+Line -16777216 false 105 105 135 60
+Line -16777216 false 90 45 135 60
+Line -16777216 false 135 60 135 45
+Line -16777216 false 181 203 151 203
+Line -16777216 false 150 201 105 171
+Circle -16777216 true false 171 88 34
+Circle -16777216 false false 261 162 30
 
 dot
 false
@@ -413,7 +478,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -430,5 +495,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

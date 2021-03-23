@@ -1,49 +1,58 @@
-patches-own [ swampyness ]
-
+breed [farmers farmer]
+breed [plants plant]
+patches-own [fertilizer]
 to setup
   clear-all
+  create-farmers 1 [
+    set shape "farmer"
+  ]
   ask patches [
-    set swampyness random 10
-    recolor-water
+    set pcolor brown
+    set fertilizer 0
   ]
   reset-ticks
 end
-
 to go
-  ask patches [
-    if swampyness >= 5 [
-      sprout 1 [
-        set shape "bug"
-        set color black
-      ]
-      set swampyness swampyness - 5
+  ask farmers [
+    wiggle
+    forward 0.5
+    if fertilizer < 5 [
+      set fertilizer fertilizer + 1
     ]
-    set swampyness swampyness + 1
-    recolor-water
   ]
-
-  ask turtles [
-    move
+  ask plants [
+    if fertilizer > 3 [
+      set size size + 0.5
+      set fertilizer 0
+    ]
+  ]
+  ask patches [
+    if fertilizer >= 5 and not any? plants-here [
+      sprout 1 [
+        set breed plants
+        set shape "plant"
+        set color green
+        set size 0.1
+      ]
+      set fertilizer 0
+    ]
+    set pcolor scale-color brown fertilizer -20 20
   ]
   tick
 end
-
-to recolor-water
-  set pcolor scale-color blue swampyness -3 15
-end
-
-to move
-  right random 90 left random 90 forward 1
+to wiggle
+  left random 60
+  right random 60
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+110
 10
-599
-400
+448
+349
 -1
 -1
-34.64
+30.0
 1
 10
 1
@@ -64,10 +73,10 @@ ticks
 30.0
 
 BUTTON
-68
-51
-134
-84
+5
+10
+105
+55
 NIL
 setup
 NIL
@@ -81,10 +90,10 @@ NIL
 1
 
 BUTTON
-70
+5
+60
 105
-133
-138
+131
 NIL
 go
 T
@@ -95,7 +104,18 @@ NIL
 NIL
 NIL
 NIL
+0
+
+MONITOR
+10
+160
+112
+205
+NIL
+count plants
+3
 1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -241,6 +261,21 @@ Circle -7500403 true true 8 8 285
 Circle -16777216 true false 60 75 60
 Circle -16777216 true false 180 75 60
 Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
+
+farmer
+false
+0
+Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Polygon -1 true false 60 195 90 210 114 154 120 195 180 195 187 157 210 210 240 195 195 90 165 90 150 105 150 150 135 90 105 90
+Circle -7500403 true true 110 5 80
+Rectangle -7500403 true true 127 79 172 94
+Polygon -13345367 true false 120 90 120 180 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 180 90 172 89 165 135 135 135 127 90
+Polygon -6459832 true false 116 4 113 21 71 33 71 40 109 48 117 34 144 27 180 26 188 36 224 23 222 14 178 16 167 0
+Line -16777216 false 225 90 270 90
+Line -16777216 false 225 15 225 90
+Line -16777216 false 270 15 270 90
+Line -16777216 false 247 15 247 90
+Rectangle -6459832 true false 240 90 255 300
 
 fish
 false
@@ -439,7 +474,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -456,5 +491,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

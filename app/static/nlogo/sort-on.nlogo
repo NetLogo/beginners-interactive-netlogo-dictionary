@@ -1,96 +1,45 @@
+breed [doctors doctor]
+breed [patients patient]
+patients-own [ age ]
 to setup
   clear-all
-  create-planets
+  create-doctors 1 [
+    set shape "doctor"
+    setxy min-pxcor 0
+  ]
+  create-patients 8 [
+    set shape "person"
+    setxy random-xcor random-ycor
+    set age 16 + random 64
+    set label age
+  ]
+  reset-ticks
 end
-
-to sort-planets
-  let sorted sort-on [size] turtles
-  put-planets-in-order sorted
-end
-
-to put-planets-in-order [turtle-list]
-  ask turtles [
-    set xcor position self turtle-list
-    set ycor 0
+to go
+  let x-to-go min-pxcor + 1
+  foreach sort-on [age] patients [
+    the-patient -> ask the-patient [
+      let my-place patch x-to-go 0
+      ifelse patch-here != my-place [
+        face my-place
+        fd 0.1
+      ][
+        move-to my-place
+      ]
+    ]
+    set x-to-go x-to-go + 1
   ]
-end
-
-to create-planets
- crt 1 [
-    set shape "circle"
-    set size .38 / 3.0
-    set label "Mercury"
-    set color brown
-    set ycor random-ycor / 2.0
-    set xcor 1
-  ]
-  crt 1 [
-    set shape "circle"
-    set size .95 / 3.0
-    set label "Venus"
-    set color red - 1
-    set ycor random-ycor / 2.0
-    set xcor 2
-  ]
-  crt 1 [
-    set shape "circle"
-    set size 1 / 3.0
-    set label "Earth"
-    set color green
-    set ycor random-ycor / 2.0
-    set xcor 3
-  ]
-  crt 1 [
-    set shape "circle"
-    set size .53 / 3.0
-    set label "Mars"
-    set color brown - 2
-    set ycor random-ycor / 2.0
-    set xcor 4
-  ]
-  crt 1 [
-    set shape "circle"
-    set size 7 / 3.0
-    set label "Jupiter"
-    set color blue + 3
-    set ycor random-ycor / 2.0
-    set xcor 5
-  ]
-  crt 1 [
-    set shape "circle"
-    set size 6 / 3.0
-    set label "Saturn"
-    set color brown + 1
-    set ycor random-ycor / 2.0
-    set xcor 6
-  ]
-  crt 1 [
-    set shape "circle"
-    set size 4 / 3.0
-    set label "Uranus"
-    set color blue + 2
-    set ycor random-ycor / 2.0
-    set xcor 7
-  ]
-  crt 1 [
-    set shape "circle"
-    set size 3.8 / 3.0
-    set label "Neptune"
-    set color brown
-    set ycor random-ycor / 2.0
-    set xcor 8
-  ]
-  ;; RIP Pluto. You'll always be with us in our hearts.
+  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-8
-26
-592
-227
+115
+10
+453
+349
 -1
 -1
-64.0
+30.0
 1
 10
 1
@@ -100,21 +49,21 @@ GRAPHICS-WINDOW
 0
 0
 1
-0
-8
--1
+-5
+5
+-5
+5
 1
-0
-0
+1
 0
 ticks
 30.0
 
 BUTTON
-74
-262
-140
-295
+5
+10
+110
+50
 NIL
 setup
 NIL
@@ -128,13 +77,13 @@ NIL
 1
 
 BUTTON
-258
-263
-367
-296
+5
+55
+110
+125
 NIL
-sort-planets
-NIL
+go
+T
 1
 T
 OBSERVER
@@ -142,7 +91,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 `sort-on` allows you to sort the agents in an agentset based on some user-chosen agent variable or even an arbirtary reporter. For example, if you wanted to get a list of turtles sorted by their `xcor`, you could use `sort-on [xcor] turtles`, or if you wanted to get a list of patches sorted by the value of their patch variable `"pollution"`, you could use `sort-on [pollution] patches`.
@@ -229,6 +178,25 @@ cylinder
 false
 0
 Circle -7500403 true true 0 0 300
+
+doctor
+false
+0
+Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Polygon -13345367 true false 135 90 150 105 135 135 150 150 165 135 150 105 165 90
+Polygon -7500403 true true 105 90 60 195 90 210 135 105
+Polygon -7500403 true true 195 90 240 195 210 210 165 105
+Circle -7500403 true true 110 5 80
+Rectangle -7500403 true true 127 79 172 94
+Polygon -1 true false 105 90 60 195 90 210 114 156 120 195 90 270 210 270 180 195 186 155 210 210 240 195 195 90 165 90 150 150 135 90
+Line -16777216 false 150 148 150 270
+Line -16777216 false 196 90 151 149
+Line -16777216 false 104 90 149 149
+Circle -1 true false 180 0 30
+Line -16777216 false 180 15 120 15
+Line -16777216 false 150 195 165 195
+Line -16777216 false 150 240 165 240
+Line -16777216 false 150 150 165 150
 
 dot
 false
@@ -456,7 +424,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -473,5 +441,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

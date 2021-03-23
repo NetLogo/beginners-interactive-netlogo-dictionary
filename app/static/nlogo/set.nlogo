@@ -1,61 +1,61 @@
-globals [total-food-eaten]
-
-breed [ sheep a-sheep ]
-
+breed [farmers farmer]
+breed [plants plant]
+farmers-own [
+  berries-picked
+  current-plant
+]
 to setup
   clear-all
+  create-farmers 1 [
+    set shape "farmer"
+    set current-plant nobody
+  ]
+  ask patches [
+    set pcolor one-of [brown lime]
+    if pcolor = brown [
+      sprout-plants 1 [
+        set shape "plant"
+        set color pink
+        set size random-float 1
+      ]
+    ]
+  ]
   reset-ticks
-  set total-food-eaten 0
-
-  ask patches [
-    set pcolor green
-  ]
-
-  create-sheep 10 [
-    set shape "sheep"
-    set color white
-    move-to one-of patches
-  ]
 end
-
-to move-and-eat
-  ask sheep [
-    move
-    if pcolor = green [
-      eat
-      set total-food-eaten total-food-eaten + 1
+to go
+  ask farmers [
+    wiggle
+    forward 0.5
+    set current-plant one-of plants-here
+    if current-plant != nobody [
+      if [size] of current-plant > 0.5 [
+        set berries-picked berries-picked + [size] of current-plant
+        set label precision berries-picked 2
+        ask current-plant [ die ]
+      ]
+    ]
+    set current-plant nobody
+  ]
+  ask plants [
+    if size < 0.5 [
+      set size size + 0.001
     ]
   ]
-
-  ask patches [
-    if random 100 < 1 [
-      set pcolor green
-    ]
-  ]
-
   tick
 end
-
-to eat
-  ask patch-here [
-    set pcolor brown
-  ]
-end
-
-to move
-  right random 90
-  left random 90
-  fd random-float 1
+to wiggle
+  left random 60
+  right random 60
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+110
 10
-601
-402
+448
+349
 -1
 -1
-34.82
+30.0
 1
 10
 1
@@ -69,17 +69,17 @@ GRAPHICS-WINDOW
 5
 -5
 5
-0
-0
+1
+1
 1
 ticks
 30.0
 
 BUTTON
-68
-50
-134
-83
+5
+10
+105
+55
 NIL
 setup
 NIL
@@ -93,12 +93,12 @@ NIL
 1
 
 BUTTON
-41
-95
-161
-128
+5
+60
+105
+131
 NIL
-move-and-eat
+go
 T
 1
 T
@@ -107,16 +107,16 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 MONITOR
-49
-147
-166
-192
-total-food-eaten
-total-food-eaten
-17
+10
+160
+112
+205
+berries-picked
+sum [berries-picked] of farmers
+3
 1
 11
 
@@ -264,6 +264,21 @@ Circle -7500403 true true 8 8 285
 Circle -16777216 true false 60 75 60
 Circle -16777216 true false 180 75 60
 Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
+
+farmer
+false
+0
+Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Polygon -1 true false 60 195 90 210 114 154 120 195 180 195 187 157 210 210 240 195 195 90 165 90 150 105 150 150 135 90 105 90
+Circle -7500403 true true 110 5 80
+Rectangle -7500403 true true 127 79 172 94
+Polygon -13345367 true false 120 90 120 180 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 180 90 172 89 165 135 135 135 127 90
+Polygon -6459832 true false 116 4 113 21 71 33 71 40 109 48 117 34 144 27 180 26 188 36 224 23 222 14 178 16 167 0
+Line -16777216 false 225 90 270 90
+Line -16777216 false 225 15 225 90
+Line -16777216 false 270 15 270 90
+Line -16777216 false 247 15 247 90
+Rectangle -6459832 true false 240 90 255 300
 
 fish
 false
@@ -462,7 +477,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -479,5 +494,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

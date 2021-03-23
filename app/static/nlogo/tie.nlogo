@@ -5,48 +5,43 @@ to setup
   clear-all
   reset-ticks
   ask patches [
-    set pcolor sky
+    set pcolor cyan
   ]
-
   create-whales 1 [
-    set shape "fish-rotatable"
-    set size 6
+    set shape "fish"
+    set size 2
     set color grey
   ]
-
-  create-barnacles 100 [
+  create-barnacles 20 [
     setxy random-xcor random-ycor
-    set shape "circle"
+    set shape "dot"
     set color brown
-    set size .5
+    set size 0.5
   ]
 end
-
 to go
   ask whales [
     swim
-    create-links-to barnacles in-radius 4 [
+    create-links-with barnacles-on neighbors [
       tie
       set color white
     ]
   ]
   tick
 end
-
 to swim
-  right random 15
-  left random 15
-  fd random-float 1
+  set heading 80 + random 20
+  forward 0.1
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+140
 10
-647
-448
+478
+349
 -1
 -1
-13.0
+30.0
 1
 10
 1
@@ -56,10 +51,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
+-5
+5
+-5
+5
 1
 1
 1
@@ -67,10 +62,10 @@ ticks
 30.0
 
 BUTTON
-53
-75
-119
-108
+5
+10
+105
+55
 NIL
 setup
 NIL
@@ -84,10 +79,10 @@ NIL
 1
 
 BUTTON
-54
-127
-117
-160
+5
+60
+105
+140
 NIL
 go
 T
@@ -215,7 +210,7 @@ Circle -16777216 true false 60 75 60
 Circle -16777216 true false 180 75 60
 Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
 
-fish-rotatable
+fish
 true
 0
 Polygon -1 true false 131 256 87 279 86 285 120 300 150 285 180 300 214 287 212 280 166 255
@@ -412,7 +407,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -429,5 +424,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

@@ -3,30 +3,25 @@ to setup
   ask patches [
     set pcolor green
   ]
-
-  create-turtles 10 [
+  create-turtles 3 [
     set shape "sheep"
     set color white
   ]
-
-  create-turtles 10 [
+  create-turtles 1 [
     set shape "wolf"
     set color black
   ]
-
   ask turtles [
-    move-to one-of patches
+    setxy random-xcor random-ycor
   ]
-
   reset-ticks
 end
 
 to go
   ask turtles [
-    left random 90 right random 90
-    forward 1
+    wiggle
+    forward 0.5
   ]
-
   ask turtles with [ shape = "sheep" ] [
     if [ pcolor ] of patch-here = green [
       set pcolor brown
@@ -34,15 +29,19 @@ to go
   ]
   tick
 end
+to wiggle
+  left random
+  90 right random 90
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+110
 10
-614
-415
+448
+349
 -1
 -1
-36.0
+30.0
 1
 10
 1
@@ -63,10 +62,10 @@ ticks
 30.0
 
 BUTTON
-22
-38
-88
-71
+5
+10
+105
+55
 NIL
 setup
 NIL
@@ -80,10 +79,10 @@ NIL
 1
 
 BUTTON
-102
-38
-165
-71
+5
+60
+105
+135
 NIL
 go
 T
@@ -438,7 +437,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -455,5 +454,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

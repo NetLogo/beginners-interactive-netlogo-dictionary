@@ -1,107 +1,37 @@
-turtles-own [hungry? energy]
+turtles-own [energy]
 
 to setup
   clear-all
-  ask patches [
-    set pcolor green
-  ]
 
-  make-bees
-  make-flowers
+  create-turtles 20 [
+    set shape "circle"
+    set energy 0.01
+    set size random-float 1
+    setxy random-xcor random-ycor
+  ]
 
   reset-ticks
 end
 
 to go
-  ask turtles with [ shape = "bee" and color = yellow] [
-    if hungry? = true [
-      face one-of turtles with [ shape = "flower" and color = yellow ]
-      forward 1
-    ]
-    if yellow-flower-here? [
-      set energy 10
-      set hungry? false
-    ]
+  ask turtles [
+    forward speed
   ]
-
-  ask turtles with [ shape = "bee" and color = red] [
-    if hungry? = true [
-      face one-of turtles with [ shape = "flower" and color = red ]
-      forward 1
-    ]
-    if red-flower-here? [
-      set energy 10
-      set hungry? false
-    ]
-  ]
-
-  ask turtles with [ shape = "bee" and hungry? = false ] [
-    right random 90 left random 90
-    forward 1
-    set energy energy - 1
-    if energy <= 0 [
-      set hungry? true
-    ]
-  ]
-
   tick
 end
 
-to-report yellow-flower-here?
-  ifelse any? turtles-here with [ shape = "flower" and color = yellow ] [
-    report true
-  ] [
-    report false
-  ]
-end
-
-to-report red-flower-here?
-  ifelse any? turtles-here with [ shape = "flower" and color = red ] [
-    report true
-  ] [
-    report false
-  ]
-end
-
-to-report hungry-bees
-  report count turtles with [ hungry? = true ]
-end
-
-to make-bees
-   create-turtles 10 [
-    move-to one-of patches
-    set shape "bee"
-    set color yellow
-    set hungry? false
-    set energy random 10
-  ]
-
-  ask n-of 5 turtles with [ shape = "bee" ][
-    set color red
-  ]
-end
-
-to make-flowers
-   create-turtles 2 [
-    set shape "flower"
-    move-to one-of patches
-    set size 2
-    set color yellow
-  ]
-
-  ask one-of turtles with [ shape = "flower" ] [
-   set color red
-  ]
+to-report speed
+  report sqrt (2 * energy / (pi * ((size / 2) ^ 2)))
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+110
 10
-591
-392
+448
+349
 -1
 -1
-33.91
+30.0
 1
 10
 1
@@ -122,10 +52,10 @@ ticks
 30.0
 
 BUTTON
-65
-47
-131
-80
+5
+10
+100
+55
 NIL
 setup
 NIL
@@ -139,10 +69,10 @@ NIL
 1
 
 BUTTON
-65
-107
-128
-140
+5
+60
+100
+120
 NIL
 go
 T
@@ -156,13 +86,35 @@ NIL
 1
 
 MONITOR
-51
-166
-145
-211
+110
+360
+275
+405
 NIL
-hungry-bees
-17
+mean [speed] of turtles
+5
+1
+11
+
+MONITOR
+110
+460
+275
+505
+NIL
+max [speed] of turtles
+5
+1
+11
+
+MONITOR
+110
+410
+275
+455
+NIL
+min [speed] of turtles
+5
 1
 11
 
@@ -533,7 +485,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -550,5 +502,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

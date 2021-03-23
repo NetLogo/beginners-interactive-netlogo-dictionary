@@ -1,62 +1,37 @@
-breed [rabbits rabbit]
-breed [leaves leaf]
-
 to setup
   clear-all
-  ask patches [
-    set pcolor green
-  ]
-
-  set-default-shape rabbits "rabbit"
-
-  create-rabbits 10 [
-    set size 4
-    set color white
+  make-background
+  create-turtles 5 [
+    set shape "butterfly"
     setxy random-xcor random-ycor
   ]
-
-  set-default-shape leaves "leaf"
-    create-leaves 25 [
-    set size 2
-    set color 23
-    setxy random-xcor random-ycor
-  ]
-
   reset-ticks
 end
-
-
-to wiggle
-  ask rabbits [
-    rt random 90
-    lt random 90
-  ]
-end
-
-
 to move
-  ask rabbits [
-    fd 1
+  wiggle
+  forward 1
+end
+to grow
+  set size size + 1
+end
+to wiggle
+    right random 90
+    left random 90
+end
+to make-background
+  ask patches [
+    set pcolor green + 1 + random 3
   ]
 end
-
-to eat
-  ask rabbits [
-  if any? leaves-here [
-      ask leaves-here [ die ]
-    ]
-  ]
-end
-
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+120
 10
-647
-448
+458
+349
 -1
 -1
-13.0
+30.0
 1
 10
 1
@@ -66,10 +41,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
+-5
+5
+-5
+5
 0
 0
 1
@@ -77,10 +52,10 @@ ticks
 30.0
 
 BUTTON
-38
-58
-176
-91
+5
+10
+110
+55
 NIL
 setup
 NIL
@@ -94,55 +69,38 @@ NIL
 1
 
 BUTTON
-8
-95
-98
-128
-eat
-eat
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-BUTTON
-110
-98
-197
-131
-wiggle
-wiggle
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-BUTTON
+5
 65
-142
-146
-175
-move
+110
+125
+NIL
 move
 NIL
 1
 T
-OBSERVER
+TURTLE
 NIL
 NIL
 NIL
+NIL
+0
+
+BUTTON
+5
+130
+110
+195
+NIL
+grow
 NIL
 1
+T
+TURTLE
+NIL
+NIL
+NIL
+NIL
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -382,20 +340,20 @@ Polygon -7500403 true true 135 90 120 45 150 15 180 45 165 90
 rabbit
 true
 0
-Polygon -7500403 true true 61 150 76 180 91 195 103 214 91 240 76 255 61 270 76 270 106 255 132 209 151 210 181 210 211 240 196 255 181 255 166 247 151 255 166 270 211 270 241 255 240 210 270 225 285 165 256 135 226 105 166 90 91 105
-Polygon -7500403 true true 75 164 94 104 70 82 45 89 19 104 4 149 19 164 37 162 59 153
-Polygon -7500403 true true 64 98 96 87 138 26 130 15 97 36 54 86
-Polygon -7500403 true true 49 89 57 47 78 4 89 20 70 88
-Circle -16777216 true false 37 103 16
-Line -16777216 false 44 150 104 150
-Line -16777216 false 39 158 84 175
-Line -16777216 false 29 159 57 195
-Polygon -5825686 true false 0 150 15 165 15 150
-Polygon -5825686 true false 76 90 97 47 130 32
-Line -16777216 false 180 210 165 180
-Line -16777216 false 165 180 180 165
-Line -16777216 false 180 165 225 165
-Line -16777216 false 180 210 210 240
+Polygon -7500403 true true 239 150 224 180 209 195 197 214 209 240 224 255 239 270 224 270 194 255 168 209 149 210 119 210 89 240 104 255 119 255 134 247 149 255 134 270 89 270 59 255 60 210 30 225 15 165 44 135 74 105 134 90 209 105
+Polygon -7500403 true true 225 164 206 104 230 82 255 89 281 104 296 149 281 164 263 162 241 153
+Polygon -7500403 true true 236 98 204 87 162 26 170 15 203 36 246 86
+Polygon -7500403 true true 251 89 243 47 222 4 211 20 230 88
+Circle -16777216 true false 247 103 16
+Line -16777216 false 256 150 196 150
+Line -16777216 false 261 158 216 175
+Line -16777216 false 271 159 243 195
+Polygon -5825686 true false 300 150 285 165 285 150
+Polygon -5825686 true false 224 90 203 47 170 32
+Line -16777216 false 120 210 135 180
+Line -16777216 false 135 180 120 165
+Line -16777216 false 120 165 75 165
+Line -16777216 false 120 210 90 240
 
 sheep
 false
@@ -510,7 +468,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -527,5 +485,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

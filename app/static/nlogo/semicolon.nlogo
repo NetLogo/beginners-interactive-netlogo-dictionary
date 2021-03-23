@@ -6,7 +6,6 @@ to setup
   ask patches [set pcolor 27] ; 25 is orange, 27 is light orange
   create-turtles 1 [
     set shape "butterfly"
-    set color pink
   ]
   create-turtles 1 [
     set shape "tree"
@@ -16,8 +15,7 @@ to setup
   reset-ticks
 end
 to go
-  ask turtle 0 ; turtle 0 is the butter fly
-  [
+  ask turtle 0 [ ; turtle 0 is the butterfly
     wiggle
     forward 0.5
   ]
