@@ -3,10 +3,10 @@ turtles-own [ my-money ]
 
 to setup
   clear-all
-  create-turtles 10 [
+  create-turtles 4 [
     set shape "businessperson"
     set size 2
-    setxy random-xcor random-ycor
+    setxy random-xcor 0
     set label 0
   ]
   reset-ticks
@@ -14,8 +14,9 @@ end
 
 to go
   ask turtles[
-    set my-money my-money + random-float 2 - random-float 2
-    set label round my-money
+    set my-money my-money + random-float 1 - random-float 1
+    set label floor my-money
+    set ycor floor my-money / 5
   ]
   calculate-average-wealth
   tick
@@ -32,8 +33,8 @@ end
 GRAPHICS-WINDOW
 160
 10
-507
-358
+508
+359
 -1
 -1
 20.0

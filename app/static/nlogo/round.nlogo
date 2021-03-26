@@ -31,6 +31,7 @@ to go
           set shape "flower budding"
           set color lime
         ]
+        set size nutrition / 5
       ]
     ]
   ]

@@ -15,7 +15,7 @@ Things to keep in mind when using `all?`:
 
 <br />
 
-In the model example below, there is a flock of sheep. The sheep move around randomly and once they are on a green patch, they eat the grass on that patch. We want the model to stop after all sheep have eaten at least once, so we include the line:
+In the model example below, there is a flock of sheep. The sheep move around randomly and once they are on a green patch, they eat the grass on that patch. We want the model to stop after all sheep have eaten at least once, so we include the following line:
 
 
 
@@ -24,8 +24,4 @@ if all? turtles [ food-eaten > 0 ][
    stop 
 ]
 ```
-
-
-
-
 

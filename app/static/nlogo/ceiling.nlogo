@@ -1,50 +1,43 @@
-turtles-own [ test-score ]
+globals [average-wealth]
+turtles-own [ my-money ]
 
 to setup
   clear-all
-  create-turtles 20 [
-    set shape "person student"
-    set color red
-    move-to one-of patches
-    set test-score random-float 10
+  create-turtles 4 [
+    set shape "businessperson"
+    set size 2
+    setxy random-xcor 0
+    set label 0
   ]
-
-  update-plots
+  reset-ticks
 end
 
-to above-average?
-  if rounding = "round-score-up" [
-    ask turtles [
-      set test-score ceiling test-score
-      if test-score >= mean [test-score] of turtles [
-        set shape "face happy"
-      ]
-    ]
+to go
+  ask turtles[
+    set my-money my-money + random-float 1 - random-float 1
+    set label ceiling my-money
+    set ycor ceiling my-money / 5
   ]
-  if rounding = "round-score-down" [
-    ask turtles [
-      set test-score floor test-score
-      if test-score >= mean [test-score] of turtles [
-       set shape "face happy"
-      ]
-    ]
-  ]
+  calculate-average-wealth
+  tick
+end
 
-  ask turtles [
-    set xcor test-score
-  ]
-
-  update-plots
+to wiggle
+  right random 90
+  left random 90
+end
+to calculate-average-wealth
+  set average-wealth mean [my-money] of turtles
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-257
-35
-800
-385
+160
+10
+508
+359
 -1
 -1
-48.7143
+20.0
 1
 10
 1
@@ -54,10 +47,10 @@ GRAPHICS-WINDOW
 1
 1
 1
-0
-10
--3
-3
+-8
+8
+-8
+8
 1
 1
 1
@@ -65,10 +58,10 @@ ticks
 30.0
 
 BUTTON
-62
-44
-128
-77
+5
+10
+120
+50
 NIL
 setup
 NIL
@@ -82,34 +75,24 @@ NIL
 1
 
 MONITOR
-36
-211
-169
-256
-average-test-score
-mean [ test-score ] of turtles
-17
+5
+120
+150
+165
+average-wealth
+mean [ my-money ] of turtles
+5
 1
 11
 
-CHOOSER
-19
-93
-188
-138
-rounding
-rounding
-"round-score-up" "round-score-down"
-1
-
 BUTTON
-39
-152
-168
-185
+5
+60
+120
+115
 NIL
-above-average?
-NIL
+go
+T
 1
 T
 OBSERVER
@@ -117,25 +100,29 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
-PLOT
-14
-273
-215
-423
-histogram-of-scores
+MONITOR
+5
+175
+150
+220
 NIL
+floor average-wealth
+17
+1
+11
+
+MONITOR
+5
+225
+150
+270
 NIL
-0.0
-10.0
-0.0
-10.0
-true
-false
-"" ""
-PENS
-"default" 1.0 1 -16777216 true "" " histogram [test-score] of turtles"
+ceiling average-wealth
+17
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -207,6 +194,23 @@ Circle -7500403 true true 110 127 80
 Circle -7500403 true true 110 75 80
 Line -7500403 true 150 100 80 30
 Line -7500403 true 150 100 220 30
+
+businessperson
+false
+0
+Rectangle -1 true false 120 90 180 180
+Polygon -13345367 true false 135 90 150 105 135 180 150 195 165 180 150 105 165 90
+Polygon -7500403 true true 120 90 105 90 60 195 90 210 116 154 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 183 153 210 210 240 195 195 90 180 90 150 165
+Circle -7500403 true true 110 5 80
+Rectangle -7500403 true true 127 76 172 91
+Line -16777216 false 172 90 161 94
+Line -16777216 false 128 90 139 94
+Polygon -13345367 true false 195 225 195 300 270 270 270 195
+Rectangle -13791810 true false 180 225 195 300
+Polygon -14835848 true false 180 226 195 226 270 196 255 196
+Polygon -13345367 true false 209 202 209 216 244 202 243 188
+Line -16777216 false 180 90 150 165
+Line -16777216 false 120 90 150 165
 
 butterfly
 true
@@ -494,7 +498,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -511,5 +515,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@
