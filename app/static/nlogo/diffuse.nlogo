@@ -28,8 +28,8 @@ end
 GRAPHICS-WINDOW
 129
 10
-476
-358
+477
+359
 -1
 -1
 20.0
@@ -84,7 +84,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 BUTTON
 9
@@ -101,7 +101,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 `diffuse` is an observer command that acts on every patch in the model. It causes each of them to diffuse (or spread around) the value of a given patch variable to their 8 [neighboring](neighbors) patches. For example, if every patch had a "heat" variable that kept track of how hot that patch was, you could call (as the observer, i.e., not inside of an `ask patches` block) `diffuse heat .5` and every patch would equally distribute half of its heat to its 8 surrounding neighbors (each neighbor would get 1/8th of the 1/2 of the original heat, resulting in each neighbor's heat increasing by 1/16th of the original heat.) The original patch would keep the other 50% of the original heat. 

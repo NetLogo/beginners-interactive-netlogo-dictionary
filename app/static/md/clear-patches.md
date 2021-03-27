@@ -1,4 +1,4 @@
-`Clear-patches` is a primitive that resets all the patches at once. It makes the values of the custom patch variables (defined with the `patches-own` primitive) to their default initial values and makes all the patches black. You can also use its shorthand version `cp` in your code. 
+`clear-patches` is a primitive that resets all the patches at once. It makes the values of the custom patch variables (defined with the `patches-own` primitive) to their default initial values and makes all the patches black. You can also use its shorthand version `cp` in your code. 
 
 
 

@@ -96,7 +96,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 BUTTON
 4
@@ -113,7 +113,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 BUTTON
 239
@@ -130,7 +130,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 `create-links-with` ...

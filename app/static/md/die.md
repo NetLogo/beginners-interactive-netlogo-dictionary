@@ -1,10 +1,13 @@
-`Die` is used by turtles and links to remove it from the model. When a turtle or link is asked to `die`, it no longer exists in the model, will not execute any more code, and will disappear from any agentset it was in. For example, if `count turtles` returned 10, then `ask one-of turtles [die]` was called, now `count turtles` would return 9.
+`die` is a primitive that we use to remove turtles and links from a model. When a turtle or link is asked to `die`, it no longer exists in the model, it will not execute any more code, and it will disappear from any agentset it was in. For example, the following model would have 9 turtles.
 
 
 
-In the model below, a flock of sheep move around and eat grass to gain energy. As a sheep moves, it loses energy; if a sheep ever has 0 energy it will die and remove itself from the model. So we include the following code to remove those sheep:
+```
+create-turtles 10
+ask one-of turtles [ die ]
+```
 
 
 
-``` if energy <= 0 [ die ] ```
+In the model example below, a flock of cows move around on a grassland. Every time they are on a green patch, they eat the grass there and gain energy. Every time they move, they loose some energy. If a grass ever has 0 energy, it dies and removes itself from the model. 
 

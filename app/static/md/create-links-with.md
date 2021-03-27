@@ -1,16 +1,21 @@
-`create-links-with` is a turtle procedure that creates a link between the current turtle (self) to every member of a provided agentset. (compare with `create-link-with`, which creates a link from the current turtle to a *single* other turtle).
+`create-links-with` is a turtle procedure that creates a link between the current turtle (self) to every member of a provided agentset. 
 
-One important thing to keep in mind when using `create-links-with` is that a turtle creating a link to oneself will cause an error. For example, if you were to write:
+
+
 ```
 ask turtles [
-  create-links-with turtles in-radius 5
-]
-```
-you would get an error, because the current "self" turtle would be included in `turtles in-radius 5`, causing a turtle to try to create a link with itself, which is not allowed. To avoid this issue, you will often see the command `other` used with `create-turtles-with` to ensure that no self-links are accidentally created. For example, to fix the above bug, you can instead write:
-```
-ask turtles [
-  create-links-with other turtles in-radius 5
+	create-links-with other turtles-here
 ]
 ```
 
-In this example, `create-links-with` is used to simulate contact tracing, wherein we track every pair of interacting individuals (in our case with a link) and then use that information to track down people who may have been exposed to an infectious illness. In our model, at each tick, every individual creates a link with all other individuals within a small radius of itself, representing a "contact". We can then use the trace back button to highlight every individual who has contacted a potentially infected individual by back tracking along those links.
+
+
+Notice that we use the `other` primitive in our code because if we did not use `other`, our code would give an error. NetLogo shows this error because the `turtles-here` primitive reports all the turtles in a model, including the turtle who is trying to create the links, but a turtle cannot create a link with itself. So, do not forget to use the `other primitive` when you are using similar agentset reporter primitives such as `in-radius` and `turtles`.
+
+
+
+Also keep in mind that his primitive is used to create multiple links at once, so you need to provide an agentset. If you want to create a link with just one specific turtle, you should use the `create-link-with` primitive.\
+
+
+
+In the model example below, we use the `create-links-with` primitive to simulate contact tracing. Every time two people are on the same patch, a new link between them is created. Then, the trace-back button/procedure uses the links between the individuals to trace back the people who may have been exposed to an infectious person. 

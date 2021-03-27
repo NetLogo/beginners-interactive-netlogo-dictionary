@@ -1,4 +1,4 @@
-`distance` is a turtle and patch primitive that reports the distance between the current agent and some other agent. For example, if you wanted to print out the distance from turtle 0 to turtle 1, you could write 
+`distance` is a turtle and patch primitive that reports the distance between the current agent and another provided agent. For example, if you wanted to print out the distance from turtle 0 to turtle 1, you could write 
 
 
 
