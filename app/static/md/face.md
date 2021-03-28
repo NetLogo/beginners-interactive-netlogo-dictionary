@@ -1,6 +1,6 @@
-`face` sets a turtle’s heading to point towards another specific agent. `face` is usually used to point a turtle towards another turtle or a specific patch. For example, if two turtles are on opposite edges of a model, `ask one-of turtles [ face other-turtle ]` will turn the turtle to face the other turtle. `ask turtles [ face patch 0 0 ]` will turn all turtles to face the center of the model. 
+`face` makes turtle change its heading to point towards a specific patch or another turtle. For example,  `ask turtles [ face patch 0 0 ]`  turns all turtles in a model to face the center of the model. 
 
 
 
-In the model below, there is a cat chasing a mouse. The mouse is running from the cat and is trying to escape into its mouse hole. To make the cat chase the mouse and the mouse to run to its hole, we use `face`. 
+In the model example below, we have a person and a butterfly. The person is trying to catch the butterfly, while the butterfly is trying to run away from the person. We use the `face` primitive to make the person turn to the butterfly at every tick before moving one step closer to the butterfly. We also use the `face` primitive to make the butterfly turn to the opposite direction by making it look at the person first and then turn 180 degrees (and add a bit randomness to simulate the flight of the butterfly) at each tick before moving 1 step forward.
 

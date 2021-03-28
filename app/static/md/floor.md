@@ -1,9 +1,5 @@
-`Floor` is a rounding primitive that reports the closest integer below the number, rounding down. For example, `show floor 4.8` would return 4, and `show floor -7.5` would return -8. 
+`floor` is a mathematics primitive that rounds reports the closest integer below a given number. In other words, it rounds the number *down*. For example, `floor 5.2` would report 5, and `floor -4.8` would report -5. 
 
 
 
-`Ceiling` is another rounding primitive that reports the closest integer above the number, rounding up. For example, `show ceiling 5.3` would return 6, and `show ceiling -4.4` would return -4.
-
-
-
-In the model below, we use `ceiling` and `floor` to round up or down on a class's test scores. If the teacher is being friendly, we will use `ceiling` to round the scores up, and if the teacher is being unfriendly, we will use `floor` to round the scores down. 
+In the model example below, each turtle has a `my-money` variable that increases or decreases a little bit at each tick. We use the `floor` primitive to *round up* a turtle's `my-money` variable because we want to present a label under each turtle showing their current money. If we do not round this variable either up or down, their labels would show many floating point numbers such as `1.822882372836`, which would be visually unpleasant. We also use the `floor` primitive in setting their each turtle's `ycor` parameter so that the turtles move only when the rounded-up version of their `my-money` variable changes. If they made or lost just a little bit money, they remain stationary. Lastly, we use the `floor`, and its opposite `ceiling`, for two of our three monitors in the interface.

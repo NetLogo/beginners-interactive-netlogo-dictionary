@@ -1,17 +1,12 @@
-`facexy` is a command for turtles that sets the turtle’s heading towards the point (x,y). Its syntax is:
+`facexy` makes a turtle change its direction (`heading`) to point towards a given coordinate (x,y). For example,  `ask turtles [ facexy 0 0 ]`  turns all turtles in a model to face the center of the model. 
 
 
 
-```facexy [x-cor y-cor]``` 
+Things to keep in mind when using `facexy`: 
+
+* `facexy` doesn't change a turtle's position, only its heading. 
+*  If a turtle is already on the given point (x, y), it will not change change its heading.
 
 
 
-`facexy` doesn't change a turtle's position, only its heading. For example, to make turtle 1 face towards the point (2,3), we would say:
-
-
-
-``` ask turtle 1 [ facexy 2 3 ] ```
-
-
-
-**Note:** if the turtle is already on the point (x, y),  the turtle's heading won't change. In the model below, there are some fish and a single patch of food. The fish are hungry, and all face the patch of food using `facexy` .
+In the model example below, there are some fish and a single patch of food. When the ***add food*** button is clicked, we change the `pcolor` of the the patch at (3, -3) to white, which indicates a food and we ask the fish to look at this coordinate in order to indicate that they turn to the food.

@@ -1,18 +1,19 @@
 to setup
   clear-all
-  ask patch 5 -5 [
-    set pcolor green
-  ]
-  create-turtles 50 [
+  create-turtles 20 [
     set shape "fish"
-    move-to one-of patches
+    setxy random-xcor random-ycor
   ]
+  reset-ticks
 end
 
-to look-at-food
- ask turtles [
-      facexy 5 -5
- ]
+to add-food
+  ask patch 3 -3 [
+    set pcolor white
+  ]
+  ask turtles [
+    facexy 5 -5
+  ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -63,9 +64,9 @@ BUTTON
 5
 60
 120
-125
+121
 NIL
-look-at-food
+add-food
 NIL
 1
 T
@@ -74,7 +75,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
