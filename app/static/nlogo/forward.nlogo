@@ -24,15 +24,22 @@ to go-fast
   ]
   tick
 end
+
+to go-back
+  ask turtles [
+    forward -0.2
+  ]
+  tick
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 120
 10
-468
-159
+458
+349
 -1
 -1
-20.0
+30.0
 1
 10
 1
@@ -42,10 +49,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--8
-8
--3
-3
+-5
+5
+-5
+5
 1
 1
 1
@@ -93,6 +100,23 @@ BUTTON
 160
 NIL
 go-fast
+T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+0
+
+BUTTON
+5
+165
+110
+215
+NIL
+go-back
 T
 1
 T

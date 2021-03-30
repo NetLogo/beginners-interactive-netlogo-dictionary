@@ -1,13 +1,49 @@
-`globals` keeps track of information that should be common to the entire model. Global variables are always declared at the very top of your code, and its syntax is:
+`globals` is a primitive that we use to define custom *global variables* in NetLogo. A global variable is a variable that has the same value for all the agents in the model accross all procedures. You can define your custom global variables by writing  `globals` followed by brackets `[]`.
 
 
 
-``` globals [ variable-name ] ```
+```
+globals [
+	temperature
+	oil-price
+	usd-eur-exchange-rate
+]
+```
 
 
 
-In the same way that the value of a slider can be accessed anywhere in NetLogo code, any bit of your code can both set (using the `set` command) and read (by typing the name of the global) the value of a global. This fact makes globals useful for defining model-wide constants that you don't want the user to be able to change from a slider. It also makes them useful for keeping track of variable model-wide information that any agent can modify, for instance, the total accumulated volume of transactions in an economy model or the number of times that a predator caught their prey in an ecological model.
+Once you define a global variable, you can then use the `set` primitive to change its value:
 
-`Update: when you create interface elements such as sliders, switchers and choosers, their values are stored in a global variable.`
 
-In this example, a global is used to keep track of a model-wide variable, the total patches of grass eaten by all the 20 sheep in the model. In the `setup` procedure, we set it to 0, and then in the `go` procedure, each time a sheep eats a patch of grass, we increment it by one by setting its value to what its value used to be plus one, i.e. `set total-food-eaten total-food-eaten + 1`.
+
+```
+set usd-eur-exchange-rate 0.85
+set temperature 36
+```
+
+
+
+And use its name to access its value in your code just like any other variable:
+
+
+
+```
+if oil-price < 1.5 and usd-eur-exchange-rate < 0.8 [
+	buy-oil
+]
+```
+
+
+
+Things to keep in mind when using `globals`: 
+
+* When you create an interface element such as a *slider*, *switch*, or *chooser*, its name automatically becomes a global variable and you do not need to define it within the `globals` primitive. 
+* You cannot have two global variables with the same name.
+* You cannot start a variable name with a number. For example, the following code would show an error `globals [1st-offer]`.
+* You should always define your global variables in the beginning of your NetLogo code.
+* If you would like to create a variable that is only needed temporarily and within just one specific procedure, you should use the `let` primitive instead.
+* If you need a variable that has a different value for each turtle, each patch, or each link, you should use one of the following primitives: `turtles-own`, `patches-own`,`links-own`.
+
+
+
+In the model example below, we have some brown patches that represent the earth and some green patches that represent berries. We also have five turtles that represent the people who pick the berries. We use a global variable to keep track of the total number of the berries that are collected by all the people in the model. In the `setup` procedure, we set it to 0, and then in the `go` procedure, each time a person grabs a berry (turns a patch from green to brown), we increment the `berries-picked` global variable by one. We check the value of this global variable at each tick. If our pickers picked 60 or more berries, we stop the model. We also show the value of this variable through a monitor on the model's interface.

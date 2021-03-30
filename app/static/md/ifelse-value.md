@@ -1,31 +1,50 @@
-`ifelse-value` is a primitive that allows the user to quickly and concisely check a number of conditions and execute different code depending on the results. There is nothing that you can do with `ifelse-value` that you could not already do with a series of `if` or `ifelse` statements, but the strength of `ifelse-value` is in its syntactic efficiency. For example, say you wanted to check which of the four quadrants of the world a given turtle is in. Compared to the `if` version, the `ifelse-value` one is arguably much cleaner.
+`ifelse-value` is a primitive that allows us to quickly and concisely check a number of conditions and pick a value accordingly. This primitive helps us not write many consecutive `if` or `ifelse` statements. 
+
+
+
+For example, if we wanted to check which of the four quadrants of the world a given turtle is in, our first option is to write a code as follows:
 
 ```
-to-report report-quadrant-if
+to-report where-am-i
   if xcor > 0 and ycor > 0 [
-	report 1
+    	report "upper-right"
   ]
   if xcor < 0 and ycor > 0 [
-	report 2
+    	report "upper-left"
   ]
   if xcor < 0 and ycor < 0 [
-	report 3
+    	report "lower-left"
   ]
   if xcor > 0 and ycor < 0 [
-	report 4
+    	report "lower-right"
   ]  
 end
+```
 
-to-report report-quadrant-ifelse-value
+
+
+However, this many `if` statements make it hard to read the code. Instead, we can use the `ifelse-value` primitive as follows to make a much more concise code:
+
+
+
+```
+to-report where-am-i
   report (ifelse-value
-	xcor > 0 and ycor > 0 [1]
-	xcor < 0 and ycor > 0 [2]
-	xcor < 0 and ycor < 0 [3]
-                      	[4] ; else
+    	xcor > 0 and ycor > 0 ["upper-right"]
+    	xcor < 0 and ycor > 0 ["upper-left"]
+    	xcor < 0 and ycor < 0 ["lower-left"]
+    	["lower-right"] ; if none of the conditions are true
   )
 end
 ```
 
-One important thing to note about using `ifelse-value` is that you must wrap the whole thing with parentheses if you use more than one condition. In addition, know that you can omit the final condition and the last set of brackets that you write will be treated like an `else` statement, specifying what will happen if none of the conditions are true.
 
-The following example shows a place where `ifelse-value` can be used to make code more succinct and, one you are familiar, more readable: choosing one of six die icons for a six
+
+Things to keep in mind when using `ifelse-value`: 
+
+* You should wrap the whole `ifelse-value` within parantheses `()`.
+* You can provide a last set of commands within brackets but without any preceding condition(s). This last set of commands will be treated like an `else` statement, specifying what will happen if none of the conditions are true. You can also omit this final condition.
+
+
+
+In the model example below, we have six dices. Every time we click the *roll-all* button, each turtle picks a random number between 1 to 6. Then, we use the `ifelse-value` primitive to pick the correct turtle shape to represent the corresponding die value.

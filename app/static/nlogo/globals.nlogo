@@ -1,29 +1,20 @@
 globals [ berries-picked ]
-
 to setup
   clear-all
   set berries-picked 0
-
   ask patches [
     set pcolor brown
   ]
-
   ask n-of 100 patches [
-    if season = "spring" [
-      set pcolor green
-    ]
-    if season = "summer" [
-      set pcolor lime
-    ]
+    set pcolor one-of [green lime]
   ]
-
-  create-turtles 20 [
+  create-turtles 5 [
     set shape "person"
   ]
   reset-ticks
 end
-
 to go
+  if berries-picked >= 60 [ stop ]
   ask turtles [
     wiggle
     forward 0.5
@@ -32,11 +23,8 @@ to go
       set berries-picked berries-picked + 1
     ]
   ]
-
-
   tick
 end
-
 to wiggle
   right random 90
   left random 90
@@ -102,42 +90,6 @@ NIL
 NIL
 NIL
 1
-
-SLIDER
-115
-365
-460
-398
-number-of-sheep
-number-of-sheep
-0
-200
-50.0
-1
-1
-NIL
-HORIZONTAL
-
-SWITCH
-115
-415
-285
-448
-regrow-grass?
-regrow-grass?
-1
-1
--1000
-
-CHOOSER
-290
-415
-460
-460
-season
-season
-"spring" "summer"
-0
 
 MONITOR
 5

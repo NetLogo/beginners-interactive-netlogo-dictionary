@@ -1,9 +1,11 @@
+turtles-own[trapped?]
 to setup
   clear-all
   create-turtles 5 [
     set shape "mouse"
     set color brown
     setxy random-xcor random-ycor
+    set trapped? false
   ]
   ask patches [
     set pcolor gray
@@ -15,10 +17,13 @@ to setup
 end
 to go
   ask turtles [
-    if  pcolor = violet [ set color orange ]
-    if pcolor = gray [
+    if pcolor = violet [
+      set trapped? true
+      set color orange
+    ]
+    if not trapped? [
       wiggle
-      forward 1
+      forward 0.5
     ]
   ]
   tick

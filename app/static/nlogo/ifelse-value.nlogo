@@ -57,7 +57,7 @@ BUTTON
 5
 10
 110
-70
+75
 NIL
 roll-all
 NIL
@@ -72,9 +72,9 @@ NIL
 
 MONITOR
 5
-80
+90
 110
-125
+135
 Sum
 sum [my-roll] of turtles
 17
