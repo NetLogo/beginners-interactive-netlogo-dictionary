@@ -12,26 +12,27 @@ end
 
 to go
   ask turtles [
+    ask my-links [ die ]
+  ]
+  ask one-of turtles [
     set color gray
     if money > 0 [
       set money money - 5
-      ask one-of other turtles [
+      create-link-with one-of other turtles
+      ask link-neighbors [
         set money money + 5
       ]
     ]
     set label money
   ]
-
   let three-richest max-n-of 3 turtles [money]
   ask three-richest [
      set color blue
   ]
-
   let three-poorest min-n-of 3 turtles [money]
   ask three-poorest [
      set color red
   ]
-
   tick
 end
 @#$#@#$#@
@@ -49,8 +50,8 @@ GRAPHICS-WINDOW
 1
 1
 0
-1
-1
+0
+0
 1
 -5
 5
