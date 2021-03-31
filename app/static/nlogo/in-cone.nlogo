@@ -1,31 +1,25 @@
 breed [cameras camera]
 breed [animals animal]
-
 to setup
   clear-all
-
   ask patches [
     set pcolor green
   ]
-
   create-cameras 4 [
     set shape "arrow"
     set color grey
   ]
   layout-circle cameras 2
-
   ask cameras [
     ask patches in-cone 5 60 [
       set pcolor green + 1
     ]
   ]
-
-  create-animals 2 [
+  create-animals 4 [
     set shape one-of ["wolf" "moose"]
     set color brown
     setxy random-xcor random-ycor
   ]
-
   create-turtles 1 [
     set shape "house"
     set size 2
@@ -58,8 +52,8 @@ end
 GRAPHICS-WINDOW
 125
 10
-472
-358
+473
+359
 -1
 -1
 20.0

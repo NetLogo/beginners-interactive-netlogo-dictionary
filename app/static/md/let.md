@@ -1,21 +1,18 @@
-`Let` is used to create a new **local variable** and set its value. A **local variable** is a variable that only exists within the brackets `[...]` or procedure it was created in, unlike a global variable. It can only be used in the code that comes *after* its declaration, and takes the form of: 
+The `let` primitive allows us to create new local variables and set their initial values. A local variable is a variable that only exists within the procedure it was created in or within the brackets of a specific `ask` statement. However, similar to a `global` variable, its value is the same for all the turtles. Once you create a local variable with `let`, you can then use the `set` primitive to assign it a new value. `let` is very useful for calculating temporary values or creating temporary agentsets.
 
 
 
-```let variable-name initial-value```
-
-
-
-For example, to create a new local variable called `my-blue-friends` and to set its value to all the blue person-shaped turtles, we would say:
-
-
-
-``` 
-let my-blue-friends turtles with [ color = blue and shape = “person” ] 
-ask my-blue-friends [ forward 1 ]
+```
+ask turtles [
+	let people-nearby (other turtles in-radius 2)
+  if any? people-nearby [
+  	let new-friend one-of people-nearby
+  	set my-friends (lput new-friend my-friends)
+  ]
+]
 ```
 
 
 
- Then, asking `my-blue-friends` to move forward moves all blue person-shaped turtles forward. To change the value of the variable after creating it, use `set`. 
+The model example below shows how `let` works. We have some happy and some sad turtles in this model. Every time two turtles are on the same patch, one turtle will ask the other to change its shape. In a way, either a sad turtle will make its friend sad, or a happy turtle will make its friend happy. We use `let` in this model because it allows us to not rewrite a longer piece of code again and again (`other turtles-here`).
 

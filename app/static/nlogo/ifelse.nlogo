@@ -3,15 +3,13 @@ cars-own [gas]
 
 to setup
   clear-all
-
   create-cars 5 [
     setxy (random-xcor) (one-of [-1 0 1])
     set heading 90
     set shape "car"
     set color yellow
-    set gas random-float 1
+    set gas 90
   ]
-
   create-gas-station
   draw-road
   reset-ticks
@@ -19,20 +17,16 @@ end
 
 to go
   ask cars [
-    set color scale-color yellow gas 0 1
-
-    ifelse pxcor = 0 and gas < 1 [
-      set gas gas + .05
+    ifelse pxcor = 0 and gas < 100 [
+      set gas gas + 5
+    ][
+      forward 0.5
+      set gas gas - 2.5
     ]
-    [
-      forward .5
-      set gas gas - .025
-    ]
+    update-gas-level
   ]
-
   tick
 end
-
 to draw-road
   ask patches [
     ifelse (abs pycor <= 1)[
@@ -42,7 +36,6 @@ to draw-road
     ]
   ]
 end
-
 to create-gas-station
    create-turtles 1 [
     setxy 0 2
@@ -50,6 +43,9 @@ to create-gas-station
     set color brown
     set size 2
   ]
+end
+to update-gas-level
+  set color scale-color yellow gas 0 100
 end
 @#$#@#$#@
 GRAPHICS-WINDOW

@@ -1,12 +1,25 @@
-`ifelse`, much like `if`, is used to run certain commands conditionally, that is, based on some given true-or-false condition. `ifelse` is used when you want to run one set of commands *if* a condition is true and another set otherwise.
+`ifelse` is used to define two sets of rules to be followed by turtles conditionally: one set if a provided condition is *true* and another set if the condition is *false*. To do so, we use the following format: `ifelse condition(s)[...][...]`.
 
-For instance, at the beginning of many sports matches, a coin is flipped to determine who gets the ball first. *if* team A wins, then they get the ball, *else* (otherwise), team B gets the ball. to put this into NetLogo code, we would say:
+
+
 ```
-ifelse team-A-wins-flip [
-	give-team-A-ball
-] [
-	give-team-B-ball
+ask cows [
+	ifelse thirst > 10 [
+		drink-water
+	][
+		eat-grass
+	]
 ]
 ```
 
-This example simulates cars driving down a road, stopping at a gas station to top up their tanks before moving on. Each tick, each car checks if they are at the gas station (if the patch they are on has an x coordinate of 0) and if they are at less than a full tank of gas. If so, they start filling up their tank, otherwise, they start driving. Each time a car drives, it loses a little bit of gas, so when it loops back around to the gas station again, it will fill itself up again.
+
+
+Things to keep in mind when using `if-else`: 
+
+* You can combine two or more conditional statements using `and` and `or` primitives.
+* You can use the `not` primitive to make true statements false, and vice-versa.
+* If you need your agents to follow a set of rules only if the provided condition is true, but do nothing otherwise, you should use the `if` primitive. 
+
+
+
+The model example has some cars driving down a road and a gas station in the middle. The cars stop at the gas station to top up their tanks before moving on. At each tick, each car checks if it is at the gas station and if its tank is not full (less than 1) (if the patch they are on has an x coordinate of 0). If it is not at the gas station, it keeps moving. If it is at the gas station,it starts filling up its tank until full. Otherwise, it start moving again. Each time a car drives, it loses a little bit of gas, so when it loops back around to the gas station again, it will refill its tank.

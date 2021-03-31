@@ -1,32 +1,37 @@
+globals [ radius ]
 to setup-empty
   clear-all
+  set radius 2
   reset-ticks
 end
-
 to setup-random
   setup-empty
-  create-turtles 35 [
-    setxy random-xcor random-ycor
-    pen-down
-  ]
+  make-houses 10
 end
-
 to go
-  if count turtles < 36 [
-    create-turtles 1
-    layout-circle turtles 5
+  if count turtles < 10 [
+    make-houses 1
   ]
+  layout-circle turtles radius
+  set radius radius + 0.1
+  if radius > 5 [ set radius 2 ]
   tick
+end
+to make-houses[n]
+  create-turtles n [
+    set shape "house"
+    setxy random-xcor random-ycor
+  ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 120
 10
-468
-359
+458
+349
 -1
 -1
-20.0
+30.0
 1
 10
 1
@@ -36,10 +41,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--8
-8
--8
-8
+-5
+5
+-5
+5
 1
 1
 1

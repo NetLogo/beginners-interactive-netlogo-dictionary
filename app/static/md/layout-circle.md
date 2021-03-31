@@ -1,13 +1,22 @@
-`layout-circle` is a primitive that moves an agentset or list of turtles into an evenly spaced circle of a given radius. The syntax is:
+`layout-circle` is a primitive that moves a set of turtles into an evenly spaced circle of a given radius. For example:
 
 
 
-``` layout-circle agentset radius ```
+```
+create-turtles 100 [
+	set shape "person"
+]
+layout-circle turtles 10
+```
 
 
 
-It is often used with models that use links because it makes it easy to see which turtles are connected to which. The turtles will create the circle around the center of the world, and will all face outwards. `layout-circle`  is an observer command (not called within an `ask` block) because it acts on all of the turtles "at once", not just one at a time. When using an agentset, the order of turtles is random, but when used with a list-of-turtles, the turtles are arranged clockwise in the given order starting at the top of the circle. 
+Things to keep in mind when using `layout-circle`: 
+
+* `layout-circle` is an *observer-only* primitive, so you cannot use it within an `ask` statement.
+* The actual placement of turtles in a circle layout will be random every single time you use this primitive with an *agentset*. 
+* You can use layout-circle with custom turtle breeds such as `layout-circle tables 3`.
 
 
 
-The model below shows a typical use of `layout-circle` in a network diagram. 
+The model example below demonstrates how  `layout-circle` works. It has two *setup* buttons: one to create an empty model and another to create a model with 10 houses at random places. When the go button is clicked, we create a new house at each tick if there are less than 10 houses (i.e. if we used the setup-empty button). Then, we use `layout-turtle` to organize our neighborhood. This model also includes a variable radius and increments it at each tick to show how `layout-turtle` works at for different radius values.

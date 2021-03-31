@@ -1,30 +1,27 @@
 turtles-own [ friends ]
-
 to setup
   clear-all
   ask patches [ set pcolor white ]
   create-turtles 8 [
-    set shape one-of ["face happy" "face sad"]
+    set shape one-of ["happy" "sad"]
     set friends 0
     setxy random-xcor random-ycor
   ]
   reset-ticks
 end
-
 to go
   ask turtles [
     wiggle
     forward 0.5
-    let people-near-me other turtles-here
-    if any? people-near-me [
-      ask one-of people-near-me [
+    let people-nearby other turtles-here
+    if any? people-nearby [
+      ask one-of people-nearby [
         set shape [shape] of myself
       ]
     ]
   ]
   tick
 end
-
 to wiggle
   right random 30
   left random 30
@@ -33,8 +30,8 @@ end
 GRAPHICS-WINDOW
 115
 10
-462
-358
+463
+359
 -1
 -1
 20.0
@@ -234,14 +231,6 @@ false
 0
 Circle -7500403 true true 90 90 120
 
-face happy
-false
-0
-Circle -7500403 true true 8 8 285
-Circle -16777216 true false 60 75 60
-Circle -16777216 true false 180 75 60
-Polygon -16777216 true false 150 255 90 239 62 213 47 191 67 179 90 203 109 218 150 225 192 218 210 203 227 181 251 194 236 217 212 240
-
 face neutral
 false
 0
@@ -249,14 +238,6 @@ Circle -7500403 true true 8 7 285
 Circle -16777216 true false 60 75 60
 Circle -16777216 true false 180 75 60
 Rectangle -16777216 true false 60 195 240 225
-
-face sad
-false
-0
-Circle -7500403 true true 8 8 285
-Circle -16777216 true false 60 75 60
-Circle -16777216 true false 180 75 60
-Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
 
 fish
 false
@@ -291,6 +272,14 @@ Circle -7500403 true true 96 51 108
 Circle -16777216 true false 113 68 74
 Polygon -10899396 true false 189 233 219 188 249 173 279 188 234 218
 Polygon -10899396 true false 180 255 150 210 105 210 75 240 135 240
+
+happy
+false
+0
+Circle -7500403 true true 8 8 285
+Circle -16777216 true false 60 75 60
+Circle -16777216 true false 180 75 60
+Polygon -16777216 true false 150 255 90 239 62 213 47 191 67 179 90 203 109 218 150 225 192 218 210 203 227 181 251 194 236 217 212 240
 
 house
 false
@@ -341,6 +330,14 @@ Polygon -7500403 true true 165 180 165 210 225 180 255 120 210 135
 Polygon -7500403 true true 135 105 90 60 45 45 75 105 135 135
 Polygon -7500403 true true 165 105 165 135 225 105 255 45 210 60
 Polygon -7500403 true true 135 90 120 45 150 15 180 45 165 90
+
+sad
+false
+0
+Circle -7500403 true true 8 8 285
+Circle -16777216 true false 60 75 60
+Circle -16777216 true false 180 75 60
+Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
 
 sheep
 false
