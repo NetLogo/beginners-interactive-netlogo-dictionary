@@ -1,5 +1,39 @@
-`Max-pxcor` and `max-pycor` return patches' maximum x-coordinate and maximum y-coordinate, respectively. The maximum x and y coordinates of patches also determine the size of the model, and must always be greater than or equal to zero. `Max-pxcor` and `max-pycor` cannot be changed within the code; the size of the world can only be changed by editing the view. 
+`max-pycor` reports the `pycor` of the topmost patches in a model. This primitive, and its siblings `min-pxcor`, `max-pxcor`, `min-pycor`, are very useful in modeling the agent behavior that involves the boundaries of an environment. For example, if we wanted to build a model where we had a wall at the edges, we would write the following code:
 
-Similarly, `min-pxcor` and `min-pycor` return patches' minimum x-coordinate and minimum y-coordinate respectively. The minimum x and y coordinates must be less than or equal to zero. For example, `ask patches with [pxcor = min-pxcor or pycor = min-pycor] [ set pcolor blue ]` would set the patches along the bottom and left side of the model to blue. 
 
-Note: like how turtles use `color` and patches use `pcolor`, it is important to distinguish between `xcor` and `ycor`, which are only used by turtles, and `pxcor` and `pycor`, which are only used by patches. 
+
+```
+ask patches [
+	if pxcor = max-pxcor or
+	   pxcor = min-pxcor or
+	   pycor = max-pycor or
+	   pycor = min-pycor [
+	   		set pcolor gray
+	   ]
+]
+```
+
+
+
+Or if we wanted turtles to not walk beyond the world's borders, we would write the following code:
+
+
+
+```
+ask turtles [
+	if [pxcor] of patch-ahead 1 < max-pycor [
+		forward 1
+	] 
+]
+```
+
+
+
+Things to keep in mind when using `max-pycor`: 
+
+* `max-pxcor`,`min-pxcor`,`max-pycor`, and `min-pycor` are not variables; they are constant reporters. That is, you a code such as `set max-pycor 30` would show an error message. 
+* You can change your model's size through the **Settings** button in the Interface Tab or using the `resize-world` primitive.
+
+
+
+In the model example below, we use `max-pycor` and its siblings to create walls that represent a container. The balls inside the container bounce off of the green wall but they *stick* to the red wall.

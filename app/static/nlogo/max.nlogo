@@ -9,29 +9,29 @@ to setup
   layout-circle turtles 4
   reset-ticks
 end
-
 to go
   ask turtles [
+    ask my-links [ die ]
+  ]
+  ask one-of turtles [
     set color gray
     if money > 0 [
       set money money - 5
-      ask one-of other turtles [
+      create-link-with one-of other turtles
+      ask link-neighbors [
         set money money + 5
       ]
     ]
     set label money
   ]
-
   ask turtles [
     if money = max [money] of turtles [
       set color blue
     ]
-
     if money = min [money] of turtles [
       set color red
     ]
   ]
-
   tick
 end
 @#$#@#$#@

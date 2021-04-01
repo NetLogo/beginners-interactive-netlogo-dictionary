@@ -9,7 +9,6 @@ to setup
   layout-circle turtles 4
   reset-ticks
 end
-
 to go
   ask turtles [
     ask my-links [ die ]
