@@ -1,13 +1,28 @@
-The primitive `mod` completes the **modulo operation**, which takes two numbers, divides them, and returns the remainder. The remainder of `(number1 / number2)` is the value reported. Its syntax is:
+`mod` is a mathematics primitive that completes the **modulo operation**, which takes two numbers, divides them, and returns the *remainder*. For example, `17 mod 7` would report 3 because $17 = 2 * 7 + 3$. 
 
 
 
-``` number1 mod number2 ```
+`mod` is very useful in some interesting NetLogo modeling applications such as creating grids. For example, the following code would create a checkerboard pattern like a chess board:
 
 
 
-For example, `show 17 mod 4` would report 1, because 17 divided by 4 has a quotient of 4 and a remainder of 1. `Show 9 mod 3` would report 0, because 9 divided by 3 leaves a remainder of 0.
+```
+ask patches [
+  if (pxcor + pycor) mod 2 = 1 [
+    set pcolor white
+  ] 
+]
+```
 
 
 
-In the model below, we use `mod` to do something intermittently. When we say `if ticks mod 10 = 1`, that makes the action happen every 10 ticks. 
+
+
+Things to keep in mind when using `mod`: 
+
+* `mod` works with floating point numbers, too. For example, `5 mod 1.5` would report 0.5.
+* Using `mod` with negative numbers maybe counterintuitive. For example, while `5 mod 3` would report 2, `5 mod -3` would report -1.
+
+
+
+In the model example below, we use `mod` to create a maze in which 3 mice compete for the pieces of food scattered around randomly. Without `mod`, creating this maze would be extremely tedious.

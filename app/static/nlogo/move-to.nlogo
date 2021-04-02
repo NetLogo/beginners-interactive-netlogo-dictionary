@@ -1,40 +1,19 @@
 to setup
   clear-all
-
-
-
-  create-turtles 1 [
-    set shape "house"
-    set size 2
-    setxy 3 3
+  ask patches [
+    set pcolor one-of [brown blue]
   ]
-
-  create-turtles 1 [
-    set shape "restaurant"
-    set size 2
-    setxy -2 -4
+  create-turtles 5 [
+    set shape "bug"
+    set color yellow
+    move-to one-of patches with [pcolor = brown]
   ]
-
-  create-turtles 1 [
-    set shape "student"
-    setxy -2 0
-  ]
-
   reset-ticks
 end
-
-
-
 to go
-  ask turtle 2 [
-    ifelse xcor = -2 [
-      move-to turtle 0
-    ][
-      move-to turtle 1
-    ]
-    wait 1
+  ask one-of turtles [
+    move-to one-of neighbors with [pcolor = brown]
   ]
-
   tick
 end
 @#$#@#$#@

@@ -1,18 +1,17 @@
-`move-to` allows a turtle to set its x and y coordinates to be the same as another turtle or patch without altering the turtle's other variables (e.g., heading, color, size). Its syntax is:
+`move-to` allows a turtle to set its x and y coordinates to be the same as another turtle or patch without altering the turtle's other variables (e.g., heading, color, size). For example, if we were working on a model of people moving between houses, where both houses and families were represented with a house, we would write the following code:
 
 
-
- ```move-to desired-agent ```
-
-
-
-For example, if we wanted to make each rabbit move to the exact location of a randomly picked green patch, we would say:
 
 ```
-ask rabbits [
-	move-to one-of patches with [pcolor = green]
-	eat-grass
+ask families [
+	if my-house != nobody [
+		set my-house one-of houses
+		move-to my-house
+	]
 ]
 ```
- **Note** that if the target turtle or patch does not exist, the model will give an error. In the model below, there is a family and their house. We want the family to be in their house, and use `move-to` to move them there.
+
+
+
+In the model example below, we have a simple environment. Some of our patches are brown, which represents earth, and some are blue, which represents water. We have some bugs in this environment and they need to only move on the brown patches. First, we use the `move-to` primitive in the *setup* procedure to make each bug be placed on a random brown patch. Second, we use the `move-to` primitive (instead of `forward`) to make sure that our bugs pick a random neighboring brown patch and move to it.
 

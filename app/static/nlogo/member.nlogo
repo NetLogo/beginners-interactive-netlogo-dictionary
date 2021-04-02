@@ -1,10 +1,9 @@
-globals [ members-list ]
-breed [buildings building]
+globals [members-list]
+breed [libraries library]
 breed [people person]
-
 to setup
   clear-all
-  create-buildings 1 [
+  create-libraries 1 [
     set shape "building"
     set size 3
   ]
@@ -16,25 +15,29 @@ to setup
   set members-list n-of 3 turtles
   reset-ticks
 end
-
 to go
   ask people [
     wiggle
     forward 0.3
   ]
-  ask buildings [
-    let client one-of people in-radius 1
-    if client != nobody [
-      if member? client members-list [
-        ask client [
-          set shape "person with books"
+  ask libraries [
+    let patron one-of people in-radius 1
+    if patron != nobody [
+      if member? patron members-list [
+        ask patron [
+          ifelse color = gray [
+            set shape "person with books"
+            set color violet
+          ][
+            set shape "person"
+            set color gray
+          ]
         ]
       ]
     ]
   ]
   tick
 end
-
 to wiggle
   left random 90
   right random 90
@@ -358,11 +361,11 @@ Polygon -7500403 true true 195 90 240 195 210 210 165 105
 Circle -7500403 true true 110 5 80
 Rectangle -7500403 true true 127 79 172 94
 Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
-Polygon -1 true false 100 210 130 225 145 165 85 135 63 189
-Polygon -13791810 true false 75 240 120 255 135 165 67 130 15 210
-Polygon -1 true false 120 224 131 225 124 210
-Line -16777216 false 139 168 126 225
-Line -16777216 false 140 167 76 136
+Polygon -1 true false 100 210 150 225 165 150 61 90 9 174
+Polygon -13791810 true false 75 240 135 270 150 180 67 130 15 210
+Polygon -1 true false 137 268 151 223 143 220
+Line -16777216 false 153 165 137 264
+Line -16777216 false 151 166 53 110
 Polygon -7500403 true true 105 90 60 195 90 210 135 105
 
 plant

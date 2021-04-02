@@ -1,13 +1,5 @@
-`Member?` can be used with **lists** or **agentsets**, but is more commonly used with lists. `Member?` reports **True** if the given value or agent appears in the given list or agentset, and takes the form:
+`member?` can be used with **lists** or **agentsets**, but is more commonly used with lists. `member?` reports `true` if the given value or agent appears in the given list or agentset. For example, `member? 3 [12 -5 3 6 1]` would report `true`, while  `member? 5 [12 -5 3 6 1]` would report false. 
 
 
 
-```member? value list or member? agent agentset```
-
-
-
-For example, `show member? 5 [ 3 4 5 6 ]` would report **True**, and `show member? 5 [1 3 2 ]` would report **False**; `show member? turtle 0 turtle` would report **True**, while `show member? patch 0 turtles` would report **False**. 
-
-
-
-In the model below, there is an exclusive club which you can only enter if you are on the Memeber's List. When a turtle approaches the club, only if `member? self members-list` returns true can they enter. 
+In the model example below, we have a building that represents a library and some turtles who represent patrons. While the turtles move around randomly, our library checks at each tick if there is any patron nearby. If there is a patron, our library checks if the patron is a member of the library. If the patron is a member, our library asks them to change their shape to indicate that this patron either picked or dropped a book. 

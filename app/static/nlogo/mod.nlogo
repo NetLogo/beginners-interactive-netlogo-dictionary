@@ -1,31 +1,29 @@
 breed [mice mouse]
 breed [foods food]
-
 to setup
   clear-all
   ask patches with [pxcor mod 3 = 0 or pycor mod 3 = 0] [
     set pcolor gray
   ]
-  create-mice 5 [
+  create-mice 3 [
     set shape "mouse"
     set color brown
     move-to one-of patches with [pcolor = gray]
-    face one-of neighbors4 with [pcolor = gray]
   ]
-  create-foods 10 [
-    set shape "dot"
-    set size 0.5
+  create-foods 20 [
     set color yellow
+    set size 0.5
     move-to one-of patches with [pcolor = gray]
   ]
   reset-ticks
 end
-
 to go
   ask mice [
-    forward 1
-    if count neighbors4 with [pcolor = gray] = 4 [
-      set heading heading + (one-of [-90 0 90])
+    wiggle
+    ifelse [pcolor] of patch-ahead 0.5 = gray [
+      forward 0.5
+    ][
+      set heading one-of [0 90 180 270]
     ]
     if any? foods-here [
       ask foods-here [ die ]
@@ -34,12 +32,16 @@ to go
   if count foods = 0 [ stop ]
   tick
 end
+to wiggle
+  left random 30
+  right random 30
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 110
 10
-447
-348
+448
+349
 -1
 -1
 30.0

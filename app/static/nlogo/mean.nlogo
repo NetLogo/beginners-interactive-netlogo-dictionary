@@ -1,48 +1,52 @@
-turtles-own [ test-score ]
-
+breed [plants plant]
+breed [farmers farmer]
 to setup
   clear-all
-  create-turtles 20 [
-    set shape "person student"
-    move-to one-of patches
-    set test-score random-float 10
+  ask patches [
+    set pcolor brown
   ]
-  update-plots
+  create-farmers 1 [
+    set shape "farmer"
+  ]
+  reset-ticks
 end
-
-to above-average?
-  if rounding = "round-score-up" [
-    ask turtles [
-    set test-score ceiling test-score
-    if test-score >= mean [test-score] of turtles
-      [ set shape "face happy"
+to go
+  ask plants [
+    set size size + 0.001
+  ]
+  ask farmers [
+    wiggle
+    forward 0.5
+    ifelse any? plants-here with [size > mean [size] of plants][
+      ask plants-here [
+        die
+      ]
+    ][
+      if not any? plants-here [
+        hatch-plants 1 [
+          set shape "plant"
+          set color lime
+          set size random-float 0.5
+          move-to patch-here
+        ]
       ]
     ]
   ]
-
-  if rounding = "round-score-down" [
-    ask turtles [
-    set test-score floor test-score
-    if test-score >= mean [test-score] of turtles
-      [ set shape "face happy"
-      ]
-    ]
-  ]
-
-  ask turtles [
-    set xcor test-score
-  ]
-  update-plots
+  tick
+end
+to wiggle
+  right random 90
+  left random 90
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-257
-35
-800
-385
+115
+10
+452
+348
 -1
 -1
-48.7143
+30.0
 1
 10
 1
@@ -52,10 +56,10 @@ GRAPHICS-WINDOW
 1
 1
 1
-0
-10
--3
-3
+-5
+5
+-5
+5
 1
 1
 1
@@ -63,10 +67,10 @@ ticks
 30.0
 
 BUTTON
-62
-44
-128
-77
+5
+10
+110
+55
 NIL
 setup
 NIL
@@ -79,35 +83,14 @@ NIL
 NIL
 1
 
-MONITOR
-36
-211
-169
-256
-average-test-score
-mean [ test-score ] of turtles
-17
-1
-11
-
-CHOOSER
-19
-93
-188
-138
-rounding
-rounding
-"round-score-up" "round-score-down"
-1
-
 BUTTON
-39
-152
-168
-185
+5
+65
+110
+140
 NIL
-above-average?
-NIL
+go
+T
 1
 T
 OBSERVER
@@ -117,23 +100,45 @@ NIL
 NIL
 1
 
+MONITOR
+115
+360
+325
+405
+NIL
+mean [size] of plants
+3
+1
+11
+
 PLOT
-14
-273
-215
-423
-histogram-of-scores
+115
+410
+450
+560
+mean [size] of plants
 NIL
 NIL
 0.0
-10.0
+1.0
 0.0
-10.0
+1.0
 true
 false
 "" ""
 PENS
-"default" 1.0 1 -16777216 true "" " histogram [test-score] of turtles"
+"plantsize" 1.0 0 -13210332 true "" "if any? plants [\nplot mean [size] of plants\n]"
+
+MONITOR
+335
+360
+450
+405
+NIL
+count plants
+17
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -279,6 +284,20 @@ Circle -7500403 true true 8 8 285
 Circle -16777216 true false 60 75 60
 Circle -16777216 true false 180 75 60
 Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
+
+farmer
+false
+0
+Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Polygon -1 true false 60 195 90 210 114 154 120 195 180 195 187 157 210 210 240 195 195 90 165 90 150 105 150 150 135 90 105 90
+Circle -7500403 true true 110 5 80
+Rectangle -7500403 true true 127 79 172 94
+Polygon -13345367 true false 120 90 120 180 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 180 90 172 89 165 135 135 135 127 90
+Line -16777216 false 225 90 270 90
+Line -16777216 false 225 15 225 90
+Line -16777216 false 270 15 270 90
+Line -16777216 false 247 15 247 90
+Rectangle -6459832 true false 240 90 255 300
 
 fish
 false
@@ -492,7 +511,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -509,5 +528,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@
