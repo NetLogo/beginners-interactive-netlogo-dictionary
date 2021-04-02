@@ -12,8 +12,8 @@ ask turtles [
 
 Things to keep in mind when using `distance`: 
 
-* You can only provide a specific agent to the `distance` primitive. For example, if we had a turtle `breed` named `trees`, the following code would show an error `distance trees` even if there are only one trees in our model because the `trees` breed name will always report an agentset. In such a situation where you know that there will only be one of a breed of turtles in the model, you can use the `one-of` primitive: `distance one-of trees`.
-* If you need to learn an agent's distance to a certain location, not another agent, you can use the `distancexy` primitive.
+* We can only provide a specific agent to the `distance` primitive. For example, if we had a turtle `breed` named *trees*, the following code would show an error even if there is only one tree in our model: `distance trees`. This error is shown because  `trees` will always report an agentset. In such a situation where you know that there will only be one agent in the model, you can use the `one-of` primitive: `distance one-of trees`.
+* If we need to learn an agent's distance to a certain location, not another agent, we can use the `distancexy` primitive.
 
 
 
