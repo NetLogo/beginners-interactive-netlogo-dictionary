@@ -1,46 +1,33 @@
-breed [plants plant]
-breed [cows cow]
 to setup
   clear-all
-  ask n-of 50 patches [
-    sprout-plants 1 [
-      set color lime
-      set shape "plant"
-      set size 0.5
-    ]
-  ]
-  create-cows 5 [
-    set shape "cow"
-    set color white
+  create-turtles 100 [
+    set shape "circle"
+    set size 0.1 + random-float 0.2
     setxy random-xcor random-ycor
-  ]
-  ask n-of 2 cows [
-    set color violet
   ]
   reset-ticks
 end
 to go
-  ask cows [
-    wiggle
-    forward 0.5
-    eat
+  ask turtles [
+    forward 0.05
+    let r (size / 2)
+    if any? other turtles in-radius r [
+      ask one-of other turtles in-radius r [
+        if [size] of self < [size] of myself [
+          set color [color] of myself
+        ]
+        set size [size] of self + [size] of myself
+      ]
+      die
+    ]
   ]
   tick
 end
-to wiggle
-  right random 30
-  left random 30
-end
-to eat
-  if any? plants-here [
-    ask plants-here [ die ]
-  ]
-end
 @#$#@#$#@
 GRAPHICS-WINDOW
-105
+120
 10
-443
+458
 349
 -1
 -1
@@ -67,7 +54,7 @@ ticks
 BUTTON
 5
 10
-100
+115
 55
 NIL
 setup
@@ -84,8 +71,8 @@ NIL
 BUTTON
 5
 65
-100
-130
+115
+141
 NIL
 go
 T
@@ -98,21 +85,42 @@ NIL
 NIL
 0
 
-MONITOR
-5
-140
-100
-185
-NIL
-count cows
-17
-1
-11
-
 @#$#@#$#@
-`n-of` is used when you want to randomly select exactly n elements out of an agent set. 
+## WHAT IS IT?
 
-For example, imagine you were trying to pick teams of a certain size for a soccer match. You want the individuals on these teams to be randomly selected, but do you want to be sure that the size of each team is fixed. In the model below, `n-of` his first used to pick members for the red team out of all 20 possible members. Then, `n-of` is used again to pick members for the blue team out of all not already chosen individuals. 
+(a general understanding of what the model is trying to show or explain)
+
+## HOW IT WORKS
+
+(what rules the agents use to create the overall behavior of the model)
+
+## HOW TO USE IT
+
+(how to use the model, including a description of each of the items in the Interface tab)
+
+## THINGS TO NOTICE
+
+(suggested things for the user to notice while running the model)
+
+## THINGS TO TRY
+
+(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
+
+## EXTENDING THE MODEL
+
+(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
+
+## NETLOGO FEATURES
+
+(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
+
+## RELATED MODELS
+
+(models in the NetLogo Models Library and elsewhere which are of related interest)
+
+## CREDITS AND REFERENCES
+
+(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
 @#$#@#$#@
 default
 true
@@ -180,16 +188,6 @@ false
 0
 Circle -7500403 true true 0 0 300
 Circle -16777216 true false 30 30 240
-
-co2
-true
-0
-Circle -1 true false 183 63 84
-Circle -16777216 false false 183 63 84
-Circle -7500403 true true 75 75 150
-Circle -16777216 false false 75 75 150
-Circle -1 true false 33 63 84
-Circle -16777216 false false 33 63 84
 
 cow
 false

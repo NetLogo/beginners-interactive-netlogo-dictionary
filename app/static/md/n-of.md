@@ -1,9 +1,24 @@
-`n-of` is used when you want to randomly select exactly n elements out of an agent set. Its syntax is:
+`n-of` is used when we want to randomly select a specific number elements out of an agent set. It is similar to how `one-of` works. For example, if we wanted to create a model in which we wanted to have 90 yellow birds and 10 red birds, we would write the following code instead of using `create-turtles` twice:
 
 
 
-```n-of desired-number agentset ```
+```
+create-turtles 100 [
+	set shape "bird"
+	set color yellow
+	setxy random-xcor random-ycor
+]
+ask n-of 10 turtles [
+	set color red
+]
+```
 
 
 
-For example, imagine you were trying to pick teams of a certain size for a soccer match. You want the individuals on these teams to be randomly selected, but  you want to be sure that the size of each team is fixed. In the model below, `n-of` is first used to pick members for the red team out of all 20 possible members. Then, `n-of` is used again to pick members for the blue team out of all not already chosen individuals.
+Things to keep in mind when using `n-of`:
+
+* If an agentset does not have enough number of agents, NetLogo will show an error. For example, if we had 5 turtles in a model, the following code would give an error: `ask n-of 10 turtles [move]`.
+
+
+
+In the model example below, we use `n-of` to pick 50 random patches to sproud 50 plants. We also create 5 cows to graze in this grassland. We also use `n-of` to make two of our cows violet.

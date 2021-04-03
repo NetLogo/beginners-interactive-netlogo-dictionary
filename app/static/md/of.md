@@ -1,4 +1,4 @@
-`of` is a primitive that allows you to reach into an agent and pull out the value of some variable it owns. Normally, agent variables (such as `color`, `size`, `shape`, as well as variables defined with `<agent>-own` commands) are accessed within an agent context, i.e., within an `ask turtles [...]` or `ask patches [...]` block. `of` will allow you to get to those variables outside of such a block, or to get all the values for each agent in an agentset all at once. 
+`of` is a primitive that allows us to reach into an agent and pull out the value of some variable it owns. Normally, agent variables (such as `color`, `size`, `shape`, as well as variables defined with `<agent>-own` commands) are accessed within an agent context, i.e., within an `ask turtles [...]` or `ask patches [...]` block. `of` will allow you to get to those variables outside of such a block, or to get all the values for each agent in an agentset all at once. 
 
 
 

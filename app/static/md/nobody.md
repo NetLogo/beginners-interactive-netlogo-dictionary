@@ -1,8 +1,22 @@
-`Nobody` is a special value used to indicate that the agent you were looking for does not exist. When a turtle dies, it becomes equal to `nobody`. `Nobody` is often used to check that there is an agent in an agentset, to avoid an error. For example, you might include 
-```
-if one-of turtles with [color = red] != nobody [ 
-   ask turtles with [color = red ] forward 1 ]
-```
- so in the case that there weren’t any red turtles, you would prevent an error.
+`nobody` is a special primitive that we use to check whether an agent actually exists. In addition, when a turtle dies, it becomes `nobody`, too. For example, if we wanted to create a model in which each turtle formed a link with another turtle on a neighboring patch, we would write the following code: 
 
-It is important to note that an empty agentset is not equal to `nobody`; `nobody` is only used when looking for a single agent, usually in the context of `turtle`, `one-of`, or `max-one-of`. 
+
+
+```
+ask turtles [
+	let my-potential-friend one-of turtles-on neighbors
+	if my-potential-friend != nobody [
+		create-link-with my-potential-friend
+	]
+]
+```
+
+
+Things to keep in mind when using `nobody`
+
+*  `nobody` is only used when looking for a single agent. If we need to check whether an agentset is empty, we need to use the `any?` primitive such as `if any? turtles with [color = green]` .
+
+
+
+In the model example below. we have a campfire in the middle, 10 tents, and 10 campers. When the go button is clicked, each camper moves around randomly. As long as an agent's `my-tent` variable is set to `nobody`, they keep moving around. In other words, the tents are randomly claimed by the campers.
+

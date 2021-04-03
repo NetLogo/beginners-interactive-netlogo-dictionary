@@ -1,22 +1,28 @@
-`neighbors` is used to report an agentset containing the agent's eight surrounding patches in the north, northeast, east, southeast, east, southwest, west, and northwest directions. Both turtles and patches are allowed to use this reporter. For example, to set turtle 1's neighboring patches red we would say: 
+`neighbors` reports an agentset that contains the eight patches that surround an agent's current patch in the north, northeast, east, southeast, south, southwest, west, and northwest directions. Both turtles and patches are allowed to use this reporter. For example, if we wanted to create a model in which a fire spread from one patch to its neighbors, we would werite the following code: 
 
 
 
-``` ask turtle 1 [ ``` 
-
- ```ask neighbors [ set pcolor red ] ] ```
-
-
-
-`neighbors4` is used to report an agentset containing only the four neighboring patches in the north, east, south, and west directions (also called cardinal directions). Both turtles and patches are allowed to use this reporter. For example, to change to yellow only the patches directly above, below, to the right of, and to the left of turtle 1, we would say: 
-
-
-
-```ask turtle 1 [```
-
- ```ask neighbors4 [ set pcolor yellow ] ] ```
+```
+ask patches [
+	if pcolor = red [
+		ask neighbors [
+			if pcolor = green [
+				set pcolor red
+			]
+		]
+	]
+]
+```
 
 
 
-In the model below, there is a fire spreading in a forest. A patch on fire will spread to its neighboring patches that contain trees. Depending on if the switch is on `neighbors` or `neighbors4`, the fire will spread to all neighboring trees or to only trees in the cardinal directions, respectively. 
+Things to keep in mind when using `neighbors`:
+
+* `neighbors` will always report patches even if we use it within an `ask turtles` context. If you would like an agent to see neighboring turtles, you can use `turtles-on neighbors`.
+* There is also a `neighbors4` primitive that reports only the four neighboring patches in cardinal directions (east, west, north, and south).
+* Be mindful of *world-wrapping* when using `neighbors` as a patch at the edge of the world will report the patch on the other end of the model as its neighbor. If you turned off *world-wrapping*, then a patch will report only three patches if it is on the corner or five patches if it is at the edge.
+
+
+
+In the model example below, we have gren patches that represent vegetation and some brown bugs that eat this vegetation. You can see this as bugs on a leaf. At each tick, our bugs eat a little bit of the patch that they are on. If a bug finishes all the grass on one patch, it moves to a neighboring patch and continues eating.
 
