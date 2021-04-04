@@ -1,22 +1,27 @@
-`one-of` is used to randomly select only one agent out of an agentset or a list. It takes the form of: 
+`one-of` reports one randomly selected member from a provided agentset or list. For example, if we were creating a forest fire model in which a fire broke out at a random patch, we would write the following code:
 
 
 
-```one-of <agentset/list>```
+```
+create-trees 100 [
+	set shape "tree"
+	set color green
+	move-to one-of patches
+]
+ask one-of trees [
+	set color red
+]
+```
 
 
 
-For example, `ask one-of patches [ set pcolor red ]` will turn one random patch red. `One-of` can also randomly select one item from a provided list. For example, to change the color of each turtle randomly to red, yellow, or blue, we could say:
+Things to keep in mind when using `one-of`:
 
+* We can also use `one-of` with lists. For example, if we wanted each of our turtle to pick a random color from a predetermined list, we can write the following code: `ask turtles [set color one-of [red green blue yellow]]`.
 
+* If `one-of` is used on an empty agentset or list, NetLogo will show an error and your model will not work.
 
- ```ask turtles [set color one-of [ red yellow blue ] ]```
+  
 
-
-
-**Note**: If `one-of` is used on an agentset which has no agents (for example, `ask turtles with [color = red]` but there are no red turtles), an error will occur. See `nobody` for how to prevent the error. 
-
-
-
-In the model below, a disease is being spread. It starts with one infected person, who is chosen randomly. To pick one person to begin the disease spread, we use `one-of` to randomly chose one turtle. 
+In the model example below, we have a small population of blue turtles representing healthy people. We use `one-of` to turn one randomly picked turtle red, which indicates an infected agent (i.e., patient zero).
 

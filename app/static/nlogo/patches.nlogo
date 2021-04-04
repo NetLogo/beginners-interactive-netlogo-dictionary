@@ -9,8 +9,12 @@ to setup
     set pcolor brown
     set grass-amount 0
   ]
-  ask n-of 5 patches [
-    sprout 1 [
+  ask patch 0 0 [
+    ask neighbors [
+      set pcolor yellow
+      set grass-amount 0
+    ]
+    sprout 5 [
       set shape "cow"
       set color white
     ]
@@ -41,8 +45,8 @@ end
 GRAPHICS-WINDOW
 110
 10
-446
-348
+448
+349
 -1
 -1
 30.0
