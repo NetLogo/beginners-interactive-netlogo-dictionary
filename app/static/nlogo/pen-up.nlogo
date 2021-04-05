@@ -20,18 +20,21 @@ to go
   ask turtles [
     ifelse draw-path?
     [ pen-down ]
-    [ pen-up ]
+    [ pen-up]
 
     face next-city
     wiggle
     forward 0.5
     if patch-here = patch 4 4 [
+      set color one-of [red green blue yellow]
       set next-city patch -4 -4
     ]
     if patch-here = patch -4 -4 [
+      set color one-of [red green blue yellow]
       set next-city patch 4 4
     ]
   ]
+  if not draw-path? [ clear-drawing ]
   reset-ticks
 end
 

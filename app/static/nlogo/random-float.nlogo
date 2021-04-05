@@ -1,6 +1,7 @@
 to setup
   clear-all
   draw-board
+  reset-ticks
 end
 to throw
   create-turtles 1 [
@@ -37,9 +38,9 @@ to draw-board
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+105
 10
-620
+515
 421
 -1
 -1
@@ -64,10 +65,10 @@ ticks
 30.0
 
 BUTTON
-58
-112
-125
-145
+5
+60
+100
+140
 NIL
 throw
 NIL
@@ -78,13 +79,13 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 BUTTON
-59
-51
-125
-84
+5
+10
+100
+55
 NIL
 setup
 NIL
@@ -430,5 +431,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

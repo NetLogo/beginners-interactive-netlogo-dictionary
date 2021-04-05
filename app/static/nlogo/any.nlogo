@@ -35,9 +35,9 @@ to go
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-132
+125
 10
-480
+473
 359
 -1
 -1
@@ -62,9 +62,9 @@ ticks
 30.0
 
 BUTTON
-7
+5
 10
-119
+117
 62
 NIL
 setup
@@ -79,10 +79,10 @@ NIL
 1
 
 BUTTON
-7
-79
-120
-142
+5
+70
+118
+145
 NIL
 go
 T
@@ -96,10 +96,10 @@ NIL
 0
 
 PLOT
-133
-367
-479
-503
+125
+365
+471
+501
 population sickness
 NIL
 NIL

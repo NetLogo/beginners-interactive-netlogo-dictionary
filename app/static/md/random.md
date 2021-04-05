@@ -1,3 +1,3 @@
-`random` is a procedure that allows you to add randomness into your models. When you give `random` a number, it will report a random number from 0 to N-1. Imagine that each time you run the command  `random N`, you are rolling a die with N number of sides.
+`random` is a primitive that allows you to add randomness into your models. When you give `random` a number, it will report a random number from 0 to N-1. Imagine that each time you run the command  `random N`, you are rolling a die with N number of sides.
 
 An important thing to remember when using `random` is that the numbers you can get range from 0 to N - 1, instead of 1 to N. For example, if you run `random 3`, you may get 0, 1, or 2. In the example below we add one to the result of `random 6` to account for this difference between NetLogo's random dice rolls and those of an actual six sided die.
