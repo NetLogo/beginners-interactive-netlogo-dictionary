@@ -24,12 +24,12 @@ to go
           set color green
         ]
         if round nutrition = 4 [
-          set shape "flower"
-          set color violet
-        ]
-        if round nutrition = 5 [
           set shape "flower budding"
           set color lime
+        ]
+        if round nutrition = 5 [
+          set shape "flower"
+          set color violet
         ]
         set size nutrition / 5
       ]

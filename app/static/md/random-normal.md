@@ -1,4 +1,4 @@
-`Random-normal` is similar to the primitive `random`, in that it randomly generates and reports a number. However, `random` and `random-normal` differ in the distribution that they generate. 
+`random-normal` is similar to the primitive `random`, in that it randomly generates and reports a number. However, `random` and `random-normal` differ in the distribution that they generate. 
 
 
 

@@ -1,7 +1,5 @@
-`round` reports the integer to the nearest whole number.  Numbers in NetLogo are always rounded **up**. For example:
+`round` is a mathematics primitive that rounds reports the closest integer to a given number. For example, `round 5.2` would report 5, and `round -4.8` would report -5. 
 
- ```
- show round 4.5 => 5 
- show round -4.5 => -4
- ```
 
+
+In the model example below, we have a farmer and a farm. Each patch of our model represents a patch of ground. Each patch has a different nutrition value that we assign with the `random-float` primitive and we show each patch's nutrition as its `plabel`. However, we do not show the nutrition value as is because it would have many decimal numbers (e.g., 2.3936518), which would make it impossible to read. Instead, we round the number that we show in the interface. In addition, we use `round` for our farmer to decide which plant to plant on a specific patch. If a patch's nutrition is too low, our farmer does not plan anything. If a patch's nutrition is approximately 3, our farmer plants a plain plant. If a patch's nutrition is approximately 4, our farmer plants a budding flower. If a patch's nutrition is approximately 5, our farmer plants a flower.  

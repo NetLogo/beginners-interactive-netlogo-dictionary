@@ -1,20 +1,18 @@
-`repeat` allows you to execute any set of commands *n* amount of times. It takes the form of:
+`repeat` allows us to execute any set of commands *n* amount of times back-to-back. `repeat` is especially useful when drawing geometric shapes in conjunction with the `pen-down` and `pen-up` primitives. For example, if we wanted our turtles to draw a square, we would write the following code:
 
 
 
-``` repeat n [ commands ]```
-
-
-
-For example, if you ask a turtle to  `repeat 10 [ forward 1 ]` it will execute those commands 10 times back-to-back-to-back, which will result in the turtle moving forward 10 units forward.  You can use `repeat` in any context as long as it is within an ask command or outside an ask command. `repeat` can come especially handy when drawing shapes. For example, the following code would make the turtles draw a square:
-
-``` 
- ask turtles [ 
-  pen-down
-  	repeat 4 [ 
-    forward 10
-    right 90
-  ]
+```
+ask turtles [
+	pen-down
+	repeat 4 [
+		right 90
+		forward 5
+	]
+	pen-up
 ]
 ```
 
+
+
+In the model example below, we have 36 turtles who are initially placed in a circle layout when the *setup* button is clicked. When we click the go button, each turtle turns right 1 degrees and moves forward 0.03 units 360 times. This simple repetition behavior results in a very interesting shape.
