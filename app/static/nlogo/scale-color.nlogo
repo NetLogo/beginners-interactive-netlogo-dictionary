@@ -1,10 +1,11 @@
 breed [farmers farmer]
-breed [plants plant]
+breed [vegetables vegetable]
 patches-own [ nutrition ]
 to setup
   clear-all
   ask patches [
     set nutrition random-float 5
+    set plabel round nutrition
     set pcolor scale-color brown nutrition 5 0
   ]
   create-farmers 1 [
@@ -16,8 +17,8 @@ end
 to go
   ask farmers [
     move-to one-of neighbors4
-    if nutrition > 3 and not any? plants-here [
-      hatch-plants 1 [
+    if nutrition > 3 and not any? vegetables-here [
+      hatch-vegetables 1 [
         set shape "plant"
         set color scale-color lime nutrition 0 5
       ]
@@ -57,7 +58,7 @@ BUTTON
 5
 10
 95
-50
+60
 NIL
 setup
 NIL
@@ -72,9 +73,9 @@ NIL
 
 BUTTON
 5
-55
+65
 95
-130
+140
 NIL
 go
 T

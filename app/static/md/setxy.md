@@ -1,22 +1,26 @@
-`setxy` moves a turtle to a given coordinate in the world. It takes the form of:
+`setxy` moves a turtle to the given coordinates in the world. For example, if we wanted to create a house and put it on a specific location, we would write the following code:
 
  
 
-``` setxy x y ```
+```
+create-turtles 1 [
+	set shape "house"
+	setxy 
+]
+```
 
 
 
-where **x** is the desired x-coordinate (left/right), and **y** is the desired y-coordinate (up/down). 
+Things to keep in mind when using `setxy`:
 
-By default, the X and Y coordinates at the center of the world are both 0, so `setxy 0 0` will set the position of the turtle to the center of the world. The x and y coordinates given to `setxy` can be decimal values, not just whole numbers, so `setxy 0.5 -0.5` will place the turtle 0.5 units to the right and 0.5 units down from the center.
-
-
-
-Note that `setxy` follows the wrapping rules of the current NetLogo world, so in a world that is 10 units by 10 units with vertical and horizontal wrapping,  `setxy 26 42` would wrap all the way around to (6,2). 
-
+* By default, the x and y coordinates at the center of the world are both 0, so `setxy 0 0` will set the position of the turtle to the center of the world.
+* The x and y coordinates given to `setxy` can be decimal values, not just whole numbers, so `setxy 0.5 -0.5` will place the turtle 0.5 units to the right and 0.5 units down from the center. 
+* If you want to pick a random position for a turtle, you can use the `random-xcor` and `random-ycor` primitives such as `setxy random-xcor random-ycor`. We can also mix and match this setup. For example, if we wanted our turtles to be randomly distributed along the x axis, we could write `setxy random-xcor 0`.
+* Note that `setxy` follows the wrapping rules of the current NetLogo world, so in a world that is 10 units by 10 units with vertical and horizontal wrapping,  `setxy 26 42` would wrap all the way around to (6,2). 
 
 
-In this example model, `setxy` is used with two user-inputted values to place a chess piece at a chosen place on the chess board. You can imagine how essential `setxy` would be to creating an actual game of chess in NetLogo.
+
+In the model example below, `setxy` is used with two user-inputted values to place a chess piece at a chosen place on the chess board. You can imagine how essential `setxy` would be to creating an actual game of chess in NetLogo.
 
 
 

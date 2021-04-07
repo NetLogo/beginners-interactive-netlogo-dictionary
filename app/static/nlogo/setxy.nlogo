@@ -1,22 +1,19 @@
 to setup
   clear-all
-
-  crt 1 [
+  create-turtles 1 [
     set shape "chess knight"
     set color black
     set size .8
     setxy 2 1
   ]
-
   draw-chess-grid
+  reset-ticks
 end
-
 to place
   ask turtles [
-     setxy x-pos y-pos
+    setxy x-pos y-pos
   ]
 end
-
 to draw-chess-grid
   ask patches [
     set pcolor ifelse-value (pxcor + pycor) mod 2 = 0 [white] [brown - 2]

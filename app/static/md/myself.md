@@ -10,4 +10,5 @@ ask turtles [
 ```
 
 
+
 In the model example below, we have a model that is similar to the popular online game [*agar.io*](https://en.wikipedia.org/wiki/Agar.io). We have many turtles that represent circles and they move around randomly. When two turtles touch each other, the larger turtle *eats* the small turtle. We use `myself` for two purposes: first to compare the two touching turtles within an `ask` statement in order to pick the larger one, and then to add the sizes of the two touching turtles.

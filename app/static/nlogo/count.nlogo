@@ -33,13 +33,12 @@ to wiggle
   left random 90
   right random 90
 end
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 112
 10
-459
-358
+460
+359
 -1
 -1
 20.0
@@ -94,13 +93,13 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 MONITOR
-110
-421
-459
-466
+255
+415
+460
+460
 NIL
 count turtles with [pcolor = brown]
 17
@@ -110,7 +109,7 @@ count turtles with [pcolor = brown]
 TEXTBOX
 7
 420
-106
+232
 462
 Number of dogs in the playground
 11
@@ -120,7 +119,7 @@ Number of dogs in the playground
 TEXTBOX
 9
 373
-159
+219
 391
 Number of dogs
 11
@@ -128,10 +127,10 @@ Number of dogs
 1
 
 MONITOR
-111
-369
-459
-414
+255
+363
+460
+408
 NIL
 count turtles
 17
@@ -139,10 +138,10 @@ count turtles
 11
 
 MONITOR
-112
-477
-457
-522
+255
+470
+460
+515
 NIL
 count turtles with [pcolor = black]
 17
@@ -152,7 +151,7 @@ count turtles with [pcolor = black]
 TEXTBOX
 8
 477
-105
+248
 521
 Number of dogs outside the playground
 11
@@ -542,5 +541,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@

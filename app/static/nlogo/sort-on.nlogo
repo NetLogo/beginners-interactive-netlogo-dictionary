@@ -63,7 +63,7 @@ BUTTON
 5
 10
 110
-50
+60
 NIL
 setup
 NIL
@@ -78,9 +78,9 @@ NIL
 
 BUTTON
 5
-55
+70
 110
-125
+140
 NIL
 go
 T
