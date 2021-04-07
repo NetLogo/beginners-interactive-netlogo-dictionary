@@ -1,6 +1,5 @@
 breed [whales whale]
 breed [barnacles barnacle]
-
 to setup
   clear-all
   reset-ticks
@@ -22,7 +21,7 @@ end
 to go
   ask whales [
     swim
-    create-links-with barnacles-on neighbors [
+    create-links-with barnacles in-radius 1 [
       tie
       set color white
     ]
@@ -35,9 +34,9 @@ to swim
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-140
+110
 10
-478
+448
 349
 -1
 -1
@@ -93,7 +92,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 `tie` is a link command that is used to "tie" the two turtles at the ends of the links together, almost like the two turtles were attached with a perfectly rigid length of steel. If the link is *directed*, then the *to* turtle follows the *from* turtle but not the other way around. If the link is *undirected*, then both turtles will try to mimic the movements of the other, which can often become slightly chaotic. A tied turtle will not only follow the movement of the other, but also will also pivot around the rotating turtle when it turns and copy its new heading. 

@@ -1,25 +1,20 @@
 turtles-own [energy]
-
 to setup
   clear-all
-
   create-turtles 20 [
     set shape "circle"
     set energy 0.01
     set size random-float 1
     setxy random-xcor random-ycor
   ]
-
   reset-ticks
 end
-
 to go
   ask turtles [
     forward speed
   ]
   tick
 end
-
 to-report speed
   report sqrt (2 * energy / (pi * ((size / 2) ^ 2)))
 end
@@ -83,7 +78,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 MONITOR
 110
