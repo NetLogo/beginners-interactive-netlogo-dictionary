@@ -1,49 +1,48 @@
-turtles-own [gas]
 to setup
   clear-all
-  ask patches with [pycor mod 3 = 0] [
-    set pcolor gray
-    make-a-car
+  create-turtles 12 [
+    set color white
+    set shape "dot"
   ]
-
+  layout-circle turtles 6
+  create-turtles 1 [
+    set shape "arrow"
+    set size 3
+    set heading 0
+  ]
   reset-ticks
 end
-to go
-  ask turtles with [ color = blue and gas >= 2][
-    set gas gas - 2
-  ]
-  ask turtles with [ color = red and gas >= 1][
-    set gas gas - 1
-  ]
-  ask turtles with [ gas > 0 ][
-    forward 0.1
-  ]
+
+to spin-left
+  if degrees = 0 [ set degrees 60 stop ]
   ask turtles [
-    set label gas
-  ]
-  if not any? turtles with [gas > 0][ stop ]
-  tick
-end
-to make-a-car
-  if pxcor = min-pxcor [
-    sprout 1 [
-      set color one-of [blue red]
-      set shape "car"
-      set heading 90
-      set gas one-of [60 70 80 90 100]
-      set label gas
+    if shape = "arrow" [
+      left 1
+      set degrees degrees - 1
     ]
   ]
+  tick
+end
+
+to spin-right
+  if degrees = 0 [ set degrees 60 stop ]
+  ask turtles [
+    if shape = "arrow" [
+      right 1
+      set degrees degrees - 1
+    ]
+  ]
+  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 115
 10
-453
-349
+463
+359
 -1
 -1
-30.0
+20.0
 1
 10
 1
@@ -53,10 +52,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--5
-5
--5
-5
+-8
+8
+-8
+8
 1
 1
 1
@@ -67,7 +66,7 @@ BUTTON
 5
 10
 110
-55
+50
 NIL
 setup
 NIL
@@ -81,12 +80,44 @@ NIL
 1
 
 BUTTON
-5
-60
-110
-135
+115
+365
+220
+420
+<- spin-left
+spin-left
+T
+1
+T
+OBSERVER
 NIL
-go
+NIL
+NIL
+NIL
+1
+
+SLIDER
+225
+365
+350
+398
+degrees
+degrees
+0
+360
+60.0
+10
+1
+NIL
+HORIZONTAL
+
+BUTTON
+360
+365
+465
+416
+spin-right ->
+spin-right
 T
 1
 T

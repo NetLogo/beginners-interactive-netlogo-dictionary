@@ -1,22 +1,29 @@
-`With` is used to narrow down a set of agents, usually **patches** or **turtles**, by addressing a specific group of those agents that have a certain characteristic. Using `with` will address only the agents in the set that match the certain characteristic. Its syntax is:
+`with` is a reporter primitive that allows us to extract a sub-agentset from an agentset based on a provided set of conditional staments. A condition within a `with` statement is similar to an `if` statement. For example, if we wanted to model a predator-prey ecosystem where a hawk could only see brighter colored mice, but not the darker colored ones, we would write the following code:
 
 
 
-``` agentset with [ desired-characteristic ] ```
+```
+ask hawks [
+	if any? (mice-here with [color = gray and distance myself < 2]) [
+		hunt
+	]
+]
+```
 
 
 
- For example, `ask turtles with [color = blue] [forward 1]` will make only the blue turtles move forward. You can have multiple required characteristics within the `[ ]` separated by `and` or `or` to further narrow down the agentset. For example
+Notice that we first wrote the name of the agentset (`mice-here`), than used the `with` primitive, and then provided our conditional statements within brackets (`[ ]`).
 
 
 
-```ask turtles with [color = red and size > 5] [ ```
+Things to keep in mind when using `with`:
 
-```	forward 1 ]```
+* We can use `with` for all kinds of agent types (turtles, partches, and links).
+* You can also do some simple operations within a reporter that comes before `with` such as `customers with [(checking-account + savings-account) > 1000]` to get an agentset that containes only the customers whose total account balance is larger than 1000 or `circles with [size / 2 > 1]` to get an agentset that contains only the circles with a radius larger than 1.
 
 
 
-would make only red turtles that are bigger than 5 move forward.
+In the model example below, we have three parallel roads and each road has a car on it. In the go procedure, we use `with` to differentiate between the speeds of blue cars and red cars. Blue cars go twice as fast as the red cars when they also have enough gas. When a car does not have enough gas, it goes much much slower. Lastly, we use `with` to stop the model when all the cars run out of gas.
 
 
 

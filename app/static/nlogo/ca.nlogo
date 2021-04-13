@@ -1,49 +1,31 @@
-turtles-own [gas]
-to setup
-  clear-all
-  ask patches with [pycor mod 3 = 0] [
-    set pcolor gray
-    make-a-car
+to make-drawing
+  ask patches [
+    set pcolor yellow
   ]
 
-  reset-ticks
-end
-to go
-  ask turtles with [ color = blue and gas >= 2][
-    set gas gas - 2
-  ]
-  ask turtles with [ color = red and gas >= 1][
-    set gas gas - 1
-  ]
-  ask turtles with [ gas > 0 ][
-    forward 0.1
-  ]
-  ask turtles [
-    set label gas
-  ]
-  if not any? turtles with [gas > 0][ stop ]
-  tick
-end
-to make-a-car
-  if pxcor = min-pxcor [
-    sprout 1 [
-      set color one-of [blue red]
-      set shape "car"
-      set heading 90
-      set gas one-of [60 70 80 90 100]
-      set label gas
+  create-turtles 5 [
+    move-to one-of patches
+    pen-down
+
+    repeat 20 [
+      right random 90
+      forward 5
     ]
   ]
 end
+
+to clear-everything
+  clear-all
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-115
+136
 10
-453
-349
+441
+316
 -1
 -1
-30.0
+9.0
 1
 10
 1
@@ -53,10 +35,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--5
-5
--5
-5
+-16
+16
+-16
+16
 1
 1
 1
@@ -64,12 +46,12 @@ ticks
 30.0
 
 BUTTON
-5
-10
-110
-55
+6
+88
+131
+154
 NIL
-setup
+clear-everything
 NIL
 1
 T
@@ -81,13 +63,13 @@ NIL
 1
 
 BUTTON
-5
-60
-110
-135
+4
+10
+130
+63
 NIL
-go
-T
+make-drawing
+NIL
 1
 T
 OBSERVER
@@ -98,41 +80,16 @@ NIL
 1
 
 @#$#@#$#@
-## WHAT IS IT?
+`clear-all` essentially removes *all* the drawings, turtles, plots, links, etc. from the model, sets the values of all the `globals` and agent properties to zero, and makes all the patches black. It esentially leaves a blank slate. You can also use `ca` as a shortened version.
 
-(a general understanding of what the model is trying to show or explain)
+ 
 
-## HOW IT WORKS
+`clear-all` is usually located at the beginning of a model’s setup procedure to make sure the model starts out with nothing already there. 
 
-(what rules the agents use to create the overall behavior of the model)
 
-## HOW TO USE IT
 
-(how to use the model, including a description of each of the items in the Interface tab)
+In the model example below, we have two buttons. The first one makes patches' color yellow and asks turtles to draw lines. The second button simply runs the `clear-all` primitive to clear everything.
 
-## THINGS TO NOTICE
-
-(suggested things for the user to notice while running the model)
-
-## THINGS TO TRY
-
-(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
-
-## EXTENDING THE MODEL
-
-(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
-
-## NETLOGO FEATURES
-
-(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
-
-## RELATED MODELS
-
-(models in the NetLogo Models Library and elsewhere which are of related interest)
-
-## CREDITS AND REFERENCES
-
-(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
 @#$#@#$#@
 default
 true
@@ -300,6 +257,16 @@ true
 0
 Line -7500403 true 150 0 150 150
 
+moose
+false
+0
+Polygon -7500403 true true 196 228 198 297 180 297 178 244 166 213 136 213 106 213 79 227 73 259 50 257 49 229 38 197 26 168 26 137 46 120 101 122 147 102 181 111 217 121 256 136 294 151 286 169 256 169 241 198 211 188
+Polygon -7500403 true true 74 258 87 299 63 297 49 256
+Polygon -7500403 true true 25 135 15 186 10 200 23 217 25 188 35 141
+Polygon -7500403 true true 270 150 253 100 231 94 213 100 208 135
+Polygon -7500403 true true 225 120 204 66 207 29 185 56 178 27 171 59 150 45 165 90
+Polygon -7500403 true true 225 120 249 61 241 31 265 56 272 27 280 59 300 45 285 90
+
 pentagon
 false
 0
@@ -377,6 +344,14 @@ Circle -7500403 true true 116 41 127
 Circle -7500403 true true 45 90 120
 Circle -7500403 true true 104 74 152
 
+tree pine
+false
+0
+Rectangle -6459832 true false 120 225 180 300
+Polygon -7500403 true true 150 240 240 270 150 135 60 270
+Polygon -7500403 true true 150 75 75 210 150 195 225 210
+Polygon -7500403 true true 150 7 90 157 150 142 210 157 150 7
+
 triangle
 false
 0
@@ -439,7 +414,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.2.0
+NetLogo 6.1.1
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -456,5 +431,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-1
+0
 @#$#@#$#@

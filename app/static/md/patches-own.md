@@ -18,7 +18,7 @@ create-turtles 1 [
 
 Things to keep in mind when using `patches-own`:
 
-* We can define as many variables as we want within `patches-own` such as `patches-own [water nutrients heavy-metals altitude]`.
+* We can define as many variables as we want within `patches-own` such as `patches-own [water nutrients heavy-metals altitude]` by separating each variable with a space.
 * A turtle can access a characteristic of its current patch directly. For example, `ask turtles [set pollution 100]` does the same thing as `ask turtles [ ask patch-here [set pollution 100] ]`.
 
 

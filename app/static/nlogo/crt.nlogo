@@ -1,39 +1,47 @@
-turtles-own [gas]
 to setup
   clear-all
-  ask patches with [pycor mod 3 = 0] [
-    set pcolor gray
-    make-a-car
+  create-turtles 10 [
+    set shape "plant"
+    set color green
+    set size 0.5
   ]
-
-  reset-ticks
-end
-to go
-  ask turtles with [ color = blue and gas >= 2][
-    set gas gas - 2
+  create-turtles 1 [
+    set shape "house"
+    set size 3
   ]
-  ask turtles with [ color = red and gas >= 1][
-    set gas gas - 1
+  create-turtles 5 [
+    set shape "person"
   ]
-  ask turtles with [ gas > 0 ][
-    forward 0.1
+  create-turtles 4 [
+    set shape "cloud"
+    set color white
+  ]
+  create-turtles 3 [
+    set shape "dog"
   ]
   ask turtles [
-    set label gas
-  ]
-  if not any? turtles with [gas > 0][ stop ]
-  tick
-end
-to make-a-car
-  if pxcor = min-pxcor [
-    sprout 1 [
-      set color one-of [blue red]
-      set shape "car"
-      set heading 90
-      set gas one-of [60 70 80 90 100]
-      set label gas
+    set heading 90
+    move-to one-of patches
+    if shape = "house" [
+      setxy 0 0
+    ]
+    if shape = "cloud" [
+      set ycor max-pycor
     ]
   ]
+  reset-ticks
+end
+
+to go
+  ask turtles [
+    if shape != "house" and shape != "plant" [
+      forward random-float 0.5
+    ]
+    if shape = "plant" [
+      set size size + 0.01
+    ]
+  ]
+  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -66,7 +74,7 @@ ticks
 BUTTON
 5
 10
-110
+105
 55
 NIL
 setup
@@ -83,7 +91,7 @@ NIL
 BUTTON
 5
 60
-110
+105
 135
 NIL
 go
@@ -95,7 +103,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -201,6 +209,15 @@ false
 Circle -7500403 true true 0 0 300
 Circle -16777216 true false 30 30 240
 
+cloud
+false
+0
+Circle -7500403 true true 13 118 94
+Circle -7500403 true true 86 101 127
+Circle -7500403 true true 51 51 108
+Circle -7500403 true true 118 43 95
+Circle -7500403 true true 158 68 134
+
 cow
 false
 0
@@ -212,6 +229,22 @@ cylinder
 false
 0
 Circle -7500403 true true 0 0 300
+
+dog
+false
+0
+Polygon -7500403 true true 300 165 300 195 270 210 183 204 180 240 165 270 165 300 120 300 0 240 45 165 75 90 75 45 105 15 135 45 165 45 180 15 225 15 255 30 225 30 210 60 225 90 225 105
+Polygon -16777216 true false 0 240 120 300 165 300 165 285 120 285 10 221
+Line -16777216 false 210 60 180 45
+Line -16777216 false 90 45 90 90
+Line -16777216 false 90 90 105 105
+Line -16777216 false 105 105 135 60
+Line -16777216 false 90 45 135 60
+Line -16777216 false 135 60 135 45
+Line -16777216 false 181 203 151 203
+Line -16777216 false 150 201 105 171
+Circle -16777216 true false 171 88 34
+Circle -16777216 false false 261 162 30
 
 dot
 false

@@ -2,14 +2,14 @@ breed [hawks hawk]
 breed [butterflies butterfly]
 to setup
   clear-all
+  create-butterflies 1 [
+    set shape "butterfly"
+    move-to one-of patches
+  ]
   create-hawks 1 [
     set shape "hawk"
     set color brown
     set size 3
-  ]
-  create-butterflies 1 [
-    set shape "butterfly"
-    move-to one-of patches
   ]
   ask patches [
     set pcolor green + 1 + random 3
@@ -18,12 +18,11 @@ to setup
 end
 to go
   ask hawks [
-   set heading towards one-of butterflies
-   move
+    set heading (towards butterfly 0)
+    move
   ]
   ask butterflies [
-    set heading towards one-of hawks
-    right 180
+    set heading (towards hawk 1) + 180 + random 30 - random 30
     move
   ]
   tick

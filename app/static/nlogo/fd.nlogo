@@ -1,45 +1,41 @@
-turtles-own [gas]
 to setup
   clear-all
-  ask patches with [pycor mod 3 = 0] [
+  ask patches with [pycor = 0][
     set pcolor gray
-    make-a-car
   ]
-
+  create-turtles 1 [
+    set shape "car"
+    set ycor 0
+    set heading 90
+  ]
   reset-ticks
 end
-to go
-  ask turtles with [ color = blue and gas >= 2][
-    set gas gas - 2
-  ]
-  ask turtles with [ color = red and gas >= 1][
-    set gas gas - 1
-  ]
-  ask turtles with [ gas > 0 ][
+
+to go-slow
+  ask turtles [
     forward 0.1
   ]
-  ask turtles [
-    set label gas
-  ]
-  if not any? turtles with [gas > 0][ stop ]
   tick
 end
-to make-a-car
-  if pxcor = min-pxcor [
-    sprout 1 [
-      set color one-of [blue red]
-      set shape "car"
-      set heading 90
-      set gas one-of [60 70 80 90 100]
-      set label gas
-    ]
+
+to go-fast
+  ask turtles [
+    forward 1
   ]
+  tick
+end
+
+to go-back
+  ask turtles [
+    forward -0.2
+  ]
+  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-115
+120
 10
-453
+458
 349
 -1
 -1
@@ -67,7 +63,7 @@ BUTTON
 5
 10
 110
-55
+50
 NIL
 setup
 NIL
@@ -82,11 +78,11 @@ NIL
 
 BUTTON
 5
-60
+55
 110
-135
+106
 NIL
-go
+go-slow
 T
 1
 T
@@ -95,7 +91,41 @@ NIL
 NIL
 NIL
 NIL
+0
+
+BUTTON
+5
+110
+110
+160
+NIL
+go-fast
+T
 1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+0
+
+BUTTON
+5
+165
+110
+215
+NIL
+go-back
+T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -189,6 +219,21 @@ Circle -16777216 true false 30 180 90
 Polygon -16777216 true false 162 80 132 78 134 135 209 135 194 105 189 96 180 89
 Circle -7500403 true true 47 195 58
 Circle -7500403 true true 195 195 58
+
+car top
+true
+0
+Polygon -7500403 true true 151 8 119 10 98 25 86 48 82 225 90 270 105 289 150 294 195 291 210 270 219 225 214 47 201 24 181 11
+Polygon -16777216 true false 210 195 195 210 195 135 210 105
+Polygon -16777216 true false 105 255 120 270 180 270 195 255 195 225 105 225
+Polygon -16777216 true false 90 195 105 210 105 135 90 105
+Polygon -1 true false 205 29 180 30 181 11
+Line -7500403 false 210 165 195 165
+Line -7500403 false 90 165 105 165
+Polygon -16777216 true false 121 135 180 134 204 97 182 89 153 85 120 89 98 97
+Line -16777216 false 210 90 195 30
+Line -16777216 false 90 90 105 30
+Polygon -1 true false 95 29 120 30 119 11
 
 circle
 false

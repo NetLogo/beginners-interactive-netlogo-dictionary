@@ -1,19 +1,20 @@
-`While` begins a loop that executes a **block of commands**, as long as a given **reporter** returns **True**. If the reporter reports **False** , the loop is exited.  It takes the form:
+`while` begins repeating a provided set of rules (like `ask`) indefinitely as long as a given reporter reports true. If the reporter reports **false** , `while` stops repeating the provided rules.  For example, if we wanted to create a model of real-estate market where each buyer continued searching for a house until they found one cheap enough, we would write the following code: 
 
 
-
- ```while [ reporter ] [ commands ]```
-
-
-
-For example, to make turtle 0 keep moving forward until it comes to a patch that has no other turtles on it, we could say:
 
 ```
-ask turtle 0 [ 
-    while [ any? Other turtles-here ] [ 
-    	forward 1] ]
+ask turtles [
+	let found-home? false
+	while [not found-home?] [
+		move-to one-of patches with [residents = 0]
+		if [price] of patch-here < my-budget [
+			set found-home? true
+		]
+	]
+]
 ```
 
 
-Note: while loops and other loops are not used often in NetLogo models. In the model below, we use a `while` loop to make a turtle draw a square.
+
+In the model example below, we have many turtles placed in a grid layout. Each turtle is either purple or green and each is either happy or sad depending on the number of turtles around them. If a turtle has more than 2 neighbors with a different color. We use the `while` primitive to make each turtle move around the grid until they find a spot that makes them happy.
 
