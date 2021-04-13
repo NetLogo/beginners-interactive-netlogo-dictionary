@@ -1,8 +1,8 @@
-`all?` checks if all agents of an agentset satisfy one or more true-false conditions. If all the agents satisfy the given condition, `all?` itself will report a `true` value. If even one of the agents in the given agentset fail to satisfy the condition, `all?` will report a **False** value. 
+`all?` checks if all agents of an agentset satisfy one or more true-false conditions. If all the agents satisfy the given condition, `all?` itself will report **`true`**. If even one of the agents in the given agentset fail to satisfy the condition, `all?` will report **`false`**. 
 
 
 
-For example, `all? turtles [ size > 1 ]` would report **true** if and only if every turtle in the model were larger than one unit. 
+For example, `all? turtles [ size > 1 ]` would report **`true`** if and only if every turtle in the model were larger than one unit. 
 
 
 
