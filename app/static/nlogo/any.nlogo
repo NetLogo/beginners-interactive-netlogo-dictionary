@@ -143,7 +143,8 @@ Things to keep in mind in mind when using `any?`:
 
 <br />
 
-The model example below represents the spread of a contagious disease within a healthy population. We use `any?` primitive to run the model as long as there is at least one healthy (green) individual in the model. Once all of the individuals turned red, the model automatically stops.
+This model example represents the spread of a contagious disease within a healthy population. We use `any?` primitive to run the model as long as there is at least one healthy (green) individual in the model. Once all of the individuals turned red, the model automatically stops.
+
 @#$#@#$#@
 default
 true

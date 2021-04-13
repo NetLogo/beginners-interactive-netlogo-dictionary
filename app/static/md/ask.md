@@ -34,6 +34,4 @@ Things to keep in mind when using `ask`:
 
 
 
-<br />
-
 In the model below, we want the fish to swim around randomly and the stars to just rotate, and we want all the turtles (fish + stars) to grow little by little. To make them follow these actions, we just use the `ask` primitive !

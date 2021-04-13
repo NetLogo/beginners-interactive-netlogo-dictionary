@@ -106,7 +106,7 @@ To create a new type of turtles, you use the `breed` primitive followed by an op
 
 
 
-NetLogo requires the plural and singular versions of a breed because: 
+NetLogo requires both the plural and singular versions of a breed because: 
 
 * Different spoken languages may have different conventions for plural and singular words
 * Some things may have non-conventional forms for plural and singular such as `breed [cacti cactus]`, `breed [mice mouse]`, or `breed [leaves leaf]`.
@@ -121,7 +121,7 @@ You can create as many breeds as you wish in your model. You can also use the `l
 
 <br />
 
-In the example moel below, we use `breed` to create two types of turtles with very different behavior: trees and lumberjacks. Trees just sit there, while lumberjacks wander around and cut down the trees if they happen upon a patch with a tree. While it wouldn't be too difficult to create a version of this model without `breed` using custom turtle properties defined with the `turtles-own` primitive and then the `with` command, `breed` allows us to write much more readable code.
+In this example model, we use `breed` to create two types of turtles with very different behavior: trees and lumberjacks. Trees just sit there, while lumberjacks wander around and cut down the trees if they happen upon a patch with a tree. While it wouldn't be too difficult to create a version of this model without `breed` using custom turtle properties defined with the `turtles-own` primitive, `breed` allows us to easily differentiate between different types of turtles. Usign breeds also makes it easier to read the code.
 @#$#@#$#@
 default
 true

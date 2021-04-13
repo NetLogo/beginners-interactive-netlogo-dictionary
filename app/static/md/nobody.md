@@ -2,14 +2,13 @@
 
 
 
-```
-ask turtles [
-	let my-potential-friend one-of turtles-on neighbors
-	if my-potential-friend != nobody [
-		create-link-with my-potential-friend
+	ask turtles [
+		let my-potential-friend one-of turtles-on neighbors
+		if my-potential-friend != nobody [
+			create-link-with my-potential-friend
+		]
 	]
-]
-```
+
 
 
 Things to keep in mind when using `nobody`
@@ -19,5 +18,5 @@ Things to keep in mind when using `nobody`
 
 
 
-In the model example below. we have a campfire in the middle, 10 tents, and 10 campers. When the go button is clicked, each camper moves around randomly. As long as an agent's `my-tent` variable is set to `nobody`, they keep moving around. In other words, the tents are randomly claimed by the campers.
+In the model example below, we have a campfire in the middle, 10 tents, and 10 campers. When the go button is clicked, each camper moves around randomly. As long as an agent's `my-tent` variable is set to `nobody`, they keep moving around. In other words, the campers claim the tents randomly.
 
