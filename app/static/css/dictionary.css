@@ -51,3 +51,7 @@
 .tt-suggestion p {
   margin: 0;
 }
+
+.badge-netlogoerror {
+  background-color: #FEF86F !important;
+}
