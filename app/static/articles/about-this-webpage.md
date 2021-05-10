@@ -20,7 +20,7 @@ You can reach out to <a href="mailto:bind@ccl.northwestern.edu">bind@ccl.northwe
 
 You can cite BIND as follows:
 
-`Aslan, U., & Wilensky, U. (2021). Beginner’s NetLogo Interactive Dictionary. Center for Connected Learning and Computer-Based Modeling, Northwestern University. Evanston, IL.`
+`Aslan, U., & Wilensky, U. (2021). Beginner’s Interactive NetLogo Dictionary (BIND). Center for Connected Learning and Computer-Based Modeling, Northwestern University. Evanston, IL.`
 
 
 
