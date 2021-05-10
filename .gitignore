@@ -3,3 +3,4 @@ venv/
 *.tmp.nlogo
 **/.DS_STORE
 app/build/*
+metadata/~$binddata.xlsx
