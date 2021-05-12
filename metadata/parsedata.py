@@ -6,6 +6,7 @@ import sys
 import re
 import os
 import datetime
+from PIL import Image
 
 ## constants
 STAGING_JSON_PATH = "./staging/"
@@ -239,6 +240,13 @@ def processPictures():
 
                 file_name, headers = urllib.request.urlretrieve(imgSRC, imgDestination);
                 num_new_downloaded += 1
+                
+                # Crop the image to a square shape if it is not already
+                img = Image.open(imgDestination)
+                w, h = img.size
+                if w != h :
+                    short_edge = w if w < h else h
+                    img.crop((0, 0, short_edge, short_edge)).save(imgDestination)
 
     if(verbose):
         print("Downloaded", num_new_downloaded, "new files out of", num_total_imgs, "total images.")
