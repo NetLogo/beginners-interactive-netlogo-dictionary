@@ -1128,7 +1128,7 @@
         "max-pxcor": {
             "identity": "max-pxcor",
             "display_name": "max-pxcor",
-            "short_description": "Reports the largest x-coordinate of the patches in a midel.",
+            "short_description": "Reports the largest x-coordinate of the patches in a model.",
             "search_terms": [
                 "patch",
                 "coordinate",
@@ -1156,7 +1156,7 @@
         "max-pycor": {
             "identity": "max-pycor",
             "display_name": "max-pycor",
-            "short_description": "Reports the largest y-coordinate of the patches in a midel.",
+            "short_description": "Reports the largest y-coordinate of the patches in a model.",
             "search_terms": [
                 "patch",
                 "coordinate",
@@ -1226,8 +1226,8 @@
             "see_also": [
                 "count",
                 "if",
-                "if-else",
-                "n-of"
+                "n-of",
+                "with"
             ],
             "library_models": [
                 "Fairy Circles",
@@ -1239,7 +1239,7 @@
         "min-pxcor": {
             "identity": "min-pxcor",
             "display_name": "min-pxcor",
-            "short_description": "Reports the smallest x-coordinate of the patches in a midel.",
+            "short_description": "Reports the smallest x-coordinate of the patches in a model.",
             "search_terms": [
                 "patch",
                 "coordinate",
@@ -1268,7 +1268,7 @@
         "min-pycor": {
             "identity": "min-pycor",
             "display_name": "min-pycor",
-            "short_description": "Reports the smallest y-coordinate of the patches in a midel.",
+            "short_description": "Reports the smallest y-coordinate of the patches in a model.",
             "search_terms": [
                 "patch",
                 "coordinate",
@@ -2534,15 +2534,6 @@
                 "Ants",
                 "Heatbugs"
             ]
-        },
-        "": {
-            "identity": "",
-            "display_name": "",
-            "short_description": "",
-            "search_terms": [],
-            "agents": [],
-            "see_also": [],
-            "library_models": []
         }
     }
 }

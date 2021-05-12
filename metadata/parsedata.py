@@ -41,7 +41,7 @@ def populatePrimitives():
     out = {"primitives" : {}}
     primitives = out["primitives"]
 
-    with open("bind_entries.csv", 'r') as csvfile:
+    with open("bind_primitives.csv", 'r') as csvfile:
         ## read the header line before parsing
         csvfile.readline() 
 
