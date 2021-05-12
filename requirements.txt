@@ -18,8 +18,8 @@ Markdown==3.3.4
 MarkupSafe==2.0.0
 Pillow==8.2.0
 python-dotenv==0.17.1
-requests==2.25.1
-typing-extensions==3.10.0.0
+requests
+typing-extensions
 urllib3==1.26.4
 visitor==0.1.3
 Werkzeug==2.0.0
