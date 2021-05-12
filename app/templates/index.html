@@ -83,34 +83,35 @@
         <ul class="list-unstyled">
             
             {% for article in articles %}
-            
-            <li style="display:none;" class="article-list-entry media">
-                
-                {%if article.type == 'answer' %}
-                <i class="fas fa-2x fa-question mr-3 p-2"></i>
+                {% if article.should_show_on_main_page %}
+                <li style="display:none;" class="article-list-entry media">
+
+                    {%if article.type == 'answer' %}
+                    <i class="fas fa-2x fa-question mr-3 p-2"></i>
+                    {%endif%}
+
+                    {%if article.type == 'essay' %}
+                    <i class="fas fa-2x fa-feather-alt mr-2 p-2"></i>
+                    {%endif%}
+
+                    {%if article.type == 'list' %}
+                    <i class="fas fa-2x fa-list-alt mr-2 p-2"></i>
+                    {%endif%}
+
+                    {%if article.type == 'walkthrough' %}
+                    <i class="fas fa-2x fa-university mr-2 p-2"></i>
+                    {%endif%}
+
+
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{article.title}}</h5>
+                        <p>{{article.short_description}}</p>
+                        <p>
+                            <a href="{{article.href}}.html">Read this article</a>
+                        </p>
+                    </div>
+                </li>
                 {%endif%}
-                
-                {%if article.type == 'essay' %}
-                <i class="fas fa-2x fa-feather-alt mr-2 p-2"></i>
-                {%endif%}
-                
-                {%if article.type == 'list' %}
-                <i class="fas fa-2x fa-list-alt mr-2 p-2"></i>
-                {%endif%}
-                
-                {%if article.type == 'walkthrough' %}
-                <i class="fas fa-2x fa-university mr-2 p-2"></i>
-                {%endif%}
-                
-                
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">{{article.title}}</h5>
-                    <p>{{article.short_description}}</p>
-                    <p>
-                        <a href="{{article.href}}.html">Read this tutorial</a>
-                    </p>
-                </div>
-            </li>
             {% endfor %}
             
         </ul>

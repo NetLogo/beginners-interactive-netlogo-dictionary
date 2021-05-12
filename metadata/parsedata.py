@@ -115,8 +115,6 @@ def processArticles():
 #        csvfile = io.TextIOWrapper(csvBytes, encoding="utf-8")
 
     with open("bind_articles.csv", 'r') as csvfile:
-        ## read the header line before parsing
-        csvfile.readline() 
 
         ## read the header line before parsing
         csvfile.readline() 
@@ -157,8 +155,6 @@ def processVideos():
     videos = out["videos"]
 
     with open("bind_videos.csv", 'r') as csvfile:
-        ## read the header line before parsing
-        csvfile.readline() 
 
         ## read the header line before parsing
         csvfile.readline() 

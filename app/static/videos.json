@@ -19,12 +19,6 @@
             "should_show_on_main_page": true
         },
         {
-            "title": "What is emergence?",
-            "href": "emergence.mp4",
-            "short_description": "NetLogo is a powerful tool to model emergence? But what is emergence?",
-            "should_show_on_main_page": true
-        },
-        {
             "title": "Exploring the Models Library",
             "href": "modelslibrary.mp4",
             "short_description": "NetLogo's Models Library is an invaluable resource. Learn how to access it.",
