@@ -32,13 +32,10 @@ You can cite BIND as follows:
 
 &nbsp;
 
-##### Supervisor:
-[Uri Wilensky](http://ccl.northwestern.edu/Uri.shtml)
-
-&nbsp;
-
-##### Author:
+##### Authors:
 [Umit Aslan](http://ccl.northwestern.edu/staff.shtml)
+
+[Uri Wilensky](http://ccl.northwestern.edu/Uri.shtml)
 
 &nbsp;
 
