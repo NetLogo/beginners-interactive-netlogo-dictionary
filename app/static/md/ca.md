@@ -1,4 +1,4 @@
-`clear-all` essentially clears everything in a model: *all* drawings, turtles, plots, links, etc. It also sets the values of all the `globals` and agent properties to zero and makes all the patches black. It esentially reverts the model to a blank slate. You can also use `ca` as a shortened version.
+`clear-all` essentially clears everything in a model: *all* drawings, turtles, plots, links, etc. It also sets the values of all the `globals` and agent properties to zero and makes all the patches black. It essentially reverts the model to a blank slate. You can also use `ca` as a shortened version.
 
  
 

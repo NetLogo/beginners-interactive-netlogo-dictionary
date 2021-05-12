@@ -2,7 +2,7 @@
 
 
 
-You can also use `count` with turtle breeds and link breeds such as `count dogs` or in combination with other reporter agents primitives as `count turtles-here`.
+We can also use `count` with turtle breeds and link breeds such as `count dogs` or in combination with other reporter agents primitives as `count turtles-here`.
 
 
 

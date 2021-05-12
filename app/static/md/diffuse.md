@@ -1,4 +1,4 @@
-`diffuse` is an observer primitive that acts on every patch in the model. It causes each patch to diffuse (or spread around) the value of a given patch variable to their 8 [neighboring](/primitives/neighbors) patches. This primitive is very useful when we want to simulate processes where diffusion happens such as the diffusion of a smell or pollution in the air.
+`diffuse` is an observer primitive that acts on every patch in the model. It causes each patch to diffuse (or spread around) the value of a given patch variable to their 8 neighboring patches. This primitive is very useful when we want to simulate processes where diffusion happens such as the diffusion of a smell or pollution in the air.
 
 
 
@@ -8,7 +8,7 @@ For example, if every patch owned a *pollution* variable that kept track of how 
 
 Things to keep in mind when using `diffuse`: 
 
-* You cannot use `diffuse` inside within `ask` block. It is an observer-only primitive.
+* You cannot use `diffuse` within the `ask` block. It is an observer-only primitive.
 * You can also use the `diffuse4` primitive if you would like to achieve the same exact outcome but with the 4 cardinal direction neighbors.
 
 

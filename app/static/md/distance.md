@@ -17,4 +17,4 @@ Things to keep in mind when using `distance`:
 
 
 
-In the model example below, we use `distance` to implement a rudimentary path finding behavior for a lumberjack. The lumberjack has a "target" tree that they will try to move towards and cut down. Once they cuts down that tree, they will set their eyes to the closest tree. We use `distance` to get the distance between the lumberjack and all of the trees so that we can figure out which tree is closest. In the case of ties, we choose one of the closest trees randomly.
+In the model example below, we use `distance` to implement a rudimentary path finding behavior for a lumberjack. The lumberjack has a "target" tree that they will try to move towards and cut down. Once they cut down that tree, they will set their eyes to the closest tree. We use `distance` to get the distance between the lumberjack and all of the trees so that we can figure out which tree is closest. In the case of ties, we choose one of the closest trees randomly.

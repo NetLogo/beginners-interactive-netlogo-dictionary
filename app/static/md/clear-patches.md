@@ -2,8 +2,8 @@
 
 
 
-`clear-patches` is only used when we do not want to use *clear-all*. For example, if you wanted to clear the patches but keep some global variables’ values and/or the keep the existing turtles the same, you would use `clear-patches`. 
+`clear-patches` is only used when we do not want to use *clear-all*. For example, if we wanted to clear the patches but keep some global variables’ values and the existing turtles the same, we would use `clear-patches`. 
 
 
 
-In the model example below, we have three buttons. The first one makes patches' color green and creates some cows on random positions. The second button runs the `clear-patches` primitive to clear the patches, as a proxy for grass, but leave the cows the same. The third button runs the `clear-turtles` primitive to remove the cows from the model but leave the patches/grass as is. 
+In the model example below, we have three buttons. The first one makes patches' color green and creates some cows on random locations. The second button runs the `clear-patches` primitive to clear the patches, as a proxy for grass, but leaves the cows the same. The third button runs the `clear-turtles` primitive to remove the cows from the model but leave the patches/grass as is. 

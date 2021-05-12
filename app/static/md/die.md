@@ -9,5 +9,5 @@ ask one-of turtles [ die ]
 
 
 
-In the model example below, a flock of cows move around on a grassland. Every time they are on a green patch, they eat the grass there and gain energy. Every time they move, they loose some energy. If a grass ever has 0 energy, it dies and removes itself from the model. 
+In the model example below, a flock of cows move around on a grassland. Every time they are on a green patch, they eat the grass there and gain energy. Every time they move, they lose some energy. If a grass ever has 0 energy, it dies and removes itself from the model. 
 

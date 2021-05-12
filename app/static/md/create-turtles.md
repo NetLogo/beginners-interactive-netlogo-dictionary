@@ -1,13 +1,22 @@
-`create-turtles` is a primitive that creates a given number of new turtles in the model. These new turtles are all placed at the center of the model with the same default shape but with random colors and headings.  The short hand version of this primitive is `crt`. For example, `create-turtles 100`.
-
-
-
-In addition, you can use the brackets  `[   ]`  to immediately give some rules to your new turtles. For example, the following code would not only create 100 new turtles but also make all of these turtles green and make each one go to a random patch. This way, you would not need to use a separate `ask` command.
+`create-turtles` is a primitive that creates a given number of new turtles in the model. These new turtles are all placed at the center of the model with the same default shape but with random colors and headings.  The shorthand version of this primitive is `crt`.
 
 
 
 ```
-create-turtles [
+create-turtles 1015
+crt 30
+```
+
+
+
+
+
+In addition, we can use the brackets () `[ ]`)  to immediately give some rules to our new turtles. For example, the following code would not only create 100 new turtles but also make all of these turtles green and make each one go to a random patch. This way, we would not need to use a separate `ask` command.
+
+
+
+```
+create-turtles 100 [
 	set color green
 	move-to one-of patches
 ]

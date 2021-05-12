@@ -17,7 +17,7 @@ end
 
 
 
-You can combine `any?` with a conditional reporter using the `with` primitive such as the following example that stops the model if any of the turtles in the model are smaller than 1 unit: 
+We can combine `any?` with a conditional reporter using the `with` primitive such as the following example that stops the model if any of the turtles in the model are smaller than 1 unit: 
 
 
 
@@ -35,4 +35,4 @@ Things to keep in mind in mind when using `any?`:
 
 
 
-The model example below represents the spread of a contagious disease within a healthy population. We use `any?` primitive to run the model as long as there is at least one healthy (green) individual in the model. Once all of the individuals turned red, the model automatically stops.
+The model example below represents the spread of a contagious disease within a healthy population. We use `any?` primitive to run the model as long as there is at least one healthy (green) individual in the model. Once all of the individuals turn red, the model automatically stops.
