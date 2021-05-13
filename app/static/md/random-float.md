@@ -1,4 +1,4 @@
-`random-float` is a mathematics primitive that reports a random floating point number anywhere between 0 and the given number. For instance, `random-float 10` could report 6.9105, 7, 4.2, 0.451, 0.0000001, 9.99999, etc. `random-float` is very useful in modeling phenomena that requires continuous numbers. For example, if we wanted to create a model where we wanted to have people with various heights, we could write the following code, which would make each person have a random height between 5 feet to 7 feet:
+`random-float` is a mathematics primitive that reports a random floating point number anywhere between 0 and the given number. For instance, `random-float 10` could report 6.9105, 7, 4.2, 0.451, 0.0000001, 9.99999, etc. `random-float` is very useful in modeling phenomena that require continuous numbers. For example, if we wanted to create a model where we wanted to have people with various heights, we could write the following code, which would make each person have a random height between 5 feet to 7 feet:
 
 
 

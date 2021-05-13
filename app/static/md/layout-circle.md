@@ -19,4 +19,4 @@ Things to keep in mind when using `layout-circle`:
 
 
 
-The model example below demonstrates how  `layout-circle` works. It has two *setup* buttons: one to create an empty model and another to create a model with 10 houses at random places. When the go button is clicked, we create a new house at each tick if there are less than 10 houses (i.e. if we used the setup-empty button). Then, we use `layout-turtle` to organize our neighborhood. This model also includes a variable radius and increments it at each tick to show how `layout-turtle` works at for different radius values.
+The model example below demonstrates how  `layout-circle` works. It has two *setup* buttons: one to create an empty model and another to create a model with 10 houses at random places. When the go button is clicked, we create a new house at each tick if there are less than 10 houses (i.e. if we used the setup-empty button). Then, we use `layout-turtle` to organize our neighborhood. This model also includes a variable radius and increments it at each tick to show how `layout-turtle` works for different radius values.

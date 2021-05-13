@@ -27,5 +27,5 @@ Things to keep in mind when using `sprout`:
 
 
 
-In the model example below, we have an empty garden and a farmer. Our farmer moves around randomly and fertilizes each patch. When a patch is fertilized, its `pcolor` turns into a lighter brown. Once a patch reaches a certain level of fertilization, it sprouts a new plant. If the farmer fertilizes a patch that already has a plant there, the fertilizer helps the plant grown.
+In the model example below, we have an empty garden and a farmer. Our farmer moves around randomly and fertilizes each patch. When a patch is fertilized, its `pcolor` turns into a lighter brown. Once a patch reaches a certain level of fertilization, it sprouts a new plant. If the farmer fertilizes a patch that already has a plant there, the fertilizer helps the plant grow.
 

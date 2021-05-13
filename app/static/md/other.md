@@ -14,4 +14,4 @@ We use `other` in this context because if we did not, there is a chance that `on
 
 
 
-In the model example below, we have clusters of stationary turtles randomly distributed in the world that represent people and we have a mobile turtle who represents a doctor. The doctor moves around randomly and when it comes accross `other turtles`, it asks the other turtles on the same patch to turn themselves green if they are healthy and red if they are infected.
+In the model example below, we have clusters of stationary turtles randomly distributed in the world that represent people and we have a mobile turtle who represents a doctor. The doctor moves around randomly and when it comes across `other turtles`, it asks the other turtles on the same patch to turn themselves green if they are healthy and red if they are infected.

@@ -1,4 +1,4 @@
-A **reporter** is a pre-defined procedure that returns a value and, unlike a command, cannot be a stand-alone code element . NetLogo has some useful built-in reporters that cannot be changed directly such as `ticks`, `pi`, `e`, `world-width`, and `world-height`. For example, we cannot just write `ticks` in the code. We need to use ticks in some other algorithm such as: 
+A **reporter** is a predefined procedure that returns a value and, unlike a command, cannot be a stand-alone code element . NetLogo has some useful built-in reporters that cannot be changed directly such as `ticks`, `pi`, `e`, `world-width`, and `world-height`. For example, we cannot just write `ticks` in the code. We need to use ticks in some other algorithm such as: 
 
 
 
@@ -63,4 +63,4 @@ Now, whenever we would like to calculate the area of a circle, we could simply w
 
 
 
-In the model example below, we have many circles large and small. These circles represent particles within a gas container. Each particle has the same energy. However, each of them have different speed because a particle's kinetic energy is equal to its mass times the square of its speed divided by two ($E = \frac{1}{2} m v^2$). Instead of writing this complicated code to calculate a particle's speed within the `go` procedure, we define a *speed* reporter. Although we kept the code of this model example deliberately simple, defining this reporter would make a big difference if we had a more complex model where we needed to calculate the speed of a particle in many different parts of our code.
+In the model example below, we have many circles large and small. These circles represent particles within a gas container. Each particle has the same energy. However, each of them has a different speed because a particle's kinetic energy is equal to its mass times the square of its speed divided by two ($E = \frac{1}{2} m v^2$). Instead of writing this complicated code to calculate a particle's speed within the `go` procedure, we define a *speed* reporter. Although we kept the code of this model example deliberately simple, defining this reporter would make a big difference if we had a more complex model where we needed to calculate the speed of a particle in many different parts of our code.

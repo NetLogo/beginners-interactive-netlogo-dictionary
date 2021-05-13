@@ -1,4 +1,4 @@
-`right` is primitive that tells a turtle to turn certain number of degrees (between 0 and 360) to the right. 
+`right` is primitive that tells a turtle to turn a certain number of degrees (between 0 and 360) to the right. 
 
 
 

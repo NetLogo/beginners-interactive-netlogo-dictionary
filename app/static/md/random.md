@@ -25,5 +25,5 @@ Things to keep in mind when using `random`:
 
 
 
-In the model example below, we have 6 turtles that represent 6 dices. Every time we click the **roll dice** button, each turtle picks a random number between 1 to 6 (including 6) and updates its shape accordingly. 
+In the model example below, we have 6 turtles that represent the 6 faces of a dice. Every time we click the **roll dice** button, each turtle picks a random number between 1 to 6 (including 6) and updates its shape accordingly. 
 

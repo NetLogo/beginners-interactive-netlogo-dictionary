@@ -1,4 +1,4 @@
-`Set` changes the value of a variable to the provided new value. We can use `set` to change the values of global variables created with `globals`, local variables created with `let`, pre-determined agent characteristics (e.g.,  `pcolor`, `size`, `xcor`), and custom agent characteristics created with `turtles-own`, `patches-own`, and `links-own`. For example, if we wanted to assign a random age to each turtle and make older turtles blue, we would write the following code:
+`Set` changes the value of a variable to the provided new value. We can use `set` to change the values of global variables created with `globals`, local variables created with `let`, predetermined agent characteristics (e.g.,  `pcolor`, `size`, `xcor`), and custom agent characteristics created with `turtles-own`, `patches-own`, and `links-own`. For example, if we wanted to assign a random age to each turtle and make older turtles blue, we would write the following code:
 
 
 

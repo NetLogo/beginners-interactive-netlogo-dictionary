@@ -1,4 +1,4 @@
-`myself` is a primitive that is useful when we want an agent to refer itself while trying to address a different agent or agentset within an `ask` command or a reporter (e.g., `of`, `with`). For example, if we wanted to create a model within which turtles with the same color tried to find each other, we would write the following code:
+`myself` is a primitive that is useful when we want an agent to refer to itself while trying to address a different agent or agentset within an `ask` command or a reporter (e.g., `of`, `with`). For example, if we wanted to create a model within which turtles with the same color tried to find each other, we would write the following code:
 
  
 

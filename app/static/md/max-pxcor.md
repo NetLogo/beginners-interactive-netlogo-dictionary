@@ -31,7 +31,7 @@ ask turtles [
 
 Things to keep in mind when using `max-pxcor`: 
 
-* `max-pxcor`,`min-pxcor`,`max-pycor`, and `min-pycor` are not variables; they are constant reporters. That is, you a code such as `set max-pxcor 30` would show an error message. 
+* `max-pxcor`,`min-pxcor`,`max-pycor`, and `min-pycor` are not variables; they are constant reporters. That is, a code such as `set max-pxcor 30` would show an error message. 
 * You can change your model's size through the **Settings** button in the Interface Tab or using the `resize-world` primitive.
 
 

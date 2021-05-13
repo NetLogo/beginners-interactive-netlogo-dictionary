@@ -1,4 +1,4 @@
-`scale-color` is a primitive that reports a shade of a color proportional to the value of a given number. For example, if we wanted to create a traffic modelin which cars with fuller tanks were brighter than those with emptier tanks, we would write the following code:
+`scale-color` is a primitive that reports a shade of a color proportional to the value of a given number. For example, if we wanted to create a traffic model in which cars with fuller tanks were brighter than those with emptier tanks, we would write the following code:
 
 
 

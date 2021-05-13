@@ -2,7 +2,7 @@ Patches are a special kind of stationary agents in NetLogo that make up the worl
 
 
 
-The `patch` primitive reports the specific patch with the given coordinates. For example, if we wanted to create a model of an ant colony whose entrace was the patch at the center, we could write the following code:
+The `patch` primitive reports the specific patch with the given coordinates. For example, if we wanted to create a model of an ant colony whose entrance was the patch at the center, we could write the following code:
 
 
 
@@ -37,4 +37,4 @@ Things to keep in mind when using `patch` and `patches`:
 
 
 
-In the model example below, we have a farm that is surrounded with a fence. The fence is represented with brown patches and the grassland is represented with green or lime patches. We also have a yellow square in the middle that represent a ranch and some cows who move around randomly and eat the grass on each patch until there is no grass left.
+In the model example below, we have a farm that is surrounded with a fence. The fence is represented with brown patches and the grassland is represented with green or lime patches. We also have a yellow square in the middle that represents a ranch and some cows who move around randomly and eat the grass on each patch until there is no grass left.

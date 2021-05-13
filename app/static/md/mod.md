@@ -21,7 +21,7 @@ ask patches [
 Things to keep in mind when using `mod`: 
 
 * `mod` works with floating point numbers, too. For example, `5 mod 1.5` would report 0.5.
-* Using `mod` with negative numbers maybe counterintuitive. For example, while `5 mod 3` would report 2, `5 mod -3` would report -1.
+* Using `mod` with negative numbers may be counterintuitive. For example, while `5 mod 3` would report 2, `5 mod -3` would report -1.
 
 
 

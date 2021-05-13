@@ -1,4 +1,4 @@
-`in-cone` is a primitive that heps us simulate a "cone of vision" in front of a turtle. It allows us to model an agent having some sight or other sense in front of them, but not behind or to the side of them.
+`in-cone` is a primitive that helps us simulate a "cone of vision" in front of a turtle. It allows us to model an agent having some sight or other sense in front of them, but not behind or to the side of them.
 
 The cone is constructed with two inputs: how far the agent can see (*radius*), and how wide the agent can see (*degrees between 0 to 360*). For example, if we wanted some rabbits to eat if there were carrots in front of them, but not behind or to the side, we could write the following code:
 

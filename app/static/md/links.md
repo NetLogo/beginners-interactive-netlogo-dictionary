@@ -1,4 +1,4 @@
-`links` are a special category of agents (like turtles and patches) in NetLogo to represent connections between turtles. A link itself is just a connection between any two (distinct) turtle with some information attached. With just this simple tool of connections between turtles, we can represent very sophisticated relationships between turtles such as family trees, "friend" relationships on social media (commonly referred to as a "social graph"), or even road maps for navigation software like google maps or waze.
+`links` are a special category of agents (like turtles and patches) in NetLogo to represent connections between turtles. A link itself is just a connection between any two (distinct) turtles with some information attached. With just this simple tool of connections between turtles, we can represent very sophisticated relationships between turtles such as family trees, "friend" relationships on social media (commonly referred to as a "social graph"), or even road maps for navigation software like google maps or waze.
 
 
 
@@ -24,4 +24,4 @@ Things to keep in mind when using `links`:
 
 
 
-In the model example below, we have a computer network represented with a server at the center and other terminal computers arranged in a circle layout. Each computer is connected to the server with a gray dashed link that represents a passive connection. At each tick, our server initiantes an active connection to a random terminal. We represent the active connections with a green link. We also use two different link shapes for active connections: a simple straight linke indicating an information retrieval and a curved three-line connection indicating a file download. 
+In the model example below, we have a computer network represented with a server at the center and other terminal computers arranged in a circle layout. Each computer is connected to the server with a gray dashed link that represents a passive connection. At each tick, our server initiates an active connection to a random terminal. We represent the active connections with a green link. We also use two different link shapes for active connections: a simple straight link indicating an information retrieval and a curved three-line connection indicating a file download. 

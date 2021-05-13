@@ -27,5 +27,5 @@ Things to keep in mind when using `forward`:
 
 
 
-In the model example below, we have a road represented with gray patches and a car on the road. We use the `set heading 90` code in our *setup* procedure to make sure that our car is heading towards east. Our model has 3 different go buttons: `go-slow`, `go-fast`, and `go-back`, each doing exactly what the name suggest. 
+In the model example below, we have a road represented with gray patches and a car on the road. We use the `set heading 90` code in our *setup* procedure to make sure that our car is heading towards east. Our model has 3 different go buttons: `go-slow`, `go-fast`, and `go-back`, each doing exactly what the name suggests. 
 

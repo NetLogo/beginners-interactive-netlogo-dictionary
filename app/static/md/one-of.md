@@ -17,7 +17,7 @@ ask one-of trees [
 
 Things to keep in mind when using `one-of`:
 
-* We can also use `one-of` with lists. For example, if we wanted each of our turtle to pick a random color from a predetermined list, we can write the following code: `ask turtles [set color one-of [red green blue yellow]]`.
+* We can also use `one-of` with lists. For example, if we wanted each of our turtles to pick a random color from a predetermined list, we can write the following code: `ask turtles [set color one-of [red green blue yellow]]`.
 
 * If `one-of` is used on an empty agentset or list, NetLogo will show an error and your model will not work.
 

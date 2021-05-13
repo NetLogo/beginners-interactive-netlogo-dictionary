@@ -1,4 +1,4 @@
-`globals` is a primitive that we use to define custom *global variables* in NetLogo. A global variable is a variable that has the same value for all the agents in the model accross all procedures. You can define your custom global variables by writing  `globals` followed by brackets `[]`.
+`globals` is a primitive that we use to define custom *global variables* in NetLogo. A global variable is a variable that has the same value for all the agents in the model across all procedures. You can define your custom global variables by writing  `globals` followed by brackets `[]`.
 
 
 

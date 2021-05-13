@@ -47,4 +47,4 @@ Things to keep in mind when using `ifelse-value`:
 
 
 
-In the model example below, we have six dices. Every time we click the *roll-all* button, each turtle picks a random number between 1 to 6. Then, we use the `ifelse-value` primitive to pick the correct turtle shape to represent the corresponding die value.
+In the model example below, we have six dice shapes. Every time we click the *roll-all* button, each turtle picks a random number between 1 to 6. Then, we use the `ifelse-value` primitive to pick the correct turtle shape to represent the corresponding die value.

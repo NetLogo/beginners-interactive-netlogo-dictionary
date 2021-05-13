@@ -17,5 +17,5 @@ Things to keep in mind when using `max-n-of`:
 
 
 
-In the model example below, we have some poeple who represent an absurdly simple economy. At each tick, a randomly picked turtle executes a trade by picking another turtle randomly and giving that turtle 5 of its money. This exchange is represented with a temporary link between the two turtles. We use `max-n-of` to change the richest three turtles' color to blue. We also use `min-n-of` to change the poorest 3 turtles' color to red.
+In the model example below, we have some people who represent an absurdly simple economy. At each tick, a randomly picked turtle executes a trade by picking another turtle randomly and giving that turtle 5 of its money. This exchange is represented with a temporary link between the two turtles. We use `max-n-of` to change the richest three turtles' color to blue. We also use `min-n-of` to change the poorest 3 turtles' color to red.
 

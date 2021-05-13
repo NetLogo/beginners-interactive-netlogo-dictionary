@@ -16,7 +16,7 @@ ask people [
 Things to keep in mind when using `of`:
 
 * `of` is very useful to query agent characteristics such as finding the average size of turtles (`mean [size] of turtles`), the largest turtle size (`max [size] of turtles`), etc.
-* `of` is also very useful in creating monitors or plots in the interface. Often times, we will need to present some sort of a summary value such as the average wealth of turtles (`mean [wealth] of turtles`) or total wealth of turtles (`sum [wealth] of turtles`).
+* `of` is also very useful in creating monitors or plots in the interface. Oftentimes, we will need to present some sort of a summary value such as the average wealth of turtles (`mean [wealth] of turtles`) or total wealth of turtles (`sum [wealth] of turtles`).
 * You can also do some simple operations within a reporter that comes before `of` such as `[checking-account + savings-account] of customers` to get the total money in customers' accounts or `[size / 2] of circles` to automatically calculate the radius of circles in a model.
 * If we use `of` with agentsets (and without primitives such as `mean`), it will report a list. For example, if we have 3 turtles in a model, `[size] of turtles` would report `[1 1 1]`.
 
