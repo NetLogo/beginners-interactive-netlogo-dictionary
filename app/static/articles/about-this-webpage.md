@@ -6,7 +6,7 @@ We created the Beginner's Interactive NetLogo Dictionary (BIND) to provide an ex
 
 
 
-In case you cannot find an entry for a NetLogo primitive in this webpage, you can refer to the full NetLogo documentation at <a href="http://ccl.northwestern.edu/netlogo/docs/" target="_blank">http://ccl.northwestern.edu/netlogo/docs/</a>
+In case you cannot find an entry for a NetLogo primitive in this webpage, you can refer to the full NetLogo documentation at <a href="https://ccl.northwestern.edu/netlogo/docs/" target="_blank">https://ccl.northwestern.edu/netlogo/docs/</a>
 
 
 
@@ -33,9 +33,9 @@ You can cite BIND as follows:
 &nbsp;
 
 ##### Authors:
-[Umit Aslan](http://ccl.northwestern.edu/staff.shtml)
+[Umit Aslan](https://ccl.northwestern.edu/staff.shtml)
 
-[Uri Wilensky](http://ccl.northwestern.edu/Uri.shtml)
+[Uri Wilensky](https://ccl.northwestern.edu/Uri.shtml)
 
 &nbsp;
 

@@ -6,7 +6,7 @@
 
 We will have an explanation of how to download NetLogo, install it, and run the models...
 
-![NetLogo models library](http://ccl.northwestern.edu/netlogo/docs/images/file-menu.gif)
+![NetLogo models library](https://ccl.northwestern.edu/netlogo/docs/images/file-menu.gif)
 
 ## How to install NetLogo?
 coming 
