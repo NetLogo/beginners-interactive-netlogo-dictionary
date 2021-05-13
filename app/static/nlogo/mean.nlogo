@@ -40,10 +40,10 @@ to wiggle
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-115
-10
-453
-349
+5
+60
+343
+399
 -1
 -1
 30.0
@@ -84,10 +84,10 @@ NIL
 1
 
 BUTTON
-5
-65
-110
-140
+115
+10
+275
+55
 NIL
 go
 T
@@ -100,29 +100,11 @@ NIL
 NIL
 0
 
-PLOT
-115
-410
-450
-560
-mean [size] of plants
-NIL
-NIL
-0.0
-1.0
-0.0
-1.0
-true
-false
-"" ""
-PENS
-"plantsize" 1.0 0 -13210332 true "" "if any? plants [\nplot mean [size] of plants\n]"
-
 MONITOR
-335
-360
-450
-405
+225
+410
+340
+455
 NIL
 count plants
 17
@@ -130,10 +112,10 @@ count plants
 11
 
 MONITOR
-115
-360
-325
-405
+5
+410
+215
+455
 NIL
 mean [size] of plants
 3
