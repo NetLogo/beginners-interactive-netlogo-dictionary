@@ -6,6 +6,7 @@ import sys
 import re
 import os
 import datetime
+import pandas as pd
 from PIL import Image
 
 ## constants
@@ -37,11 +38,16 @@ outputFile = "../app/static/primitives.json"
 def populatePrimitives():
     if(verbose):
         print("### Starting to pull data for the primitives ###")
-
+        
     out = {"primitives" : {}}
     primitives = out["primitives"]
+    csv_filename = "csv/bind_primitives.csv"
+    
+    # first, let's convert the first sheet of the excel file to a csv file
+    df = pd.DataFrame(pd.read_excel("binddata.xlsx", sheet_name=0))
+    df.to_csv(csv_filename, index=False)
 
-    with open("bind_primitives.csv", 'r') as csvfile:
+    with open(csv_filename, 'r') as csvfile:
         ## read the header line before parsing
         csvfile.readline() 
 
@@ -59,15 +65,15 @@ def populatePrimitives():
                 search_terms = [term.strip() for term in row[2].split(',')]
             
             agents = []
-            if row[3] == "TRUE":
+            if row[3] == "True":
                 agents.append("observer")
-            if row[4] == "TRUE":
+            if row[4] == "True":
                 agents.append("turtles")
-            if row[5] == "TRUE":
+            if row[5] == "True":
                 agents.append("patches")
-            if row[6] == "TRUE":
+            if row[6] == "True":
                 agents.append("links")
-            if row[7] == "TRUE":
+            if row[7] == "True":
                 agents.append("utilities")
             
             see_also = []
@@ -105,6 +111,11 @@ def processArticles():
 
     out = {"articles" : []}
     articles = out["articles"]
+    csv_filename = "csv/bind_articles.csv"
+    
+    # first, let's convert the first sheet of the excel file to a csv file
+    df = pd.DataFrame(pd.read_excel("binddata.xlsx", sheet_name=1))
+    df.to_csv(csv_filename, index=False)
 
 #    for page in ARTICLES_PAGES:
 #        urlToOpen = "https://docs.google.com/spreadsheets/d/" + sheetUID + "/export?format=csv&gid=" + str(page)
@@ -154,6 +165,11 @@ def processVideos():
     
     out = {"videos" : []}
     videos = out["videos"]
+    csv_filename = "csv/bind_videos.csv"
+    
+    # first, let's convert the first sheet of the excel file to a csv file
+    df = pd.DataFrame(pd.read_excel("binddata.xlsx", sheet_name=0))
+    df.to_csv(csv_filename, index=False)
 
     with open("bind_videos.csv", 'r') as csvfile:
 

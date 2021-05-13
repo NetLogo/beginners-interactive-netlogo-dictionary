@@ -3,9 +3,8 @@
         "all": {
             "identity": "all",
             "display_name": "all?",
-            "short_description": "Checks if a reporter is true for all agents in an agentset.",
+            "short_description": "Checks if a reporter is true for all the agents in an agentset.",
             "search_terms": [
-                "all",
                 "check",
                 "agents",
                 "agentset",
@@ -15,11 +14,10 @@
                 "utilities"
             ],
             "see_also": [
-                "any?",
                 "nobody",
                 "count",
-                "not",
-                "if"
+                "if",
+                "any"
             ],
             "library_models": [
                 "Autumn",
@@ -45,9 +43,8 @@
             "see_also": [
                 "if",
                 "or",
-                "if-else",
-                "ifelse-value",
-                "not"
+                "ifelse",
+                "with"
             ],
             "library_models": [
                 "Autumn",
@@ -59,9 +56,8 @@
         "any": {
             "identity": "any",
             "display_name": "any?",
-            "short_description": "Checks if there are any agents in an agentset.",
+            "short_description": "Checks if there is at least one agent in an agentset.",
             "search_terms": [
-                "any",
                 "within",
                 "count",
                 "agentset",
@@ -71,8 +67,7 @@
                 "utilities"
             ],
             "see_also": [
-                "all?",
-                "count",
+                "all",
                 "if",
                 "other",
                 "nobody"
@@ -101,9 +96,7 @@
                 "turtles",
                 "patches",
                 "links",
-                "with",
-                "n-of",
-                "one-of"
+                "with"
             ],
             "library_models": [
                 "Ants",
@@ -129,8 +122,7 @@
                 "create-turtles",
                 "turtles-own",
                 "die",
-                "ask",
-                "hatch"
+                "ask"
             ],
             "library_models": [
                 "Bacterial Infection",
@@ -193,9 +185,7 @@
                 "clear-patches",
                 "clear-turtles",
                 "die",
-                "reset-ticks",
-                "globals",
-                "create-turtles"
+                "reset-ticks"
             ],
             "library_models": [
                 "Flocking",
@@ -230,9 +220,7 @@
                 "clear-patches",
                 "clear-turtles",
                 "die",
-                "reset-ticks",
-                "globals",
-                "create-turtles"
+                "reset-ticks"
             ],
             "library_models": [
                 "Flocking",
@@ -266,11 +254,8 @@
             "see_also": [
                 "clear-all",
                 "clear-turtles",
-                "neighbors",
-                "pcolor",
-                "reset-ticks",
-                "globals",
-                "create-turtles"
+                "die",
+                "reset-ticks"
             ],
             "library_models": [
                 "Disease Solo",
@@ -301,12 +286,10 @@
                 "observer"
             ],
             "see_also": [
-                "die",
                 "clear-all",
                 "clear-patches",
-                "reset-ticks",
-                "globals",
-                "create-turtles"
+                "die",
+                "reset-ticks"
             ],
             "library_models": [
                 "Grand Canyon",
@@ -341,8 +324,7 @@
                 "pcolor",
                 "scale-color",
                 "turtles-own",
-                "of",
-                "with"
+                "of"
             ],
             "library_models": [
                 "Sunflower",
@@ -373,11 +355,7 @@
                 "mean",
                 "mod",
                 "if",
-                "if-else",
-                "any?",
-                "all",
-                "turtles",
-                "patches"
+                "ifelse"
             ],
             "library_models": [
                 "Mimicry",
@@ -433,8 +411,7 @@
                 "hatch",
                 "sprout",
                 "ask",
-                "turtles-own",
-                "breeds"
+                "turtles-own"
             ],
             "library_models": [
                 "Sunflower",
@@ -461,8 +438,7 @@
                 "hatch",
                 "sprout",
                 "ask",
-                "turtles-own",
-                "breeds"
+                "turtles-own"
             ],
             "library_models": [
                 "Sunflower",
@@ -521,8 +497,7 @@
                 "patches-own",
                 "patches",
                 "globals",
-                "neighbors",
-                "neighbors4"
+                "neighbors"
             ],
             "library_models": [
                 "Ants",
@@ -611,15 +586,14 @@
             "see_also": [
                 "towards",
                 "facexy",
-                "heading",
+                "forward",
                 "right"
             ],
             "library_models": [
                 "Disease Solo",
                 "Heatbugs",
                 "Voronoi - Emergent",
-                "Vants",
-                "Wealth Distribution"
+                "Vants"
             ]
         },
         "facexy": {
@@ -643,7 +617,7 @@
             "see_also": [
                 "face",
                 "setxy",
-                "heading",
+                "max-pxcor",
                 "towards"
             ],
             "library_models": [
@@ -678,13 +652,14 @@
             "library_models": [
                 "Daisyworld",
                 "Simple Birth Rates",
-                "Traffic Grid"
+                "Traffic Grid",
+                "CRISPR Bacterium"
             ]
         },
         "forward": {
             "identity": "forward",
             "display_name": "forward",
-            "short_description": "Allows turtles to move in any number of units on a straight path.",
+            "short_description": "Makes a turtle move in any number of units on a straight path.",
             "search_terms": [
                 "move",
                 "motion",
@@ -702,7 +677,7 @@
             ],
             "see_also": [
                 "right",
-                "heading",
+                "random",
                 "turtles",
                 "move-to"
             ],
@@ -716,7 +691,7 @@
         "fd": {
             "identity": "fd",
             "display_name": "fd",
-            "short_description": "Allows turtles to move in any number of units on a straight path.",
+            "short_description": "Makes a turtle move in any number of units on a straight path.",
             "search_terms": [
                 "move",
                 "motion",
@@ -734,7 +709,7 @@
             ],
             "see_also": [
                 "right",
-                "heading",
+                "random",
                 "turtles",
                 "move-to"
             ],
@@ -774,7 +749,7 @@
         "hatch": {
             "identity": "hatch",
             "display_name": "hatch",
-            "short_description": "Allows a turtle to make any number of new turtles that are identical to itself.",
+            "short_description": "Makes a turtle make any number of new turtles that are identical to itself.",
             "search_terms": [
                 "birth",
                 "new",
@@ -817,14 +792,14 @@
             "see_also": [
                 "ifelse",
                 "ifelse-value",
-                "any?",
-                "all?"
+                "any",
+                "all"
             ],
             "library_models": [
                 "Reactor X-Section",
                 "Sand",
                 "DLA Alternate Linear",
-                ""
+                "Fire"
             ]
         },
         "ifelse": {
@@ -869,7 +844,7 @@
             ],
             "see_also": [
                 "if",
-                "if-else",
+                "ifelse",
                 "or",
                 "globals"
             ],
@@ -950,7 +925,6 @@
             ],
             "see_also": [
                 "links",
-                "link-neighbors",
                 "create-links-with",
                 "setxy",
                 "move-to"
@@ -958,7 +932,8 @@
             "library_models": [
                 "Planarity",
                 "Giant Component",
-                "Small Worlds"
+                "Small Worlds",
+                "Spread of Disease"
             ]
         },
         "left": {
@@ -1035,7 +1010,7 @@
             "see_also": [
                 "create-links-with",
                 "links",
-                "any?",
+                "any",
                 "count"
             ],
             "library_models": [
@@ -1089,9 +1064,9 @@
             ],
             "see_also": [
                 "count",
-                "min",
                 "mean",
-                "mod"
+                "mod",
+                "of"
             ],
             "library_models": [
                 "Mimicry",
@@ -1117,7 +1092,7 @@
             "see_also": [
                 "one-of",
                 "max",
-                "min",
+                "of",
                 "count"
             ],
             "library_models": [
@@ -1150,7 +1125,8 @@
             "library_models": [
                 "Urban Suite - Economic Disparity",
                 "DLA",
-                "Traffic Grid Goal"
+                "Traffic Grid Goal",
+                "Blood Sugar Regulation"
             ]
         },
         "max-pycor": {
@@ -1179,7 +1155,7 @@
                 "Fruit Wars",
                 "Ants",
                 "Sunflower Biomorphs",
-                "Random Balls"
+                "Galton Box"
             ]
         },
         "mean": {
@@ -1312,7 +1288,7 @@
                 "mean",
                 "count",
                 "if",
-                "any?"
+                "any"
             ],
             "library_models": [
                 "Sunflower",
@@ -1339,7 +1315,7 @@
             "see_also": [
                 "setxy",
                 "set",
-                "pxcor",
+                "max-pxcor",
                 "patches"
             ],
             "library_models": [
@@ -1396,8 +1372,8 @@
             "see_also": [
                 "one-of",
                 "count",
-                "any?",
-                "all?"
+                "any",
+                "all"
             ],
             "library_models": [
                 "Virus",
@@ -1483,8 +1459,8 @@
                 "utilities"
             ],
             "see_also": [
-                "any?",
-                "member?",
+                "any",
+                "member",
                 "n-of",
                 "let"
             ],
@@ -1564,7 +1540,7 @@
             ],
             "see_also": [
                 "if",
-                "if-else",
+                "ifelse",
                 "and",
                 "of"
             ],
@@ -1587,7 +1563,7 @@
                 "turtles"
             ],
             "see_also": [
-                "any?",
+                "any",
                 "turtles-here",
                 "in-radius",
                 "patches"
@@ -1672,7 +1648,8 @@
             "library_models": [
                 "Peppered Moths",
                 "Blood Sugar Regulation",
-                "Honeycomb"
+                "Honeycomb",
+                "Rock Paper Scissors"
             ]
         },
         "patches-own": {
@@ -1697,7 +1674,7 @@
                 "Diffusion Graphics",
                 "Grand Canyon",
                 "Life",
-                "Hoteling's Law"
+                "Paths"
             ]
         },
         "pcolor": {
@@ -1724,7 +1701,8 @@
             "library_models": [
                 "Vision Evolution",
                 "Rock Paper Scissors",
-                "Wolf Sheep Predation"
+                "Wolf Sheep Predation",
+                "Bacterial Infection"
             ]
         },
         "pen-down": {
@@ -1868,8 +1846,8 @@
             "library_models": [
                 "Anisogamy",
                 "Autumn",
-                "Epidem Basic",
-                "Echo"
+                "Echo",
+                "Sex Ratio Equilibrium"
             ]
         },
         "repeat": {
@@ -1944,12 +1922,12 @@
             ],
             "see_also": [
                 "left",
-                "heading",
+                "forward",
                 "towards",
                 "face"
             ],
             "library_models": [
-                "Wolf Sheep Simple",
+                "Bacteria Hunt Speeds",
                 "Mammoths",
                 "Anisogamy",
                 "DLA Simple"
@@ -1978,7 +1956,7 @@
             "library_models": [
                 "Sex Ratio Equilibrium",
                 "Bug Hunt Camouflage",
-                "GenDrift T Interact",
+                "Bacterial Infection",
                 "Blood Sugar Regulation"
             ]
         },
@@ -2014,7 +1992,7 @@
         "semicolon": {
             "identity": "semicolon",
             "display_name": "semicolon",
-            "short_description": "Starts a comments to take notes on a line of code. Anything that follows a semicolon (;) will not be considered code.",
+            "short_description": "Starts a comments to take notes on a line of code. anything that follows a semicolon (;) will not be considered code.",
             "search_terms": [
                 "comment",
                 "note"
@@ -2148,7 +2126,7 @@
                 "ask"
             ],
             "library_models": [
-                "Hoteling's Law",
+                "4 Block Stalagmites",
                 "GasLab Circular Particles",
                 "CRISPR Bacterium",
                 "Ask Ordering Example"
@@ -2470,8 +2448,7 @@
                 "set",
                 "globals",
                 "patches-own",
-                "with",
-                "of"
+                "with"
             ],
             "library_models": [
                 "Disease Solo",
@@ -2492,14 +2469,15 @@
             ],
             "see_also": [
                 "if",
-                "if-else",
+                "ifelse",
                 "repeat",
                 "tick"
             ],
             "library_models": [
                 "Moths",
                 "Traffic Basic",
-                "Shepherds"
+                "Shepherds",
+                "Sunflower Biomorphs"
             ]
         },
         "with": {

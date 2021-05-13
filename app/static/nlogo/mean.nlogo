@@ -100,17 +100,6 @@ NIL
 NIL
 0
 
-MONITOR
-115
-360
-325
-405
-NIL
-mean [size] of plants
-3
-1
-11
-
 PLOT
 115
 410
@@ -137,6 +126,17 @@ MONITOR
 NIL
 count plants
 17
+1
+11
+
+MONITOR
+115
+360
+325
+405
+NIL
+mean [size] of plants
+3
 1
 11
 
