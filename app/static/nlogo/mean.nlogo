@@ -41,12 +41,12 @@ end
 @#$#@#$#@
 GRAPHICS-WINDOW
 5
-60
-343
-399
+80
+365
+441
 -1
 -1
-30.0
+32.0
 1
 10
 1
@@ -70,7 +70,7 @@ BUTTON
 5
 10
 110
-55
+70
 NIL
 setup
 NIL
@@ -87,7 +87,7 @@ BUTTON
 115
 10
 275
-55
+70
 NIL
 go
 T
@@ -102,9 +102,9 @@ NIL
 
 MONITOR
 225
-410
-340
-455
+450
+365
+495
 NIL
 count plants
 17
@@ -113,9 +113,9 @@ count plants
 
 MONITOR
 5
-410
+450
 215
-455
+495
 NIL
 mean [size] of plants
 3
