@@ -40,10 +40,10 @@ to wiggle
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-5
-80
-365
-441
+115
+10
+453
+349
 -1
 -1
 32.0
@@ -70,7 +70,7 @@ BUTTON
 5
 10
 110
-70
+55
 NIL
 setup
 NIL
@@ -84,10 +84,10 @@ NIL
 1
 
 BUTTON
-115
-10
-275
-70
+5
+65
+110
+140
 NIL
 go
 T
@@ -101,10 +101,10 @@ NIL
 0
 
 MONITOR
-225
+335
+360
 450
-365
-495
+405
 NIL
 count plants
 17
@@ -112,10 +112,10 @@ count plants
 11
 
 MONITOR
-5
-450
-215
-495
+115
+360
+325
+405
 NIL
 mean [size] of plants
 3

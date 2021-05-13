@@ -8,7 +8,7 @@ For some phenomena, modeling the way agents look is almost as important as model
 
 NetLogo includes a Turtle Shapes Editor, a Link Shapes editor, and a Color Swatches panel that allow us to create agent-based models that do not only represent real-world phenomena conceptually, but also create powerful visualizations of our agents. If you would like to learn more about how to use the shapes editors and the color swatches, read along.
 
-*Note: You can visit the NetLogo User Manual at <a href="http://ccl.northwestern.edu/netlogo/docs/" target="_blank">http://ccl.northwestern.edu/netlogo/docs/</a>* for more information on Shapes and Colors*
+*Note: You can visit the NetLogo User Manual at <a href="https://ccl.northwestern.edu/netlogo/docs/" target="_blank">https://ccl.northwestern.edu/netlogo/docs/</a>* for more information on Shapes and Colors*
 
 &nbsp;
 
@@ -28,7 +28,7 @@ NetLogo already has a lot of pre-designed shapes for us to use. Some of these sh
 
 
 
-<img src="http://ccl.northwestern.edu/netlogo/docs/images/shapes/shapes.gif" alt="Default NetLogo Shapes" style="zoom:75%;" />
+<img src="https://ccl.northwestern.edu/netlogo/docs/images/shapes/shapes.gif" alt="Default NetLogo Shapes" style="zoom:75%;" />
 
 
 
@@ -49,7 +49,7 @@ NetLogo has way more turtle shapes than the default ones for us to choose from. 
 
 
 
-<img src="http://ccl.northwestern.edu/netlogo/docs/images/shapes/library.gif" alt="Shapes Library" />
+<img src="https://ccl.northwestern.edu/netlogo/docs/images/shapes/library.gif" alt="Shapes Library" />
 
 &nbsp;
 
@@ -73,7 +73,7 @@ A few things to keep in mind while using the New Shape Editor:
 
 &nbsp;
 
-For more detailed information, visit the <a href="http://ccl.northwestern.edu/netlogo/docs/shapes.html" target="_blank">Shapes Editor</a> section of the NetLogo User Manual at <a href="http://ccl.northwestern.edu/netlogo/docs/shapes.html" target="_blank">http://ccl.northwestern.edu/netlogo/docs/shapes.html</a>.
+For more detailed information, visit the <a href="https://ccl.northwestern.edu/netlogo/docs/shapes.html" target="_blank">Shapes Editor</a> section of the NetLogo User Manual at <a href="https://ccl.northwestern.edu/netlogo/docs/shapes.html" target="_blank">https://ccl.northwestern.edu/netlogo/docs/shapes.html</a>.
 
 &nbsp;
 
@@ -87,7 +87,7 @@ NetLogo has a custom way of representing colors that makes it easier to remember
 
 &nbsp;
 
-![NetLogo Colors](http://ccl.northwestern.edu/netlogo/docs/images/colors.jpg)
+![NetLogo Colors](https://ccl.northwestern.edu/netlogo/docs/images/colors.jpg)
 
 &nbsp;
 
@@ -106,7 +106,7 @@ Things to keep in mind while using NetLogo colors in code:
 
 &nbsp;
 
-For more detailed information, visit the <a href="http://ccl.northwestern.edu/netlogo/docs/programming.html#colors" target="_blank">Colors</a> section of the NetLogo User Manual's Programming Guide Section at at <a href="http://ccl.northwestern.edu/netlogo/docs/programming.html#colors" target="_blank">http://ccl.northwestern.edu/netlogo/docs/programming.html#colors</a>.
+For more detailed information, visit the <a href="https://ccl.northwestern.edu/netlogo/docs/programming.html#colors" target="_blank">Colors</a> section of the NetLogo User Manual's Programming Guide Section at at <a href="https://ccl.northwestern.edu/netlogo/docs/programming.html#colors" target="_blank">https://ccl.northwestern.edu/netlogo/docs/programming.html#colors</a>.
 
 &nbsp;
 
@@ -136,5 +136,5 @@ Things to keep in mind while using the Link Shapes Editor:
 
 &nbsp;
 
-For more detailed information, visit the <a href="http://ccl.northwestern.edu/netlogo/docs/shapes.html#creating-and-editing-link-shapes" target="_blank">Shapes Editor</a> section of the NetLogo User Manual at <a href="http://ccl.northwestern.edu/netlogo/docs/shapes.html#creating-and-editing-link-shapes" target="_blank">http://ccl.northwestern.edu/netlogo/docs/shapes.html#creating-and-editing-link-shapes</a>.
+For more detailed information, visit the <a href="https://ccl.northwestern.edu/netlogo/docs/shapes.html#creating-and-editing-link-shapes" target="_blank">Shapes Editor</a> section of the NetLogo User Manual at <a href="https://ccl.northwestern.edu/netlogo/docs/shapes.html#creating-and-editing-link-shapes" target="_blank">https://ccl.northwestern.edu/netlogo/docs/shapes.html#creating-and-editing-link-shapes</a>.
 
