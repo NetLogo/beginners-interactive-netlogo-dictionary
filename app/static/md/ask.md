@@ -31,6 +31,9 @@ Things to keep in mind when using `ask`:
 * You can ask individual turtles to follow a set of rules using the form `turtle n`, such as `ask turtle 1 [...]`, `ask turtle 2 [...]`
 * You can ask individual patches to follow a set of rules using the form `patch x y`, such as `patch 3 0 [...]`.
 * You can use the `with` primitive to ask an even smaller subset of given agents such as `ask turtles with [color = red][ ... ]` or `ask patches with [pxcor = 5][ ... ]`.
+* You can use `ask` with `turtles`, `links`, and `patches`. 
+* If you write a code outside an ask statement, NetLogo will try to ask the `observer` to run the code but you cannot write a code such as `ask observer [...]`. 
+* Note that each NetLogo primitive has a *scope*. If you use a primitive within an incompatible ask statement, NetLogo will show an error.  A primitive can be observer-only (e.g.,`create-turtles`, `diffuse`), turtle-only (e.g., `forward`, `hatch`), patch-only (e.g., `sprout`, `max-pxcolor`) or link-only (e.g., `tie`, `thickness`). On the other hand, some primitives can be used within multiple scopes (e.g., `pcolor`, `neighbors`) and the utility primitives are scope-independent (e.g., `mean`, `with`).
 
 
 

@@ -33,9 +33,9 @@ You can cite BIND as follows:
 &nbsp;
 
 ##### Authors:
-[Umit Aslan](https://ccl.northwestern.edu/staff.shtml)
+[Umit Aslan](https://ccl.northwestern.edu/staff.shtml) <small>(umitaslan[at]u.northwestern.edu)</small>
 
-[Uri Wilensky](https://ccl.northwestern.edu/Uri.shtml)
+[Uri Wilensky](https://ccl.northwestern.edu/Uri.shtml)  <small>(uri[at]northwestern.edu)</small>
 
 &nbsp;
 
