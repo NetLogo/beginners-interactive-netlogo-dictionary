@@ -1,4 +1,4 @@
-# The First 12 NetLogo Primitives to Learn
+# The First 11 NetLogo Primitives to Learn
 
 &nbsp;
 

@@ -126,7 +126,7 @@ def processArticles():
 #        csvBytes = io.BytesIO(HTTPResponse.read())
 #        csvfile = io.TextIOWrapper(csvBytes, encoding="utf-8")
 
-    with open("bind_articles.csv", 'r') as csvfile:
+    with open("csv/bind_articles.csv", 'r') as csvfile:
 
         ## read the header line before parsing
         csvfile.readline() 
@@ -137,7 +137,7 @@ def processArticles():
             href                        = row[1]
             short_description           = row[2]
             article_type                = row[3]
-            should_show_on_main_page    = True if row[4] == "TRUE" else False
+            should_show_on_main_page    = True if row[4].upper() == "TRUE" else False
 
             new_article = {
                     "title"                     : title,

@@ -20,7 +20,7 @@
 
 <div id="description" class="cm-s-netlogo-default col-md-12">
     {% for article in articles %}
-    
+
         <div class="card">
             <div class="row">
                 <div class="col-1">
@@ -29,42 +29,48 @@
                         <i class="fas fa-2x fa-question p-3"></i>
                     </span>
                     {%endif%}
-                    
+
                     {%if article.type == 'walkthrough'%}
                     <span class="badge badge-warning m-4">
                         <i class="fas fa-2x fa-university p-3 mt-1 "></i>
                     </span>
                     {%endif%}
-                    
+
                     {%if article.type == 'essay'%}
                     <span class="badge badge-info m-4">
                         <i class="fas fa-2x fa-feather-alt p-3"></i>    
                     </span>
                     {%endif%}
-                    
+
                     {%if article.type == 'list'%}
                     <span class="badge badge-primary m-4">
                         <i class="fas fa-2x fa-list-alt p-3"></i>    
                     </span>
                     {%endif%}
-                    
-                    
+
+
                 </div>
                 <div class="col-11">
                     <div class="card-body">
                         <h4 class="card-title">{{article.title}}</h4>
                         <p class="card-text">{{article.short_description}}</p>
-                        <span><a href="{{article.href}}.html" class="ml-md-auto stretched-link text-decoration-none">Read more</a></span>
+                        <span>
+                            {% if article.href.startswith("https://") or article.href.startswith("http://") %}
+                                <a href="{{article.href}}" class="ml-md-auto stretched-link text-decoration-none" target="_blank">Read more</a>
+                            {%else%}
+                                <a href="{{article.href}}.html" class="ml-md-auto stretched-link text-decoration-none">Read more</a>
+                            {%endif%}
+                        </span>
                     </div>
                 </div>
-                
+
             </div>
-            
+
 
         </div>
         <div class="clearfix">&nbsp;</div>
-    
-    
+
+
     {% endfor %}
 </div>
 

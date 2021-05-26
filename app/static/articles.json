@@ -1,11 +1,18 @@
 {
     "articles": [
         {
+            "title": "Getting started with NetLogo",
+            "href": "/article/getting-started-with-netlogo",
+            "short_description": "Learn how to install NetLogo on your computer and start creating your models.",
+            "type": "walkthrough",
+            "should_show_on_main_page": true
+        },
+        {
             "title": "What is a primitive?",
             "href": "/article/what-is-a-primitive",
             "short_description": "This webpage is all about NetLogo's primitives. But what do we mean by primitive? This article summarizes it for you.",
             "type": "answer",
-            "should_show_on_main_page": true
+            "should_show_on_main_page": false
         },
         {
             "title": "Common NetLogo error messages and how to fix them",
@@ -22,44 +29,9 @@
             "should_show_on_main_page": true
         },
         {
-            "title": "Turtes in NetLogo",
-            "href": "/primitive/turtles",
-            "short_description": "We use \"turtles\" in NetLogo to model mobile agents. Learn more about turtles and how to create custom breeds.",
-            "type": "essay",
-            "should_show_on_main_page": false
-        },
-        {
-            "title": "Patches in NetLogo",
-            "href": "/primitive/patches",
-            "short_description": "We use \"patches\" in NetLogo to model the world itself. Learn more about patches and how to use them to model non-mobile agents",
-            "type": "essay",
-            "should_show_on_main_page": false
-        },
-        {
-            "title": "Links in NetLogo",
-            "href": "/primitive/links",
-            "short_description": "We use \"links\" in NetLogo to model non-spatial connections between turtles. Learn more about links and how to create network models in NetLogo",
-            "type": "essay",
-            "should_show_on_main_page": false
-        },
-        {
-            "title": "Getting started with NetLogo",
-            "href": "/article/getting-started-with-netlogo",
-            "short_description": "Learn how to install NetLogo on your computer and start creating your models.",
-            "type": "walkthrough",
-            "should_show_on_main_page": true
-        },
-        {
-            "title": "What is NetLogo?",
-            "href": "/article/what-is-netlogo",
-            "short_description": "If you are new to NetLogo, start here. ",
-            "type": "answer",
-            "should_show_on_main_page": false
-        },
-        {
-            "title": "The first 10 NetLogo primitives to learn",
-            "href": "/article/first-10-netlogo-primitives-to-learn",
-            "short_description": "If you are not where to start learning NetLogo, check out this list of the most useful and frequently used primitives in NetLogo. Once you learn these primitives well, you should be able to learn any other primitive easily.",
+            "title": "The first 11 NetLogo primitives to learn",
+            "href": "/article/first-11-netlogo-primitives-to-learn",
+            "short_description": "If you are not sure where to start learning NetLogo, check out this list of the most useful and frequently used primitives in NetLogo. Once you learn these primitives well, you should be able to learn any other primitive easily.",
             "type": "list",
             "should_show_on_main_page": false
         }
