@@ -82,7 +82,7 @@
         "ask": {
             "identity": "ask",
             "display_name": "ask",
-            "short_description": "Asks agents do things.",
+            "short_description": "Asks agents to do things.",
             "search_terms": [
                 "do",
                 "commands",
@@ -301,7 +301,7 @@
         "color": {
             "identity": "color",
             "display_name": "color",
-            "short_description": "Built-in turtle characteristic that the color of a turtle and allows us to change it.",
+            "short_description": "Built-in turtle characteristic that reports the color of a turtle and allows us to change it.",
             "search_terms": [
                 "color",
                 "pencil",
@@ -967,7 +967,7 @@
         "let": {
             "identity": "let",
             "display_name": "let",
-            "short_description": "Creates a local variable that only exists within just one procedure or a statement surrended with brackets (`[  ]`).",
+            "short_description": "Creates a local variable that only exists within a procedure or a statement surrounded with brackets (`[  ]`).",
             "search_terms": [
                 "variable",
                 "local",
@@ -2249,7 +2249,7 @@
         "to": {
             "identity": "to",
             "display_name": "to",
-            "short_description": "used to begin a command procedure",
+            "short_description": "Begins a command procedure",
             "search_terms": [
                 "to",
                 "begin",
@@ -2332,7 +2332,7 @@
         "turtle": {
             "identity": "turtle",
             "display_name": "turtle",
-            "short_description": "Reports a specific turtle that has the provided who number.",
+            "short_description": "Reports a specific turtle that has the provided unique number.",
             "search_terms": [
                 "shape",
                 "triangle",
