@@ -1,4 +1,4 @@
-# The Netlogo Interactive Dictionary
+# The Beginner's Interactive Netlogo Dictionary (BIND)
 
 ## Tech Stack Overview
 The production site itself is just a series of static html files that can be served by any basic webserver. These static files are generated via `frozen-flask`, a Python Flask plugin that lets you save given url's from a flask server into static html. The flask server does all the work of pulling the data from 1) a google sheet with metadata about all the primitives and 2) markdown files with the actual descriptions of the primitives and 3) `.nlogo` files for all the example models and wrapping it all up together into the final site. When developing, you should be able to treat the flask debug site as if it were the real thing with two exceptions: 
