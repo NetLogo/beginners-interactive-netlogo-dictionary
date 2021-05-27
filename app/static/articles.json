@@ -34,6 +34,13 @@
             "short_description": "If you are not sure where to start learning NetLogo, check out this list of the most useful and frequently used primitives in NetLogo. Once you learn these primitives well, you should be able to learn any other primitive easily.",
             "type": "list",
             "should_show_on_main_page": false
+        },
+        {
+            "title": "Shapes and colors in NetLogo",
+            "href": "/article/shapes-and-colors-in-netlogo",
+            "short_description": "Learn how to customize the look of your models with NetLogo's Turtle Shapes Editor, Link Shapes Editor, and Color Swatches tools.",
+            "type": "walkthrough",
+            "should_show_on_main_page": true
         }
     ]
 }
