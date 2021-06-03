@@ -24,13 +24,13 @@
         <div class="media-body">
             <div class="row">
                 <div class="col-xs-4 col-lg-2 mb-lg-2">
-                    <img src="/static/vid/img/{{video.href.replace('.mp4', '')}}.jpg" class="align-self-start mr-4 w-100 border rounded">
+                    <img src="{{ siteurl }}/static/vid/img/{{video.href.replace('.mp4', '')}}.jpg" class="align-self-start mr-4 w-100 border rounded">
                 </div>
                 <div class="col-xs-8 col-lg-10 mt-2">
                     <h4>{{video.title}}</h4>
                     <p>{{video.short_description}}</p>
                     <p class="mt-4 mr-2 text-right">
-                        <a href="/watch/{{video.href.replace('.mp4', '')}}.html" class="ml-md-auto text-decoration-none stretched-link btn btn-primary"><i class="fas fa-play mr-2"></i>Watch</a>
+                        <a href="{{ siteurl }}/watch/{{video.href.replace('.mp4', '')}}.html" class="ml-md-auto text-decoration-none stretched-link btn btn-primary"><i class="fas fa-play mr-2"></i>Watch</a>
                     </p>
                 </div>
             </div>

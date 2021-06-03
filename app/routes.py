@@ -9,8 +9,6 @@ from flask import abort, redirect, render_template, request, url_for
 from markupsafe import escape
 from app import app
 
-
-
 @app.route('/')
 @app.route('/index')
 @app.route('/index.html')
@@ -37,7 +35,8 @@ def index():
     return render_template('index.html', 
                             videos = v_all, ## TODO: CHANGE BACK TO v_main_page & a_main_page
                             articles=a_all, 
-                            title="NetLogo Interactive Dictionary")
+                            title="NetLogo Interactive Dictionary",
+                            siteurl = app.config['URL'])
     
 @app.route('/dictionary')
 @app.route('/dictionary.html')
@@ -52,7 +51,8 @@ def dictionary():
         
         return render_template('dictionary.html', letters = ascii_uppercase, 
                                dictionary = d, keys = ks,
-                               title="Explore the NetLogo Dictionary")
+                               title="Explore the NetLogo Dictionary", 
+                               siteurl = app.config['URL'])
     
 @app.route('/primitive/<primitive_name>', methods = ['GET'])
 @app.route('/primitive/<primitive_name>.html', methods = ['GET'])
@@ -105,14 +105,16 @@ def primitive(primitive_name):
                                     model = full_model,
                                     title = display_name + " primitive",
                                     see_also = see_also,
-                                    library_models = library_models)
+                                    library_models = library_models,
+                                    siteurl = app.config['URL'] )
         else:
             return render_template('primitive_no_model.html',
                                     primitive = display_name, 
                                     body=description_rendered, 
                                     title= display_name + " primitive",
                                     see_also = see_also,
-                                    library_models = library_models)
+                                    library_models = library_models,
+                                    siteurl = app.config['URL'] )
     else:
         ## MAKE THIS RENDER A 404 File!!!
         abort(404) ## update the error message maybe?
@@ -124,7 +126,8 @@ def search():
     dfile = os.path.join(BASE_DIR, 'static/primitives.json')
     with open(dfile, 'r') as df:
         d = json.load(df)
-    return render_template('search.html', dictionary = d, title = "Search results")
+    return render_template('search.html', dictionary = d, title = "Search results",
+                            siteurl = app.config['URL'])
     
 @app.route('/article/<article_name>', methods = ['GET'])
 @app.route('/article/<article_name>.html', methods = ['GET'])
@@ -136,7 +139,8 @@ def article(article_name):
         with open(afile, 'r') as af:
             maf = markdown.markdown(af.read(), extensions=["fenced_code"])
         maf = maf.replace('<h1>', '<h1 class="display-4">') # just to make it look nicer
-        return render_template('article.html', body = maf, title=an.replace('-', ' ').title())
+        
+        return render_template('article.html', body = maf, title=an.replace('-', ' ').title(), siteurl = app.config['URL'])
     else:
         abort(404)  ## update the error message maybe?
     
@@ -144,7 +148,7 @@ def article(article_name):
 @app.errorhandler(404)
 def page_not_found(e):
     # note that we set the 404 status explicitly
-    return render_template('404.html'), 404
+    return render_template('404.html', siteurl = app.config['URL']), 404
 
 @app.route('/articles')
 @app.route('/articles.html')
@@ -153,7 +157,7 @@ def articles():
     afile = os.path.join(BASE_DIR, 'static/articles.json')
     with open(afile, 'r') as af:
         a = json.load(af)
-    return render_template('articles.html', articles = a['articles'], title="Articles and Guides")
+    return render_template('articles.html', articles = a['articles'], title="Articles and Guides", siteurl = app.config['URL'])
 
 @app.route('/videos')
 @app.route('/videos.html')
@@ -163,7 +167,7 @@ def videos():
     with open(vfile, 'r') as vf:
         v = json.load(vf)
         
-    return render_template('videos.html', videos = v['videos'], title="Videos")
+    return render_template('videos.html', videos = v['videos'], title="Videos", siteurl = app.config['URL'])
     
 @app.route('/watch/<video_name>', methods = ['GET'])
 @app.route('/watch/<video_name>.html', methods = ['GET'])
@@ -175,4 +179,4 @@ def watch(video_name):
     with open(vfile, 'r') as vf:
         v = json.load(vf)
     vdata = list(filter(lambda x:x["href"]==vn+".mp4",v["videos"]))
-    return render_template('watch.html', vid = vn, title = vdata[0]["title"], description = vdata[0]["short_description"])
+    return render_template('watch.html', vid = vn, title = vdata[0]["title"], description = vdata[0]["short_description"], siteurl = app.config['URL'])

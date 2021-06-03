@@ -18,20 +18,20 @@
         <p class="text-center text-lg-left">
             <a href="http://ccl.northwestern.edu/netlogo/docs/" target="_blank"><u>What is NetLogo?</u></a>
             &nbsp; &nbsp;
-            <a href="/article/what-is-a-primitive.html"><u>What is a primitive?</u></a>
+            <a href="{{ siteurl }}/article/what-is-a-primitive.html"><u>What is a primitive?</u></a>
             &nbsp; &nbsp;
             <!--        The following version only shows in non-small, in the same line-->
-            <a href="/article/first-11-netlogo-primitives-to-learn.html" class="d-none d-md-inline-block"><u>The first 11 primitives to learn</u></a>
+            <a href="{{ siteurl }}/article/first-11-netlogo-primitives-to-learn.html" class="d-none d-md-inline-block"><u>The first 11 primitives to learn</u></a>
             &nbsp; &nbsp;
         </p>
         <!--        The following version only shows in small, in a new line-->
         <p class="d-block d-md-none mb-4  text-center text-md-left">
-            <a href="/article/first-11-netlogo-primitives-to-learn.html"><u>The first 11 primitives to learn</u></a>
+            <a href="{{ siteurl }}/article/first-11-netlogo-primitives-to-learn.html"><u>The first 11 primitives to learn</u></a>
         </p>
     </div>
 
     <div class="col-lg-6 col-xl-5 mt-4">
-        <img class="col-lg-12" src="/static/branding/banner-with-code.png" />
+        <img class="col-lg-12" src="{{ siteurl }}/static/branding/banner-with-code.png" />
     </div>
 </div>
 
@@ -58,12 +58,12 @@
         {% for video in videos %}
         
             <div style="display:none;" class="video-card card mb-2">
-                <img class="card-img-top p-1" src="/static/vid/img/{{video.href.replace('.mp4', '.jpg')}}">
+                <img class="card-img-top p-1" src="{{ siteurl }}/static/vid/img/{{video.href.replace('.mp4', '.jpg')}}">
                 <div class="card-body">
                     <h5 class="card-title">{{video.title}}</h5>
                     <p class="card-text">{{video.short_description}}</p>
                 </div>
-                <a href="/watch/{{video.href.replace('.mp4', '')}}.html" class="btn btn-primary align-baseline mx-2 mb-1 stretched-link"><i class="fas fa-play mr-2"></i> Watch</a>
+                <a href="{{ siteurl }}/watch/{{video.href.replace('.mp4', '')}}.html" class="btn btn-primary align-baseline mx-2 mb-1 stretched-link"><i class="fas fa-play mr-2"></i> Watch</a>
             </div> 
         
         {% endfor %}
@@ -107,7 +107,7 @@
                         <h5 class="mt-0 mb-1">{{article.title}}</h5>
                         <p>{{article.short_description}}</p>
                         <p>
-                            <a href="{{article.href}}.html">Read this article</a>
+                            <a href="{{ siteurl }}{{article.href}}.html">Read this article</a>
                         </p>
                     </div>
                 </li>

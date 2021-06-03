@@ -58,7 +58,7 @@
                             {% if article.href.startswith("https://") or article.href.startswith("http://") %}
                                 <a href="{{article.href}}" class="ml-md-auto stretched-link text-decoration-none" target="_blank">Read more</a>
                             {%else%}
-                                <a href="{{article.href}}.html" class="ml-md-auto stretched-link text-decoration-none">Read more</a>
+                                <a href="{{siteurl}}{{article.href}}.html" class="ml-md-auto stretched-link text-decoration-none">Read more</a>
                             {%endif%}
                         </span>
                     </div>

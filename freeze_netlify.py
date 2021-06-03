@@ -8,6 +8,8 @@ freezer = Freezer(app)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+app.config['URL'] = ""
+
 with open(os.path.join(BASE_DIR, 'app/static/primitives.json'), 'r') as df:
     primitivesJson = json.load(df)
 primitivesViaJson = primitivesJson['primitives']
