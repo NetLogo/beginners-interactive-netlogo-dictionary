@@ -82,7 +82,7 @@
             </ul>
             <!-- this navbar brand only shows in desktop mode -->
             <ul class="navbar-nav mx-sm-auto d-none d-xs-none d-lg-block">
-                <a class="navbar-brand" href="/"><img src="{{ siteurl }}/static/img/bind-logo.png" width="32" height="32" loading="lazy" class="d-inline-block align-middle"/> Beginner's Interactive NetLogo Dictionary</a>
+                <a class="navbar-brand" href="{{ siteurl }}"><img src="{{ siteurl }}/static/img/bind-logo.png" width="32" height="32" loading="lazy" class="d-inline-block align-middle"/> Beginner's Interactive NetLogo Dictionary</a>
             </ul>
             <ul class="navbar-nav mx-auto mr-sm-2">
                 <li class="nav-item">
@@ -158,7 +158,7 @@
             return 0;
         }
 
-        $local.getJSON("/static/primitives.json", function(obj){
+        $local.getJSON("{{ siteurl }}/static/primitives.json", function(obj){
             primitives = obj["primitives"];
             primitiveNames = Object.entries(obj["primitives"]).map(function(e){return e[1]["display_name"];});
             // Bloodhound is the "Search engine" built into typeahead

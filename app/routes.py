@@ -34,7 +34,7 @@ def index():
 
     return render_template('index.html', 
                             videos = v_all, ## TODO: CHANGE BACK TO v_main_page & a_main_page
-                            articles=a_all, 
+                            articles = a_all, 
                             title="NetLogo Interactive Dictionary",
                             siteurl = app.config['URL'])
     
