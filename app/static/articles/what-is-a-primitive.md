@@ -26,7 +26,7 @@ neighbors
 
 
 
-Notice how each primitive has a specific color. These colors give us hints on the function of each primitive. You can [click here to learn more about these color codes.](/article/code-colors-in-netlogo.html)
+Notice how each primitive has a specific color. These colors give us hints on the function of each primitive. You can [click here to learn more about these color codes.](../article/code-colors-in-netlogo.html)
 
 
 
