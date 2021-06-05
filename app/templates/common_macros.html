@@ -98,7 +98,7 @@
 
 <!-- Utilities -->
 
-{% macro syntax_highlight(jquery_string) %}
+{% macro syntax_highlight(jquery_string, siteurl="""") %}
     <script src="{{ siteurl }}/static/js/codemirror/runmode.js"></script>
     <script type="text/javascript">
         var finishedSyntax = new Event('finishedSyntax');
