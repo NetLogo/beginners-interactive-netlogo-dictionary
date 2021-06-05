@@ -4,7 +4,7 @@
 {% block head %}
 
     {{super()}}
-    {{ fontawesome_html() }}
+    {{ #fontawesome_html() }}
 
     <script src="{{ siteurl }}/static/js/jquery.min.js"></script>
     <script src="{{ siteurl }}/static/js/typeahead.js"></script>
@@ -16,6 +16,9 @@
     <script type="text/javascript">
         $local = jQuery.noConflict();
     </script>
+
+    <link href="{{ siteurl }}/static/fontawesome/css/fontawesome.min.css?version=5.14.0" rel="stylesheet">
+    <link href="{{ siteurl }}/static/fontawesome/css/solid.min.css?version=5.14.0" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ siteurl }}/static/css/dictionary.css">
     <link rel="stylesheet" href="{{ siteurl }}/static/css/codemirror.css">
