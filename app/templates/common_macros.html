@@ -1,6 +1,6 @@
 <!-- Reusable components  -->
 
-{% macro random_primitives(num=5) %}
+{% macro random_primitives(num=5, siteurl="") %}
     <div id="random-primitive-deck" class="card-deck row no-gutters d-block d-lg-flex cm-s-netlogo-default"></div>
     
     <script type="text/javascript">
@@ -32,7 +32,7 @@
     </script>
 {% endmacro %}
 
-{% macro list_of_primitives(list_of_primitives_objects = []) %}
+{% macro list_of_primitives(list_of_primitives_objects = [], siteurl="") %}
     <div class="card-deck row no-gutters d-block d-lg-flex cm-s-netlogo-default">
         {% for primitive in list_of_primitives_objects %}
             <div class="card mb-2">
@@ -48,7 +48,7 @@
 
 <!-- What's next sections -->
 
-{% macro related_library_models(list_of_models = [], display_name = "") %}
+{% macro related_library_models(list_of_models = [], display_name = "", siteurl="") %}
     {%if list_of_models != [] %} 
 
         <div class="clearfix">&nbsp;</div>
@@ -57,6 +57,7 @@
         <div class="card-deck d-block d-md-flex cm-s-netlogo-default">
             {% for model_name in list_of_models %}
                 <div class="card mb-2 col-md-3 p-1">
+                    <h2><pre>site url is pulling as: {{ siteurl }}</pre></h2>
                     <img src="{{ siteurl }}/static/img/models/{{model_name.replace(' ', '')}}.png" class="card-img-top">
                     <div class="card-body m-0 px-0 pt-2 pb-0">
                         <h5 class="card-title">
@@ -73,18 +74,18 @@
     {% endif %}
 {% endmacro %}
 
-{% macro related_primitives(see_also = []) %}
+{% macro related_primitives(see_also = [], siteurl="") %}
     {%if see_also != [] %}
         <div class="clearfix">&nbsp;</div>
 
         <h5>Similar primitives:</h5>
 
-        {{ list_of_primitives(see_also) }}
+        {{ list_of_primitives(see_also, siteurl) }}
 
     {% endif %}
 {% endmacro %}
 
-{% macro explore_another_primitive() %}
+{% macro explore_another_primitive(siteurl="") %}
 
     <div class="clearfix">&nbsp;</div>
 
