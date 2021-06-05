@@ -25,7 +25,7 @@ Installing NetLogo on your desktop computer is as easy as it gets:
 
 
 
-<center><video controls class="border rounded p-0 col-xs-11 col-sm-11 col-md-11 col-lg-6 col-xl-6" poster="/static/img/gettingstarted/download.png">   <source src="/static/img/gettingstarted/download.mp4" type="video/mp4"> Your browser does not support the video tag. </video></center>
+<center><video controls class="border rounded p-0 col-xs-11 col-sm-11 col-md-11 col-lg-6 col-xl-6" poster="../static/img/gettingstarted/download.png">   <source src="../static/img/gettingstarted/download.mp4" type="video/mp4"> Your browser does not support the video tag. </video></center>
 
 
 
@@ -43,7 +43,7 @@ Note that NetLogoWeb does not have feature-parity with NetLogo Desktop mainly du
 
 
 
-<center><video controls class="border rounded p-0 col-xs-11 col-sm-11 col-md-11 col-lg-6 col-xl-6" poster="/static/img/gettingstarted/netlogoweb.png">   <source src="/static/img/gettingstarted/netlogoweb.mp4" type="video/mp4"> Your browser does not support the video tag. </video></center>
+<center><video controls class="border rounded p-0 col-xs-11 col-sm-11 col-md-11 col-lg-6 col-xl-6" poster="../static/img/gettingstarted/netlogoweb.png">   <source src="../static/img/gettingstarted/netlogoweb.mp4" type="video/mp4"> Your browser does not support the video tag. </video></center>
 
 
 
@@ -62,7 +62,7 @@ The following video tutorial shows how to access the models in the Models Librar
 
 
 
-<center><video controls class="border rounded p-0 col-xs-11 col-sm-11 col-md-11 col-lg-8 col-xl-8" poster="/static/vid/img/modelslibrary.jpg">   <source src="/static/vid/modelslibrary.mp4" type="video/mp4"> Your browser does not support the video tag. </video></center>
+<center><video controls class="border rounded p-0 col-xs-11 col-sm-11 col-md-11 col-lg-8 col-xl-8" poster="../static/vid/img/modelslibrary.jpg">   <source src="../static/vid/modelslibrary.mp4" type="video/mp4"> Your browser does not support the video tag. </video></center>
 
 It is easy to run the library models in NetLogo. Almost all of them have a **setup** button and a **go** button. To run a model, first click the **setup** button and then click the **go** button.
 

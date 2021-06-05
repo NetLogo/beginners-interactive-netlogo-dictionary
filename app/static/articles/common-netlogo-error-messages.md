@@ -157,7 +157,7 @@ end
 
 ## <p class="badge badge-netlogoerror  text-wrap text-monospace text-left"><span class="badge badge-pill badge-danger"><i class="fas fa-hand-paper"></i></span> OF expected this input to be a reporter block, but got a number instead. </p>
 
-This error occurs when a reporter preceding the `of` primitive is not enclosed in brackets (`[]`). You can refer to the <a href="/primitive/of">of item of this dictionary</a> to learn more about how to use the `of` primitive correctly. 
+This error occurs when a reporter preceding the `of` primitive is not enclosed in brackets (`[]`). You can refer to the <a href="../primitive/of">of item of this dictionary</a> to learn more about how to use the `of` primitive correctly. 
 
 For example, the following code would show this error because the `size` reporter that comes before the `of turtles` statement is not enclosed within brackets (`[]`):
 
@@ -185,7 +185,7 @@ ask turtles [
 
 ## <p class="badge badge-netlogoerror  text-wrap text-monospace text-left"><span class="badge badge-pill badge-danger"><i class="fas fa-hand-paper"></i></span> WITH expected this input to be a TRUE/FALSE block, but got a number instead</p>
 
-This error occurs when we forget to add brackets around the true/false statement that follows the `with` primitive. You can refer to the <a href="/primitive/with">with item of this dictionary</a> to learn more about how to use the `of` primitive correctly. 
+This error occurs when we forget to add brackets around the true/false statement that follows the `with` primitive. You can refer to the <a href="../primitive/with">with item of this dictionary</a> to learn more about how to use the `of` primitive correctly. 
 
 For example, the following code would show this error because the `size > 1` statement that comes after the `with` primitive is not enclosed within brackets:
 
@@ -254,7 +254,7 @@ Note that a similar error may be shown for the same reason when using other prim
 
 ## <p class="badge badge-netlogoerror  text-wrap text-monospace text-left"><span class="badge badge-pill badge-danger"><i class="fas fa-hand-paper"></i></span> ... expected this input to be an ... here, but got a ... instead</p>
 
-This is a more generic error that means you have a syntax error such as  giving a primitive the wrong type of input (a list instead of a number, an agentset instead of a reporter, etc). Because each primitive’s syntax is different, it’s a good idea to check the exact syntax in the <a href="/dictionary">dictionary</a>. 
+This is a more generic error that means you have a syntax error such as  giving a primitive the wrong type of input (a list instead of a number, an agentset instead of a reporter, etc). Because each primitive’s syntax is different, it’s a good idea to check the exact syntax in the <a href="../dictionary">dictionary</a>. 
 
 For example, the following code would show this error because the `face` primitive requests just one agent, while the `neighbors` primitive reports 8 agents.
 

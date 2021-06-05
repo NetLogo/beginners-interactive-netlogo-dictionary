@@ -57,13 +57,13 @@ NetLogo has way more turtle shapes than the default ones for us to choose from. 
 
 If none of the shapes in the library fits our model, we can create new shapes from scratch by clicking the **New** button and drawing our own shape. 
 
-![New Shape Designer](/static/articles/img/newshape.png)
+![New Shape Designer](../static/articles/img/newshape.png)
 
 &nbsp;
 
 A few things to keep in mind while using the New Shape Editor:
 
-* You can pick a color that represents a *changing color*. That is, if you draw an object with this color, you can override this color with the <a href="/primitive/set">`set`</a> and <a href="/primitive/color">`color`</a> primitives. This color is gray by default.
+* You can pick a color that represents a *changing color*. That is, if you draw an object with this color, you can override this color with the <a href="../primitive/set">`set`</a> and <a href="../primitive/color">`color`</a> primitives. This color is gray by default.
 * You can uncheck the *Snap the grid* option to draw shapes with higher precision.
 * You can uncheck the *Rotatable* option to prevent your shape from being rotated when a turtle's heading changes.
 * The name of your new shapes have to be unique. For example, if you create a tree shape, you should either name it with a different name such as *"tree 2"* or you should first delete the default tree shape from your model.
@@ -120,7 +120,7 @@ NetLogo also allows us to go beyond the simple straight lines and define a varie
 
 &nbsp;
 
-![Link Shape Designer](/static/articles/img/linkshapes.png)
+![Link Shape Designer](../static/articles/img/linkshapes.png)
 
 &nbsp;
 

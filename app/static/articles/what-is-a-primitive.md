@@ -42,7 +42,7 @@ Some primitives may require additional information to be provided after writing 
 
 
 
-[<i class="fas fa-link"></i>  Click here to find a list of all primitives that are in this Beginner's Dictionary](/dictionary.html)
+[<i class="fas fa-link"></i>  Click here to find a list of all primitives that are in this Beginner's Dictionary](../dictionary.html)
 
 
 
