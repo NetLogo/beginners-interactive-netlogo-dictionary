@@ -1,4 +1,4 @@
-`max-n-of` reports an agentset that contains a specified number of agents with the highest value of a given reporter. For example, if wanted to create a model where the largest 5 turtles divided in half, we would write the code below:
+`max-n-of` reports an agentset that contains a specified number of agents with the highest value of a given reporter. For example, if we wanted to create a model where the largest 5 turtles are divided in half, we would write the code below:
 
 ```
 ask max-n-of 5 turtles [size] [

@@ -1,4 +1,4 @@
-`neighbors` reports an agentset that contains the four patches that surround an agent's current patch in the north, east, west, and south directions. Both turtles and patches are allowed to use this reporter. For example, if we wanted to create a model in which a fire spread from one patch to its neighbors, we would write the following code: 
+`neighbors4` reports an agentset that contains the four patches that surround an agent's current patch in the north, east, west, and south directions. Both turtles and patches are allowed to use this reporter. For example, if we wanted to create a model in which a fire spread from one patch to its neighbors, we would write the following code: 
 
 
 

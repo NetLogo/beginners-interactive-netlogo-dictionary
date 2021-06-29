@@ -14,7 +14,7 @@
 Things to keep in mind when using `nobody`
 
 *  `nobody` is only used with a single agent. If we need to check whether an agentset is empty, we need to use the `any?` primitive such as `if any? turtles with [color = green]` .
-*  You can assign a variable's value as `nobody` such as:`set my-friend nobody`. This works for both global variables that are created with the `globals` primitive and agent-variables that are created with `turtles-own`,  `patches-own`, or `links-own` variables.
+*  You can assign a variable's value as `nobody` such as: `set my-friend nobody`. This works for both global variables that are created with the `globals` primitive and agent-variables that are created with `turtles-own`,  `patches-own`, or `links-own` variables.
 
 
 

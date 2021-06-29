@@ -1,4 +1,4 @@
-`links` are a special category of agents (like turtles and patches) in NetLogo to represent connections between turtles. A link itself is just a connection between any two (distinct) turtles with some information attached. With just this simple tool of connections between turtles, we can represent very sophisticated relationships between turtles such as family trees, "friend" relationships on social media (commonly referred to as a "social graph"), or even road maps for navigation software like google maps or waze.
+`links` are a special category of agents (like turtles and patches) in NetLogo to represent connections between turtles. A link itself is just a connection between any two (distinct) turtles with some information attached. With just this simple tool of connections between turtles, we can represent very sophisticated relationships between turtles such as family trees, "friend" relationships on social media (commonly referred to as a "social graph"), or even road maps for navigation software like Google Maps or Waze.
 
 
 

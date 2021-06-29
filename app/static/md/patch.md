@@ -1,4 +1,4 @@
-Patches are a special kind of stationary agents in NetLogo that make up the world of a model. You can think of the patches as the squares that make up a chess board. 
+Patches are a special kind of stationary agents in NetLogo that make up the world of a model. You can think of the patches as the squares that make up a chessboard. 
 
 
 

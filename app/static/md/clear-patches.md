@@ -6,4 +6,4 @@
 
 
 
-In the model example below, we have three buttons. The first one makes patches' color green and creates some cows on random locations. The second button runs the `clear-patches` primitive to clear the patches, as a proxy for grass, but leaves the cows the same. The third button runs the `clear-turtles` primitive to remove the cows from the model but leave the patches/grass as is. 
+In the model example below, we have three buttons. The first one makes the patches' color green and creates some cows on random locations. The second button runs the `clear-patches` primitive to clear the patches, as a proxy for grass, but leaves the cows the same. The third button runs the `clear-turtles` primitive to remove the cows from the model but leave the patches/grass as is. 

@@ -14,7 +14,7 @@ ask turtles [
 
 
 
-Once you create a local variable with `let`, you can then use the `set` primitive to assign it a new value. `let` is very useful for calculating temporary values or creating temporary agentsets. For example, if we wanted to a turtle to roll 6 dices and report the sum of the dices, we could use `let` as shown below:
+Once you create a local variable with `let`, you can then use the `set` primitive to assign it a new value. `let` is very useful for calculating temporary values or creating temporary agentsets. For example, if we wanted a turtle to roll 6 dices and report the sum of the dices, we could use `let` as shown below:
 
 
 
@@ -31,5 +31,5 @@ end
 
 
 
-In the model example below, we have some happy and some sad turtles. Every time two turtles are on the same patch, one turtle will ask the other to change its shape. In a way, either a sad turtle will make its friend sad, or a happy turtle will make its friend happy. We use `let` in this model because it allows us to not rewrite a longer piece of code again and again (`other turtles-here`).
+In the model example below, we have some happy and some sad turtles. Every time two turtles are on the same patch, one turtle will ask the other to change its shape. Two situations might occcur: either a sad turtle will make its friend sad or a happy turtle will make its friend happy. We use `let` in this model because it allows us to not rewrite a longer piece of code again and again (`other turtles-here`).
 

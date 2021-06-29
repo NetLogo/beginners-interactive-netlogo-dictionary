@@ -17,7 +17,7 @@ Things to keep in mind when using `in-cone`:
 * You can also use floating point values for the radius and angle parameters such as `in-cone 1.25 66.66`.
 * Both *turtles* and *patches* can use `in-cone`.
 * Keep in mind that `in-cone` may report the original turtle, too, if you are using the same breeds. Be sure to account for that in your models by using the `other` primitive. For example, this code would throw an error `ask turtles [ create-links-with turtles in-cone 2 30 ]`, while this one would work fine `ask turtles [ create-links-with other turtles in-cone 2 30 ]`. 
-* You can combine `in-cone` and the `with` primitive to narrow down the target agents but make sure to encapsulate the first `with` statement within parantheses `( )`. For example, you can write a code like `if any? (carrots with [color = orange]) in-cone 3 45 [ eat ]`.
+* You can combine `in-cone` and the `with` primitives to narrow down the target agents but make sure to encapsulate the first `with` statement within parentheses `( )`. For example, you can write a code like `if any? (carrots with [color = orange]) in-cone 3 45 [ eat ]`.
 
 
 

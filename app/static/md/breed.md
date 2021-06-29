@@ -2,7 +2,7 @@
 
 
 
-To create a new type of turtle, we use the `breed` primitive followed by an opening square bracket `[`, the plural version of the breed, a space, the singular version of the breed, and a closing square bracket `]` . For example, `breed [dogs dog]`, `breed [buildings building]`, and `breed [cars car]`. 
+To create a new type of turtle, we use the `breed` primitive followed by an opening square bracket `[`, the plural version of the breed, a space, the singular version of the breed, and a closing square bracket `]`. For example, `breed [dogs dog]`, `breed [buildings building]`, and `breed [cars car]`. 
 
 
 

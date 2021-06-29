@@ -30,7 +30,7 @@ if any? turtles with [size < 1] [stop]
 Things to keep in mind in mind when using `any?`: 
 
 * Don't forget the question mark (`?`) at the end. 
-* You can use the `not` primitive, like in the example above, to reverse the outcome of `any?`. This would come handy if you 
+* You can use the `not` primitive, like in the example above, to reverse the outcome of `any?`. 
 * `any?` itself does not do anything; you should use it within a conditional statement such as `if` and `if-else` or other primitives that require true-false values such as `while`. 
 
 

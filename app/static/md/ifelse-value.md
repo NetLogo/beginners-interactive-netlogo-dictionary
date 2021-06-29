@@ -42,7 +42,7 @@ end
 
 Things to keep in mind when using `ifelse-value`: 
 
-* You should wrap the whole `ifelse-value` within parantheses `()`.
+* You should wrap the whole `ifelse-value` within parentheses `()`.
 * You can provide a last set of commands within brackets but without any preceding condition(s). This last set of commands will be treated like an `else` statement, specifying what will happen if none of the conditions are true. You can also omit this final condition.
 
 

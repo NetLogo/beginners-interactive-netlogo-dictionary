@@ -25,5 +25,5 @@ Things to keep in mind when using `patches-own`:
 
 
 
-In the model example below, we are modeling a garden with flowers. We define a *nutrients* characteristic for our patches and assign each patch a random number of nutrients between 0 to 10. We also change each patch's `pcolor` according to its nutrient level so that a darker patch indicates higher nutrient. Finally, we sprout a flower on each patch. Initially, each flower has the same size but when the go button is clicked, each flower grows according to the nutrition level of their patch.
+In the model example below, we are modeling a garden with flowers. We define a *nutrients* characteristic for our patches and assign each patch a random number of nutrients between 0 and 10. We also change each patch's `pcolor` according to its nutrient level so that a darker patch indicates higher nutrient levels. Finally, we sprout a flower on each patch. Initially, each flower has the same size but when the go button is clicked, each flower grows according to the nutrition level of their patch.
 

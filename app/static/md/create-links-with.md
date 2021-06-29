@@ -14,7 +14,7 @@ Notice that we use the `other` primitive in our code because if we did not use `
 
 
 
-Also keep in mind that his primitive is used to create multiple links at once, so you need to provide an agentset. If you want to create a link with just one specific turtle, you should use the `create-link-with` primitive.
+Also keep in mind that this primitive is used to create multiple links at once, so you need to provide an agentset. If you want to create a link with just one specific turtle, you should use the `create-link-with` primitive.
 
 
 

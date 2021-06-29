@@ -10,7 +10,7 @@ ask turtles [
 
 
 
-We use `other` in this context because if we did not, there is a chance that `one-of turtles`  would report the same turtle and because a turtle cannot create a link with itself, NetLogo would show an error.
+We use `other` in this context because if we did not, there is a chance that `one-of turtles`  would report the same turtle. If this happens, NetLogo would show an error  because a turtle cannot create a link with itself.
 
 
 

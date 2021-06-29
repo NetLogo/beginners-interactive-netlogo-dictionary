@@ -1,4 +1,4 @@
-`distance` is a turtle and patch primitive that reports the shortest distance between the current agent and another provided agent. For example, the following code would make the turtles who are close enough to the center patch (0,0) to move one step forward, but if their distance to the center patch (0,0) is 5 units or more, they would not move.
+`distance` is a turtle and patch primitive that reports the shortest distance between the current agent and another provided agent. For example, the following code would make the turtles who are close enough to the center patch (0,0) move one step forward, but if their distance to the center patch (0,0) is 5 units or more, they would not move.
 
 
 

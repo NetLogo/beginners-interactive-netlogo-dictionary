@@ -6,5 +6,5 @@
 
 
 
-In the model example below, we have two buttons. The first one makes patches' color yellow and asks turtles to draw some random lines. The second button simply runs the `clear-all` primitive to clear everything. 
+In the model example below, we have two buttons. The first one makes the patches' color yellow and asks turtles to draw some random lines. The second button simply runs the `clear-all` primitive to clear everything. 
 
