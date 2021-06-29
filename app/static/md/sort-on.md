@@ -1,4 +1,4 @@
-`sort-on` allows us to sort the agents in an agentset based on a reporter such as an agent characteristic (e.g.,`size`, `xcor`) or custom agent variable (e.g., `age`, `speed`). Its syntax is: ` sort-on [ variable-or-reporter ] agentset `. For example, if we wanted to create a model of earthquake search-and-rescue in which the rescuers checked largest buildings first, we would write the following code:
+`sort-on` allows us to sort the agents in an agentset based on a reporter such as an agent characteristic (e.g.,`size`, `xcor`) or custom agent variable (e.g., `age`, `speed`). Its syntax is: ` sort-on [ variable-or-reporter ] agentset `. For example, if we wanted to create a model of earthquake search-and-rescue in which the rescuers checked the largest buildings first, we would write the following code:
 
 
 

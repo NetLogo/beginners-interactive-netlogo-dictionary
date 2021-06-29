@@ -1,4 +1,4 @@
-A **reporter** is a predefined procedure that returns a value and, unlike a command, cannot be a stand-alone code element . NetLogo has some useful built-in reporters that cannot be changed directly such as `ticks`, `pi`, `e`, `world-width`, and `world-height`. For example, we cannot just write `ticks` in the code. We need to use ticks in some other algorithm such as: 
+A **reporter** is a predefined procedure that returns a value and, unlike a command, cannot be a stand-alone code element. NetLogo has some useful built-in reporters that cannot be changed directly such as `ticks`, `pi`, `e`, `world-width`, and `world-height`. For example, we cannot just write `ticks` in the code. We need to use ticks in some other algorithm such as: 
 
 
 
@@ -14,7 +14,7 @@ Other primitives that we use for filtering agentsets or manipulating lists such 
 
 
 
-Many turtle, patch, and link properties such as `color` or `label` can be thought of as both variables that we can change with the `set` command, as well as reporters that provide us with the values of these variables. Notice in the following example that the brackets `[ ]` that come before `of`:
+Many turtle, patch, and link properties such as `color` or `label` can be thought of as both variables that we can change with the `set` command, as well as reporters that provide us with the values of these variables. Notice in the following example that the brackets `[ ]`  come before `of`:
 
 
 

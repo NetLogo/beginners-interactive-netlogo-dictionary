@@ -10,7 +10,7 @@ But `random-normal` will take a *mean* value and a *standard-deviation* value to
 
 
 
-Normal distributions are found more often in nature than uniform distributions, and can add accuracy to your model.  For example, if we wanted to create a model of bug evolution in which each bug had a different sized antenna, but with a normal distribution, we would write the following code:
+Normal distributions are found more often in nature than uniform distributions and can add accuracy to your model.  For example, if we wanted to create a model of bug evolution in which each bug had a different sized antenna, but with a normal distribution, we would write the following code:
 
 
 

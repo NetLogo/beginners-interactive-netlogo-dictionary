@@ -1,4 +1,4 @@
-`round` is a mathematics primitive that rounds reports the closest integer to a given number. For example, `round 5.2` would report 5, and `round -4.8` would report -5. 
+`round` is a mathematics primitive that reports the closest integer to a given number. For example, `round 5.2` would report 5, and `round -4.8` would report -5. 
 
 
 

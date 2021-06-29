@@ -6,4 +6,4 @@ Because `tie` is a link primitive, it needs to be executed within a link context
 
 
 
-In the model example below, we use `tie` to model the symbiotic relationship between whales and whale barnacles. In this relationship, the whale barnacles attach themselves to whales as they swim around. Since these barnacles passively filter food from the ocean water, it is highly beneficial for them to hitch a ride with these fast moving whales as they travel through the ocean. To model this attachment, we use `tie` along with a directed link to make the barnacles, once attached, follow the whales movement.
+In the model example below, we use `tie` to model the symbiotic relationship between whales and whale barnacles. In this relationship, the whale barnacles attach themselves to whales as they swim around. Since these barnacles passively filter food from the ocean water, it is highly beneficial for them to hitch a ride with these fast moving whales as they travel through the ocean. To model this attachment, we use `tie` along with a directed link to make the barnacles, once attached, follow the whale's movement.

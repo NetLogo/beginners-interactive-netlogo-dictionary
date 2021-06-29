@@ -2,7 +2,7 @@ Turtles are mobile agents in NetLogo that can be placed anywhere in the world, c
 
 
 
-The `turtle` primitive reports the specific turtle with the given number. For example, if we wanted to create a model with just two turtles, one a cat and the other a mouse, we could write the following code. Notice that when we create turtles, the numbering starts with zero.
+The `turtle` primitive reports a specific turtle with the given number. For example, if we wanted to create a model with just two turtles, one a cat and the other a mouse, we could write the following code. Notice that when we create turtles, the numbering starts with zero.
 
 
 

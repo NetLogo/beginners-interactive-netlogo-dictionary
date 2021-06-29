@@ -36,4 +36,4 @@ Things to keep in mind when using `turtles-own`:
 
   
 
-In the model example below, we have three cars on three parallel roads. Each car has a different amount of gas in their tank, shown with labels next to them. When the *go* button is clicked, each car starts moving forward until they run out of gas.
+In the model example below, we have three cars on three parallel roads. Each car has a different amount of gas in its tank, shown with a label next to each car. When the *go* button is clicked, each car starts moving forward until they run out of gas.

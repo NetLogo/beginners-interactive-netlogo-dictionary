@@ -23,7 +23,7 @@ Things to keep in mind when using `with`:
 
 
 
-In the model example below, we have three parallel roads and each road has a car on it. In the go procedure, we use `with` to differentiate between the speeds of blue cars and red cars. Blue cars go twice as fast as the red cars when they also have enough gas. When a car does not have enough gas, it goes much much slower. Lastly, we use `with` to stop the model when all the cars run out of gas.
+In the model example below, we have three parallel roads and each road has a car on it. In the go procedure, we use `with` to differentiate between the speeds of blue cars and red cars. Blue cars go twice as fast as  red cars when they have enough gas. When a car does not have enough gas, it goes much much slower. Lastly, we use `with` to stop the model when all the cars run out of gas.
 
 
 

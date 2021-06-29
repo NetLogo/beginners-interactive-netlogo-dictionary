@@ -18,4 +18,4 @@ Things to keep in mind when using `random-float`:
 
 
 
-In the model example below, we use `random-float` to randomly place a dart somewhere on (or off of) a dartboard. By using `random-float`, we are ensuring that the dart could land at every possible point on the dart board, not just integer points. 
+In the model example below, we use `random-float` to randomly place a dart somewhere on (or off of) a dartboard. By using `random-float`, we are ensuring that the dart could land at every possible point on the dartboard, not just integer points. 

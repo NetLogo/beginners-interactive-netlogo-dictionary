@@ -31,10 +31,10 @@ Things to keep in mind when using `pcolor`:
 * NetLogo uses a custom numbering scheme to represent colors. You can access this color numbering scheme by clicking the *Tools* menu and choosing the *Color Swatches* option. 
 * As you noticed in the examples above, you can use the names of the common colors directly in your code. These names are: `red`,`green`,`blue`,`brown`,`black`,`pink`,`white`,`violet`,`magenta`,`cyan`, and `gray`.  
 * You should write the name of a color directly, without any quotations around the color name (`""`). 
-* As NetLogo uses a simple numbering scheme for colors, you can actually treat color names like numerical values. This allows us to manipulate the lightness of colors with simple math. For example, `green + 2`is will result in a lighter green color, while `green - 2` will result in a darker green. You can also use non-integer numbers to achieve an even more precise color such as `red + 0.25`or `blue - 1.85`.
+* As NetLogo uses a simple numbering scheme for colors, you can actually treat color names like numerical values. This allows us to manipulate the lightness of colors with simple math. For example, `green + 2` will result in a lighter green color, while `green - 2` will result in a darker green. You can also use non-integer numbers to achieve an even more precise color such as `red + 0.25` or `blue - 1.85`.
 
 
 
 
 
-In the model example below, we have some sheep that wander around randomly. We use `pcolor` to make some of our patches brown to represent ground and some of our patches to represent grass. Sheep can only eat when they are on a patch with grass on it, so they can only eat `if pcolor = green` . This model not only changes the `pcolor` of a patch using `set`, but it shows how `pcolor` can be used in conditional statements.
+In the model example below, we have some sheep that wander around randomly. We use `pcolor` to make some of our patches `brown` to represent ground and some of our patches `green` to represent grass. Sheep can only eat when they are on a patch with grass on it, so they can only eat `if pcolor = green` . This model not only changes the `pcolor` of a patch using `set`, but it shows how `pcolor` can be used in conditional statements.
