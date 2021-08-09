@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/</loc>
+  <lastmod>2021-08-08T20:52:18+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/article/getting-started-with-netlogo.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/turtles.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/patches.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/links.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/dictionary.html</loc>
+  <lastmod>2021-08-08T20:52:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/articles.html</loc>
+  <lastmod>2021-08-08T20:52:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/videos.html</loc>
+  <lastmod>2021-08-08T20:52:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/article/about-this-webpage.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/article/what-is-a-primitive.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/article/first-11-netlogo-primitives-to-learn.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/watch/disease.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/watch/fire.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/watch/information-network.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/watch/modelslibrary.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/article/common-netlogo-error-messages.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/article/code-colors-in-netlogo.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/article/shapes-and-colors-in-netlogo.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/ask.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/turtles-own.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/clear-patches.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/patches-own.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/neighbors.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/move-to.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/link-neighbors.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/create-links-with.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/all.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/and.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/any.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/breed.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/ca.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/ceiling.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/clear-all.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/clear-turtles.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/color.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/count.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/create-turtles.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/crt.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/die.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/diffuse.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/distance.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/end.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/face.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/facexy.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/fd.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/floor.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/forward.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/globals.html</loc>
+  <lastmod>2021-08-08T20:52:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/hatch.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/if.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/ifelse.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/ifelse-value.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/in-cone.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/in-radius.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/layout-circle.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/left.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/let.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/max.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/max-n-of.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/max-pxcor.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/max-pycor.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/mean.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/member.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/min-pxcor.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/min-pycor.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/mod.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/myself.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/n-of.html</loc>
+  <lastmod>2021-08-08T20:52:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/neighbors4.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/nobody.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/of.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/one-of.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/or.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/other.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/patch.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/patch-ahead.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/pcolor.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/pen-down.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/pen-up.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/random.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/random-float.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/random-normal.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/repeat.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/reset-ticks.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/right.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/round.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/scale-color.html</loc>
+  <lastmod>2021-08-08T20:52:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/semicolon.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/set.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/setxy.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/shape.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/sort-by.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/sort-on.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/sprout.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/tick.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/tie.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/to.html</loc>
+  <lastmod>2021-08-08T20:52:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/to-report.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/towards.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/turtle.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/turtles-here.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/while.html</loc>
+  <lastmod>2021-08-08T20:52:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/with.html</loc>
+  <lastmod>2021-08-08T20:52:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/</loc>
+  <lastmod>2021-08-09T21:48:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/?C=N;O=D</loc>
+  <lastmod>2021-08-09T21:48:51+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/?C=M;O=A</loc>
+  <lastmod>2021-08-09T21:48:51+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/?C=S;O=A</loc>
+  <lastmod>2021-08-09T21:48:51+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/?C=D;O=A</loc>
+  <lastmod>2021-08-09T21:48:51+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/?C=N;O=A</loc>
+  <lastmod>2021-08-09T21:48:51+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/?C=M;O=D</loc>
+  <lastmod>2021-08-09T21:48:51+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/?C=S;O=D</loc>
+  <lastmod>2021-08-09T21:48:51+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ccl.northwestern.edu/netlogo/bind/primitive/?C=D;O=D</loc>
+  <lastmod>2021-08-09T21:48:51+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+
+
+</urlset>
