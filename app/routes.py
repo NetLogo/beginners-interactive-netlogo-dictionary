@@ -103,7 +103,7 @@ def primitive(primitive_name):
                                     code = code, 
                                     basemodel = basemodel, 
                                     model = full_model,
-                                    title = display_name + " primitive",
+                                    title = "How to use the " + display_name + " primitive in NetLogo?",
                                     see_also = see_also,
                                     library_models = library_models,
                                     siteurl = app.config['URL'] )
