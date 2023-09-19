@@ -2,7 +2,7 @@
 
 &nbsp;
 
-NetLogo has numerous [primitives](../article/what-is-a-primitive.html). If you are an absolute beginner to NetLogo, it may be overwhelming to look at the dictionary [page](../dictionary.html) and figure out where to begin. We compiled this list to help you get started with the very first 12 primitives you should learn to begin creating your own agent-based models in NetLogo.
+NetLogo has numerous [primitives](../article/what-is-a-primitive.html). If you are an absolute beginner to NetLogo, it may be overwhelming to look at the dictionary [page](../dictionary.html) and figure out where to begin. We compiled this list to help you get started with the very first 11 primitives you should learn to begin creating your own agent-based models in NetLogo.
 
 &nbsp;
 
