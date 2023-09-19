@@ -64,7 +64,7 @@ You can also use [`to`](../primitive/to.html) and [`end`](../primitive/) to defi
 
 [`ask`](../primitive/ask.html) allows us to make agents and agentsets do things. This is how we accomplish almost all actions in NetLogo; for agents to do any action, we must *ask them* to do so using `ask`.  We use `ask` to make turtles change the way they look, move around the world, interact with each other, remember past events, make decisions based on their environment and so on. We also use `ask` to make patches change color, remember custom values (e.g., pollution, temperature), and interact with other patches and turtles.
 
-<a href="../primitive/all.html" class="btn btn-primary float-right"><i class="fas fa-chevron-right"></i> Read more about &nbsp; `ask`</a>
+<a href="../primitive/ask.html" class="btn btn-primary float-right"><i class="fas fa-chevron-right"></i> Read more about &nbsp; `ask`</a>
 
 &nbsp;
 
