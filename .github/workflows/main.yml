@@ -1,0 +1,56 @@
+name: deploy
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/deploy-test' || github.ref == 'refs/heads/main' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure SSH
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/ccl_actions_rsa
+          echo "${{ vars.SSH_CONFIG }}" > ~/.ssh/config
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/ccl_actions_rsa
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: Test Connection
+        run: |
+          ls -ahl
+          ls -ahl ~/.ssh/
+          ls -ahl /home/runner/.ssh/
+          ssh -v ${{ secrets.SSH_TARGET_HOST }} -t 'ls -ahl'
+
+      - name: Build BIND
+        run: |
+          pip3 install -r jenkins-requirements.txt
+          python3 ./freeze_web.py
+
+      - name: Deploy Test Rsync
+        if: ${{ github.ref == 'refs/heads/deploy-test' }}
+        # -v: verbose
+        # -c: use checksum comparison
+        # -r: recursive
+        # -l: copy symlinks as symlinks
+        # -g: preserve group
+        # -o: preserve owner
+        # -D: preserve special files
+        # -O: omit directories from -t (timestamps)
+        # -z: compress during data transfer
+
+        # Note that `-a` does `-rlptgoD` but we don't want the `-p` ot `-t` (timestamps)
+
+        # Git intentionally doesn't preserve timestamps as it would make build operations wonky, so we just leave the
+        # timestamps as copied and use `-c` to use checksums for comparison.  Checksums can be slow, but we're mostly
+        # not copying any files, so it actually winds up faster overall.
+
+        # -Jeremy B Octover 2023
+        run: rsync -vcrlgoDOz --inplace --exclude .git/ --exclude .github/ ./app/build/ ${{ secrets.SSH_TARGET_HOST }}:/usr/local/www-deploy-test/netlogo/bind
+
+      # - name: Deploy Production Rsync
+      #   if: ${{ github.ref == 'refs/heads/main' }}
+      #   run: rsync -vcrlgoDOz --inplace --exclude .git/ --exclude .github/ ./app/build/ ${{ secrets.SSH_TARGET_HOST }}:/usr/local/www/netlogo/bind
