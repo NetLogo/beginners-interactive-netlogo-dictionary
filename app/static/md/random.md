@@ -19,7 +19,7 @@ ask patches [
 Things to keep in mind when using `random`:
 
 * Always remember that `random` will give us numbers within the range from 0 to N - 1, instead of 1 to N. For example, if we run `random 3`, we may get 0, 1, or 2, *but not 3*. 
-* If you want to generate a random number between a custom range, you can use the following format: `minnumber + (random (maxnumber - minnumber))`. For example, if we wanted to generate a random floating point number between 4 and 7, we could write the following code: `4 + random 3`.
+* If you want to generate a random number from `minnumber` to `maxnumber - 1`, you can use the following format: `minnumber + (random (maxnumber - minnumber))`. For example, if we wanted to generate a random number between 4 and 6 (that is, we want to get 4, 5, or 6), we could write the following code: `4 + random 3`.
 * `random` only generates positive integer numbers. If you need to generate floating point numbers, you should use `random-float`.
 * The algorithm of `random` generates a *uniform distribution*. For example, every time we run `random 5`, there is an equal likelihood of getting 0, 1, 2, 3, or 4. If you would like to generate random numbers over a *normal distribution*, you should use `random-normal`. 
 
