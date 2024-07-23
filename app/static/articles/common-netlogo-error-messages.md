@@ -239,7 +239,7 @@ Or we need to change our ask statement and use either red or blue in the conditi
 ```
 to setup
 	clear-all
-	create-turtles [ set color one-of [red blue green] ]
+	create-turtles [ set color one-of [red blue] ]
 	ask turtles with [color = red] [ forward 1]
 end
 ```
