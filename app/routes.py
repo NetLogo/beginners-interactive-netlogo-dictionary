@@ -35,7 +35,7 @@ def index():
     return render_template('index.html', 
                             videos = v_all, ## TODO: CHANGE BACK TO v_main_page & a_main_page
                             articles = a_all, 
-                            title="NetLogo Interactive Dictionary",
+                            title="",
                             siteurl = app.config['URL'])
     
 @app.route('/dictionary')
