@@ -18,7 +18,7 @@ NetLogo includes a Turtle Shapes Editor, a Link Shapes editor, and a Color Swatc
 
 ### Turtle Shapes
 
-In NetLogo, turtle shapes are vector shapes. They are built up from basic geometric shapes; squares, circles, and lines, rather than a grid of pixels. This way, when we resize a turtle, its image does not loose quality (i.e., does not become *pixelated*). 
+In NetLogo, turtle shapes are vector shapes. They are built up from basic geometric shapes; squares, circles, and lines, rather than a grid of pixels. This way, when we resize a turtle, its image does not lose quality (i.e., does not become *pixelated*). 
 
 &nbsp;
 
