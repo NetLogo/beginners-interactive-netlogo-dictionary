@@ -25,3 +25,16 @@ jobs:
           git add app/build
           git commit -m "ci: update build artifacts" || echo "Nothing to commit"
           git push origin build --force
+
+  trigger:
+    runs-on: self-hosted
+    if: ${{ github.ref == 'refs/heads/deploy-test' || github.ref == 'refs/heads/master' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Trigger Job
+        run: |
+          NS="default"
+          JOB="ccl-website-sync-${GITHUB_SHA::7}"
+          kubectl -n "$NS" delete job -l app=ccl-website,created-by=github-runner --ignore-not-found=true
+          kubectl -n "$NS" create job "$JOB" --from=cronjob/ccl-website-sync
+          kubectl -n "$NS" label job "$JOB" app=ccl-website created-by=github-runner --overwrite
